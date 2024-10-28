@@ -1,0 +1,41 @@
+\contentsline {chapter}{\numberline {1}Introduction}{3}{}%
+\contentsline {section}{\numberline {1.1}Related Work}{3}{}%
+\contentsline {chapter}{\numberline {2}Background}{4}{}%
+\contentsline {section}{\numberline {2.1}Near Infrared Spectroscopy (NIRS)}{4}{}%
+\contentsline {subsection}{\numberline {2.1.1}Introduction}{4}{}%
+\contentsline {section}{\numberline {2.2}Metabolomics}{4}{}%
+\contentsline {subsection}{\numberline {2.2.1}Introduction}{4}{}%
+\contentsline {subsection}{\numberline {2.2.2}Mass Spectrometry}{4}{}%
+\contentsline {section}{\numberline {2.3}Machine Learning}{4}{}%
+\contentsline {subsection}{\numberline {2.3.1}Introduction}{4}{}%
+\contentsline {subsection}{\numberline {2.3.2}Partial Least Square Regression (PLS)}{4}{}%
+\contentsline {subsection}{\numberline {2.3.3}Random Forest (RF)}{4}{}%
+\contentsline {subsection}{\numberline {2.3.4}Convolutional Neural Network (CNN)}{4}{}%
+\contentsline {chapter}{\numberline {3}Methods and Implementation}{5}{}%
+\contentsline {section}{\numberline {3.1}MSNovelist}{6}{}%
+\contentsline {subsection}{\numberline {3.1.1}Basic Idea of the Software}{6}{}%
+\contentsline {subsection}{\numberline {3.1.2}Deep Learning Architecture}{6}{}%
+\contentsline {subsection}{\numberline {3.1.3}Preparation of Data}{6}{}%
+\contentsline {section}{\numberline {3.2}Data}{6}{}%
+\contentsline {subsection}{\numberline {3.2.1}Data Records}{6}{}%
+\contentsline {subsection}{\numberline {3.2.2}File Formats}{6}{}%
+\contentsline {section}{\numberline {3.3}Evaluation of the Training}{6}{}%
+\contentsline {section}{\numberline {3.4}Implementations in the TensorFlow Framework}{6}{}%
+\contentsline {subsection}{\numberline {3.4.1}Preprocessing of Data}{6}{}%
+\contentsline {subsection}{\numberline {3.4.2}Training}{6}{}%
+\contentsline {subsection}{\numberline {3.4.3}Evaluation}{6}{}%
+\contentsline {subsection}{\numberline {3.4.4}Termination Criterion}{6}{}%
+\contentsline {subsection}{\numberline {3.4.5}Training on the Pubchem Dataset}{6}{}%
+\contentsline {section}{\numberline {3.5}Implementations in the PyTorch Framework}{6}{}%
+\contentsline {subsection}{\numberline {3.5.1}Reimplementation of the LSTM Architecture}{6}{}%
+\contentsline {subsection}{\numberline {3.5.2}Training with DeepSMILES and SELFIES}{6}{}%
+\contentsline {subsection}{\numberline {3.5.3}Transformer Implementation}{6}{}%
+\contentsline {section}{\numberline {3.6}Software}{6}{}%
+\contentsline {section}{\numberline {3.7}Hardware}{6}{}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{7}{}%
+\contentsline {section}{\numberline {4.1}Baseline Model}{7}{}%
+\contentsline {subsection}{\numberline {4.1.1}Termination Criterion}{7}{}%
+\contentsline {subsection}{\numberline {4.1.2}Impact of the Amount of Data}{7}{}%
+\contentsline {subsection}{\numberline {4.1.3}Duplicates in the Fingerprints}{7}{}%
+\contentsline {section}{\numberline {4.2}Alternative Tokenization of SMILES Sequences}{7}{}%
+\contentsline {subsection}{\numberline {4.2.1}QBMG Tokenization}{7}{}%

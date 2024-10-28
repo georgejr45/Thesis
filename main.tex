@@ -1,11 +1,21 @@
 \documentclass[12pt,a4paper]{report}
-\usepackage{mwe} % Example images, can be removed if not needed
+\usepackage{graphicx} % For including images
+\usepackage{tocloft} % Optional: Customize the table of contents
+\usepackage[a4paper, margin=2cm]{geometry} % Adjust margin 
+\setcounter{secnumdepth}{3} % Allows subsubsections to be numbered
+\setcounter{tocdepth}{3} % Includes up to subsubsections in the TOC
 
 \begin{document}
 
 % Title Page
 \begin{titlepage}
     \centering
+    \begin{flushright}
+        \centering
+        \includegraphics[width=2cm]{images/thd.png} % Adjust width as needed
+        \hspace{0cm} % Space between images
+        \includegraphics[width=2cm]{images/ipb.jpg} % Adjust width as needed
+    \end{flushright}
     {\huge\bfseries Development of an R Toolbox for Near-Infrared Spectroscopy Data Processing \\
     and Analysis of Plant Metabolic Phenotypes\par}
     \vspace{2cm}
@@ -16,23 +26,78 @@
     {\Large\itshape Methun George\par}
     \vfill
     Supervised by\par
-    Dr. Steffen Neumann\par
-    Dr. Melanie Kappelmann-Fenzl
+    PD Dr. habil. rer. nat. Steffen Neumann\par
+    Prof. Dr. Melanie Kappelmann-Fenzl
     \vfill
     {\large \today\par}
 \end{titlepage}
 
-% Start a new page and add chapters
+% Table of Contents
+\newpage
+\tableofcontents
 \newpage
 
-% Introduction
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction} % Adds chapter to the table of contents if desired
-% Add your introduction content here
+% Chapters and Sections
 
-% Acknowledgement
-\chapter*{Acknowledgement}
-\addcontentsline{toc}{chapter}{Acknowledgement} % Adds chapter to the table of contents if desired
-% Add your acknowledgement content here
+\chapter{Introduction}
+Near infrared spectroscopy (NIRS) has become a valuable tool in plant science due to its non distructive nature
+and ability to provide detailed information on plant metabolomics.
+\section{Related Work}
+The related work include, the fillowings
+
+\chapter{Background}
+The background of this study include
+\section{Near Infrared Spectroscopy (NIRS)}
+..............................\par
+.................
+\subsection{Introduction}
+\section{Metabolomics}
+\subsection{Introduction}
+\subsection{Mass Spectrometry}
+
+
+\section{Machine Learning}
+\subsection{Introduction}
+\subsection{Partial Least Square Regression (PLS)}
+\subsection{Random Forest (RF)}
+\subsection{Convolutional Neural Network (CNN)}
+
+
+
+\chapter{Methods and Implementation}
+\section{MSNovelist}
+\subsection{Basic Idea of the Software}
+\subsection{Deep Learning Architecture}
+\subsection{Preparation of Data}
+
+\section{Data}
+\subsection{Data Records}
+\subsection{File Formats}
+
+\section{Evaluation of the Training}
+
+\section{Implementations in the TensorFlow Framework}
+\subsection{Preprocessing of Data}
+\subsection{Training}
+\subsection{Evaluation}
+\subsection{Termination Criterion}
+\subsection{Training on the Pubchem Dataset}
+
+\section{Implementations in the PyTorch Framework}
+\subsection{Reimplementation of the LSTM Architecture}
+\subsection{Training with DeepSMILES and SELFIES}
+\subsection{Transformer Implementation}
+
+\section{Software}
+\section{Hardware}
+
+\chapter{Results and Discussion}
+\section{Baseline Model}
+\subsection{Termination Criterion}
+\subsection{Impact of the Amount of Data}
+\subsection{Duplicates in the Fingerprints}
+
+\section{Alternative Tokenization of SMILES Sequences}
+\subsection{QBMG Tokenization}
 
 \end{document}
