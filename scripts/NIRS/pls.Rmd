@@ -1,0 +1,425 @@
+---
+title: "pls"
+author: "Methun George"
+date: "2024-10-22"
+output: html_document
+---
+
+```{r}
+#libraries
+
+library(readxl) # For reading the data
+library(dplyr) # For data management
+library(tidyr) # For data management
+library(tfruns) # For training convolutional neural networks
+library(keras3) # For training convolutional neural networks
+library(plantspec) # For maganing spectral data
+library(ggplot2) # For plotting predicted versus measured data
+library(ggExtra) # For plotting predicted versus measured data
+library(sfsmisc) # For data augmentation
+library(gridExtra) # For plot visualization
+library(plotly)
+library(pls)
+library(caret)
+```
+
+```{r}
+
+#Dataset
+
+plantspec.spectra <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Calibration set spectra") # Spectra calibration set
+plantspec.data <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Calibration set traits") # Trait calibration set
+plantspec.data$SLA <- as.numeric(plantspec.data$SLA)
+plantspec.data$LDMC <- as.numeric(plantspec.data$LDMC)
+plantspec.data$CN <- as.numeric(plantspec.data$CN)
+plantspec.data$C <- as.numeric(plantspec.data$C)
+plantspec.data$P <- as.numeric(plantspec.data$P)
+
+cbind(plantspec.spectra$Spectral.file.name, plantspec.data$File_name)
+plantspec.data[which(is.na(plantspec.data$SLA)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$SLA)),]
+plantspec.data.sla <- plantspec.data[!is.na(plantspec.data$SLA),]
+input <- input[-which(plantspec.data$Tree == "70_Ti3"),]
+
+# Studying the distribution of the values for SLA
+component_SLA <- plantspec.data.sla$SLA
+```
+
+
+
+```{r}
+#Visualize the data (Sue Marr)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+# Reshape the data to long format
+long_input <- plantspec.spectra %>%  
+  pivot_longer(
+    cols = -Spectral.file.name,  
+    names_to = "Wavelength",     
+    values_to = "Reflectance"    
+  ) %>%
+  mutate(Wavelength = as.numeric(Wavelength))
+
+# Visualize reflectance distribution using a histogram
+ggplot(long_input, aes(x = Reflectance)) + 
+  geom_histogram(bins = 30, fill = "#69b3a2", color = "black") +  
+  labs(
+    title = "Reflectance Distribution",
+    x = "Reflectance",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+
+```
+
+```{r}
+
+
+```
+
+
+
+
+```{r}
+# Preparing data
+set.seed(42)  
+X <- input  
+Y <- plantspec.data.sla$SLA  
+
+# Scale the input (spectral data) and SLA values for better model
+X_scaled <- scale(X)            
+Y_scaled <- scale(Y)
+
+# Splitting data into training and test 
+train_index <- createDataPartition(component_SLA, p = 0.7, list = FALSE)
+X_train <- X_scaled[train_index, ]
+Y_train <- Y_scaled[train_index]
+X_test <- X_scaled[-train_index, ]
+Y_test <- Y_scaled[-train_index]
+
+# Create a data frame for the train function
+train_data <- data.frame(SLA = Y_train, X_train)
+
+```
+
+
+```{r}
+# Fit the PLSR model with cross-validation
+# Set up cross-validation
+
+
+# # Train the PLS model with multiple components
+# pls_model <- train(
+#   SLA ~ ., 
+#   data = train_data, 
+#   method = "pls", 
+#   tuneLength = 10,   # Try up to 10 components
+#   trControl = train_control
+# )
+# 
+# # Review the best number of components
+# print(pls_model)
+# 
+# # Plot RMSE vs Number of Components
+# plot(pls_model)
+```
+
+
+```{r}
+train_control <- trainControl(method = "cv", number = 10)
+train_data <- data.frame(SLA = Y_train, X_train)
+
+start_time_pls <- Sys.time()
+# pls_model <- plsr(Y_train ~ X_train  , scale = TRUE, validation = "CV")
+pls_model <- train(SLA ~ ., data = train_data, method = "pls", tuneLength = 10, trControl = train_control, importance = TRUE)
+end_time_pls <- Sys.time()
+
+training_time_pls <- end_time_pls - start_time_pls
+print(training_time_pls)
+
+# Summary of the model
+summary(pls_model)
+plot(pls_model)
+```
+
+
+
+
+
+
+
+
+```{r}
+
+# optimal_components <- which.min(pls_model$validation$PRESS)
+# optimal_components
+
+rmse_values <- pls_model$results$RMSE
+
+# Find the index of the minimum RMSE
+optimal_components <- pls_model$results$ncomp[which.min(rmse_values)]
+
+print(optimal_components)
+print(rmse_values )
+```
+
+```{r}
+
+#evaluate the model on test data
+## Predict SLA values for the test set
+##add X to the column names since the model throws an error if there is no X
+
+#colnames(X_test) <- paste0("X", colnames(X_test))
+
+predictions_pls <- predict(pls_model, ncomp = optimal_components,  newdata = X_test)
+
+# Calculate RMSE and R² for test set
+# test_rmse_pls <- sqrt(mean((Y_test - predictions_pls)^2))
+# test_r2_pls <- cor(Y_test, predictions_pls)^2
+
+results_pls <- postResample(predictions_pls, Y_test)
+R_squared_pls <- results_pls[["Rsquared"]]
+
+# Output evaluation results
+# cat("Test RMSE:", test_rmse_pls, "\n")
+# cat("Test R²:", test_r2_pls, "\n")
+R_squared_pls
+rmse_values <- postResample(pred = predictions_pls, obs = Y_test )
+rmse_values
+```
+
+```{r}
+#Visualisation of the prediction
+plot(Y_test, predictions_pls, main = "Predicted vs Actual SLA", xlab = "Actual SLA", ylab = "Predicted SLA")
+abline(0, 1)  # Ideal fit line
+
+```
+```{r}
+#ggplot
+# Convert Y_test and predictions to numeric 
+Y_test <- as.numeric(Y_test)
+predictions_pls <- as.numeric(predictions_pls)
+
+# Create a data frame with Actual and Predicted values
+pred_df <- data.frame(
+  Actual = Y_test,
+  Predicted = predictions_pls
+)
+
+
+p1 <- ggplot(pred_df, aes(x = Actual , y = Predicted)) +
+        geom_point(color = "blue", alpha = 0.7) +
+        geom_abline(slope = 1, intercept = 0, color = "red", linetype = "dashed") +
+        labs( title = "Predicted Vs Actual SLA", x = "Actual SLA", y = "Predicted SLA") +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5)) +
+        annotate( "text", x = 2 , y = 5 , label = paste("R^2 =",round(R_squared_pls, 0), ""), size = 5)
+
+p1
+```
+```{r}
+#ggplotly
+ggplotly(p1)
+```
+
+
+```{r}
+#Extrapolation of the data
+
+set.seed(42)
+
+#we manually select the extreme values from both sides
+lower_cutoff <- quantile(component_SLA, 0.15)
+upper_cutoff <- quantile(component_SLA, 0.85)
+#index for test set
+test_set_index <- component_SLA <= lower_cutoff | component_SLA >= upper_cutoff
+#index for trainig set
+training_set_index <- component_SLA > lower_cutoff & component_SLA < upper_cutoff
+
+#split the scaled data accordingly
+X_train_e <- X_scaled[training_set_index, ]
+Y_train_e <- Y_scaled[training_set_index]
+X_test_e <- X_scaled[test_set_index, ]
+Y_test_e <- Y_scaled[test_set_index]
+
+```
+
+
+```{r}
+
+train_control <- trainControl(method = "cv", number = 10)
+train_data_e <- data.frame(SLA = Y_train_e, X_train_e)
+#fit the model 
+start_time_pls_e <- Sys.time()
+# pls_model_e <- plsr(Y_train_e ~ X_train_e, scale = TRUE , validation = "CV")
+pls_model_e <- train(SLA ~ ., data = train_data_e, method = "pls", tuneLength = 10, trControl = train_control)
+end_time_pls_e <- Sys.time()
+# validationplot(pls_model_e, val.type = "RMSEP")
+```
+
+```{r}
+# optimal_components_e <- which.min(pls_model_e$validation$PRESS)
+# optimal_components_e
+#evaluate the model on test data
+## Predict SLA values for the test set
+
+# optimal_components
+
+rmse_values_e <- pls_model_e$results$RMSE
+# Find the index of the minimum RMSE
+optimal_components_e <- pls_model_e$results$ncomp[which.min(rmse_values_e)]
+
+print(optimal_components_e)
+```
+
+
+```{r}
+#add "X" to the column names since the model column names have X in their name and if not it will give us error
+#colnames(X_test_e) <- paste0("X", colnames(X_test_e))
+predictions_e <- predict(pls_model_e, ncomp = optimal_components_e, newdata = X_test_e)
+
+# Calculate RMSE and R² for test set
+# test_rmse_e <- sqrt(mean((Y_test_e - predictions_e)^2))
+# test_r2_e <- cor(Y_test_e, predictions_e)^2
+# 
+# # Output evaluation results
+# cat("Test RMSE(extrapolated):", test_rmse_e, "\n")
+# cat("Test R²(extrapolated):", test_r2_e, "\n")
+
+results_pls_e <- postResample(predictions_e, Y_test_e)
+R_squared_pls_e <- results_pls_e[["Rsquared"]]
+R_squared_pls_e
+rmse_values <- postResample(pred = predictions_e, obs = Y_test_e )
+rmse_values
+
+```
+
+```{r}
+plot(Y_test_e, predictions_e, main = "Predicted vs Actual SLA(extrapolated)", xlab = "Actual SLA", ylab = "Predicted SLA")
+abline(0, 1)
+```
+
+```{r}
+#ggplot for Extrapolated
+
+Y_test_e <- as.numeric(Y_test_e)
+predictions_e <- as.numeric(predictions_e)
+
+# Create a data frame with Actual and Predicted values
+pred_df_e <- data.frame(
+  Actual = Y_test_e,
+  Predicted = predictions_e
+)
+
+# Generate the ggplot
+p1 <- ggplot(pred_df_e, aes(x = Actual, y = Predicted)) +
+        geom_point(color = "blue", alpha = 0.6) +
+        geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  
+        labs(title = "Predicted vs Actual SLA PLSR (extrapolated)",
+            x = "Actual SLA",
+            y = "Predicted SLA") +
+        theme_minimal()
+
+p1
+```
+
+```{r}
+ggplotly(p1)
+```
+
+```{r}
+time_e <- end_time_pls_e - start_time_pls_e
+time_e
+```
+
+
+```{r}
+#boxplot for the plsr
+
+par(mfcol = c(1, 2))
+boxplot(predictions_pls, ylim = c(min(predictions_pls), max(predictions_pls)))
+boxplot(Y_train, ylim =c(min(predictions_pls), max(predictions_pls)))
+
+```
+```{r}
+# Boxplot for the PLSR model
+par(mfcol = c(1, 2))
+
+# Boxplot for the Predictions on the Test set
+boxplot(
+  predictions_pls,
+  ylim = c(min(predictions_pls), max(predictions_pls)),
+  main = "Predicted SLA",
+  col = "Salmon",
+  ylab = "SLA Values"
+)
+
+# Boxplot for training set
+
+boxplot(
+  Y_train,
+  ylim = c(min(predictions_pls), max(predictions_pls)),
+  main = "Actual SLA",
+  col = "Salmon",
+  ylab = "SLA Values"
+)
+```
+
+
+
+```{r}
+# Boxplot for Extrapolated values
+par(mfcol = c(1, 2))
+
+# Boxplot for predictions on the test set
+boxplot(
+  predictions_e, 
+  ylim = c(min(predictions_e), max(predictions_e)),
+  main = "Predicted SLA (Extrapolated)",
+  col = "salmon",
+  ylab = "SLA Values"
+)
+
+# Boxplot for training set SLA values
+boxplot(
+  Y_train_e, 
+  ylim = c(min(predictions_e), max(predictions_e)),
+  main = "Actual SLA (Extrapolated)",
+  col = "skyblue",
+  ylab = "SLA Values"
+)
+
+```
+
+
+
+```{r}
+#Variable importance in PLSR
+vi <- varImp(pls_model, scale = F)
+
+vi_df <- as.data.frame(vi$importance)
+
+wavelengths <- seq(350, 2500)
+
+# Create a data frame for plotting
+vi_df <- data.frame(Wavelength = wavelengths, Overall = vi_df)
+
+
+v <- ggplot(vi_df, aes(x = Wavelength, y = Overall)) +
+  geom_line(color = "blue") + 
+  geom_point(color = "#69b3a2") +
+  labs(title = "Variable Importance vs Wavelength PLSR ", x = "Wavelength (nm)", y = "Variable Importance") +
+  theme_minimal()
+v
+# ggplotly(v)
+
+```
+
+
+
+
+
+

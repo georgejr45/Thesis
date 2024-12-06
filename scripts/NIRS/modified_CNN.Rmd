@@ -1,0 +1,1148 @@
+---
+title: " Training Convolutional Neural Network for Leaf Trait Prediction"
+authors: "Methun George"
+date: "2024-10-14"
+output: 
+  html_document :
+    theme: cerulean
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,  warning=FALSE, message = FALSE)
+```
+
+"Tree and mycorrhizal fungal diversity drive intraspecific and intraindividual trait variation in temperate forests: evidence from a tree diversity experiment"
+
+```{r}
+
+#Loading all the required libraries
+
+library(readxl) # For reading the data
+library(dplyr) # For data management
+library(tidyr) # For data management
+library(tfruns) # For training convolutional neural networks
+library(keras3) # For training convolutional neural networks
+library(plantspec) # For managing spectral data
+library(ggplot2) # For plotting predicted versus measured data
+library(ggExtra) # For plotting predicted versus measured data
+library(sfsmisc) # For data augmentation
+library(gridExtra) # For plot visualization
+library(plotly) # For interactive plots
+```
+
+The libraries needed for data processing, structuring, and modeling are loaded above. The next section, will import the spectral and trait datasets from the study( "https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/1365-2435.14549" ).
+
+# Datasets
+
+```{r echo=T, results="hide"}
+### Datasets ####
+
+plantspec.spectra <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Calibration set spectra") # Spectra calibration set
+plantspec.data <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Calibration set traits") # Trait calibration set
+plantspec.data$SLA <- as.numeric(plantspec.data$SLA)
+plantspec.data$LDMC <- as.numeric(plantspec.data$LDMC)
+plantspec.data$CN <- as.numeric(plantspec.data$CN)
+plantspec.data$C <- as.numeric(plantspec.data$C)
+plantspec.data$P <- as.numeric(plantspec.data$P)
+
+cbind(plantspec.spectra$Spectral.file.name, plantspec.data$File_name) # Checking correlation between both sets
+
+```
+
+# SLA
+After importing the datasets, the next step involves processing and cleaning the SLA data, which is a trait in the dataset. This includes removing outliers, handling missing values, and preparing the dataset for analysis. The SLA distribution will be examined to check for normality, followed by splitting the data into training and test sets.
+
+
+```{r echo=T, results="hide"}
+#############
+#### SLA ####
+#############
+
+# Removing outlayer from the samples
+plantspec.data[which(is.na(plantspec.data$SLA)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$SLA)),]
+plantspec.data.sla <- plantspec.data[!is.na(plantspec.data$SLA),]
+input <- input[-which(plantspec.data$Tree == "70_Ti3"),]
+plantspec.data.sla <- subset(plantspec.data.sla, Tree != "70_Ti3")
+
+# Studying the distribution of the values for SLA
+component_SLA <- plantspec.data.sla$SLA
+par(mfcol = c(1, 2))
+qqnorm((component_SLA), pch = 1, frame = FALSE) # Checking normality of the variable
+qqline((component_SLA), col = "red", lwd = 2)
+hist((component_SLA)) # Checking distribution of the variable
+
+#### Train-test split ####
+# We split our samples into train and test set (0.7-0.3) by using
+# a PCA of the spectra
+dimnames(input) = NULL
+set.seed(0)
+training_set <- !(subdivideDataset(spectra = input,
+                                   component = component_SLA,
+                                   method = "PCAKS", p = 0.3,
+                                   type = "validation"))
+```
+
+### Feature Engineering for SLA
+Feature engineering is done to the spectral data to enhance the learning capability of the model. Five transformations are performed: Standard Normal Variate (SNV), first derivative (D1f), second derivative (D2f), D1f + SNV, and D2f + SNV. These transformations help in creating meaningful variations of the input data, improving model performance.The engineered features are then used to split the dataset into training and test sets, based on the previously defined partition.
+
+
+```{r echo=T, results="hide"}
+#### Feature Engineering ####
+
+# 1) Standard Norval Variate (SNV)
+# 2) First derivative (D1f)
+# 3) Second derivative (D2f)
+# 4) D1f + SNV
+# 5) D2f + SNV
+
+input <- data.frame(input)
+SNV<-function(spectra){
+  spectra<-as.matrix(spectra)
+  spectrat<-t(spectra)
+  spectrat_snv<-scale(spectrat,center=TRUE,scale=TRUE)
+  spectra_snv<-t(spectrat_snv)
+  return(spectra_snv)}
+
+trans1 <- data.frame(SNV(input))
+trans2 <- input
+for (i in 1:nrow(input)) {
+  trans2[i, ] <- D1ss(x = 1:length(input), input[i, ])
+}
+trans3 <- input
+for (i in 1:nrow(input)) {
+  trans3[i, ] <- D2ss(x = 1:length(input), input[i, ])[["y"]]
+}
+trans4 <- data.frame(SNV(trans2))
+trans5 <- data.frame(SNV(trans3))
+
+input <- cbind(input, trans1, trans2, trans3, trans4, trans5) # Synthetic spectra
+
+x.train <- data.frame(input[training_set, ])
+x.test <- data.frame(input[!training_set, ])
+y.train <- data.frame(component_SLA[training_set])
+y.test <- data.frame(component_SLA[!training_set])
+```
+
+### CNN model for SLA
+A Convolutional Neural Network (CNN) is built to predict SLA using the spectral data. The model architecture includes a 1D convolutional layer, batch normalization, max pooling, and dense layers. The network is compiled with the Adam optimizer and mean squared error as the loss function. The model is trained on the training dataset with a validation split, using 5000 epochs to ensure thorough learning.
+
+
+```{r echo=T, results='hide'}
+#### Convolutional neural network (CNN) ####
+
+
+model.sla <- keras_model_sequential(input_shape = c(NULL, 12906, 1)) %>%
+  layer_conv_1d(filter = 2, kernel_size = 50, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_batch_normalization() %>%
+  layer_max_pooling_1d(pool_size = 2) %>%
+  layer_flatten() %>%
+  layer_dense(128, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(32, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(8, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(1, kernel_initializer=initializer_glorot_uniform(seed=0))
+
+model.sla %>% compile(
+  optimizer = "adam",
+  loss = "mean_squared_error")
+
+history <- model.sla %>% fit(x=as.matrix(x.train), y=as.matrix(y.train),
+                         epochs = 5000,
+                         verbose = 1,
+                         validation_split = 0.2,
+                         shuffle = FALSE)
+
+p_sla <- plot(history, method = "ggplot2")
+
+```
+### Training model SLA
+```{r}
+plotly::ggplotly(p_sla)
+```
+
+### Predictive Ability of CNN for SLA
+The predictive ability of the CNN is evaluated on the test, train, and overall datasets. R-squared values (R²) are calculated to measure the model's performance in predicting SLA. Predictions are compared with the measured values, and scatter plots are generated to visually assess model accuracy. The plots include a linear fit, R² annotation, and marginal histograms to visualize the distribution of predicted and measured values.
+
+
+```{r echo=T, results="hide"}
+#### Predictive ability of the CNN ####
+
+prediction.test <- predict(model.sla, as.matrix(x.test))
+R2_test.sla <- cor(prediction.test, as.matrix(y.test))^2; R2_test.sla
+
+prediction.train <- predict(model.sla, as.matrix(x.train))
+R2_train.sla <- cor(prediction.train, as.matrix(y.train))^2; R2_train.sla
+
+prediction.all <- predict(model.sla, as.matrix(input))
+R2.sla <- cor(prediction.all, component_SLA)^2; R2.sla
+
+data.plot <- data.frame(cbind(prediction.test, as.matrix(y.test)))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#B22623") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "SLA", subtitle = "(a)") + xlab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 15, y = 35,
+           label = paste(round(R2_test.sla, 2), ""),
+           size = 10)
+sla.test <- ggMarginal(p, size = 5, fill = "#B22623", color = "#B22623", alpha = 0.5); sla.test
+```
+
+
+```{r echo=T, results="hide"}
+data.plot <- data.frame(cbind(prediction.all, component_SLA))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#B22623") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "SLA", subtitle = "(f)") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 15, y = 35,
+           label = paste(round(R2.sla, 2), ""),
+           size = 10)
+sla.model <- ggMarginal(p, size = 5, fill = "#B22623", color = "#B22623", alpha = 0.5); sla.model
+
+
+```
+
+# LDMC
+Outliers are removed from the LDMC samples to ensure that only valid observations are included in the analysis.The LDMC values are extracted from the filtered dataset for further analysis. The distribution of the LDMC values is examined using QQ plots and histograms. A QQ plot is generated to assess the normality of the LDMC variable, with a reference line added for visual comparison. A histogram is also created to visualize the distribution of LDMC values, providing insight into the data's characteristics. The samples were split into train and test set (0.7-0.3) by using a PCA of the spectra
+
+```{r echo=T, results='hide'}
+##############
+#### LDMC ####
+##############
+
+# Removing outlayer from the samples
+plantspec.data[which(is.na(plantspec.data$LDMC)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$LDMC)),]
+plantspec.data.ldmc <- plantspec.data[!is.na(plantspec.data$LDMC),]
+
+# Studying the distribution of the values for LDMC
+component_LDMC <- plantspec.data.ldmc$LDMC
+par(mfcol = c(1, 2))
+qqnorm((component_LDMC), pch = 1, frame = FALSE) # Checking normality of the variable
+qqline((component_LDMC), col = "red", lwd = 2)
+hist((component_LDMC)) # Checking distribution of the variable
+
+#### Train-test split ####
+set.seed(0)
+training_set <- !(subdivideDataset(spectra = input,
+                                   component = component_LDMC,
+                                   method = "PCAKS", p = 0.3,
+                                   type = "validation"))
+```
+
+### Feature Engineering for LDMC
+
+```{r echo=T, results='hide'}
+
+#### Feature Engineering ####
+
+# 1) Standard Norval Variate (SNV)
+# 2) First derivative (D1f)
+# 3) Second derivative (D2f)
+# 4) D1f + SNV
+# 5) D2f + SNV
+
+input <- data.frame(input)
+SNV<-function(spectra){
+  spectra<-as.matrix(spectra)
+  spectrat<-t(spectra)
+  spectrat_snv<-scale(spectrat,center=TRUE,scale=TRUE)
+  spectra_snv<-t(spectrat_snv)
+  return(spectra_snv)}
+
+
+trans1 <- data.frame(SNV(input))
+trans2 <- input
+for (i in 1:nrow(input)) {
+  trans2[i, ] <- D1ss(x = 1:length(input), input[i, ])
+}
+trans3 <- input
+for (i in 1:nrow(input)) {
+  trans3[i, ] <- D2ss(x = 1:length(input), input[i, ])[["y"]]
+}
+trans4 <- data.frame(SNV(trans2))
+trans5 <- data.frame(SNV(trans3))
+
+input <- cbind(input, trans1, trans2, trans3, trans4, trans5)
+
+
+x.train <- data.frame(input[training_set, ])
+x.test <- data.frame(input[!training_set, ])
+y.train <- data.frame(component_LDMC[training_set])
+y.test <- data.frame(component_LDMC[!training_set])
+```
+
+### CNN for LDMC
+
+```{r echo=T, results="hide"}
+#### Convolutional neural network (CNN) ####
+
+model.ldmc <- keras_model_sequential(input_shape = c(NULL, 12906, 1)) %>%
+  layer_conv_1d(filter = 2, kernel_size = 2, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_batch_normalization() %>%
+  layer_max_pooling_1d(pool_size = 2) %>%
+  layer_flatten() %>%
+  layer_dense(64, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(16, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(4, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(1, kernel_initializer=initializer_glorot_uniform(seed=0))
+
+model.ldmc %>% compile(
+  optimizer = "adam",
+  loss = "mean_squared_error")
+
+history <- model.ldmc %>% fit(as.matrix(x.train), as.matrix(y.train),
+                              epochs = 7000,
+                              verbose = 1,
+                              validation_split = 0.2,
+                              shuffle = FALSE)
+p_LDMC <- plot(history, method = "ggplot2")
+```
+
+### Training Model LDMC
+
+```{r}
+plotly::ggplotly(p_LDMC)
+```
+
+### Predictive Ability of CNN for LDMC
+
+```{r echo=T, results="hide"}
+#### Predictive ability of the CNN ####
+
+prediction.test <- predict(model.ldmc, as.matrix(x.test))
+R2_test.ldmc <- cor(prediction.test, as.matrix(y.test))^2; R2_test.ldmc
+
+prediction.train <- predict(model.ldmc, as.matrix(x.train))
+R2_train.ldmc <- cor(prediction.train, as.matrix(y.train))^2; R2_train.ldmc
+
+prediction.all <- predict(model.ldmc, as.matrix(input))
+R2.ldmc <- cor(prediction.all, component_LDMC)^2; R2.ldmc
+
+data.plot <- data.frame(cbind(prediction.test, as.matrix(y.test)))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#ffa600") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "LDMC", subtitle = "(b)") + ylab("") + xlab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 0.3, y = 0.4,
+           label = paste(round(R2_test.ldmc, 2), ""),
+           size = 10)
+ldmc.test <- ggMarginal(p, size = 5, fill = "#ffa600", color = "#ffa600", alpha = 0.5); ldmc.test
+```
+
+
+```{r echo=T, results="hide"}
+data.plot <- data.frame(cbind(prediction.all, component_LDMC))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#ffa600") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "", subtitle = "(g)") + ylab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 0.3, y = 0.45,
+           label = paste(round(R2.ldmc, 2), ""),
+           size = 10)
+ldmc.model <- ggMarginal(p, size = 5, fill = "#ffa600", color = "#ffa600", alpha = 0.5); ldmc.model
+```
+
+# Carbon:Nitrogen
+Preparing the data for C:N and spltting it for training and testing
+```{r echo=T, results="hide"}
+# Removing outlayer from the samples
+plantspec.data[which(is.na(plantspec.data$CN)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$CN)),]
+plantspec.data.cn <- plantspec.data[!is.na(plantspec.data$CN),]
+
+# Studying the distribution of the values for CN
+component_CN <- plantspec.data.cn$CN
+par(mfcol = c(1, 2))
+qqnorm((component_CN), pch = 1, frame = FALSE) # Checking normality of the variable
+qqline((component_CN), col = "red", lwd = 2)
+hist((component_CN)) # Checking distribution of the variable
+
+
+#### Train-test split ####
+
+set.seed(0)
+training_set <- !(subdivideDataset(spectra = input,
+                                   component = component_CN,
+                                   method = "PCAKS", p = 0.3,
+                                   type = "validation"))
+```
+
+### Feature Engineering for C:N
+
+```{r echo=T, results="hide"}
+#### Feature Engineering ####
+# 1) Standard Norval Variate (SNV)
+# 2) First derivative (D1f)
+# 3) Second derivative (D2f)
+# 4) D1f + SNV
+# 5) D2f + SNV
+
+input <- data.frame(input)
+SNV<-function(spectra){
+  spectra<-as.matrix(spectra)
+  spectrat<-t(spectra)
+  spectrat_snv<-scale(spectrat,center=TRUE,scale=TRUE)
+  spectra_snv<-t(spectrat_snv)
+  return(spectra_snv)}
+
+trans1 <- data.frame(SNV(input))
+trans2 <- input
+for (i in 1:nrow(input)) {
+  trans2[i, ] <- D1ss(x = 1:length(input), input[i, ])
+}
+trans3 <- input
+for (i in 1:nrow(input)) {
+  trans3[i, ] <- D2ss(x = 1:length(input), input[i, ])[["y"]]
+}
+trans4 <- data.frame(SNV(trans2))
+trans5 <- data.frame(SNV(trans3))
+
+input <- cbind(input, trans1, trans2, trans3, trans4, trans5)
+
+
+x.train <- data.frame(input[training_set, ])
+x.test <- data.frame(input[!training_set, ])
+y.train <- data.frame(component_CN[training_set])
+y.test <- data.frame(component_CN[!training_set])
+```
+
+### CNN for C:N
+
+```{r echo=T, results="hide"}
+#### Convolutional neural network (CNN) ####
+
+model.cn <- keras_model_sequential(input_shape = c(NULL, 12906, 1)) %>%
+  layer_conv_1d(filter = 1, kernel_size = 25, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_batch_normalization() %>%
+  layer_max_pooling_1d(pool_size = 2) %>%
+  layer_flatten() %>%
+  layer_dense(64, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(16, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(4, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(1, kernel_initializer=initializer_glorot_uniform(seed=0))
+
+
+model.cn %>% compile(
+  optimizer = "adam",
+  loss = "mean_squared_error")
+
+set.seed(0)
+history <- model.cn %>% fit(as.matrix(x.train), as.matrix(y.train),
+                            epochs = 1000,
+                            verbose = 1,
+                            validation_split = 0.2,
+                            shuffle = FALSE)
+
+p_CN <- plot(history, method = "ggplot2")
+```
+
+### Training Model C:N
+
+```{r}
+plotly::ggplotly(p_CN)
+```
+
+### Predictive Ability of CNN for C:N
+
+```{r echo=T, results="hide"}
+#### Predictive ability of the CNN ####
+
+prediction.test <- predict(model.cn, as.matrix(x.test))
+R2_test.cn <- cor(prediction.test, as.matrix(y.test))^2; R2_test.cn
+
+prediction.train <- predict(model.cn, as.matrix(x.train))
+R2_train.cn <- cor(prediction.train, as.matrix(y.train))^2; R2_train.cn
+
+prediction.all <- predict(model.cn, as.matrix(input))
+R2.cn <- cor(prediction.all, component_CN)^2; R2.cn
+
+data.plot <- data.frame(cbind(prediction.test, as.matrix(y.test)))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#58508d") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "C:N", subtitle = "(c)") + ylab("") + xlab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 25, y = 40,
+           label = paste(round(R2_test.cn, 2), ""),
+           size = 10)
+cn.test <- ggMarginal(p, size = 5, fill = "#58508d", color = "#58508d", alpha = 0.5); cn.test
+```
+
+
+```{r echo=T, results="hide"}
+data.plot <- data.frame(cbind(prediction.all, component_CN))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#58508d") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "", subtitle = "(h)") + ylab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 25, y = 40,
+           label = paste(round(R2.cn, 2), ""),
+           size = 10)
+cn.model <- ggMarginal(p, size = 5, fill = "#58508d", color = "#58508d", alpha = 0.5); cn.model
+```
+
+# Carbon
+Outliers are removed, the distribution of Carbon(C) values is analyzed, and the data is split into training and test sets using PCA for validation.
+
+```{r echo=T, results="hide"}
+###########
+#### C ####
+###########
+
+# Removing outlayer from the samples
+plantspec.data[which(is.na(plantspec.data$C)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$C)),]
+plantspec.data.c <- plantspec.data[!is.na(plantspec.data$C),]
+
+# Studying the distribution of the values for CN
+component_C <- plantspec.data.c$C
+par(mfcol = c(1, 2))
+qqnorm((component_C), pch = 1, frame = FALSE) # Checking normality of the variable
+qqline((component_C), col = "red", lwd = 2)
+hist((component_C)) # Checking distribution of the variable
+
+#### Train-test split ####
+# We split our samples into train and test set (0.7-0.3) by using
+# a PCA of the spectra
+set.seed(0)
+training_set <- !(subdivideDataset(spectra = input,
+                                   component = component_C,
+                                   method = "PCAKS", p = 0.3,
+                                   type = "validation"))
+```
+
+### Feature Engineering for Carbon
+
+```{r echo=T, results="hide"}
+#### Feature Engineering ####
+
+# 1) Standard Norval Variate (SNV)
+# 2) First derivative (D1f)
+# 3) Second derivative (D2f)
+# 4) D1f + SNV
+# 5) D2f + SNV
+
+input <- data.frame(input)
+SNV<-function(spectra){
+  spectra<-as.matrix(spectra)
+  spectrat<-t(spectra)
+  spectrat_snv<-scale(spectrat,center=TRUE,scale=TRUE)
+  spectra_snv<-t(spectrat_snv)
+  return(spectra_snv)}
+
+input <- data.frame(input)
+
+trans1 <- data.frame(SNV(input))
+trans2 <- input
+for (i in 1:nrow(input)) {
+  trans2[i, ] <- D1ss(x = 1:length(input), input[i, ])
+}
+trans3 <- input
+for (i in 1:nrow(input)) {
+  trans3[i, ] <- D2ss(x = 1:length(input), input[i, ])[["y"]]
+}
+trans4 <- data.frame(SNV(trans2))
+trans5 <- data.frame(SNV(trans3))
+
+input <- cbind(input, trans1, trans2, trans3, trans4, trans5)
+
+x.train <- data.frame(input[training_set, ])
+x.test <- data.frame(input[!training_set, ])
+y.train <- data.frame(component_C[training_set])
+y.test <- data.frame(component_C[!training_set])
+```
+
+### CNN for Carbon
+
+```{r echo=T, results="hide"}
+#### Convolutional neural network (CNN) ####
+# We train a CNN with convolutional and dense layers
+
+model.c <- keras_model_sequential(input_shape = c(NULL, 12906, 1)) %>%
+  layer_conv_1d(filter = 2, kernel_size = 50, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_batch_normalization() %>%
+  layer_max_pooling_1d(pool_size = 2) %>%
+  layer_dropout(0) %>%
+  layer_flatten() %>%
+  layer_dense(64, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(16, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(4, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(1, kernel_initializer=initializer_glorot_uniform(seed=0))
+
+
+model.c %>% compile(
+  optimizer = "adam",
+  loss = "mean_squared_error")
+
+set.seed(0)
+history <- model.c %>% fit(as.matrix(x.train), as.matrix(y.train),
+                            epochs = 1000,
+                            verbose = 1,
+                            validation_split = 0.2,
+                            shuffle = FALSE)
+p_C <- plot(history, method = "ggplot2")
+```
+
+### Training Model Carbon
+
+```{r}
+plotly::ggplotly(p_C)
+```
+
+### Predictive Ability of CNN for Carbon 
+
+```{r echo=T, results="hide"}
+#### Predictive ability of the CNN ####
+
+prediction.test <- predict(model.c, as.matrix(x.test))
+R2_test.c <- cor(prediction.test, as.matrix(y.test))^2; R2_test.c
+
+prediction.train <- predict(model.c, as.matrix(x.train))
+R2_train.c <- cor(prediction.train, as.matrix(y.train))^2; R2_train.c
+
+prediction.all <- predict(model.c, as.matrix(input))
+R2.c <- cor(prediction.all, component_C)^2; R2.c
+
+data.plot <- data.frame(cbind(prediction.test, as.matrix(y.test)))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#bc5090") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "C", subtitle = "(d)") + ylab("") + xlab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 43, y = 48,
+           label = paste(round(R2_test.c, 2), ""),
+           size = 10)
+c.test <- ggMarginal(p, size = 5, fill = "#bc5090", color = "#bc5090", alpha = 0.5); c.test
+```
+
+
+```{r echo=T, results="hide"}
+data.plot <- data.frame(cbind(prediction.all, component_C))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#bc5090") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "", subtitle = "(i)") + ylab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 43, y = 48,
+           label = paste(round(R2.c, 2), ""),
+           size = 10)
+c.model <- ggMarginal(p, size = 5, fill = "#bc5090", color = "#bc5090", alpha = 0.5); c.model
+```
+
+# Phosphorous
+
+Due to the smaller sample size for phosphorous (P), we additionally used data from Pross et al. (2023) collected in _________ in the Kreinitz experiment (Germany) to train a CNN. As our samples only contain samples for deciduous species, we only used the available data for deciduous species.
+
+```{r echo=T, results="hide"}
+###########
+#### P ####
+###########
+
+#### Loading Kreinitz data ####
+
+plantspec.spectra2 <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Kreinitz set spectra") # Spectral Kreinitz set
+plantspec.data2 <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Kreinitz set traits") # Traits Kreinitz set
+
+cbind(plantspec.spectra2$Spectral.file.name, plantspec.data2$Level_ID) # Checking correlation between both sets
+
+# Removing outlayer from the samples
+plantspec.data[which(is.na(plantspec.data$P)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$P)),]
+plantspec.data.p <- plantspec.data[!is.na(plantspec.data$P),]
+input <- input[-which(plantspec.data.p$Tree == "75_So2"),]
+plantspec.data.p <- subset(plantspec.data.p, Tree != "75_So2")
+input <- input[-which(plantspec.data.p$Tree == "16_Be3"),]
+plantspec.data.p <- subset(plantspec.data.p, Tree != "16_Be3")
+input <- input[-which(plantspec.data.p$Tree == "71_Fa3"),]
+plantspec.data.p <- subset(plantspec.data.p, Tree != "71_Fa3")
+
+
+plantspec.data[which(is.na(plantspec.data2$P)),]
+
+input2 <- as.matrix(plantspec.spectra2[, -1])
+input2 <- input2[-which(plantspec.data2$Level_ID == "B16_Li17_3"),]
+plantspec.data2 <- subset(plantspec.data2, Level_ID != "B16_Li17_3")
+input2 <- input2[-which(plantspec.data2$Level_ID == "B41_Es11_3"),]
+plantspec.data2 <- subset(plantspec.data2, Level_ID != "B41_Es11_3")
+
+# Studying the distribution of the values for P
+component_P <- c(plantspec.data.p$P, plantspec.data2$P)
+par(mfcol = c(1, 2))
+qqnorm((component_P), pch = 1, frame = FALSE) # Checking normality of the variable
+qqline((component_P), col = "red", lwd = 2)
+hist((component_P)) # Checking distribution of the variable
+
+
+#### Train-test split ####
+# We split our samples into train and test set (0.7-0.3) by using
+# a PCA of the spectra
+set.seed(0)
+training_set <- !(subdivideDataset(spectra = input,
+                                   component = component_P,
+                                   method = "PCAKS", p = 0.3,
+                                   type = "validation"))
+```
+
+### Feature Engineering for Phosphorous
+
+```{r echo=T, results="hide"}
+#### Feature Engineering ####
+# We performed data augmentation in our spectral data in order to improve
+# the learning of the algorithm. We applied 5 transformation of the data:
+# 1) Standard Norval Variate (SNV)
+# 2) First derivative (D1f)
+# 3) Second derivative (D2f)
+# 4) D1f + SNV
+# 5) D2f + SNV
+
+input <- data.frame(rbind(input, input2))
+SNV<-function(spectra){
+  spectra<-as.matrix(spectra)
+  spectrat<-t(spectra)
+  spectrat_snv<-scale(spectrat,center=TRUE,scale=TRUE)
+  spectra_snv<-t(spectrat_snv)
+  return(spectra_snv)}
+
+trans1 <- data.frame(SNV(input))
+trans2 <- input
+for (i in 1:nrow(input)) {
+  trans2[i, ] <- D1ss(x = 1:length(input), input[i, ])
+}
+trans3 <- input
+for (i in 1:nrow(input)) {
+  trans3[i, ] <- D2ss(x = 1:length(input), input[i, ])[["y"]]
+}
+trans4 <- data.frame(SNV(trans2))
+trans5 <- data.frame(SNV(trans3))
+
+input <- cbind(input, trans1, trans2, trans3, trans4, trans5)
+
+x.train <- data.frame(input[training_set, ])
+x.test <- data.frame(input[!training_set, ])
+y.train <- data.frame(component_P[training_set])
+y.test <- data.frame(component_P[!training_set])
+```
+
+### CNN for Phosphorous
+
+```{r echo=T, results="hide"}
+#### Convolutional neural network (CNN) ####
+# We train a CNN with convolutional and dense layers
+
+model.p <- keras_model_sequential(input_shape = c(NULL, 12906, 1)) %>%
+  layer_conv_1d(filter = 1, kernel_size = 100, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_batch_normalization() %>%
+  layer_max_pooling_1d(pool_size = 2) %>%
+  layer_flatten() %>%
+  layer_dense(64, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(16, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(4, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(1, kernel_initializer=initializer_glorot_uniform(seed=0))
+
+model.p %>% compile(
+  optimizer = "adam",
+  loss = "mean_squared_error")
+
+set.seed(0)
+history <- model.p %>% fit(as.matrix(x.train), as.matrix(y.train),
+                           epochs = 100,
+                           verbose = 1,
+                           validation_split = 0.2,
+                           shuffle = FALSE)
+
+p_P <- plot(history, method = "ggplot2")
+```
+
+### Training Model Phosphorous
+
+```{r}
+plotly::ggplotly(p_P)
+```
+
+### Predictive Ability of CNN for Phosphorous
+
+```{r echo=T, results="hide"}
+#### Predictive ability of the CNN ####
+
+prediction.test <- predict(model.p, as.matrix(x.test))
+R2_test.p <- cor(prediction.test, as.matrix(y.test))^2; R2_test.p
+
+prediction.train <- predict(model.p, as.matrix(x.train))
+R2_train.p <- cor(prediction.train, as.matrix(y.train))^2; R2_train.p
+
+prediction.all <- predict(model.p, as.matrix(input))
+R2.p <- cor(prediction.all, component_P)^2; R2.p
+
+data.plot <- data.frame(cbind(prediction.test, as.matrix(y.test)))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#ff6361") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "P", subtitle = "(e)") + ylab("") + xlab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 35, y = 90,
+           label = paste(round(R2_test.p, 2), ""),
+           size = 10)
+p.test <- ggMarginal(p, size = 5, fill = "#ff6361", color = "#ff6361", alpha = 0.5); p.test
+```
+
+
+```{r echo=T, results="hide"}
+data.plot <- data.frame(cbind(prediction.all, component_P))
+names(data.plot) <- c("Predicted", "Measured")
+data.plot$Predicted <- as.numeric(data.plot$Predicted)
+data.plot$Measured <- as.numeric(data.plot$Measured)
+p <- ggplot(data = data.plot, aes(y = Predicted, x = Measured)) +
+  geom_abline(intercept = 0, slope = 1, linetype = "dotted", color = "grey60", size = 1.3) +
+  geom_point(size = 3.5, shape = 21, color = "white", fill = "#ff6361") +
+  geom_smooth(method = "lm", col = "red", se = FALSE) +
+  theme_bw() +
+  labs(title = "", subtitle = "(j)") + ylab("") +
+  theme(plot.title=element_text(hjust=0.5, size = 20)) +
+  annotate("text", x = 35, y = 90,
+           label = paste(round(R2.p, 2), ""),
+           size = 10)
+p.model <- ggMarginal(p, size = 5, fill = "#ff6361", color = "#ff6361", alpha = 0.5); p.model
+```
+
+# Correlation Between Measured Traits and CNN Predictions
+
+```{r echo=T, results="hide"}
+library(gridExtra)
+# Plot: Correlations between measured traits and predicted values by CNN
+grid.arrange(c.test, p.test,
+             c.model, p.model, nrow = 2,
+             heights = c(10,10),
+             widths = c(3,3)) # EXPORT AS 9 x 20 inches
+```
+```{r echo=T, results="hide"}
+
+
+# Plot: Correlations between measured traits and predicted values by CNN
+grid.arrange(sla.test, ldmc.test, cn.test, 
+             sla.model, ldmc.model, cn.model, nrow = 2,
+             heights = c(6,6),
+             widths = c(3,3,3)) 
+
+```
+
+
+# Leaf Trait Prediction From Spectral Data
+This process uses spectral data to predict leaf traits by applying outlier detection using the Local Outlier Factor (LOF) method. After filtering outliers, five transformations—Standard Normal Variate (SNV), first and second derivatives, and their combinations—are performed for feature engineering. These transformations enhance the spectral dataset for accurate leaf trait predictions.
+
+```{r echo=T, results="hide"}
+# Loading the libraries
+library(spectacles) # For maganing spectral data
+library(reshape) # For maganing spectral data
+library(ggplot2) # For maganing spectral data
+library(tidyverse) # For data management
+library(DescTools) # For assesing the local outlier factor (LOF) in spectral data
+
+
+#### Datasets ####
+
+data <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Experiment data") # Information on sampled trees
+main.spectra <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Main set spectra") # Spectra calibration set
+main.spectra <- merge(data[, c(1, 9, 11)], main.spectra, by = "Spectral.file.name")
+
+#### Outlier detection ####
+# We perform outlier detection of spectra by using the local outlier factor (LOF)
+lof_scores_Ac <- DescTools::LOF(subset(main.spectra, Species == "Ac")[, -c(1, 2, 3)], k = 6)
+lof_scores_Ae <- DescTools::LOF(subset(main.spectra, Species == "Ae")[, -c(1, 2, 3)], k = 6)
+lof_scores_Be <- DescTools::LOF(subset(main.spectra, Species == "Be")[, -c(1, 2, 3)], k = 6)
+lof_scores_Ca <- DescTools::LOF(subset(main.spectra, Species == "Ca")[, -c(1, 2, 3)], k = 6)
+lof_scores_Fa <- DescTools::LOF(subset(main.spectra, Species == "Fa")[, -c(1, 2, 3)], k = 6)
+lof_scores_Fr <- DescTools::LOF(subset(main.spectra, Species == "Fr")[, -c(1, 2, 3)], k = 6)
+lof_scores_Pr <- DescTools::LOF(subset(main.spectra, Species == "Pr")[, -c(1, 2, 3)], k = 6)
+lof_scores_Qu <- DescTools::LOF(subset(main.spectra, Species == "Qu")[, -c(1, 2, 3)], k = 6)
+lof_scores_So <- DescTools::LOF(subset(main.spectra, Species == "So")[, -c(1, 2, 3)], k = 6)
+lof_scores_Ti <- DescTools::LOF(subset(main.spectra, Species == "Ti")[, -c(1, 2, 3)], k = 6)
+
+sum(sum(lof_scores_Ac > 2), sum(lof_scores_Ae > 2), sum(lof_scores_Be > 2),
+    sum(lof_scores_Ca > 2), sum(lof_scores_Fa > 2), sum(lof_scores_Fr > 2),
+    sum(lof_scores_Pr > 2), sum(lof_scores_Qu > 2), sum(lof_scores_So > 2),
+    sum(lof_scores_Ti > 2))
+
+outliers.names <- c(subset(main.spectra, Species == "Ac")[which(lof_scores_Ac > 2), 1],
+  subset(main.spectra, Species == "Ae")[which(lof_scores_Ae > 2), 1],
+  subset(main.spectra, Species == "Be")[which(lof_scores_Be > 2), 1],
+  subset(main.spectra, Species == "Ca")[which(lof_scores_Ca > 2), 1],
+  subset(main.spectra, Species == "Fa")[which(lof_scores_Fa > 2), 1],
+  subset(main.spectra, Species == "Fr")[which(lof_scores_Fr > 2), 1],
+  subset(main.spectra, Species == "Pr")[which(lof_scores_Pr > 2), 1],
+  subset(main.spectra, Species == "Qu")[which(lof_scores_Qu > 2), 1],
+  subset(main.spectra, Species == "So")[which(lof_scores_So > 2), 1],
+  subset(main.spectra, Species == "Ti")[which(lof_scores_Ti > 2), 1])
+
+
+spectra.prepared <- data.frame(t(main.spectra[, -c(1, 2, 3)]))
+colnames(spectra.prepared) <- main.spectra$Spectral.file.name
+spectra.prepared <- data.frame(x = seq_along(spectra.prepared[, 1]),
+                               spectra.prepared)
+spectra.prepared <- melt(spectra.prepared, id.vars = "x")
+
+colnames(spectra.prepared) <- c("Wavelength", "Spectral.file.name", "Reflectance")
+spectra.prepared$Wavelength <- spectra.prepared$Wavelength + 349
+
+spectra.prepared <- merge(spectra.prepared, main.spectra[, c(1, 2, 3)], by = "Spectral.file.name", all.x = T)
+
+spectra.prepared.outlier <- subset(spectra.prepared, Spectral.file.name == "X74_D05_AC_04.txt"|
+                                     Spectral.file.name == "X35_D05_Ae_5.txt"|
+                                     Spectral.file.name == "X44_H05_Ae_02.txt"|
+                                     Spectral.file.name == "X50_G07_AE_01.txt"|
+                                     Spectral.file.name == "X50_G07_AE_04.txt"|
+                                     Spectral.file.name == "X59_C08_Ae_01.txt"|
+                                     Spectral.file.name == "X64_E09_Ae_02.txt"|
+                                     Spectral.file.name == "X74_C06_AE_03.txt"|
+                                     Spectral.file.name == "X74_I03_AE_03.txt"|
+                                     Spectral.file.name == "X74_I03_AE_04.txt"|
+                                     Spectral.file.name == "X43_E09_Be_05.txt"|
+                                     Spectral.file.name == "X34_G06_Fa_1.txt"|
+                                     Spectral.file.name == "X15_H04_Fr_05.txt"|
+                                     Spectral.file.name == "X21_E07_Fr_03.txt"|
+                                     Spectral.file.name == "X38_G06_Qu_2.txt"|
+                                     Spectral.file.name == "X6_I02_So_05.txt"|
+                                     Spectral.file.name == "X74_C05_SO_05.txt"|
+                                     Spectral.file.name == "X20_H05_Ti_03.txt")
+
+
+spectra.prepared.filtered <- subset(spectra.prepared, Spectral.file.name != "X74_D05_AC_04.txt"&
+                                      Spectral.file.name != "X35_D05_Ae_5.txt"&
+                                      Spectral.file.name != "X44_H05_Ae_02.txt"&
+                                      Spectral.file.name != "X50_G07_AE_01.txt"&
+                                      Spectral.file.name != "X50_G07_AE_04.txt"&
+                                      Spectral.file.name != "X59_C08_Ae_01.txt"&
+                                      Spectral.file.name != "X64_E09_Ae_02.txt"&
+                                      Spectral.file.name != "X74_C06_AE_03.txt"&
+                                      Spectral.file.name != "X74_I03_AE_03.txt"&
+                                      Spectral.file.name != "X74_I03_AE_04.txt"&
+                                      Spectral.file.name != "X43_E09_Be_05.txt"&
+                                      Spectral.file.name != "X34_G06_Fa_1.txt"&
+                                      Spectral.file.name != "X15_H04_Fr_05.txt"&
+                                      Spectral.file.name != "X21_E07_Fr_03.txt"&
+                                      Spectral.file.name != "X38_G06_Qu_2.txt"&
+                                      Spectral.file.name != "X6_I02_So_05.txt"&
+                                      Spectral.file.name != "X74_C05_SO_05.txt"&
+                                      Spectral.file.name != "X20_H05_Ti_03.txt")
+
+#### Feature Engineering ####
+
+# 1) Standard Norval Variate (SNV)
+# 2) First derivative (D1f)
+# 3) Second derivative (D2f)
+# 4) D1f + SNV
+# 5) D2f + SNV
+
+main.spectra.names <- main.spectra[, 1]
+main.spectra <- main.spectra[, -c(1, 2, 3)]
+
+SNV<-function(spectra){
+  spectra<-as.matrix(spectra)
+  spectrat<-t(spectra)
+  spectrat_snv<-scale(spectrat,center = TRUE, scale = TRUE)
+  spectra_snv<-t(spectrat_snv)
+  return(spectra_snv)}
+
+trans1 <- data.frame(SNV(main.spectra))
+trans2 <- data.frame(matrix(NA, nrow(main.spectra), ncol(main.spectra)))
+for (i in 1:nrow(main.spectra)) {
+  trans2[i, ] <- D1ss(x = 1:length(main.spectra), main.spectra[i, ])
+  print(i)
+}
+trans3 <- data.frame(matrix(NA, nrow(main.spectra), ncol(main.spectra)))
+for (i in 1:nrow(main.spectra)) {
+  trans3[i, ] <- D2ss(x = 1:length(main.spectra), main.spectra[i, ])[["y"]]
+  print(i)
+}
+trans4 <- data.frame(SNV(trans2))
+trans5 <- data.frame(SNV(trans3))
+
+main.spectra <- cbind(main.spectra, trans1, trans2, trans3, trans4, trans5)
+```
+
+### Prediction for SLA
+This section uses the trained model to predict Specific Leaf Area (SLA) values from spectral data. The predicted values are compared with the calibration set through visual boxplots, and the results are matched to the corresponding sampled trees. SLA values that fall outside a 95% confidence interval or are negative are identified and excluded from further analysis.
+
+```{r echo=T, results="hide"}
+
+prediction.sla <- predict(model.sla, as.matrix(main.spectra)) # Prediction of trait values
+# We Compare the ranges of the data in the calibration set and the predicted data
+par(mfcol = c(1, 2))
+boxplot(prediction.sla,ylim = c(min(prediction.sla), max(prediction.sla)), main = "Measured SLA", col = "salmon")
+boxplot(plantspec.data$SLA, ylim = c(min(prediction.sla), max(prediction.sla)), main = "Predicted SLA", col = "skyblue")
+# Matching predicted data to the information of the sampled trees
+prediction.sla <- data.frame(cbind(prediction.sla, main.spectra.names))
+names(prediction.sla) <- c("SLA", "Spectral.file.name")
+data <- merge(data, prediction.sla, by = "Spectral.file.name")
+data$SLA <- as.numeric(data$SLA)
+# We exclude values out of a 95% confidence interval and negative values
+outlier_ind <- which(data$SLA < quantile(data$SLA, 0.025) | data$SLA > quantile(data$SLA, 0.975))
+data$SLA[outlier_ind] <- NA
+length(which(data$SLA < 0))
+```
+
+### Prediction for LDMC
+Predicted LDMC values are compared with the calibration set using boxplots. Predictions are matched to sampled trees, and values outside the 95% confidence interval or negative are excluded.
+
+```{r echo=T, results="hide"}
+#### Prediction for LDMC ####
+prediction.ldmc <- predict(model.ldmc, as.matrix(main.spectra)) # Prediction of trait values
+# We Compare the ranges of the data in the calibration set and the predicted data
+par(mfcol = c(1, 2))
+boxplot(prediction.ldmc, ylim = c(min(prediction.ldmc), max(prediction.ldmc)), main = "Measured LDMC", col = "salmon")
+boxplot(plantspec.data$LDMC, ylim = c(min(prediction.ldmc), max(prediction.ldmc)), main = "Predicted LDMC", col = "skyblue")
+# Matching predicted data to the information of the sampled trees
+prediction.ldmc <- data.frame(cbind(prediction.ldmc, main.spectra.names))
+names(prediction.ldmc) <- c("LDMC", "Spectral.file.name")
+data <- merge(data, prediction.ldmc, by = "Spectral.file.name")
+data$LDMC <- as.numeric(data$LDMC)
+# We exclude values out of a 95% confidence interval and negative values
+outlier_ind <- which(data$LDMC < quantile(data$LDMC, 0.025) | data$LDMC > quantile(data$LDMC, 0.975))
+data$LDMC[outlier_ind] <- NA
+length(which(data$LDMC < 0))
+
+```
+
+### Prediction for C:N
+Predicted C:N values are compared to the calibration set using boxplots. The predictions are matched to sampled trees, with values outside the 95% confidence interval or negative values removed.
+
+```{r echo=T, results="hide"}
+
+prediction.cn <- predict(model.cn, as.matrix(main.spectra)) # Prediction of trait values
+# We Compare the ranges of the data in the calibration set and the predicted data
+par(mfcol = c(1, 2))
+boxplot(prediction.cn, ylim = c(min(prediction.cn), max(prediction.cn)), main = "Measured C:N", col = "salmon")
+boxplot(plantspec.data$CN, ylim = c(min(prediction.cn), max(prediction.cn)), main = "Predicted C:N", col = "skyblue")
+# Matching predicted data to the information of the sampled trees
+prediction.cn <- data.frame(cbind(prediction.cn, main.spectra.names))
+names(prediction.cn) <- c("CN", "Spectral.file.name")
+data <- merge(data, prediction.cn, by = "Spectral.file.name")
+data$CN <- as.numeric(data$CN)
+# We exclude values out of a 95% confidence interval and negative values
+outlier_ind <- which(data$CN < quantile(data$CN, 0.025) | data$CN > quantile(data$CN, 0.975))
+data$CN[outlier_ind] <- NA
+length(which(data$CN < 0))
+
+```
+
+### Prediction for C
+Predicted C values are compared to the calibration set using boxplots. The predictions are matched to sampled trees, with values outside the 95% confidence interval or negative values removed.
+
+```{r echo=T, results="hide"}
+
+prediction.c <- predict(model.c, as.matrix(main.spectra)) # Prediction of trait values
+# We Compare the ranges of the data in the calibration set and the predicted data
+par(mfcol = c(1, 2))
+boxplot(prediction.c, ylim = c(min(prediction.c), max(prediction.c)), main = "Measured C", col = "salmon")
+boxplot(plantspec.data$C, ylim = c(min(prediction.c), max(prediction.c)), main = "Predicted C", col = "skyblue")
+# Matching predicted data to the information of the sampled trees
+prediction.c <- data.frame(cbind(prediction.c, main.spectra.names))
+names(prediction.c) <- c("C", "Spectral.file.name")
+data <- merge(data, prediction.c, by = "Spectral.file.name")
+data$C <- as.numeric(data$C)
+# We exclude values out of a 95% confidence interval and negative values
+outlier_ind <- which(data$C < quantile(data$C, 0.025) | data$C > quantile(data$C, 0.975))
+data$C[outlier_ind] <- NA
+length(which(data$C < 0))
+data$C[which(data$C < 0)] <- NA
+```
+
+### Prediction for P
+Predicted P values are compared with calibration set data through boxplots. After merging the predicted values with sampled tree information, values outside the 95% confidence interval and negative values are set to NA. Outlier spectra are also removed from the dataset to ensure data integrity.
+
+```{r echo=T, results="hide"}
+
+prediction.p <- predict(model.p, as.matrix(main.spectra)) # Prediction of trait values
+# We Compare the ranges of the data in the calibration set and the predicted data
+par(mfcol = c(1, 2))
+boxplot(prediction.p, ylim = c(min(prediction.p), max(prediction.p)), main = "Measured P", col = "salmon")
+boxplot(plantspec.data$P, ylim = c(min(prediction.p), max(prediction.p)), main = "Predicted", col = "skyblue")
+# Matching predicted data to the information of the sampled trees
+prediction.p <- data.frame(cbind(prediction.p, main.spectra.names))
+names(prediction.p) <- c("P", "Spectral.file.name")
+data <- merge(data, prediction.p, by = "Spectral.file.name")
+data$P <- as.numeric(data$P)
+# We exclude values out of a 95% confidence interval and negative values
+outlier_ind <- which(data$P < quantile(data$P, 0.025) | data$P > quantile(data$P, 0.975))
+data$P[outlier_ind] <- NA
+length(which(data$P < 0))
+data$P[which(data$P < 0)] <- NA
+
+# We remove the predicted values of the outlier spectra detected
+data[which(data$Spectral.file.name == outliers.names[1]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[2]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[3]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[4]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[5]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[6]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[7]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[8]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[9]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[10]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[11]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[12]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[13]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[14]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[15]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[16]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[17]), c(13:17)] <- NA
+data[which(data$Spectral.file.name == outliers.names[18]), c(13:17)] <- NA
+```
+

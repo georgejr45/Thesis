@@ -1,0 +1,209 @@
+---
+title: "RF_for_pablos_data"
+author: "Methun George"
+date: "2024-11-05"
+output: html_document
+---
+```{r}
+library(readxl) #reading the data
+library(randomForest) #the ML model
+library(caret) #splitting the data and training
+library(ggplot2) #plotting the results
+library(plotly) #for interactive ggplots plots 
+library(stats) #for testing (predict)
+```
+
+
+```{r}
+plantspec.spectra <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Calibration set spectra") # Spectra calibration set
+plantspec.data <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Calibration set traits") # Trait calibration set
+plantspec.data$SLA <- as.numeric(plantspec.data$SLA)
+plantspec.data$LDMC <- as.numeric(plantspec.data$LDMC)
+plantspec.data$CN <- as.numeric(plantspec.data$CN)
+plantspec.data$C <- as.numeric(plantspec.data$C)
+plantspec.data$P <- as.numeric(plantspec.data$P)
+
+cbind(plantspec.spectra$Spectral.file.name, plantspec.data$File_name)
+```
+
+```{r}
+#SLA
+
+# Removing outlayer from the samples
+plantspec.data[which(is.na(plantspec.data$SLA)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$SLA)),]
+plantspec.data.sla <- plantspec.data[!is.na(plantspec.data$SLA),]
+input <- input[-which(plantspec.data$Tree == "70_Ti3"),]
+plantspec.data.sla <- subset(plantspec.data.sla, Tree != "70_Ti3")
+
+# Studying the distribution of the values for SLA
+component_SLA <- plantspec.data.sla$SLA
+
+```
+
+```{r}
+# Preparing data
+set.seed(42)  
+X <- input  
+Y <- plantspec.data.sla$SLA  
+
+# Scale the input (spectral data) and SLA values for better model
+X_scaled <- scale(X)            
+Y_scaled <- scale(Y)
+
+# Splitting data into training and test 
+train_index <- createDataPartition(component_SLA, p = 0.7, list = FALSE)
+X_train <- X_scaled[train_index, ]
+Y_train <- Y_scaled[train_index]
+X_test <- X_scaled[-train_index, ]
+Y_test <- Y_scaled[-train_index]
+
+# Create a data frame for the train function
+train_data <- data.frame(SLA = Y_train, X_train)
+```
+
+
+```{r}
+# Building the Random Forest model
+start_time <- Sys.time()
+rf_model <- train(SLA ~ ., data = train_data, method = "rf", ntree = 500)
+end_time <- Sys.time()
+
+# Predictions on the test set
+test_data <- data.frame(X_test)
+predictions <- predict(rf_model, test_data)
+
+# Evaluating model performance
+plot(Y_test, predictions, main = "Predicted vs Actual SLA (Random Forest)",
+     xlab = "Actual SLA", ylab = "Predicted SLA")
+abline(0, 1, col = "red", lty = 2)
+
+# Print model summary
+print(rf_model)
+
+
+
+```
+
+
+
+
+
+```{r}
+# Calculate R²
+results <- postResample(predictions, Y_test)
+R_squared <- results[["Rsquared"]]
+
+print(R_squared)
+results
+
+```
+
+```{r}
+#ggplot 
+
+
+# create a df
+rf_df <- data.frame(Actual_SLA = Y_test, Predicted_SLA = predictions)
+
+p <- ggplot(rf_df, aes(x = Actual_SLA, y = Predicted_SLA)) +
+        geom_point(color = "#69b3a2", alpha = 0.7) +
+        geom_abline(slope = 1, intercept = 0, color = "red", linetype = "dashed") +
+        labs( title = "Predicted Vs Actual SLA (Random Forest)", x = "Actual SLA", y = "Predicted SLA") +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5)) 
+        # annotate( "text", x = 2 , y = 5 , label = paste("R^2 =",round(R_squared, 0), ""), size = 5)
+p
+# ggplotly(p)
+```
+
+```{r}
+#boxplot
+#to visualize the data set destribution 
+
+par(mfcol = c(1, 2))
+boxplot(predictions, ylim = c(min(predictions), max(predictions)))
+boxplot(Y_train, ylim =c(min(predictions), max(predictions)))
+
+```
+```{r}
+time <- end_time - start_time
+time
+```
+
+```{r}
+#RF Extrapolation
+
+lower_cutoff <- quantile(component_SLA, 0.15)
+upper_cutoff <- quantile(component_SLA, 0.85)
+#index for test set
+test_set_index <- component_SLA <= lower_cutoff | component_SLA >= upper_cutoff
+#index for trainig set
+training_set_index <- component_SLA > lower_cutoff & component_SLA < upper_cutoff
+#split the scaled data accordingly
+X_train_rfe <- X_scaled[training_set_index, ]
+Y_train_rfe <- Y_scaled[training_set_index]
+X_test_rfe <- X_scaled[test_set_index, ]
+Y_test_rfe <- Y_scaled[test_set_index]
+
+#train the model
+train_data_rfe <- data.frame(SLA = Y_train_rfe, X_train_rfe)
+start_time_rf_e <- Sys.time()
+rf_model_e <- train(SLA ~ ., data = train_data_rfe, method = "rf", ntree = 500)
+end_time_rf_e <- Sys.time()
+
+```
+
+```{r}
+#predict the extrapolated
+
+test_data_rfe <- data.frame(X_test_rfe)
+predictions_rfe <- predict(rf_model_e, test_data_rfe)
+
+# Calculate R²
+results_e <- postResample(predictions_rfe, Y_test_rfe)
+R_squared_rfe <- results_e["Rsquared"]
+
+print(R_squared_rfe)
+print(end_time_rf_e - start_time_rf_e)
+print(rf_model_e)
+results_e
+```
+
+```{r}
+#plot the Extrapolation
+
+rf_df_e <- data.frame(Actual_SLA = Y_test_rfe, Predicted_SLA = predictions_rfe)
+
+p1 <- ggplot(rf_df_e, aes(x = Actual_SLA, y = Predicted_SLA)) +
+        geom_point(color = "#69b3a2", alpha = 0.7) +
+        geom_abline(slope = 1, intercept = 0, color = "red", linetype = "dashed") +
+        labs( title = "Predicted Vs Actual SLA (Random Forest Extrapolated)", x = "Actual SLA", y = "Predicted SLA") +
+        theme_minimal() +
+        theme(plot.title = element_text(hjust = 0.5)) 
+
+p1
+```
+
+
+```{r}
+#Variable importance in Random Forest
+vi_rf <- varImp(rf_model, scale = F)
+
+vi_rf_df <- as.data.frame(vi$importance)
+
+wavelengths <- seq(350, 2500)
+
+# Create a data frame for plotting
+vi_rf_df <- data.frame(Wavelength = wavelengths, Overall = vi_rf_df)
+
+
+v1 <- ggplot(vi_rf_df, aes(x = Wavelength, y = Overall)) +
+  geom_line(color = "blue") + 
+  geom_point(color = "#69b3a2") +
+  labs(title = "Variable Importance vs Wavelength RF ", x = "Wavelength (nm)", y = "Variable Importance") +
+  theme_minimal()
+v1
+```
+

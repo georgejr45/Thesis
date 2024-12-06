@@ -1,0 +1,193 @@
+---
+title: "SNV"
+author: "Methun George"
+date: "2024-12-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+#libraries
+
+library(readxl) # For reading the data
+library(dplyr) # For data management
+library(tidyr) # For data management
+library(tfruns) # For training convolutional neural networks
+library(keras3) # For training convolutional neural networks
+library(plantspec) # For maganing spectral data
+library(ggplot2) # For plotting predicted versus measured data
+library(ggExtra) # For plotting predicted versus measured data
+library(sfsmisc) # For data augmentation
+library(gridExtra) # For plot visualization
+library(plotly)
+library(pls)
+library(caret)
+```
+
+```{r}
+#datasets
+
+plantspec.spectra <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Calibration set spectra") # Spectra calibration set
+plantspec.data <- read_excel("/Users/methungeorge/Desktop/IPB/pablo/dataset_20231010.xlsx", sheet = "Calibration set traits") # Trait calibration set
+plantspec.data$SLA <- as.numeric(plantspec.data$SLA)
+plantspec.data$LDMC <- as.numeric(plantspec.data$LDMC)
+plantspec.data$CN <- as.numeric(plantspec.data$CN)
+plantspec.data$C <- as.numeric(plantspec.data$C)
+plantspec.data$P <- as.numeric(plantspec.data$P)
+
+cbind(plantspec.spectra$Spectral.file.name, plantspec.data$File_name) 
+```
+
+```{r}
+#SLA
+
+plantspec.data[which(is.na(plantspec.data$SLA)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$SLA)),]
+plantspec.data.sla <- plantspec.data[!is.na(plantspec.data$SLA),]
+input <- input[-which(plantspec.data$Tree == "70_Ti3"),]
+plantspec.data.sla <- subset(plantspec.data.sla, Tree != "70_Ti3")
+```
+
+```{r}
+dimnames(input) = NULL
+set.seed(0)
+training_set <- !(subdivideDataset(spectra = input,
+                                   component = component_SLA,
+                                   method = "PCAKS", p = 0.3,
+                                   type = "validation"))
+```
+
+
+```{r}
+#Feature engineering
+
+input <- data.frame(input)
+SNV <- function(spectra) {
+  spectra <- as.matrix(spectra)
+  spectrat <- t(spectra)
+  spectrat_snv <- scale(spectrat, center=TRUE, scale=TRUE)
+  spectra_snv <- t(spectrat_snv)
+  return(spectra_snv)
+}
+
+trans1 <- data.frame(SNV(input))
+trans2 <- input
+for (i in 1:nrow(input)) {
+  trans2[i, ] <- D1ss(x = 1:length(input), input[i, ])
+}
+trans3 <- input
+for (i in 1:nrow(input)) {
+  trans3[i, ] <- D2ss(x = 1:length(input), input[i, ])[["y"]]
+}
+trans4 <- data.frame(SNV(trans2))
+#trans4 <- data.frame(trans1+trans2)
+
+trans5 <- data.frame(SNV(trans3))
+#trans5 <- data.frame(trans1+trans3)
+```
+
+
+
+
+```{r}
+input <- cbind(input, trans1, trans2, trans3, trans4, trans5)
+```
+
+
+```{r}
+#plotting trans1
+
+library(tidyr)
+library(ggplot2)
+
+# Convert the data to long format
+long_input <- trans1 %>%
+  as.data.frame() %>%
+  mutate(File = rownames(trans1)) %>%
+  pivot_longer(cols = -File, names_to = "Wavelength", values_to = "Reflectance") %>%
+  mutate(Wavelength = as.numeric(Wavelength))
+
+# Visualize reflectance distribution using a histogram
+t1 <- ggplot(long_input, aes(x = Reflectance)) +
+  geom_histogram(bins = 30, fill = "#e8948e", color = "black") +
+  labs(title = "SNV Transformed Data", x = "Reflectance", y = "Frequency") +
+  theme_minimal()
+
+t1
+
+
+```
+
+```{r}
+#trans2
+
+# Convert the data to long format
+long_input_2 <- trans2 %>%
+  as.data.frame() %>%
+  mutate(File = rownames(trans2)) %>%
+  pivot_longer(cols = -File, names_to = "Wavelength", values_to = "Reflectance") %>%
+  mutate(Wavelength = as.numeric(Wavelength))
+
+# Visualize reflectance distribution using a histogram
+t2 <- ggplot(long_input_2, aes(x = Reflectance)) +
+  geom_histogram(bins = 30, fill = "#e8948e", color = "black") +
+  labs(title = "First Derivative (D1f)", x = "Reflectance", y = "Frequency") +
+  theme_minimal()
+t2
+```
+
+```{r}
+#trans3
+
+long_input_3 <- trans3 %>%
+  as.data.frame() %>%
+  mutate(File = rownames(trans3)) %>%
+  pivot_longer(cols = -File, names_to = "Wavelength", values_to = "Reflectance") %>%
+  mutate(Wavelength = as.numeric(Wavelength))
+
+# Visualize reflectance distribution using a histogram
+t3 <- ggplot(long_input_3, aes(x = Reflectance)) +
+  geom_histogram(bins = 30, fill = "#e8948e", color = "black") +
+  labs(title = "Second Derivative (D2f)", x = "Reflectance", y = "Frequency") +
+  theme_minimal()
+t3
+```
+
+```{r}
+#trans4
+
+long_input_4 <- trans4 %>%
+  as.data.frame() %>%
+  mutate(File = rownames(trans4)) %>%
+  pivot_longer(cols = -File, names_to = "Wavelength", values_to = "Reflectance") %>%
+  mutate(Wavelength = as.numeric(Wavelength))
+
+# Visualize reflectance distribution using a histogram
+t4 <- ggplot(long_input_4, aes(x = Reflectance)) +
+  geom_histogram(bins = 30, fill = "#e8948e", color = "black") +
+  labs(title = "SNV(D1f)", x = "Reflectance", y = "Frequency") +
+  theme_minimal()
+t4
+```
+
+```{r}
+long_input_5 <- trans5 %>%
+  as.data.frame() %>%
+  mutate(File = rownames(trans5)) %>%
+  pivot_longer(cols = -File, names_to = "Wavelength", values_to = "Reflectance") %>%
+  mutate(Wavelength = as.numeric(Wavelength))
+
+# Visualize reflectance distribution using a histogram
+t5 <- ggplot(long_input_5, aes(x = Reflectance)) +
+  geom_histogram(bins = 30, fill = "#e8948e", color = "black") +
+  labs(title = "SNV(D2f)", x = "Reflectance", y = "Frequency") +
+  theme_minimal()
+t5
+```
+
+```{r}
+library(gridExtra)
+
+grid.arrange(t1,t2,t3,t4,t5, ncol=2)
+```
+
