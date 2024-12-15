@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  15 DEC 2024 16:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  15 DEC 2024 16:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -230,8 +230,8 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (14.08038pt too wide) in paragraph at lines 92--96
-\OT1/cmr/m/n/12 lenges, and fu-ture per-spec-tives. Phy-topathol-ogy Re-search, 5(44). https://doi.org/10.1186/s42483-
+Underfull \hbox (badness 10000) in paragraph at lines 92--96
+
  []
 
 [6
@@ -249,9 +249,9 @@ Here is how much of TeX's memory you used:
  24547 multiletter control sequences out of 15000+600000
  561432 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,5n,65p,317b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,5n,65p,320b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (7 pages, 95613 bytes).
+Output written on main.pdf (7 pages, 95616 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream
