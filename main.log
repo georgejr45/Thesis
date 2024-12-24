@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  24 DEC 2024 20:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  24 DEC 2024 22:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -214,8 +214,8 @@ Chapter 4.
 
 ]
 Chapter 5.
-/Users/methungeorge/Desktop/Thesis/main.tex:97: Misplaced alignment tab character &.
-l.97 ...ani, M. M., Zhang, Q., Muhae-Ud-Din, G., &
+/Users/methungeorge/Desktop/Thesis/main.tex:101: Misplaced alignment tab character &.
+l.101 ...ni, M. M., Zhang, Q., Muhae-Ud-Din, G., &
                                                    Wang, Y. (2023). High-thr...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -224,9 +224,9 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:98: Misplaced alignment tab character &.
-l.98 4. Lane, H. M., &
-                       Murray, S. C. (2021). High throughput can produce bet...
+/Users/methungeorge/Desktop/Thesis/main.tex:102: Misplaced alignment tab character &.
+l.102 4. Lane, H. M., &
+                        Murray, S. C. (2021). High throughput can produce be...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
 simple: Just type `I\&' now. But if some right brace
@@ -234,8 +234,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:99: Misplaced alignment tab character &.
-l.99 ... X., Kang, M., Hu, B.-G., Heuvelink, E., &
+/Users/methungeorge/Desktop/Thesis/main.tex:103: Misplaced alignment tab character &.
+l.103 ...X., Kang, M., Hu, B.-G., Heuvelink, E., &
                                                    Marcelis, L. F. M. (2023)...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -259,9 +259,9 @@ Here is how much of TeX's memory you used:
  24547 multiletter control sequences out of 15000+600000
  561432 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,5n,65p,528b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,5n,65p,531b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (7 pages, 99372 bytes).
+Output written on main.pdf (7 pages, 99380 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream
