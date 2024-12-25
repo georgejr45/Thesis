@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  24 DEC 2024 22:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  25 DEC 2024 01:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -200,22 +200,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--51
 
 [2
 
-]
+] [3]
 Chapter 2.
-[3
-
-]
-Chapter 3.
 [4
 
 ]
-Chapter 4.
+Chapter 3.
 [5
 
 ]
+Chapter 4.
+[6
+
+]
 Chapter 5.
-/Users/methungeorge/Desktop/Thesis/main.tex:101: Misplaced alignment tab character &.
-l.101 ...ni, M. M., Zhang, Q., Muhae-Ud-Din, G., &
+/Users/methungeorge/Desktop/Thesis/main.tex:103: Misplaced alignment tab character &.
+l.103 ...ni, M. M., Zhang, Q., Muhae-Ud-Din, G., &
                                                    Wang, Y. (2023). High-thr...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -224,8 +224,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:102: Misplaced alignment tab character &.
-l.102 4. Lane, H. M., &
+/Users/methungeorge/Desktop/Thesis/main.tex:104: Misplaced alignment tab character &.
+l.104 4. Lane, H. M., &
                         Murray, S. C. (2021). High throughput can produce be...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -234,8 +234,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:103: Misplaced alignment tab character &.
-l.103 ...X., Kang, M., Hu, B.-G., Heuvelink, E., &
+/Users/methungeorge/Desktop/Thesis/main.tex:105: Misplaced alignment tab character &.
+l.105 ...X., Kang, M., Hu, B.-G., Heuvelink, E., &
                                                    Marcelis, L. F. M. (2023)...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -244,7 +244,17 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-[6
+/Users/methungeorge/Desktop/Thesis/main.tex:110: Misplaced alignment tab character &.
+l.110 ...ohra, A., Pandey, A. K., Pandey, M. K., &
+                                                   Kumar, A. (2017). Metabol...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[7
 
 ] (./main.aux)
  ***********
@@ -255,16 +265,16 @@ L3 programming layer <2024-02-20>
 Here is how much of TeX's memory you used:
  2161 strings out of 474116
  34640 string characters out of 5743682
- 1934187 words of memory out of 5000000
+ 1935187 words of memory out of 5000000
  24547 multiletter control sequences out of 15000+600000
  561432 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,5n,65p,531b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (7 pages, 99380 bytes).
+Output written on main.pdf (8 pages, 100493 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
- 30 compressed objects within 1 object stream
+ 53 PDF objects out of 1000 (max. 8388607)
+ 32 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
