@@ -87,6 +87,18 @@ The complexity and scale of this data make ML essential for effective integratio
 PLSR uses the combination of Principal Component Analysis (PCA) and linear regression [20]. In the case of RF, it follows the concept of “a forest made of many trees” which uses the combination of predictions from many trees [18]. Among these ML techniques, CNN is gaining attention on its ability in handling high throughput data and predicting with remarkable accuracy [15][22]. These ML models also require different levels of programming proficiency and computational resources, depending on the scale of data. \\
 
 
+In the light of the findings, it is clear that ML can significantly improve the analysis and processing of high throughput data from analytical techniques such as LC-MS and NIRS [15] [22] [17]. Among these, NIRS stands out as a non-destructive, cost-effective and rapid method, offering valuable insights into the chemical composition of the biological samples [12] [13] [14]. These qualities make NIRS a promising technique to optimize and integrate with ML and DL models for predictive accuracy. \\
+
+
+Given the popularity of R programming within the ecological and bioinformatic community, it was chosen as the foundation for this project [7] [9]. Recognizing the need for specialized tools to process the NIRS data, an R package, nearspectRa, was developed to handle data from two widely used NIRs instruments namely “ASD Fieldspec 4” and Spectra Vista Corporation (SVC) HR-1024i. 
+Leveraging supporting packages like “R-FieldSpectra”, the high dimensional data was structured into a “SummarizedExperiment” object, aligning with Bioconductor standards for interoperability and integration. \\
+
+
+Apart from developing a Good Scientific Practice (GSP) compliant package, this project involved two key analyses: first, predicting plant leaf traits from NIRS data using three popular ML methods, PLSR, RF and CNN and second predicting LC-MS features from NIRS data using the same models. To evaluate these approaches, performance was compared using metrics such as the coefficient of determination (R²), Root Mean Squared Error (RMSE) and training time of each model. Additionally,
+extrapolation studies were conducted on PLSR and RF to assess the robustness and performance of those beyond training data. This project not only exemplifies good scientific practice in developing an R toolbox but also provides a comprehensive comparison of linear, non-linear and neural network based NL approaches in predicting plant traits and LC-MS features from NIRS data. By achieving this, the project makes a significant milestone, paving the way for a new era of cost-effective, rapid biochemical analysis in metabolomics. \\
+
+
+
 \chapter{Background}
 The background of this study include
 \section{Related Work}
