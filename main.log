@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  29 DEC 2024 05:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  29 DEC 2024 05:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -275,7 +275,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 115--122
 
 [6
 
-] [7]
+]
+Underfull \hbox (badness 10000) in paragraph at lines 123--126
+
+ []
+
+<images/ml.png, id=32, 722.7pt x 505.89pt>
+File: images/ml.png Graphic file (type png)
+<use images/ml.png>
+Package pdftex.def Info: images/ml.png  used on input line 129.
+(pdftex.def)             Requested size: 386.95897pt x 270.86847pt.
+[7 <./images/ml.png>]
 Chapter 3.
 [8
 
@@ -285,8 +295,8 @@ Chapter 4.
 
 ]
 Chapter 5.
-/Users/methungeorge/Desktop/Thesis/main.tex:160: Misplaced alignment tab character &.
-l.160 ...ni, M. M., Zhang, Q., Muhae-Ud-Din, G., &
+/Users/methungeorge/Desktop/Thesis/main.tex:166: Misplaced alignment tab character &.
+l.166 ...ni, M. M., Zhang, Q., Muhae-Ud-Din, G., &
                                                    Wang, Y. (2023). High-thr...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -295,8 +305,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:161: Misplaced alignment tab character &.
-l.161 4. Lane, H. M., &
+/Users/methungeorge/Desktop/Thesis/main.tex:167: Misplaced alignment tab character &.
+l.167 4. Lane, H. M., &
                         Murray, S. C. (2021). High throughput can produce be...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -305,8 +315,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:162: Misplaced alignment tab character &.
-l.162 ...X., Kang, M., Hu, B.-G., Heuvelink, E., &
+/Users/methungeorge/Desktop/Thesis/main.tex:168: Misplaced alignment tab character &.
+l.168 ...X., Kang, M., Hu, B.-G., Heuvelink, E., &
                                                    Marcelis, L. F. M. (2023)...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -315,8 +325,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:167: Misplaced alignment tab character &.
-l.167 ...ohra, A., Pandey, A. K., Pandey, M. K., &
+/Users/methungeorge/Desktop/Thesis/main.tex:173: Misplaced alignment tab character &.
+l.173 ...ohra, A., Pandey, A. K., Pandey, M. K., &
                                                    Kumar, A. (2017). Metabol...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -325,8 +335,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:168: Misplaced alignment tab character &.
-l.168 ...ez-Domínguez, R., García-Barrera, T., &
+/Users/methungeorge/Desktop/Thesis/main.tex:174: Misplaced alignment tab character &.
+l.174 ...ez-Domínguez, R., García-Barrera, T., &
                                                    Gómez-Ariza, J. L. (2014...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -335,8 +345,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:169: Misplaced alignment tab character &.
-l.169 ..., Phan, A. N., Sudhakar, M., Raman, K., &
+/Users/methungeorge/Desktop/Thesis/main.tex:175: Misplaced alignment tab character &.
+l.175 ..., Phan, A. N., Sudhakar, M., Raman, K., &
                                                    Blank, L. M. (2020). Mach...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -345,8 +355,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:170: Misplaced alignment tab character &.
-l.170 ...t, D., Rouan, L., Vile, D., Violle, C., &
+/Users/methungeorge/Desktop/Thesis/main.tex:176: Misplaced alignment tab character &.
+l.176 ...t, D., Rouan, L., Vile, D., Violle, C., &
                                                    Vasseur, F. (2024). NIRSp...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -355,8 +365,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:172: Misplaced alignment tab character &.
-l.172 ...Eisenhauer, N., Bruelheide, H., Ma, Z., &
+/Users/methungeorge/Desktop/Thesis/main.tex:178: Misplaced alignment tab character &.
+l.178 ...Eisenhauer, N., Bruelheide, H., Ma, Z., &
                                                    Haider, S. (2024). Tree a...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -365,8 +375,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:176: Misplaced alignment tab character &.
-l.176 19. Pichler, M., &
+/Users/methungeorge/Desktop/Thesis/main.tex:182: Misplaced alignment tab character &.
+l.182 19. Pichler, M., &
                          Hartig, F. (2022). Machine learning and deep learni...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -375,8 +385,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:177: Misplaced alignment tab character &.
-l.177 ...i, T., Kovach, K. R., Liu, H., Luo, M., &
+/Users/methungeorge/Desktop/Thesis/main.tex:183: Misplaced alignment tab character &.
+l.183 ...i, T., Kovach, K. R., Liu, H., Luo, M., &
                                                    Chen, M. (2024). Unveilin...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -386,17 +396,17 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (115.43443pt too wide) in paragraph at lines 158--182
+Overfull \hbox (115.43443pt too wide) in paragraph at lines 164--188
 \OT1/cmr/m/n/12 Bioin-for-mat-ics, Vol-ume 38, Is-sue 4, Febru-ary 2022, Pages 1168{1170, https://doi.org/10.1093/bioinformatics/btab741. 
  []
 
 
-Overfull \hbox (118.52374pt too wide) in paragraph at lines 158--182
+Overfull \hbox (118.52374pt too wide) in paragraph at lines 164--188
 \OT1/cmr/m/n/12 plant im-prove-ment: Sta-tus and prospects. Fron-tiers in Plant Sci-ence, 8, 1302. https://doi.org/10.3389/fpls.2017.01302. 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--182
+Underfull \hbox (badness 10000) in paragraph at lines 164--188
 
  []
 
@@ -407,20 +417,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 158--182
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 2664 strings out of 474116
- 41654 string characters out of 5743682
+ 2674 strings out of 474116
+ 41859 string characters out of 5743682
  1938187 words of memory out of 5000000
- 25038 multiletter control sequences out of 15000+600000
+ 25048 multiletter control sequences out of 15000+600000
  562076 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,5n,65p,589b,196s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,6n,65p,589b,235s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (12 pages, 126194 bytes).
+Output written on main.pdf (12 pages, 663304 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 76 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 22 words of extra memory for PDF output out of 10000 (max. 10000000)
 
