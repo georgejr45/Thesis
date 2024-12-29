@@ -4,20 +4,20 @@
 \contentsline {section}{\numberline {2.2}Near Infrared Spectroscopy (NIRS)}{6}{}%
 \contentsline {section}{\numberline {2.3}R Programming}{6}{}%
 \contentsline {section}{\numberline {2.4}Machine Learning}{6}{}%
-\contentsline {subsection}{\numberline {2.4.1}Partial Least Square Regression (PLSR)}{6}{}%
-\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{6}{}%
-\contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{6}{}%
-\contentsline {section}{\numberline {2.5}Mass Spectrometry and Liquid Chromatography}{6}{}%
-\contentsline {chapter}{\numberline {3}Implementation}{7}{}%
-\contentsline {section}{\numberline {3.1}Packages}{7}{}%
-\contentsline {section}{\numberline {3.2}Contributions elsewhere}{7}{}%
-\contentsline {section}{\numberline {3.3}HPC runs}{7}{}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{8}{}%
-\contentsline {section}{\numberline {4.1}Data charecterestics}{8}{}%
-\contentsline {section}{\numberline {4.2}Baseline Machine Learning Models Pablo}{8}{}%
-\contentsline {subsection}{\numberline {4.2.1}Variable importance}{8}{}%
-\contentsline {section}{\numberline {4.3} Variations in Baseline systems}{8}{}%
-\contentsline {subsection}{\numberline {4.3.1} modifying the Test and Training split}{8}{}%
-\contentsline {subsection}{\numberline {4.3.2} input data length}{8}{}%
-\contentsline {section}{\numberline {4.4}Sues}{8}{}%
-\contentsline {chapter}{\numberline {5}Reference}{9}{}%
+\contentsline {subsection}{\numberline {2.4.1}Partial Least Square Regression (PLSR)}{7}{}%
+\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{7}{}%
+\contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{7}{}%
+\contentsline {section}{\numberline {2.5}Mass Spectrometry and Liquid Chromatography}{7}{}%
+\contentsline {chapter}{\numberline {3}Implementation}{8}{}%
+\contentsline {section}{\numberline {3.1}Packages}{8}{}%
+\contentsline {section}{\numberline {3.2}Contributions elsewhere}{8}{}%
+\contentsline {section}{\numberline {3.3}HPC runs}{8}{}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{9}{}%
+\contentsline {section}{\numberline {4.1}Data charecterestics}{9}{}%
+\contentsline {section}{\numberline {4.2}Baseline Machine Learning Models Pablo}{9}{}%
+\contentsline {subsection}{\numberline {4.2.1}Variable importance}{9}{}%
+\contentsline {section}{\numberline {4.3} Variations in Baseline systems}{9}{}%
+\contentsline {subsection}{\numberline {4.3.1} modifying the Test and Training split}{9}{}%
+\contentsline {subsection}{\numberline {4.3.2} input data length}{9}{}%
+\contentsline {section}{\numberline {4.4}Sues}{9}{}%
+\contentsline {chapter}{\numberline {5}Reference}{10}{}%
