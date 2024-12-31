@@ -5,19 +5,19 @@
 \contentsline {section}{\numberline {2.3}R Programming}{6}{}%
 \contentsline {section}{\numberline {2.4}Machine Learning}{6}{}%
 \contentsline {subsection}{\numberline {2.4.1}Partial Least Square Regression (PLSR)}{8}{}%
-\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{8}{}%
-\contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{8}{}%
-\contentsline {section}{\numberline {2.5}Mass Spectrometry and Liquid Chromatography}{8}{}%
-\contentsline {chapter}{\numberline {3}Implementation}{9}{}%
-\contentsline {section}{\numberline {3.1}Packages}{9}{}%
-\contentsline {section}{\numberline {3.2}Contributions elsewhere}{9}{}%
-\contentsline {section}{\numberline {3.3}HPC runs}{9}{}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{10}{}%
-\contentsline {section}{\numberline {4.1}Data charecterestics}{10}{}%
-\contentsline {section}{\numberline {4.2}Baseline Machine Learning Models Pablo}{10}{}%
-\contentsline {subsection}{\numberline {4.2.1}Variable importance}{10}{}%
-\contentsline {section}{\numberline {4.3} Variations in Baseline systems}{10}{}%
-\contentsline {subsection}{\numberline {4.3.1} modifying the Test and Training split}{10}{}%
-\contentsline {subsection}{\numberline {4.3.2} input data length}{10}{}%
-\contentsline {section}{\numberline {4.4}Sues}{10}{}%
-\contentsline {chapter}{\numberline {5}Reference}{11}{}%
+\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{9}{}%
+\contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{9}{}%
+\contentsline {section}{\numberline {2.5}Mass Spectrometry and Liquid Chromatography}{9}{}%
+\contentsline {chapter}{\numberline {3}Implementation}{10}{}%
+\contentsline {section}{\numberline {3.1}Packages}{10}{}%
+\contentsline {section}{\numberline {3.2}Contributions elsewhere}{10}{}%
+\contentsline {section}{\numberline {3.3}HPC runs}{10}{}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{11}{}%
+\contentsline {section}{\numberline {4.1}Data charecterestics}{11}{}%
+\contentsline {section}{\numberline {4.2}Baseline Machine Learning Models Pablo}{11}{}%
+\contentsline {subsection}{\numberline {4.2.1}Variable importance}{11}{}%
+\contentsline {section}{\numberline {4.3} Variations in Baseline systems}{11}{}%
+\contentsline {subsection}{\numberline {4.3.1} modifying the Test and Training split}{11}{}%
+\contentsline {subsection}{\numberline {4.3.2} input data length}{11}{}%
+\contentsline {section}{\numberline {4.4}Sues}{11}{}%
+\contentsline {chapter}{\numberline {5}Reference}{12}{}%

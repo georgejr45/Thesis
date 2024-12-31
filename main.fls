@@ -86,6 +86,11 @@ INPUT ./images/ml.png
 INPUT ./images/ml.png
 INPUT ./images/ml.png
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT ./images/PLSR.png
+INPUT ./images/PLSR.png
+INPUT ./images/PLSR.png
+INPUT ./images/PLSR.png
+INPUT ./images/PLSR.png
 INPUT main.aux
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
