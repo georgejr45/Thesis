@@ -80,7 +80,7 @@ complex metabolites which are usually assessed via techniques like LC-MS. Moreov
 The past decade has witnessed the increasing popularity of  Artificial Intelligence (AI) in different fields. However, this idea of AI has been under development since 1956, starting from the concept of “programming computers to think and reason” [18]. In other words, AI can be described as “automating intellectual tasks normally done by humans” [18]. Machine learning (ML) and Deep learning (DL) are the methods that fall under the realm of AI [18][19]. 
 Nowadays, there are different ML algorithms in use, in which the most popular ones include Partial Least Square Regression (PLSR), Random Forest (RF) and Convolutional Neural Network (CNN) [20][18]. PLSR is a linear and most simple ML approach. It uses a straight line to solve the regression problem in the high dimensional data [18]. On the other hand,  Random forest is a non-linear approach in ML that is primarily used for classification. It can also 
 be used for regression tasks and can be represented as a decision tree with a series of nodes starting from a root node. The terminal node will predict the class of data [18]. The Convolutional neural networks are a specialized type of neural network which are mainly used in the field of image processing [21]. A recent study of mycorrhizal fungal diversity experiment and  trait variation in temperate forests  conducted by Pablo Castro Sanchez-Bermejo, 
-demonstrated the application of CNN in predicting the leaf trait values from NIRS data, achieving superior results [15]. This outcome strongly suggests the potential of CNN not only for classification tasks such as image processing but also for regression tasks. In another project, CNN was used to predict gene expression status on the basis of sequence of gene transcription start regions. The CNN model had achieved roughly 80% accuracy [22]. 
+demonstrated the application of CNN in predicting the leaf trait values from NIRS data, achieving superior results [15]. This outcome strongly suggests the potential of CNN not only for classification tasks such as image processing but also for regression tasks. In another project, CNN was used to predict gene expression status on the basis of sequence of gene transcription start regions. The CNN model had achieved roughly 80\% accuracy [22]. 
 These studies highlight the growing versatility of CNN models. \\
 
 
@@ -142,7 +142,7 @@ Understanding how genotype and environment influences on phenotypes is crucial f
 way for modern molecular plant breeding [23]. Different ML approaches such as Partial Least Square Regression (PLSR), Random Forest (RF) and Convolutional Neural Networks (CNN)  can be employed to make predictions by leveraging patterns in the data. \\
 
 \subsection{Partial Least Square Regression (PLSR)}
-In machine learning, Partial Least Square Regression (PLSR) is a statistical method which combines the benefits of Principal Component Analysis (PCA) and linear regression to predict the outcomes [26]. PLSR uses the advantage of PCA for dimensionality reduction and the regression for prediction [27].
+In machine learning, Partial Least Square Regression (PLSR) is a statistical method which combines the benefits of Principal Component Analysis (PCA) and linear regression to predict the outcomes [26]. It is a linear regression model which is arguably the simplest machine learning algorithm that uses a straight line to solve a regression problem [18]. PLSR uses the advantage of PCA for dimensionality reduction and the regression for prediction [27].
 This fitting of linear regression between two data matrices has a wide range of application in plant biology, especially in crop breeding, ecosystem monitoring and predicting plant traits from its spectral data [25]. In PLSR, the predictor variable (often denoted as X) refers to a set of independent 
 variables or features that are used to predict response variable (y). The predictor variables are typically high dimensional and often include multiple correlated features. The response variable (y) represents the outcome or dependent variable. PLSR works by identifying the latent variables, which 
 summarizes the covariance between predictor and response variables. This latent variable captures the most relevant information from the predictors (X) in relation to response (y) variables, allowing the model to predict y more effectively [25][27][28]. \\
@@ -153,6 +153,10 @@ summarizes the covariance between predictor and response variables. This latent 
     \caption{A comparison of PCA (A) and PLS (B). In the PCA plot, the x-axis represents a combination of variables (e.g., three metabolites) that captures the greatest variation in the dataset, independent of group classification. In contrast, PLS focuses on explaining the relationship with an explanatory variable, such as "Treatment" in this example}
     \label{Figure 2}
 \end{figure}
+
+Principal Component Analysis (PCA) uses the principal components as explanatory variables to capture 90\% of variance in predictor variables (X), ensuring dimensionality reduction while retaining most of the data’s variability. 
+Partial Least Squares (PLS) prioritize relevance to both X (predictor) and y (response) variables, rather than maximising the variance in X alone (Figure 2.2) [27]. By combining the PCA with linear regression, PLSR constructs 
+the latent variable that summarizes predictor variables and maximises their relevance to the response variables. This makes PLSR particularly suitable for high dimensional datasets such as spectral data from NIRS instruments. \\
 
 \subsection{Random Forest (RF)}
 
