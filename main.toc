@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {0.1}Abstract}{1}{}%
+\contentsline {chapter}{\numberline {1}Introduction}{4}{}%
+\contentsline {chapter}{\numberline {2}Background}{8}{}%
+\contentsline {section}{\numberline {2.1}Related Work}{8}{}%
+\contentsline {section}{\numberline {2.2}Near Infrared Spectroscopy (NIRS)}{8}{}%
+\contentsline {section}{\numberline {2.3}R Programming}{8}{}%
+\contentsline {section}{\numberline {2.4}Machine Learning}{8}{}%
+\contentsline {subsection}{\numberline {2.4.1}Partial Least Square Regression (PLSR)}{10}{}%
+\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{11}{}%
+\contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{11}{}%
+\contentsline {section}{\numberline {2.5}Mass Spectrometry and Liquid Chromatography}{11}{}%
+\contentsline {chapter}{\numberline {3}Implementation}{12}{}%
+\contentsline {section}{\numberline {3.1}Packages}{12}{}%
+\contentsline {section}{\numberline {3.2}Contributions elsewhere}{12}{}%
+\contentsline {section}{\numberline {3.3}HPC runs}{12}{}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{13}{}%
+\contentsline {section}{\numberline {4.1}Data charecterestics}{13}{}%
+\contentsline {section}{\numberline {4.2}Baseline Machine Learning Models Pablo}{13}{}%
+\contentsline {subsection}{\numberline {4.2.1}Variable importance}{13}{}%
+\contentsline {section}{\numberline {4.3} Variations in Baseline systems}{13}{}%
+\contentsline {subsection}{\numberline {4.3.1} modifying the Test and Training split}{13}{}%
+\contentsline {subsection}{\numberline {4.3.2} input data length}{13}{}%
+\contentsline {section}{\numberline {4.4}Sues}{13}{}%
+\contentsline {chapter}{\numberline {5}Reference}{14}{}%
