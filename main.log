@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  1 JAN 2025 16:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  1 JAN 2025 16:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -468,28 +468,43 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
+/Users/methungeorge/Desktop/Thesis/main.tex:254: Misplaced alignment tab character &.
+l.254 29. Couronné, R., Probst, P. &
+                                      Boulesteix, AL. Random forest versus l...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-Overfull \hbox (115.43443pt too wide) in paragraph at lines 226--254
+
+Overfull \hbox (115.43443pt too wide) in paragraph at lines 226--255
 \OT1/cmr/m/n/12 Bioin-for-mat-ics, Vol-ume 38, Is-sue 4, Febru-ary 2022, Pages 1168{1170, https://doi.org/10.1093/bioinformatics/btab741. 
  []
 
 
-Overfull \hbox (118.52374pt too wide) in paragraph at lines 226--254
+Overfull \hbox (118.52374pt too wide) in paragraph at lines 226--255
 \OT1/cmr/m/n/12 plant im-prove-ment: Sta-tus and prospects. Fron-tiers in Plant Sci-ence, 8, 1302. https://doi.org/10.3389/fpls.2017.01302. 
  []
 
 
-Overfull \hbox (97.13924pt too wide) in paragraph at lines 226--254
+Overfull \hbox (97.13924pt too wide) in paragraph at lines 226--255
 \OT1/cmr/m/n/12 net-ics in Alzheimer's dis-ease. Jour-nal of Clin-i-cal Neu-ro-science, 93, 1-9. https://doi.org/10.1016/j.jocn.2022.04.017. 
  []
 
 
-Overfull \hbox (4.68927pt too wide) in paragraph at lines 226--254
+Overfull \hbox (4.68927pt too wide) in paragraph at lines 226--255
 \OT1/cmr/m/n/12 and In-tel-li-gent Lab-o-ra-tory Sys-tems, 2(1-3), 37-52. https://doi.org/10.1016/0169-7439(87)80084-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--254
+Overfull \hbox (18.57904pt too wide) in paragraph at lines 226--255
+\OT1/cmr/m/n/12 scale bench-mark ex-per-i-ment. BMC Bioin-for-mat-ics 19, 270 (2018). https://doi.org/10.1186/s12859-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--255
 
  []
 
@@ -506,15 +521,15 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2702 strings out of 474116
- 42269 string characters out of 5743682
+ 2703 strings out of 474116
+ 42277 string characters out of 5743682
  1939187 words of memory out of 5000000
- 25069 multiletter control sequences out of 15000+600000
+ 25070 multiletter control sequences out of 15000+600000
  564514 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,6n,65p,589b,231s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (17 pages, 1268470 bytes).
+Output written on main.pdf (17 pages, 1268725 bytes).
 PDF statistics:
  97 PDF objects out of 1000 (max. 8388607)
  59 compressed objects within 1 object stream
