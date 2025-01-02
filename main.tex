@@ -178,12 +178,7 @@ This fitting of linear regression between two data matrices has a wide range of 
 variables or features that are used to predict response variable (y). The predictor variables are typically high dimensional and often include multiple correlated features. The response variable (y) represents the outcome or dependent variable. PLSR works by identifying the latent variables, which 
 summarizes the covariance between predictor and response variables. This latent variable captures the most relevant information from the predictors (X) in relation to response (y) variables, allowing the model to predict y more effectively [25][27][28]. \\
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.6\textwidth]{images/PLSR.png}} 
-    \caption{A comparison of PCA (A) and PLS (B). In the PCA plot, the x-axis represents a combination of variables (e.g., three metabolites) that captures the greatest variation in the dataset, independent of group classification. In contrast, PLS focuses on explaining the relationship with an explanatory variable, such as "Treatment" in this example}
-    \label{Figure 2}
-\end{figure}
+
 
 Principal Component Analysis (PCA) uses the principal components as explanatory variables to capture 90\% of variance in predictor variables (X), ensuring dimensionality reduction while retaining most of the data’s variability. 
 Partial Least Squares (PLS) prioritize relevance to both X (predictor) and y (response) variables, rather than maximising the variance in X alone (Figure 2.2) [27]. By combining the PCA with linear regression, PLSR constructs 
