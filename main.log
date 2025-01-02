@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  2 JAN 2025 13:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  2 JAN 2025 13:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -307,46 +307,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 176--180
 
  []
 
-<images/PLSR.png, id=45, 722.7pt x 505.89pt>
-File: images/PLSR.png Graphic file (type png)
-<use images/PLSR.png>
-Package pdftex.def Info: images/PLSR.png  used on input line 183.
-(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
-/Users/methungeorge/Desktop/Thesis/main.tex:186: Extra }, or forgotten \endgroup.
-\@endfloatbox ...pagefalse \outer@nobreak \egroup 
-                                                  \color@endbox 
-l.186 \end{figure}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 183--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--200
+Underfull \hbox (badness 10000) in paragraph at lines 188--195
 
  []
 
 [10]
-<images/rf.png, id=49, 722.7pt x 505.89pt>
+<images/rf.png, id=48, 722.7pt x 505.89pt>
 File: images/rf.png Graphic file (type png)
 <use images/rf.png>
-Package pdftex.def Info: images/rf.png  used on input line 203.
+Package pdftex.def Info: images/rf.png  used on input line 198.
 (pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:206: Extra }, or forgotten \endgroup.
+/Users/methungeorge/Desktop/Thesis/main.tex:201: Extra }, or forgotten \endgroup.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.206 \end{figure}
+l.201 \end{figure}
                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -354,18 +335,18 @@ you forgot something else, as in `\hbox{$x}'. In such cases
 the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
-[11 <./images/PLSR.png> <./images/rf.png>] [12]
+[11 <./images/rf.png>]
 Chapter 3.
-[13
+[12
 
 ]
 Chapter 4.
-[14
+[13
 
 ]
 Chapter 5.
-/Users/methungeorge/Desktop/Thesis/main.tex:241: Misplaced alignment tab character &.
-l.241 ...ni, M. M., Zhang, Q., Muhae-Ud-Din, G., &
+/Users/methungeorge/Desktop/Thesis/main.tex:236: Misplaced alignment tab character &.
+l.236 ...ni, M. M., Zhang, Q., Muhae-Ud-Din, G., &
                                                    Wang, Y. (2023). High-thr...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -374,8 +355,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:242: Misplaced alignment tab character &.
-l.242 4. Lane, H. M., &
+/Users/methungeorge/Desktop/Thesis/main.tex:237: Misplaced alignment tab character &.
+l.237 4. Lane, H. M., &
                         Murray, S. C. (2021). High throughput can produce be...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -384,8 +365,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:243: Misplaced alignment tab character &.
-l.243 ...X., Kang, M., Hu, B.-G., Heuvelink, E., &
+/Users/methungeorge/Desktop/Thesis/main.tex:238: Misplaced alignment tab character &.
+l.238 ...X., Kang, M., Hu, B.-G., Heuvelink, E., &
                                                    Marcelis, L. F. M. (2023)...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -394,8 +375,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:248: Misplaced alignment tab character &.
-l.248 ...ohra, A., Pandey, A. K., Pandey, M. K., &
+/Users/methungeorge/Desktop/Thesis/main.tex:243: Misplaced alignment tab character &.
+l.243 ...ohra, A., Pandey, A. K., Pandey, M. K., &
                                                    Kumar, A. (2017). Metabol...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -404,8 +385,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:249: Misplaced alignment tab character &.
-l.249 ...ez-Domínguez, R., García-Barrera, T., &
+/Users/methungeorge/Desktop/Thesis/main.tex:244: Misplaced alignment tab character &.
+l.244 ...ez-Domínguez, R., García-Barrera, T., &
                                                    Gómez-Ariza, J. L. (2014...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -414,8 +395,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:250: Misplaced alignment tab character &.
-l.250 ..., Phan, A. N., Sudhakar, M., Raman, K., &
+/Users/methungeorge/Desktop/Thesis/main.tex:245: Misplaced alignment tab character &.
+l.245 ..., Phan, A. N., Sudhakar, M., Raman, K., &
                                                    Blank, L. M. (2020). Mach...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -424,8 +405,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:251: Misplaced alignment tab character &.
-l.251 ...t, D., Rouan, L., Vile, D., Violle, C., &
+/Users/methungeorge/Desktop/Thesis/main.tex:246: Misplaced alignment tab character &.
+l.246 ...t, D., Rouan, L., Vile, D., Violle, C., &
                                                    Vasseur, F. (2024). NIRSp...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -434,8 +415,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:253: Misplaced alignment tab character &.
-l.253 ...Eisenhauer, N., Bruelheide, H., Ma, Z., &
+/Users/methungeorge/Desktop/Thesis/main.tex:248: Misplaced alignment tab character &.
+l.248 ...Eisenhauer, N., Bruelheide, H., Ma, Z., &
                                                    Haider, S. (2024). Tree a...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -444,8 +425,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:257: Misplaced alignment tab character &.
-l.257 19. Pichler, M., &
+/Users/methungeorge/Desktop/Thesis/main.tex:252: Misplaced alignment tab character &.
+l.252 19. Pichler, M., &
                          Hartig, F. (2022). Machine learning and deep learni...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -454,8 +435,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:258: Misplaced alignment tab character &.
-l.258 ...i, T., Kovach, K. R., Liu, H., Luo, M., &
+/Users/methungeorge/Desktop/Thesis/main.tex:253: Misplaced alignment tab character &.
+l.253 ...i, T., Kovach, K. R., Liu, H., Luo, M., &
                                                    Chen, M. (2024). Unveilin...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -464,8 +445,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:264: Misplaced alignment tab character &.
-l.264 ...heng, J., Miao, M., Wang, L., Yang, Z., &
+/Users/methungeorge/Desktop/Thesis/main.tex:259: Misplaced alignment tab character &.
+l.259 ...heng, J., Miao, M., Wang, L., Yang, Z., &
                                                    Huang, H. (2022). A revie...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -474,8 +455,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:265: Misplaced alignment tab character &.
-l.265 27. Dormann, C. F., Elith, J., Bacher, S., &
+/Users/methungeorge/Desktop/Thesis/main.tex:260: Misplaced alignment tab character &.
+l.260 27. Dormann, C. F., Elith, J., Bacher, S., &
                                                    Buchmann, C. M. (2013). C...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -484,8 +465,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:266: Misplaced alignment tab character &.
-l.266 28. Wold, S., Esbensen, K., &
+/Users/methungeorge/Desktop/Thesis/main.tex:261: Misplaced alignment tab character &.
+l.261 28. Wold, S., Esbensen, K., &
                                     Geladi, P. (1987). Principal component a...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -494,8 +475,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:267: Misplaced alignment tab character &.
-l.267 29. Couronné, R., Probst, P. &
+/Users/methungeorge/Desktop/Thesis/main.tex:262: Misplaced alignment tab character &.
+l.262 29. Couronné, R., Probst, P. &
                                       Boulesteix, AL. Random forest versus l...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -504,8 +485,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/methungeorge/Desktop/Thesis/main.tex:268: Misplaced alignment tab character &.
-l.268 30. Schonlau, M., &
+/Users/methungeorge/Desktop/Thesis/main.tex:263: Misplaced alignment tab character &.
+l.263 30. Schonlau, M., &
                           Zou, R. Y. (2020). The random forest algorithm for...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -515,43 +496,43 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
-Overfull \hbox (115.43443pt too wide) in paragraph at lines 239--270
+Overfull \hbox (115.43443pt too wide) in paragraph at lines 234--265
 \OT1/cmr/m/n/12 Bioin-for-mat-ics, Vol-ume 38, Is-sue 4, Febru-ary 2022, Pages 1168{1170, https://doi.org/10.1093/bioinformatics/btab741. 
  []
 
 
-Overfull \hbox (118.52374pt too wide) in paragraph at lines 239--270
+Overfull \hbox (118.52374pt too wide) in paragraph at lines 234--265
 \OT1/cmr/m/n/12 plant im-prove-ment: Sta-tus and prospects. Fron-tiers in Plant Sci-ence, 8, 1302. https://doi.org/10.3389/fpls.2017.01302. 
  []
 
 
-Overfull \hbox (97.13924pt too wide) in paragraph at lines 239--270
+Overfull \hbox (97.13924pt too wide) in paragraph at lines 234--265
 \OT1/cmr/m/n/12 net-ics in Alzheimer's dis-ease. Jour-nal of Clin-i-cal Neu-ro-science, 93, 1-9. https://doi.org/10.1016/j.jocn.2022.04.017. 
  []
 
 
-Overfull \hbox (4.68927pt too wide) in paragraph at lines 239--270
+Overfull \hbox (4.68927pt too wide) in paragraph at lines 234--265
 \OT1/cmr/m/n/12 and In-tel-li-gent Lab-o-ra-tory Sys-tems, 2(1-3), 37-52. https://doi.org/10.1016/0169-7439(87)80084-
  []
 
 
-Overfull \hbox (18.57904pt too wide) in paragraph at lines 239--270
+Overfull \hbox (18.57904pt too wide) in paragraph at lines 234--265
 \OT1/cmr/m/n/12 scale bench-mark ex-per-i-ment. BMC Bioin-for-mat-ics 19, 270 (2018). https://doi.org/10.1186/s12859-
  []
 
 
-Overfull \hbox (67.36871pt too wide) in paragraph at lines 239--270
+Overfull \hbox (67.36871pt too wide) in paragraph at lines 234--265
 \OT1/cmr/m/n/12 pollen con-cen-tra-tions in Tulsa, OK. En-vi-ron-men-tal Health In-sights. 2017;11. doi:10.1177/1178630217699399. 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--270
+Underfull \hbox (badness 10000) in paragraph at lines 234--265
 
  []
 
-[15
+[14
 
-] [16] [17] (./main.aux)
+] [15] [16] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -562,18 +543,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 2711 strings out of 474116
- 42426 string characters out of 5743682
- 1939187 words of memory out of 5000000
- 25078 multiletter control sequences out of 15000+600000
+ 2703 strings out of 474116
+ 42263 string characters out of 5743682
+ 1940187 words of memory out of 5000000
+ 25070 multiletter control sequences out of 15000+600000
  564514 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,6n,65p,589b,231s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (18 pages, 1778292 bytes).
+Output written on main.pdf (17 pages, 1184401 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 59 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
