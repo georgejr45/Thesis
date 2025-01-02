@@ -3,12 +3,14 @@
 \contentsline {chapter}{\numberline {2}Background}{8}{}%
 \contentsline {section}{\numberline {2.1}Related Work}{8}{}%
 \contentsline {section}{\numberline {2.2}Near Infrared Spectroscopy (NIRS)}{8}{}%
-\contentsline {section}{\numberline {2.3}R Programming}{8}{}%
-\contentsline {section}{\numberline {2.4}Machine Learning}{8}{}%
-\contentsline {subsection}{\numberline {2.4.1}Partial Least Square Regression (PLSR)}{10}{}%
-\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{11}{}%
-\contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{11}{}%
-\contentsline {section}{\numberline {2.5}Mass Spectrometry and Liquid Chromatography}{11}{}%
+\contentsline {section}{\numberline {2.3}Liquid Chromatography Mass Spectrometry}{8}{}%
+\contentsline {section}{\numberline {2.4}R Programming}{8}{}%
+\contentsline {section}{\numberline {2.5}Machine Learning}{8}{}%
+\contentsline {section}{\numberline {2.6}High Perfomance Computing}{8}{}%
+\contentsline {subsection}{\numberline {2.6.1}Partial Least Square Regression (PLSR)}{10}{}%
+\contentsline {subsection}{\numberline {2.6.2}Random Forest (RF)}{10}{}%
+\contentsline {subsection}{\numberline {2.6.3}Convolutional Neural Network (CNN)}{11}{}%
+\contentsline {section}{\numberline {2.7}Mass Spectrometry and Liquid Chromatography}{11}{}%
 \contentsline {chapter}{\numberline {3}Implementation}{12}{}%
 \contentsline {section}{\numberline {3.1}Packages}{12}{}%
 \contentsline {section}{\numberline {3.2}Contributions elsewhere}{12}{}%
