@@ -6,7 +6,9 @@
 \contentsline {section}{\numberline {2.2}Liquid Chromatography Mass Spectrometry}{11}{section.2.2}%
 \contentsline {section}{\numberline {2.3}R Programming}{12}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Machine Learning}{13}{section.2.4}%
-\contentsline {paragraph}{Supervised Learning}{13}{section*.3}%
+\contentsline {paragraph}{\textcolor {darkblue}{Supervised Learning}}{13}{section*.3}%
+\contentsline {paragraph}{\textcolor {darkblue}{Unsupervised Learning}}{14}{section*.4}%
+\contentsline {paragraph}{\textcolor {darkblue}{Semi-supervised and Reinforcement Learning}}{14}{section*.5}%
 \contentsline {subsection}{\numberline {2.4.1}Partial Least Square Regression (PLSR)}{15}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{16}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{17}{subsection.2.4.3}%
