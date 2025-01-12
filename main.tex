@@ -18,6 +18,41 @@
 \usepackage{fontspec}  % Only works with XeLaTeX or LuaLaTeX
 \setmainfont{Arial}  % Set Arial as the main font
 
+% For the R codes
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define R style
+\lstdefinelanguage{R}{
+    keywords={if, else, repeat, while, function, for, in, next, break},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywords={TRUE, FALSE, NULL, NA},
+    ndkeywordstyle=\color{darkgray}\bfseries,
+    comment=[l]{\#},
+    commentstyle=\color{green}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    sensitive=true
+}
+
+\lstset{
+    language=R,
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=single,
+    captionpos=b,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{green}\itshape,
+    stringstyle=\color{red}\ttfamily,
+    backgroundcolor=\color{lightgray!10},
+    morekeywords={},
+}
+
+
 
 \begin{document}
 
@@ -378,6 +413,34 @@ This function processes ASD files, binary outputs from the ASD FieldSpec instrum
     \end{itemize}
     \item \textbf{Dependencies:} Utilizes \texttt{read.asd} and \texttt{extract.metadata} from the FieldSpectra package for reading and extracting data, and the \texttt{SummarizedExperiment} library from Bioconductor.
 \end{itemize}
+
+\textbf{Pseudocode}:
+Function read_summarizedexperiment_asd(path):
+    Input: path to a single .asd file or directory containing multiple .asd files
+    Output: SummarizedExperiment object
+    
+    Step 1: Check if the path is a file or directory
+    Step 2: If directory, list all .asd files in the directory
+    Step 3: For each .asd file:
+        a. Use `read.asd` to extract spectral data
+        b. Use `extract.metadata` to obtain sample metadata
+    Step 4: Combine spectral data and metadata into matrices
+    Step 5: Create SummarizedExperiment object with:
+        - Assays: Spectral data matrix (rows: wavelengths, columns: samples)
+        - ColData: DataFrame of sample metadata
+        - RowData: DataFrame of wavelength information
+    Step 6: Return the SummarizedExperiment object
+End Function
+
+\textbf{Example usage:}
+
+\begin{quote}
+\texttt{path <- "path/to/your/asd/files"} \\
+\texttt{se <- read\_summarizedexperiment\_asd(path)} \\
+\texttt{print(se)}
+\end{quote}
+
+
 
 
 
