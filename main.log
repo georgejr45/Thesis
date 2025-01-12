@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  12 JAN 2025 15:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  12 JAN 2025 15:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -224,54 +224,369 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty (/usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/local/texlive/2024/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2024-02-20 L3 programming layer (loader) 
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count279
+\lst@gtempboxa=\box51
+\lst@token=\toks19
+\lst@length=\count280
+\lst@currlwidth=\dimen155
+\lst@column=\count281
+\lst@pos=\count282
+\lst@lostspace=\dimen156
+\lst@width=\dimen157
+\lst@newlines=\count283
+\lst@lineno=\count284
+\lst@maxwidth=\dimen158
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
+File: lstpatch.sty 2024/02/21 1.10 (Carsten Heinz)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/02/21 1.10 (Carsten Heinz)
+\c@lstnumber=\count285
+\lst@skipnumbers=\count286
+\lst@framebox=\box52
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2024/02/21 1.10 listings configuration
+))
+Package: listings 2024/02/21 1.10 (Carsten Heinz)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count279
-\l__pdf_internal_box=\box51
+\l__color_backend_stack_int=\count287
+\l__pdf_internal_box=\box53
+) (./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count288
+\scratchdimen=\dimen159
+\scratchbox=\box54
+\nofMPsegments=\count289
+\nofMParguments=\count290
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count291
+\MPscratchDim=\dimen160
+\MPnumerator=\count292
+\makeMPintoPDFobject=\count293
+\everyMPtoPDFconversion=\toks21
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package: xparse 2024-02-18 L3 Experimental document command parser
-)
-Package: fontspec 2024/02/13 v2.9a Font selection for XeLaTeX and LuaLaTeX
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 56.
+(./main.out) (./main.out)
+\@outlinefile=\write3
+\openout3 = `main.out'.
+
+\c@lstlisting=\count294
+<images/thd.png, id=96, 381.425pt x 381.425pt>
+File: images/thd.png Graphic file (type png)
+<use images/thd.png>
+Package pdftex.def Info: images/thd.png  used on input line 63.
+(pdftex.def)             Requested size: 56.9055pt x 56.90282pt.
+<images/ipb.jpg, id=97, 401.5pt x 401.5pt>
+File: images/ipb.jpg Graphic file (type jpg)
+<use images/ipb.jpg>
+Package pdftex.def Info: images/ipb.jpg  used on input line 65.
+(pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
+ [1
+
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./images/thd.png> <./images/ipb.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
 
 
-/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty:95: Fatal Package fontspec Error: The fontspec package requires either XeTeX or
-(fontspec)                      LuaTeX.
-(fontspec)                      
-(fontspec)                      You must change your typesetting engine to,
-(fontspec)                      e.g., "xelatex" or "lualatex" instead of
-(fontspec)                      "latex" or "pdflatex".
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
-Type <return> to continue.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.102 \newpage
+               [1] [2] (./main.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1.
+
+
+./main.toc:3: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.95 \msg_fatal:nn {fontspec} {cannot-use-pdftex}
-                                                 
-
-LaTeX does not know anything more about this error, sorry.
-
-Try typing <return> to proceed.
-If that doesn't work, type X <return> to quit.
-
-This is a fatal error: LaTeX will abort.
+l.3 ...Infrared Spectroscopy (NIRS)}{8}{section.2}
+                                                  %
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
+./main.toc:3: LaTeX Error: Something's wrong--perhaps a missing \item.
 
-/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty:95: Emergency stop.
-<read *> 
-         
-l.95 \msg_fatal:nn {fontspec} {cannot-use-pdftex}
-                                                 
-*** (cannot \read from terminal in nonstop modes)
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 ...Infrared Spectroscopy (NIRS)}{8}{section.2}
+                                                  %
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
- 
-Here is how much of TeX's memory you used:
- 9279 strings out of 474116
- 145430 string characters out of 5743682
- 1925187 words of memory out of 5000000
- 31573 multiletter control sequences out of 15000+600000
- 558367 words of font info for 37 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 79i,0n,93p,290b,53s stack positions out of 10000i,1000n,20000p,200000b,200000s
-/usr/local/texlive/2024/texmf-dist/tex/latex/fontspec/fontspec.sty:95:  ==> Fatal error occurred, no output PDF file produced!
+)
+\tf@toc=\write4
+\openout4 = `main.toc'.
+
+ [3]
+/Users/methungeorge/Desktop/Thesis/main.tex:152: Undefined control sequence.
+l.152 \chapter
+              {Introduction}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--162
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 164--168
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--175
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--181
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 183--187
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--194
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 204--206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
+
+ []
+
+/Users/methungeorge/Desktop/Thesis/main.tex:213: Undefined control sequence.
+l.213 \chapter
+              {Background}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--220
+
+ []
+
+[7]
+<images/NIRS_spectra.png, id=161, 1532.72626pt x 947.54pt>
+File: images/NIRS_spectra.png Graphic file (type png)
+<use images/NIRS_spectra.png>
+Package pdftex.def Info: images/NIRS_spectra.png  used on input line 223.
+(pdftex.def)             Requested size: 290.22107pt x 179.41275pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--232
+
+ []
+
+[8 <./images/NIRS_spectra.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 233--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--240
+
+ []
+
+
+/Users/methungeorge/Desktop/Thesis/main.tex:242: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.242 T
+       he ASD FieldSpec4 and SpectraVista Corporation (SVC) HR-1024i are two...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--249
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--249
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--249
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 252--256
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--260
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 263--268
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 269--273
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 288--292
+
+ []
+
+[11{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 294--300
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--304
+
+ []
+
+<images/ml.png, id=184, 722.7pt x 505.89pt>
+File: images/ml.png Graphic file (typ

@@ -15,8 +15,7 @@
 \setcounter{tocdepth}{3} % Includes up to subsubsections in the TOC
 \usepackage{xcolor}
 \definecolor{darkblue}{RGB}{0,0,139} % Dark blue color
-\usepackage{fontspec}  % Only works with XeLaTeX or LuaLaTeX
-\setmainfont{Arial}  % Set Arial as the main font
+
 
 % For the R codes
 \usepackage{listings}
@@ -397,11 +396,54 @@ In addition, the ASD FieldSpec 4 generates binary output files. To process these
 The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Near-Infrared Spectroscopy (NIRS) data. This name was chosen to align with its functionality and field of usage, focusing on plant metabolic phenotype analysis. The toolbox is publicly available on GitHub and can be accessed at the following link: \href{https://github.com/georgejr45/nearspectRa}{GitHub Repository} \\
 
 
+\subsection{Functions of nearspectRa}
+\textbf{Function 1}:\\
+read_summarizedexperiment_asd \\
+\textbf{Purpose}: \\
+This function processes ASD files, binary outputs from the ASD FieldSpec instrument, and creates a SummarizedExperiment object, a structured data container used in the Bioconductor ecosystem. This enables effortless downstream analysis by integrating spectral data with metadata. \\
+\textbf{Key Features}: \\
+\begin{itemize}
+    \item \textbf{Input:} A path to either a single .asd file or a directory containing multiple .asd files.
+    \item \textbf{Output:} A SummarizedExperiment object with: 
+    \begin{itemize}
+        \item \textbf{Assays:} Reflectance data as a matrix where rows are wavelength and columns are samples.
+        \item \textbf{colData:} Sample metadata.
+        \item \textbf{rowData:} Wavelength metadata.
+    \end{itemize}
+    \item \textbf{Dependencies:} Utilizes \texttt{read.asd} and \texttt{extract.metadata} from the FieldSpectra package for reading and extracting data, and the \texttt{SummarizedExperiment} library from Bioconductor.
+\end{itemize}
+
+\textbf{Pseudocode}:
+
 \textbf{Function} \texttt{read\_summarizedexperiment\_asd(path)}:  
 \hspace*{2em}\textbf{Input:} Path to a single \texttt{.asd} file or a directory containing multiple \texttt{.asd} files  
 \hspace*{2em}\textbf{Output:} A \texttt{SummarizedExperiment} object  
 
+\begin{enumerate}
+    \item Check if the path is a file or directory.
+    \item If it is a directory, list all \texttt{.asd} files in the directory.
+    \item For each \texttt{.asd} file:
+    \begin{enumerate}
+        \item Use \texttt{read.asd} to extract spectral data.
+        \item Use \texttt{extract.metadata} to obtain sample metadata.
+    \end{enumerate}
+    \item Combine spectral data and metadata into matrices.
+    \item Create a \texttt{SummarizedExperiment} object with:
+    \begin{itemize}
+        \item \textbf{Assays:} Spectral data matrix (rows: wavelengths, columns: samples).
+        \item \textbf{ColData:} \texttt{DataFrame} of sample metadata.
+        \item \textbf{RowData:} \texttt{DataFrame} of wavelength information.
+    \end{itemize}
+    \item Return the \texttt{SummarizedExperiment} object.
+\end{enumerate}
 
+\textbf{Example Usage:}
+
+\begin{quote}
+\texttt{path <- "path/to/your/asd/files"} \\
+\texttt{se <- read\_summarizedexperiment\_asd(path)} \\
+\texttt{print(se)}
+\end{quote}
 
 
 
