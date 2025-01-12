@@ -362,18 +362,19 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
 \subsection{Functions of nearspectRa}
 \textbf{Function 1}: read_summarizedexperiment_asd() \\
 \textbf{Purpose}: \\
-This function processes ASD files, binary outputs from the ASD FieldSpec instrument and creates a SummarizedExperiment object, a structured data container used in the Bioconductor ecosystem. This enables effortless downstream analysis by integrating spectral data with metadata. \\
+This function processes ASD files, binary outputs from the ASD FieldSpec instrument, and creates a SummarizedExperiment object, a structured data container used in the Bioconductor ecosystem. This enables effortless downstream analysis by integrating spectral data with metadata. \\
 \textbf{Key Features}: \\
 \begin{itemize}
-    \item Input: A path to either a single .asd file or a directory containing multiple .asd files.
-    \item Output: A SummarizedExperiment object with: 
+    \item \textbf{Input:} A path to either a single .asd file or a directory containing multiple .asd files.
+    \item \textbf{Output:} A SummarizedExperiment object with: 
     \begin{itemize}
-        \item Assays: Reflectance data as a matrix where rows are wavelength and columns are samples.
-        \item colData: sample metadata.
-        \item rowData: wavelength metadata.
+        \item \textbf{Assays:} Reflectance data as a matrix where rows are wavelength and columns are samples.
+        \item \textbf{colData:} Sample metadata.
+        \item \textbf{rowData:} Wavelength metadata.
     \end{itemize}
-    \item Dependencies: Utilizes read.asd and extract.metadata from the FieldSpectra package for reading and extracting data. \\ SummarizedExperiment library from Bioconductor.
+    \item \textbf{Dependencies:} Utilizes \texttt{read.asd} and \texttt{extract.metadata} from the FieldSpectra package for reading and extracting data, and the \texttt{SummarizedExperiment} library from Bioconductor.
 \end{itemize}
+
 
 
 
