@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass[12pt,a4paper]{article}
 \usepackage{graphicx} % For including images
 \usepackage{tocloft} % Optional: Customize the table of contents
 \usepackage[a4paper, margin=2cm]{geometry} % Adjust margin 
@@ -15,6 +15,9 @@
 \setcounter{tocdepth}{3} % Includes up to subsubsections in the TOC
 \usepackage{xcolor}
 \definecolor{darkblue}{RGB}{0,0,139} % Dark blue color
+\usepackage{fontspec}  % Only works with XeLaTeX or LuaLaTeX
+\setmainfont{Arial}  % Set Arial as the main font
+
 
 \begin{document}
 
@@ -360,7 +363,7 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
 
 
 \subsection{Functions of nearspectRa}
-\textbf{Function 1}: \normalfont{read_summarizedexperiment_asd()} \\
+\textbf{Function 1}: \texttt{read\_summarizedexperiment\_asd()} \\
 \textbf{Purpose}: \\
 This function processes ASD files, binary outputs from the ASD FieldSpec instrument, and creates a SummarizedExperiment object, a structured data container used in the Bioconductor ecosystem. This enables effortless downstream analysis by integrating spectral data with metadata. \\
 \textbf{Key Features}: \\
