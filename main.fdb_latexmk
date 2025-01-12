@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1736690515.03495 "/Users/methungeorge/Desktop/Thesis/main.tex" "main.pdf" "main" 1736690515.66221 2
-  "/Users/methungeorge/Desktop/Thesis/main.tex" 1736690514.2087 64254 07bdf318dfae6a380e774e792a57912b ""
+["pdflatex"] 1736690526.3191 "/Users/methungeorge/Desktop/Thesis/main.tex" "main.pdf" "main" 1736690526.93857 2
+  "/Users/methungeorge/Desktop/Thesis/main.tex" 1736690525.32033 64254 07bdf318dfae6a380e774e792a57912b ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -53,8 +53,8 @@
   "/usr/local/texlive/2024/texmf-dist/web2c/texmf.cnf" 1708706663 41649 5d6ae549fbbcb850a863f69aa41f3d10 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1724075937 8221413 6ce4e6fdfa3239229da8ce37c30c377b ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "main.aux" 1736690515.03415 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "main.tex" 1736690514.2087 64254 07bdf318dfae6a380e774e792a57912b ""
+  "main.aux" 1736690526.3183 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "main.tex" 1736690525.32033 64254 07bdf318dfae6a380e774e792a57912b ""
   (generated)
   "main.aux"
   "main.log"
