@@ -169,7 +169,7 @@ extrapolation studies were conducted on PLSR and RF to assess the robustness and
 \chapter{Background}
 
 \section{Near Infrared Spectroscopy (NIRS)}
-Near infrared spectroscopy (NIRS) is a non-invasive measurement technique that uses light in the near infrared region to analyse a sample [35][13]. Infrared (IR) is a form of electromagnetic radiation that interacts with samples through absorption or reflection. The NIRS is widely used in plant research due to its ability in predicting sample structure and traits by analysing the spectral patterns. The analysis relies on how the sample absorbs or reflects light at various wavelengths. 
+Near infrared spectroscopy (NIRS) is a non-invasive measurement technique that uses light in the near infrared region to analyse a sample [35,13]. Infrared (IR) is a form of electromagnetic radiation that interacts with samples through absorption or reflection. The NIRS is widely used in plant research due to its ability in predicting sample structure and traits by analysing the spectral patterns. The analysis relies on how the sample absorbs or reflects light at various wavelengths. 
 Infrared radiation is classified into three categories based on wavelength: (1) Near Infrared (NIR), ranging from 780 to 2500 nanometers (nm), (2) Mid Infrared (MIR), ranging from 2500 to 25,000 nm, and (3) Far Infrared (FIR), ranging from 25,000 to 1,000,000 nm [35]. When a substance such as plant leaf is exposed to NIR light, the molecular bonds in the infrared range will interact with the light thereby causing absorption or reflection of light by the sample. The light transmitted 
 or reflected is then measured to generate the NIR spectrum. This spectrum provides a detailed representation of the molecular composition of the substance and the peaks in the spectrum corresponding to different vibrational modes of different chemical bonds. This occurs due to the change in the vibrational or rotational state of molecules or transition between their energy levels [35,13]. The group which is the most dominant in absorbing the NIR are hydrogen-containing groups such as 
 C-H, O-H and N-H while other groups like C=C and C=O absorbs light in weaker intensities. These groups are key components in organic substances and their absorption wavelengths and intensities differ depending on the chemical composition of the substance [35]. \\ 
@@ -219,8 +219,8 @@ during the elution process allows for the separation of polar and nonpolar compo
 R is an open-source and free software developed by professors Robert Gentleman from the University of Waterloo and Ross Ihaka from University of Auckland as a programming language to teach statistics [37]. This free programming language 
 is widely used for statistical analysis, data visualization and graphical output [38]. Quoting the words of Ross Ihaka, “R is a computer language and run-time environment which can be used to carry out statistical (or other quantitative) computations” [37]. 
 The name “R” itself comes from the shared first letters of both authors and being the successor of “S” language [37]. The strength of R is its extensive add-on packages which helps to analyse and visualize complex data. Even though R primarily has a command 
-line interface, multiple third party graphical user interfaces such as Rstudio, Jupyter are available for better user friendly experience [37][38]. R is a versatile software suited for data manipulation, computational and graphical representation [39]. The GNU General 
-Public License of R offers users significant freedom, including the ability to use, modify and distribute the software making it a favourite programming language for researchers across all the fields [37][39]. \\
+line interface, multiple third party graphical user interfaces such as Rstudio, Jupyter are available for better user friendly experience [37,38]. R is a versatile software suited for data manipulation, computational and graphical representation [39]. The GNU General 
+Public License of R offers users significant freedom, including the ability to use, modify and distribute the software making it a favourite programming language for researchers across all the fields [37,39]. \\
 
 R is often associated with statistics creating a versatile environment that incorporates many traditional and modern statistical techniques [39]. Some of these techniques are part of base R setup while others are available through additional packages. R offers a greater flexibility and control over analytical 
 processes by step-by-step analysis with intermediate results saved as objects. This allows users to interact with and refine results using additional R functions [39].
@@ -237,12 +237,12 @@ forums like Stack Overflow, allowing innovation and collaboration among users wo
     \item Additional functionality through various packages.
 \end{itemize}
 
-R is a powerful tool for statistical computing, this along with high quality visualization capabilities provides a robust environment for machine learning (ML) and deep learning (DL) [42][8]. The availability of a wide range of supporting packages and libraries makes R a powerful tool for both traditional ML methods and modern DL techniques [42]. There are various packages available to perform ML and DL in R, some of them include caret, randomForest, keras and tensorflow. These packages contain the algorithm for different  ML and DL models. This project involves the implementation of various ML and DL models using the R programming language. \\
+R is a powerful tool for statistical computing, this along with high quality visualization capabilities provides a robust environment for machine learning (ML) and deep learning (DL) [42,8]. The availability of a wide range of supporting packages and libraries makes R a powerful tool for both traditional ML methods and modern DL techniques [42]. There are various packages available to perform ML and DL in R, some of them include caret, randomForest, keras and tensorflow. These packages contain the algorithm for different  ML and DL models. This project involves the implementation of various ML and DL models using the R programming language. \\
 
 \section{Machine Learning}
 
-Machine learning (ML) as the name indicates is the field of computer science which applies mathematical models and algorithms to enable the system to learn and make predictions without being programmed explicitly [18][19]. In contrast to classical programming where someone explicitly programmes an algorithm to execute predefined tasks,
-ML uses a subset of (training) data to learn patterns and relationships within the data to create an algorithm which can generalize to unseen data[18]. This versatility and flexibility enables ML methods to improve performance over time, leading to advanced data driven decision making [23][18]. As a subgroup of Artificial intelligence (AI)
+Machine learning (ML) as the name indicates is the field of computer science which applies mathematical models and algorithms to enable the system to learn and make predictions without being programmed explicitly [18,19]. In contrast to classical programming where someone explicitly programmes an algorithm to execute predefined tasks,
+ML uses a subset of (training) data to learn patterns and relationships within the data to create an algorithm which can generalize to unseen data[18]. This versatility and flexibility enables ML methods to improve performance over time, leading to advanced data driven decision making [23,18]. As a subgroup of Artificial intelligence (AI)
 is often simply represented as a 3 layer model which includes an inputlayer that receives the data, a hidden second layer which processes the data according to the mathematical backend of the model and finally the third output layer that outputs the prediction [21]. The hidden layer which does the linear regression or classification differs 
 according to the ML model in use and these are often compared to a single human neuron, where dendrite represents input layer, cell body corresponds to hidden layer, and axon functions as output layer [21]. ML employs four primary learning methods namely, supervised, unsupervised, semi-supervised and reinforcement learning [18]. \\
 
@@ -251,11 +251,11 @@ Supervised learning is a ML approach that aims to predict a known output  based 
 For instance, handwriting recognition or object classification (example, distinguishing an elephant and tiger). These tasks are easily done by humans and supervised learning strives to replicate 
 or enhance this performance [18]. Another example would be in medicine where supervised ML identifies patterns in the electrocardiogram (ECG) which is an easy job for a trained cardiologist. 
 These classification tasks from supervised learning are achieved through training an algorithm on labeled datasets containing ECG features (heart rate, rhythm and waveform shape) and their corresponding diagnosis. 
-By mapping these features (X) to diagnostic outcomes (Y), the algorithm learns the function f(X) to accurately predict for new unseen ECG data [18][24]. Another common application of supervised learning is in regression and classification tasks [18]. 
-Regression focuses on predicting continues numerical values such as LC-MS values from NIRS data and test scores. In contrast, classification predicts which category does the given instance belong such as elephant or tiger as seen in the previous example [23][24]. \\
+By mapping these features (X) to diagnostic outcomes (Y), the algorithm learns the function f(X) to accurately predict for new unseen ECG data [18,24]. Another common application of supervised learning is in regression and classification tasks [18]. 
+Regression focuses on predicting continues numerical values such as LC-MS values from NIRS data and test scores. In contrast, classification predicts which category does the given instance belong such as elephant or tiger as seen in the previous example [23,24]. \\
 
 \paragraph{\textcolor{darkblue}{Unsupervised Learning}} 
-Unsupervised learning is considered to be more challenging compared to supervised learning since the former focuses on discovering patterns or groupings within data without predefined targets [18]. Common unsupervised learning tasks include clustering, association and anomaly detection, where the algorithm independently identifies underlying structures in the data [23][18].
+Unsupervised learning is considered to be more challenging compared to supervised learning since the former focuses on discovering patterns or groupings within data without predefined targets [18]. Common unsupervised learning tasks include clustering, association and anomaly detection, where the algorithm independently identifies underlying structures in the data [23,18].
 For instance, clustering data points into separate groups based on the shared features ( Figure 2.2). This approach has already proven successful in genomics, where identifying an eosinophilic subtype of asthma led to a novel therapy targeting interleukin-13, a cytokine secreted by eosinophils. Unlike supervised learning, there were no predicted outcomes, in fact there was a greater interest in identifying the patterns within the data [24]. \\
 
 \begin{figure}[h]
@@ -279,7 +279,7 @@ way for modern molecular plant breeding [23]. Different ML approaches such as Pa
 In machine learning, Partial Least Square Regression (PLSR) is a statistical method which combines the benefits of Principal Component Analysis (PCA) and linear regression to predict the outcomes [26]. It is a linear regression model which is arguably the simplest machine learning algorithm that uses a straight line to solve a regression problem [18]. PLSR uses the advantage of PCA for dimensionality reduction and the regression for prediction [27].
 This fitting of linear regression between two data matrices has a wide range of application in plant biology, especially in crop breeding, ecosystem monitoring and predicting plant traits from its spectral data [25]. In PLSR, the predictor variable (often denoted as X) refers to a set of independent 
 variables or features that are used to predict response variable (y). The predictor variables are typically high dimensional and often include multiple correlated features. The response variable (y) represents the outcome or dependent variable. PLSR works by identifying the latent variables, which 
-summarizes the covariance between predictor and response variables. This latent variable captures the most relevant information from the predictors (X) in relation to response (y) variables, allowing the model to predict y more effectively [25][27][28]. \\
+summarizes the covariance between predictor and response variables. This latent variable captures the most relevant information from the predictors (X) in relation to response (y) variables, allowing the model to predict y more effectively [25,27,28]. \\
 
 \begin{figure}[h]
     \centering
@@ -295,11 +295,11 @@ the latent variable that summarizes predictor variables and maximises their rele
 \subsection{Random Forest (RF)}
 Random Forest (RF) is a non-linear ensemble technique used in machine learning which is also depicted as a forest of decision trees [18][29]. Random forest is commonly used for classification tasks, though it can also be 
 applied to regression such as predicting the leaf trait values from the NIRS data [18]. It is a supervised learning method consisting of decision trees and the root node serves as the initial point for dividing the dataset. 
-Recursive partition in which the data is separated into two binary part begins with the root node [18]. RF combines multiple trees to improve accuracy, robustness and reduce overfitting [18][29].
+Recursive partition in which the data is separated into two binary part begins with the root node [18]. RF combines multiple trees to improve accuracy, robustness and reduce overfitting [18,29].
 In the classic tree based model, the dataset is divided into two groups based on the certain criteria until it encounters a predetermined stopping condition. The endpoints of a decision tree, known as leaf nodes, 
 represents the final data division. A random forest model consisting of an ensemble of decision trees, can be utilized for both regression and classification tasks, depending on the partitioning strategy and stopping criteria [30]. 
 RF has proven its importance in many scientific domains and one of which was in environmental science, in a study employed learning algorithms such as Least Absolute Shrinkage and Selection Operator (LASSO) Regression, RF and neural network to 
-predict ragweed pollen concentrations, with RF delivering the most accurate predictions [30][31]. A graphical representation of the RF model with decision trees can be found in the figure (Figure 2.4) . \\
+predict ragweed pollen concentrations, with RF delivering the most accurate predictions [30,31]. A graphical representation of the RF model with decision trees can be found in the figure (Figure 2.4) . \\
 
 \begin{figure}[h]
     \centering
@@ -317,7 +317,7 @@ In this project, we will be using RF models to do regression tasks on NIRS data 
 
 \subsection{Convolutional Neural Network (CNN)}
 
-Convolutional Neural Network (CNN) is a type of deep learning (DL) model inspired by the way neurons in the brain process visual information [32][33]. It is primarily composed of three core components: A convolutional layer that extracts features, a pooling layer to reduce the 
+Convolutional Neural Network (CNN) is a type of deep learning (DL) model inspired by the way neurons in the brain process visual information [32,33]. It is primarily composed of three core components: A convolutional layer that extracts features, a pooling layer to reduce the 
 dimensionality of data and a fully connected layer that produces the final output [32]. Out of these three main layers, the convolutional layer is considered as a fundamental component of a CNN, consisting of a series of mathematical operations, including convolution, which is 
 a distinct form of linear regression [32]. It involves the application of kernels, which is a small array of numbers across the input (tensor) to compute elementwise products. These results are summed to create an output called feature map. Each kernel extracts a different feature 
 of the input data and thereby different feature maps with different characteristics of the input data.The number of kernels determines the depth of the data and is also selected based on the scale of input data. A stride is known as the step size for moving the kernel across the tensor, 
@@ -340,6 +340,11 @@ optimization algorithm which combines the benefits of two SGD variants: Adaptive
 
 \chapter{Implementation}
 \section{R Toolbox Development}
+The development of a new toolbox was prompted by the realization that existing R packages lacked functions to compartmentalize spectral data in a manner that could be seamlessly integrated into the Bioconductor ecosystem. Bioconductor offers significant advantages in terms of integration and interoperability, which are highly valuable for advanced data analysis. 
+Existing packages commonly used in ecological studies, such as \textbf{FieldSpectra}, \textbf{plantspec}, and \textbf{spectacles}, were reviewed. However, none provided functionality to convert high-dimensional spectral data into a SummarizedExperiment object, a data structure widely used in Bioconductor for organizing and analyzing complex datasets. \\
+Recognizing the potential applications of the SummarizedExperiment framework in plant biology, along with its ability to streamline workflows and facilitate future analyses, a decision was made to develop a toolbox to address this gap. The primary objective during development was to ensure vendor independence, making the toolbox broadly applicable. Vendors 
+such as Malvern Panalytical offer software for processing data from instruments such as the ASD FieldSpec 4, while the SVC HR-1024i from Spectra Vista Corporation requires additional computational effort to structure the data for analysis.
+In addition, the ASD FieldSpec 4 generates binary output files. To process these files, functions from the FieldSpectra package were utilized as a foundation, with additional custom functions developed to convert the data into SummarizedExperiment objects. The entire workflow, including data reading, processing, and conversion, is detailed in this chapter.\\
 
 
 
