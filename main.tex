@@ -385,23 +385,26 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
 
 
 \subsection{Functions of nearspectRa}
+\textbf{ Function 1:} read_summarizedexperiment_asd \\
+This function processes ASD files, binary outputs from the ASD FieldSpec instrument, and creates a SummarizedExperiment object, a structured data container used in the Bioconductor ecosystem. This enables effortless downstream analysis by integrating spectral data with metadata. \\
 
+\textbf{Key Features:}
 \begin{itemize}
-    \item \textbf{Input:} A path to either a single .asd file or a directory containing multiple .asd files.
-    \item \textbf{Output:} A SummarizedExperiment object with: 
+    \item Input: A path to either a single .asd file or a directory containing multiple .asd files.
+    \item Output: A SummarizedExperiment object with: 
     \begin{itemize}
-        \item \textbf{Assays:} Reflectance data as a matrix where rows are wavelength and columns are samples.
-        \item \textbf{colData:} Sample metadata.
-        \item \textbf{rowData:} Wavelength metadata.
+        \item Assays: Reflectance data as a matrix where rows are wavelength and columns are samples.
+        \item colData: Sample metadata.
+        \item rowData: Wavelength metadata.
     \end{itemize}
-    \item \textbf{Dependencies:} Utilizes \texttt{read.asd} and \texttt{extract.metadata} from the FieldSpectra package for reading and extracting data, and the \texttt{SummarizedExperiment} library from Bioconductor.
+    \item Dependencies: Utilizes \texttt{read.asd} and \texttt{extract.metadata} from the FieldSpectra package for reading and extracting data, and the \texttt{SummarizedExperiment} library from Bioconductor.
 \end{itemize}
 
 \textbf{Pseudocode}:
 
-\textbf{Function} \texttt{read\_summarizedexperiment\_asd(path)}: \\ 
-\hspace*{2em}\textbf{Input:} Path to a single \texttt{.asd} file or a directory containing multiple \texttt{.asd} files. \\  
-\hspace*{2em}\textbf{Output:} A \texttt{SummarizedExperiment} object  
+Function} \texttt{read\_summarizedexperiment\_asd(path)}: \\ 
+\hspace*{2em}Input: Path to a single \texttt{.asd} file or a directory containing multiple \texttt{.asd} files. \\  
+\hspace*{2em} Output: A \texttt{SummarizedExperiment} object  
 
 \begin{enumerate}
     \item Check if the path is a file or directory.
