@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  13 JAN 2025 13:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  13 JAN 2025 13:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -327,21 +327,22 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 44.
+(./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 \c@lstlisting=\count294
-<images/thd.png, id=4, 381.425pt x 381.425pt>
+<images/thd.png, id=100, 381.425pt x 381.425pt>
 File: images/thd.png Graphic file (type png)
 <use images/thd.png>
 Package pdftex.def Info: images/thd.png  used on input line 51.
 (pdftex.def)             Requested size: 56.9055pt x 56.90282pt.
-<images/ipb.jpg, id=5, 401.5pt x 401.5pt>
+<images/ipb.jpg, id=101, 401.5pt x 401.5pt>
 File: images/ipb.jpg Graphic file (type jpg)
 <use images/ipb.jpg>
 Package pdftex.def Info: images/ipb.jpg  used on input line 53.
 (pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
-[1
+ [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./images/thd.png> <./images/ipb.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 74--75
@@ -383,19 +384,43 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.90 \newpage
-              [1] [2]
-No file main.toc.
+              [1] [2] (./main.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1.
+
+
+./main.toc:3: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 ...Infrared Spectroscopy (NIRS)}{8}{section.2}
+                                                  %
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+./main.toc:3: LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 ...Infrared Spectroscopy (NIRS)}{8}{section.2}
+                                                  %
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+)
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
-[3]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 119.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 119.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 119.
-
+ [3]
 /Users/methungeorge/Desktop/Thesis/main.tex:140: Undefined control sequence.
 l.140 \chapter
               {Introduction}
@@ -470,7 +495,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 204--208
  []
 
 [7]
-<images/NIRS_spectra.png, id=48, 1532.72626pt x 947.54pt>
+<images/NIRS_spectra.png, id=166, 1532.72626pt x 947.54pt>
 File: images/NIRS_spectra.png Graphic file (type png)
 <use images/NIRS_spectra.png>
 Package pdftex.def Info: images/NIRS_spectra.png  used on input line 211.
@@ -563,449 +588,5 @@ Underfull \hbox (badness 10000) in paragraph at lines 290--292
 
  []
 
-<images/ml.png, id=73, 722.7pt x 505.89pt>
-File: images/ml.png Graphic file (type png)
-<use images/ml.png>
-Package pdftex.def Info: images/ml.png  used on input line 295.
-(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 301--304
-
- []
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 305--309
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--315
-
- []
-
-[13 <./images/ml.png>]
-<images/PLSR.png, id=90, 722.7pt x 505.89pt>
-File: images/PLSR.png Graphic file (type png)
-<use images/PLSR.png>
-Package pdftex.def Info: images/PLSR.png  used on input line 318.
-(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:321: Extra }, or forgotten \endgroup.
-\@endfloatbox ...pagefalse \outer@nobreak \egroup 
-                                                  \color@endbox 
-l.321 \end{figure}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 323--326
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 328--335
-
- []
-
-[14 <./images/PLSR.png>]
-<images/rf.png, id=98, 722.7pt x 505.89pt>
-File: images/rf.png Graphic file (type png)
-<use images/rf.png>
-Package pdftex.def Info: images/rf.png  used on input line 338.
-(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:341: Extra }, or forgotten \endgroup.
-\@endfloatbox ...pagefalse \outer@nobreak \egroup 
-                                                  \color@endbox 
-l.341 \end{figure}
-                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 343--347
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 352--359
-
- []
-
-[15 <./images/rf.png>]
-<images/neuron.png, id=106, 722.7pt x 505.89pt>
-File: images/neuron.png Graphic file (type png)
-<use images/neuron.png>
-Package pdftex.def Info: images/neuron.png  used on input line 362.
-(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 367--370
-
- []
-
-/Users/methungeorge/Desktop/Thesis/main.tex:373: Undefined control sequence.
-l.373 \chapter
-              {Implementation}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 375--377
-
- []
-
-[16 <./images/neuron.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 378--381
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
-
- []
-
-/Users/methungeorge/Desktop/Thesis/main.tex:388: Missing $ inserted.
-<inserted text> 
-                $
-l.388 \textbf{ Function 1:} read_
-                                 summarizedexperiment_asd \\
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:390: Missing $ inserted.
-<inserted text> 
-                $
-l.390 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (941.66324pt too wide) in paragraph at lines 388--390
-\OML/cmm/m/it/12 ThisfunctionprocessesASDfiles; binaryoutputsfromtheASDFieldSpecinstrument; andcreatesaSummarizedExperimentobject; astructureddatacontainerusedintheBioconductorecosystem:Thisenableseffortlessdownstreamanalysisbyintegratingspectraldatawithmetadata:[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 388--390
-
- []
-
-/Users/methungeorge/Desktop/Thesis/main.tex:405: Too many }'s.
-l.405 Function}
-                \texttt{read\_summarizedexperiment\_asd(path)}: \\
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-[17] (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/02/21 1.10 listings language file
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2024/02/21 1.10 listings language file
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2024/02/21 1.10 listings language file
-)
-/Users/methungeorge/Desktop/Thesis/main.tex:455: Undefined control sequence.
-l.455 \chapter
-              {Results and Discussion}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:470: Undefined control sequence.
-l.470 \chapter
-              {Reference}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[18]
-/Users/methungeorge/Desktop/Thesis/main.tex:475: Misplaced alignment tab character &.
-l.475 ...ni, M. M., Zhang, Q., Muhae-Ud-Din, G., &
-                                                   Wang, Y. (2023). High-thr...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:476: Misplaced alignment tab character &.
-l.476 4. Lane, H. M., &
-                        Murray, S. C. (2021). High throughput can produce be...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:477: Misplaced alignment tab character &.
-l.477 ...X., Kang, M., Hu, B.-G., Heuvelink, E., &
-                                                   Marcelis, L. F. M. (2023)...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:482: Misplaced alignment tab character &.
-l.482 ...ohra, A., Pandey, A. K., Pandey, M. K., &
-                                                   Kumar, A. (2017). Metabol...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:483: Misplaced alignment tab character &.
-l.483 ...ez-Domínguez, R., García-Barrera, T., &
-                                                   Gómez-Ariza, J. L. (2014...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:484: Misplaced alignment tab character &.
-l.484 ..., Phan, A. N., Sudhakar, M., Raman, K., &
-                                                   Blank, L. M. (2020). Mach...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:485: Misplaced alignment tab character &.
-l.485 ...t, D., Rouan, L., Vile, D., Violle, C., &
-                                                   Vasseur, F. (2024). NIRSp...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:487: Misplaced alignment tab character &.
-l.487 ...Eisenhauer, N., Bruelheide, H., Ma, Z., &
-                                                   Haider, S. (2024). Tree a...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:491: Misplaced alignment tab character &.
-l.491 19. Pichler, M., &
-                         Hartig, F. (2022). Machine learning and deep learni...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:492: Misplaced alignment tab character &.
-l.492 ...i, T., Kovach, K. R., Liu, H., Luo, M., &
-                                                   Chen, M. (2024). Unveilin...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:498: Misplaced alignment tab character &.
-l.498 ...heng, J., Miao, M., Wang, L., Yang, Z., &
-                                                   Huang, H. (2022). A revie...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:499: Misplaced alignment tab character &.
-l.499 27. Dormann, C. F., Elith, J., Bacher, S., &
-                                                   Buchmann, C. M. (2013). C...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:500: Misplaced alignment tab character &.
-l.500 28. Wold, S., Esbensen, K., &
-                                    Geladi, P. (1987). Principal component a...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:501: Misplaced alignment tab character &.
-l.501 29. Couronné, R., Probst, P. &
-                                      Boulesteix, AL. Random forest versus l...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:502: Misplaced alignment tab character &.
-l.502 30. Schonlau, M., &
-                          Zou, R. Y. (2020). The random forest algorithm for...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:506: Misplaced alignment tab character &.
-l.506 34. Reyad, M., Sarhan, A. &
-                                  Arafa, M. A modified Adam algorithm for de...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:506: Misplaced alignment tab character &.
-l.506 ...ral network optimization. Neural Comput &
-                                                   Applic 35, 17095–17112 ...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:511: Misplaced alignment tab character &.
-l.511 39. Venables, W. N., &
-                             Smith, D. M. (2003). An introduction to R: note...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:515: Misplaced alignment tab character &.
-l.515 43. Allwood, J. W., &
-                            Goodacre, R. (2010). An introduction to liquid c...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-
-Overfull \hbox (115.43443pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 Bioin-for-mat-ics, Vol-ume 38, Is-sue 4, Febru-ary 2022, Pages 1168{1170, https://doi.org/10.1093/bioinformatics/btab741. 
- []
-
-
-Overfull \hbox (118.52374pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 plant im-prove-ment: Sta-tus and prospects. Fron-tiers in Plant Sci-ence, 8, 1302. https://doi.org/10.3389/fpls.2017.01302. 
- []
-
-
-Overfull \hbox (97.13924pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 net-ics in Alzheimer's dis-ease. Jour-nal of Clin-i-cal Neu-ro-science, 93, 1-9. https://doi.org/10.1016/j.jocn.2022.04.017. 
- []
-
-
-Overfull \hbox (4.68927pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 and In-tel-li-gent Lab-o-ra-tory Sys-tems, 2(1-3), 37-52. https://doi.org/10.1016/0169-7439(87)80084-
- []
-
-
-Overfull \hbox (18.57904pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 scale bench-mark ex-per-i-ment. BMC Bioin-for-mat-ics 19, 270 (2018). https://doi.org/10.1186/s12859-
- []
-
-
-Overfull \hbox (67.36871pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 pollen con-cen-tra-tions in Tulsa, OK. En-vi-ron-men-tal Health In-sights. 2017;11. doi:10.1177/1178630217699399. 
- []
-
-
-Overfull \hbox (12.05261pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 and ap-pli-ca-tion in ra-di-ol-ogy. In-sights Imag-ing 9, 611{629 (2018). https://doi.org/10.1007/s13244-
- []
-
-
-Overfull \hbox (82.6506pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 chi-tec-tures, chal-lenges, ap-pli-ca-tions, fu-ture di-rec-tions. J Big Data 8, 53 (2021). https://doi.org/10.1186/s40537-
- []
-
-
-Overfull \hbox (133.36388pt too wide) in paragraph at lines 473--516
-\OT1/cmr/m/n/12 Botswana. In-ter-na-tional Jour-nal of Database Man-age-ment Sys-tems, 15(1), 16. https://doi.org/10.5121/ijdms.2023.15101. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 473--516
-
- []
-
-[19] [20] [21] (./main.aux)
- ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
- ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  B434406A770C0CC4D60B4473DD5FED01;4197.
- ) 
-Here is how much of TeX's memory you used:
- 12140 strings out of 474116
- 181526 string characters out of 5743682
- 1957187 words of memory out of 5000000
- 34319 multiletter control sequences out of 15000+600000
- 564851 words of font info for 59 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,6n,79p,716b,1901s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (22 pages, 3014429 bytes).
-PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 168 compressed objects within 2 object streams
- 68 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+<images/ml.png, id=189, 722.7pt x 505.89pt>
+File: images/ml.png Graphic file (typ
