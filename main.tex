@@ -368,7 +368,6 @@ It is categorized into supervised learning, for classification and regression ta
 optimization algorithm which combines the benefits of two SGD variants: Adaptive Gradient Algorithm (AdaGrad) and Root Mean Square Propagation (RMSProp) [34]. It requires minimal memory and dynamically adjusts the learning rate for each parameter, making it more computationally efficient [34]. In this project CNN is employed to predict the output values from NIRS data. \\
 
 
-
 \chapter{Implementation}
 \section{R Toolbox Development}
 The development of a new toolbox was prompted by the realization that existing R packages lacked functions to compartmentalize spectral data in a manner that could be seamlessly integrated into the Bioconductor ecosystem. Bioconductor offers significant advantages in terms of integration and interoperability, which are highly valuable for advanced data analysis. 
@@ -384,7 +383,7 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
 
 
 \subsection{Functions of nearspectRa}
-Function 1: read_summarizedexperiment_asd
+\textbf{Function 1: \texttt{read\_summarizedexperiment\_asd}} \\
 
 \textbf{Key Features:}
 \begin{itemize}
@@ -398,11 +397,16 @@ Function 1: read_summarizedexperiment_asd
     \item Dependencies: Utilizes \texttt{read.asd} and \texttt{extract.metadata} from the FieldSpectra package for reading and extracting data, and the \texttt{SummarizedExperiment} library from Bioconductor.
 \end{itemize}
 
-\textbf{Pseudocode}:
+\textbf{Pseudocode:} 
 
-Function} \texttt{read\_summarizedexperiment\_asd(path)}: \\ 
-\hspace*{2em}Input: Path to a single \texttt{.asd} file or a directory containing multiple \texttt{.asd} files. \\  
-\hspace*{2em} Output: A \texttt{SummarizedExperiment} object  
+\texttt{Function: read\_summarizedexperiment\_asd(path):} \\
+
+\begin{tabbing}
+\hspace*{2em} \textbf{Input:} \= \texttt{path} to a single \texttt{.asd} file or a directory containing multiple \texttt{.asd} files. \\
+\hspace*{2em} \textbf{Output:} \= A \texttt{SummarizedExperiment} object.
+\end{tabbing}
+
+
 
 \begin{enumerate}
     \item Check if the path is a file or directory.
@@ -415,9 +419,9 @@ Function} \texttt{read\_summarizedexperiment\_asd(path)}: \\
     \item Combine spectral data and metadata into matrices.
     \item Create a \texttt{SummarizedExperiment} object with:
     \begin{itemize}
-        \item \textbf{Assays:} Spectral data matrix (rows: wavelengths, columns: samples).
-        \item \textbf{ColData:} \texttt{DataFrame} of sample metadata.
-        \item \textbf{RowData:} \texttt{DataFrame} of wavelength information.
+        \item Assays: Spectral data matrix (rows: wavelengths, columns: samples).
+        \item ColData: \texttt{DataFrame} of sample metadata.
+        \item RowData: \texttt{DataFrame} of wavelength information.
     \end{itemize}
     \item Return the \texttt{SummarizedExperiment} object.
 \end{enumerate}
@@ -430,6 +434,56 @@ Function} \texttt{read\_summarizedexperiment\_asd(path)}: \\
     print(se)
     \end{lstlisting}
 
+\textbf{Function 2: \texttt{read\_summarizedexperiment\_sig}} \\
+
+\textbf{Key Features:}
+\begin{itemize}
+    \item Input: A path to a single \texttt{.sig} file or a directory containing multiple \texttt{.sig} files.
+    \item Output: A \texttt{SummarizedExperiment} object with:
+    \begin{itemize}
+        \item Assays: Reflectance data as a matrix where rows are wavelengths and columns are samples.
+        \item colData: Sample metadata.
+        \item rowData: Wavelength metadata.
+    \end{itemize}
+    \item Dependencies: Utilizes \texttt{readLines} for file reading, \texttt{grep} for pattern matching, and the \texttt{SummarizedExperiment} library from Bioconductor.
+\end{itemize}
+
+\textbf{Pseudocode:}
+
+\texttt{Function: read\_summarizedexperiment\_sig(path):} \\
+
+\begin{tabbing}
+\hspace*{2em} \textbf{Input:} \= \texttt{path} to a single \texttt{.sig} file or a directory containing multiple \texttt{.sig} files. \\
+\hspace*{2em} \textbf{Output:} \= A \texttt{SummarizedExperiment} object. \\
+\end{tabbing}
+
+\begin{enumerate}
+    \item Check if the path is a file or directory.
+    \item If it is a directory, list all \texttt{.sig} files in the directory.
+    \item For each \texttt{.sig} file:
+    \begin{enumerate}
+        \item Use \texttt{readLines} to read the file content.
+        \item Extract the sample name from the line starting with \texttt{name=}, or use the file name if not present.
+        \item Extract spectral data starting from the line that begins with \texttt{data=}.
+        \item Organize the data by wavelengths (first column) and reflectance (fourth column).
+    \end{enumerate}
+    \item Combine all data frames by wavelengths, filling missing values with \texttt{NA}.
+    \item Create a \texttt{SummarizedExperiment} object with:
+    \begin{itemize}
+        \item Assays: Reflectance data matrix (rows: wavelengths, columns: samples).
+        \item colData: \texttt{DataFrame} containing sample names.
+        \item rowData: \texttt{DataFrame} containing wavelengths.
+    \end{itemize}
+    \item Return the \texttt{SummarizedExperiment} object.
+\end{enumerate}
+
+\textbf{Example Usage:}
+
+\begin{lstlisting}[language=R, style=mystyle]
+    path <- "/path/to/sig/files"
+    se <- read_summarizedexperiment_sig(path)
+    print(se)
+\end{lstlisting}
 
 
 
@@ -468,48 +522,90 @@ PLS, RF, CNN
 \chapter{Reference}
 
     
-1. Pieruschka R, Schurr U. Plant Phenotyping: Past, Present, and Future. Plant Phenomics. 2019 Mar 26;2019:7507131. doi: 10.34133/2019/7507131. PMID: 33313536; PMCID: PMC7718630. \\
+1. Pieruschka R, Schurr U. Plant Phenotyping: Past, Present, and Future. Plant Phenomics. 2019 Mar   26;2019:7507131. doi: 10.34133/2019/7507131. PMID: 33313536; PMCID: PMC7718630. \\
+\\
 2. Pulok K. Mukherjee, Quality control and evaluation of herbal drugs, Evaluating natural products and traditional medicine. 2019, doi:10.1016/C2016-0-042328, ISBN:978-0-12-813374-3. \\
-3. Nizamani, M. M., Zhang, Q., Muhae-Ud-Din, G., & Wang, Y. (2023). High-throughput sequencing in plant disease management: A comprehensive review of benefits, challenges, and future perspectives. Phytopathology Research, 5(44). https://doi.org/10.1186/s42483-023-00215-7. \\
-4. Lane, H. M., & Murray, S. C. (2021). High throughput can produce better decisions than high accuracy when phenotyping plant populations. Crop Science, 61(3), 1473–1484. https://doi.org/10.1002/csc2.20514. \\
-5. Zhang, N., Zhou, X., Kang, M., Hu, B.-G., Heuvelink, E., & Marcelis, L. F. M. (2023). Machine learning versus crop growth models: An ally, not a rival. Journal of Experimental Botany, 74(4), 1259–1276. https://doi.org/10.1093/jxb/erac517. \\
+\\
+3. Nizamani, M. M., Zhang, Q., Muhae-Ud-Din, G., \& Wang, Y. (2023). High-throughput sequencing in plant disease management: A comprehensive review of benefits, challenges, and future perspectives. Phytopathology Research, 5(44). https://doi.org/10.1186/s42483-023-00215-7. \\
+\\
+4. Lane, H. M., \& Murray, S. C. (2021). High throughput can produce better decisions than high accuracy when phenotyping plant populations. Crop Science, 61(3), 1473–1484. https://doi.org/10.1002/csc2.20514. \\
+\\
+5. Zhang, N., Zhou, X., Kang, M., Hu, B.-G., Heuvelink, E., \& Marcelis, L. F. M. (2023). Machine learning versus crop growth models: An ally, not a rival. Journal of Experimental Botany, 74(4), 1259–1276. https://doi.org/10.1093/jxb/erac517. \\
+\\
 6. Zhu H. Big Data and Artificial Intelligence Modeling for Drug Discovery. Annu Rev Pharmacol Toxicol. 2020 Jan 6;60:573-589. doi: 10.1146/annurev-pharmtox-010919-023324. Epub 2019 Sep 13. PMID: 31518513; PMCID: PMC7010403. \\
+\\
 7. Kelsey Chetnik, Elisa Benedetti, Daniel P Gomari, Annalise Schweickart, Richa Batra, Mustafa Buyukozkan, Zeyu Wang, Matthias Arnold, Jonas Zierer, Karsten Suhre, Jan Krumsiek,  maplet: an extensible R toolbox for modular and reproducible metabolomics pipelines, Bioinformatics, Volume 38, Issue 4, February 2022, Pages 1168–1170, https://doi.org/10.1093/bioinformatics/btab741. \\
+\\
 8. Peng, Roger D. R programming for data science. Victoria, BC, Canada: Leanpub, 2016. \\
+\\
 9. www.bioconductor.org \\
-10. Kumar, R., Bohra, A., Pandey, A. K., Pandey, M. K., & Kumar, A. (2017). Metabolomics for plant improvement: Status and prospects. Frontiers in Plant Science, 8, 1302. https://doi.org/10.3389/fpls.2017.01302. \\
-11. González-Domínguez, R., García-Barrera, T., & Gómez-Ariza, J. L. (2014). Metabolite profiling for the identification of altered metabolic pathways in Alzheimer's disease. Journal of Pharmaceutical and Biomedical Analysis, 107, 75–81. https://doi.org/10.1016/j.jpba.2014.10.010. \\
-12. Liebal, U. W., Phan, A. N., Sudhakar, M., Raman, K., & Blank, L. M. (2020). Machine learning applications for mass spectrometry-based metabolomics. Metabolites, 10(6), 243. https://doi.org/10.3390/metabo10060243. \\
-13. Vaillant, A., Beurier, G., Cornet, D., Rouan, L., Vile, D., Violle, C., & Vasseur, F. (2024). NIRSpredict: a platform for predicting plant traits from near infra-red spectroscopy. BMC Plant Biology, 24(1), 1100. https://link.springer.com/article/10.1186/s12870-024-05776-0. \\
+\\
+10. Kumar, R., Bohra, A., Pandey, A. K., Pandey, M. K., \& Kumar, A. (2017). Metabolomics for plant improvement: Status and prospects. Frontiers in Plant Science, 8, 1302. https://doi.org/10.3389/fpls.2017.01302. \\
+\\
+11. González-Domínguez, R., García-Barrera, T., \& Gómez-Ariza, J. L. (2014). Metabolite profiling for the identification of altered metabolic pathways in Alzheimer's disease. Journal of Pharmaceutical and Biomedical Analysis, 107, 75–81. https://doi.org/10.1016/j.jpba.2014.10.010. \\
+\\
+12. Liebal, U. W., Phan, A. N., Sudhakar, M., Raman, K., \& Blank, L. M. (2020). Machine learning applications for mass spectrometry-based metabolomics. Metabolites, 10(6), 243. https://doi.org/10.3390/metabo10060243. \\
+\\
+13. Vaillant, A., Beurier, G., Cornet, D., Rouan, L., Vile, D., Violle, C., \& Vasseur, F. (2024). NIRSpredict: a platform for predicting plant traits from near infra-red spectroscopy. BMC Plant Biology, 24(1), 1100. https://link.springer.com/article/10.1186/s12870-024-05776-0. \\
+\\
 14. Marr S, Hageman JA, Wehrens R, van Dam NM, Bruelheide H, Neumann S. LC-MS based plant metabolic profiles of thirteen grassland species grown in diverse neighbourhoods. Sci Data. 2021 Feb 9;8(1):52. doi: 10.1038/s41597-021-00836-8. PMID: 33563993; PMCID: PMC7873126. \\
-15. Sánchez-Bermejo, P. C., Monjau, T., Goldmann, K., Ferlian, O., Eisenhauer, N., Bruelheide, H., Ma, Z., & Haider, S. (2024). Tree and mycorrhizal fungal diversity drive intraspecific and intraindividual trait variation in temperate forests: Evidence from a tree diversity experiment. Functional Ecology. https://doi.org/10.1111/1365-2435.14549. \\
+\\
+15. Sánchez-Bermejo, P. C., Monjau, T., Goldmann, K., Ferlian, O., Eisenhauer, N., Bruelheide, H., Ma, Z., \& Haider, S. (2024). Tree and mycorrhizal fungal diversity drive intraspecific and intraindividual trait variation in temperate forests: Evidence from a tree diversity experiment. Functional Ecology. https://doi.org/10.1111/1365-2435.14549. \\
+\\
 16. Renner, I.E., Fritz, V.A. Using Near-infrared reflectance spectroscopy (NIRS) to predict glucobrassicin concentrations in cabbage and brussels sprout leaf tissue. Plant Methods16, 136 (2020). https://doi.org/10.1186/s13007-020-00681-7. \\
+\\
 17. R. Schubert et al., "A White-Box Workflow for the Prediction of Food Content From Near-Infrared Data Based on Fourier-Transformation," 2023 13th Workshop on Hyperspectral Imaging and Signal Processing: Evolution in Remote Sensing (WHISPERS), Athens, Greece, 2023, pp. 1-5, doi: 10.1109/WHISPERS61460.2023.10430694. \\
+\\
 18. Choi RY, Coyner AS, Kalpathy-Cramer J, Chiang MF, Campbell JP. Introduction to Machine Learning, Neural Networks, and Deep Learning. Transl Vis Sci Technol. 2020 Feb 27;9(2):14. doi: 10.1167/tvst.9.2.14. PMID: 32704420; PMCID: PMC7347027.\\
-19. Pichler, M., & Hartig, F. (2022). Machine learning and deep learning—A review for ecologists. Methods in Ecology and Evolution, 13(9), 1984–2000. https://doi.org/10.1111/2041-210X.14061. \\
-20. Ji, F., Li, F., Hao, D., Shiklomanov, A. N., Yang, X., Townsend, P. A., Dashti, H., Nakaji, T., Kovach, K. R., Liu, H., Luo, M., & Chen, M. (2024). Unveiling the transferability of PLSR models for leaf trait estimation: Lessons from a comprehensive analysis with a novel global dataset. New Phytologist. https://doi.org/10.1111/nph.19807. \\
+\\
+19. Pichler, M., \& Hartig, F. (2022). Machine learning and deep learning—A review for ecologists. Methods in Ecology and Evolution, 13(9), 1984–2000. https://doi.org/10.1111/2041-210X.14061. \\
+\\
+20. Ji, F., Li, F., Hao, D., Shiklomanov, A. N., Yang, X., Townsend, P. A., Dashti, H., Nakaji, T., Kovach, K. R., Liu, H., Luo, M., \& Chen, M. (2024). Unveiling the transferability of PLSR models for leaf trait estimation: Lessons from a comprehensive analysis with a novel global dataset. New Phytologist. https://doi.org/10.1111/nph.19807. \\
+\\
 21. Georgios Kourounis, Ali Ahmed Elmahmudi, Brian Thomson, James Hunter, Hassan Ugail, Colin Wilson, Computer image analysis with artificial intelligence: a practical introduction to convolutional neural networks for medical professionals, Postgraduate Medical Journal, Volume 99, Issue 1178, December 2023, Pages 1287–1294, https://doi.org/10.1093/postmj/qgad095. \\
+\\
 22. Liu S, Cheng H, Ashraf J, Zhang Y, Wang Q, Lv L, He M, Song G, Zuo D. Interpretation of convolutional neural networks reveals crucial sequence features involving in transcription during fiber development. BMC Bioinformatics. 2022 Mar 15;23(1):91. doi: 10.1186/s12859-022-04619-9. PMID: 35291940; PMCID: PMC8922751. \\
+\\
 23. van Dijk ADJ, Kootstra G, Kruijer W, de Ridder D. Machine learning in plant science and plant breeding. iScience. 2020 Dec 5;24(1):101890. doi: 10.1016/j.isci.2020.101890. PMID: 33364579; PMCID: PMC7750553. \\
+\\
 24. Deo, R. C. (2015). Machine Learning in Medicine. Circulation, 132(20), 1920–1930. https://doi.org/10.1161/CIRCULATIONAHA.115.001593. \\
+\\
 25. Angela C Burnett, Jeremiah Anderson, Kenneth J Davidson, Kim S Ely, Julien Lamour, Qianyu Li, Bailey D Morrison, Dedi Yang, Alistair Rogers, Shawn P Serbin, A best-practice guide to predicting plant traits from leaf-level hyperspectral data using partial least squares regression, Journal of Experimental Botany, Volume 72, Issue 18, 30 September 2021, Pages 6175–6189, https://doi.org/10.1093/jxb/erab295. \\
-26. Xin, Y., Sheng, J., Miao, M., Wang, L., Yang, Z., & Huang, H. (2022). A review of imaging genetics in Alzheimer's disease. Journal of Clinical Neuroscience, 93, 1-9. https://doi.org/10.1016/j.jocn.2022.04.017. \\
-27. Dormann, C. F., Elith, J., Bacher, S., & Buchmann, C. M. (2013). Collinearity: A review of methods to deal with it and a simulation study evaluating their performance. Ecography, 36(1), 27-46. https://doi.org/10.1111/j.1600-0587.2012.07348.x. \\
-28. Wold, S., Esbensen, K., & Geladi, P. (1987). Principal component analysis. Chemometrics and Intelligent Laboratory Systems, 2(1-3), 37-52. https://doi.org/10.1016/0169-7439(87)80084-9. \\
-29. Couronné, R., Probst, P. & Boulesteix, AL. Random forest versus logistic regression: a large-scale benchmark experiment. BMC Bioinformatics 19, 270 (2018). https://doi.org/10.1186/s12859-018-2264-5.\\
-30. Schonlau, M., & Zou, R. Y. (2020). The random forest algorithm for statistical learning. The Stata Journal, 20(1), 3-29. DOI: 10.1177/1536867X20909688. \\
+\\
+26. Xin, Y., Sheng, J., Miao, M., Wang, L., Yang, Z., \& Huang, H. (2022). A review of imaging genetics in Alzheimer's disease. Journal of Clinical Neuroscience, 93, 1-9. https://doi.org/10.1016/j.jocn.2022.04.017. \\
+\\
+27. Dormann, C. F., Elith, J., Bacher, S., \& Buchmann, C. M. (2013). Collinearity: A review of methods to deal with it and a simulation study evaluating their performance. Ecography, 36(1), 27-46. https://doi.org/10.1111/j.1600-0587.2012.07348.x. \\
+\\
+28. Wold, S., Esbensen, K., \& Geladi, P. (1987). Principal component analysis. Chemometrics and Intelligent Laboratory Systems, 2(1-3), 37-52. https://doi.org/10.1016/0169-7439(87)80084-9. \\
+\\
+29. Couronné, R., Probst, P. \& Boulesteix, AL. Random forest versus logistic regression: a large-scale benchmark experiment. BMC Bioinformatics 19, 270 (2018). https://doi.org/10.1186/s12859-018-2264-5.\\
+\\
+30. Schonlau, M., \& Zou, R. Y. (2020). The random forest algorithm for statistical learning. The Stata Journal, 20(1), 3-29. DOI: 10.1177/1536867X20909688. \\
+\\
 31. Liu X, Wu D, Zewdie GK, et al. Using machine learning to estimate atmospheric Ambrosia pollen concentrations in Tulsa, OK. Environmental Health Insights. 2017;11. doi:10.1177/1178630217699399. \\
+\\
 32. Yamashita, R., Nishio, M., Do, R.K.G. et al. Convolutional neural networks: an overview and application in radiology. Insights Imaging 9, 611–629 (2018). https://doi.org/10.1007/s13244-018-0639-9.\\
+\\
 33. Alzubaidi, L., Zhang, J., Humaidi, A.J. et al. Review of deep learning: concepts, CNN architectures, challenges, applications, future directions. J Big Data 8, 53 (2021). https://doi.org/10.1186/s40537-021-00444-8. \\
-34. Reyad, M., Sarhan, A. & Arafa, M. A modified Adam algorithm for deep neural network optimization. Neural Comput & Applic 35, 17095–17112 (2023). https://doi.org/10.1007/s00521-023-08568-z.\\
+\\
+34. Reyad, M., Sarhan, A. \& Arafa, M. A modified Adam algorithm for deep neural network optimization. Neural Comput \& Applic 35, 17095–17112 (2023). https://doi.org/10.1007/s00521-023-08568-z.\\
+\\
 35. Zhang W, Kasun LC, Wang QJ, Zheng Y, Lin Z. A Review of Machine Learning for Near-Infrared Spectroscopy. Sensors. 2022; 22(24):9764. https://doi.org/10.3390/s22249764. \\
+\\
 36. Sohn SI, Pandian S, Oh YJ, Zaukuu JZ, Kang HJ, Ryu TH, Cho WS, Cho YS, Shin EK, Cho BK. An Overview of Near Infrared Spectroscopy and Its Applications in the Detection of Genetically Modified Organisms. Int J Mol Sci. 2021 Sep 14;22(18):9940. doi: 10.3390/ijms22189940. PMID: 34576101; PMCID: PMC8469702.\\
+\\
 37. Ihaka, R. (2017). The r project: A brief history and thoughts about the future. Univ. Auckl, 4, 22. https://www.stat.auckland.ac.nz/~ihaka/downloads/Otago.pdf. \\
+\\
 38. Ndaba, S. (2023). A Review of the Use of R Programming for Data Science Research in Botswana. International Journal of Database Management Systems, 15(1), 16. https://doi.org/10.5121/ijdms.2023.15101. \\
-39. Venables, W. N., & Smith, D. M. (2003). An introduction to R: notes on R: a programming environment for data analysis and graphics, version 1.9. 1. CRID: 1130282269082172544, ISBN: 0954161742, https://cir.nii.ac.jp/crid/1130282269082172544. \\
+\\
+39. Venables, W. N., \& Smith, D. M. (2003). An introduction to R: notes on R: a programming environment for data analysis and graphics, version 1.9. 1. CRID: 1130282269082172544, ISBN: 0954161742, https://cir.nii.ac.jp/crid/1130282269082172544. \\
+\\
 40. www.malvernpanalytical.com \\
+\\
 41. www.spectravista.com \\
+\\
 42. Lantz, B. (2019). Machine learning with R: expert techniques for predictive modeling. Packt publishing ltd. \\
-43. Allwood, J. W., & Goodacre, R. (2010). An introduction to liquid chromatography–mass spectrometry instrumentation applied in plant metabolomic analyses. Phytochemical Analysis: An International Journal of Plant Chemical and Biochemical Techniques, 21(1), 33-47. https://doi.org/10.1002/pca.1187. \\
+\\
+43. Allwood, J. W., \& Goodacre, R. (2010). An introduction to liquid chromatography–mass spectrometry instrumentation applied in plant metabolomic analyses. Phytochemical Analysis: An International Journal of Plant Chemical and Biochemical Techniques, 21(1), 33-47. https://doi.org/10.1002/pca.1187. \\
 
 \end{document}
