@@ -21,35 +21,23 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
-% Define R style
-\lstdefinelanguage{R}{
-    keywords={if, else, repeat, while, function, for, in, next, break},
-    keywordstyle=\color{blue}\bfseries,
-    ndkeywords={TRUE, FALSE, NULL, NA},
-    ndkeywordstyle=\color{darkgray}\bfseries,
-    comment=[l]{\#},
-    commentstyle=\color{green}\ttfamily,
-    stringstyle=\color{red}\ttfamily,
-    sensitive=true
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{white},   % background color
+    basicstyle=\ttfamily\small,      % font style and size
+    keywordstyle=\color{blue},       % keyword color
+    commentstyle=\color{gray},       % comment color
+    stringstyle=\color{red},         % string color
+    showstringspaces=false,          % don't show space symbols
+    numbers=none,                    % line numbers
+    numberstyle=\tiny\color{gray},   % line number style
+    stepnumber=1,                    % step between two line numbers
+    numbersep=5pt,                   % how far the line numbers are from the code
+    frame=single,                    % add a frame around the code
+    rulecolor=\color{black},         % frame color
+    breaklines=true                  % automatically break lines
 }
 
-\lstset{
-    language=R,
-    basicstyle=\ttfamily\small,
-    numbers=left,
-    numberstyle=\tiny\color{gray},
-    stepnumber=1,
-    numbersep=5pt,
-    showstringspaces=false,
-    breaklines=true,
-    frame=single,
-    captionpos=b,
-    keywordstyle=\color{blue}\bfseries,
-    commentstyle=\color{green}\itshape,
-    stringstyle=\color{red}\ttfamily,
-    backgroundcolor=\color{lightgray!10},
-    morekeywords={},
-}
+
 
 
 
@@ -438,11 +426,13 @@ This function processes ASD files, binary outputs from the ASD FieldSpec instrum
 
 \textbf{Example Usage:}
 
-\begin{quote}
-\texttt{path <- "path/to/your/asd/files"} \\
-\texttt{se <- read\_summarizedexperiment\_asd(path)} \\
-\texttt{print(se)}
-\end{quote}
+\begin{lstlisting}[language=R, style=mystyle]
+    path <- "path/to/your/asd/files"
+    se <- read_summarizedexperiment_asd(path)
+    print(se)
+    \end{lstlisting}
+
+
 
 
 
