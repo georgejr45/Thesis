@@ -721,4 +721,475 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 /Users/methungeorge/Desktop/Thesis/main.tex:358: Undefined control sequence.
-l.358         \item \(
+l.358         \item \( \hat{y}_t(x_{\text
+                                         {test}}) \) is the prediction from ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--377
+
+ []
+
+[17 <./images/rf.png>]
+<images/cnn.png, id=114, 722.7pt x 505.89pt>
+File: images/cnn.png Graphic file (type png)
+<use images/cnn.png>
+Package pdftex.def Info: images/cnn.png  used on input line 380.
+(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 385--388
+
+ []
+
+[18 <./images/cnn.png>] [19]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--400
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 401--404
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
+
+ []
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 416.
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
+
+ []
+
+[20
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 432--433
+
+ []
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/02/21 1.10 listings language file
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2024/02/21 1.10 listings language file
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2024/02/21 1.10 listings language file
+)
+
+LaTeX Warning: File `images/se_asd_1.png' not found on input line 469.
+
+
+/Users/methungeorge/Desktop/Thesis/main.tex:469: Package pdftex.def Error: File `images/se_asd_1.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.469 ...width=0.6\textwidth]{images/se_asd_1.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--475
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 490--491
+
+ []
+
+[22]
+
+LaTeX Warning: File `Figures/se_sig.png' not found on input line 527.
+
+
+/Users/methungeorge/Desktop/Thesis/main.tex:527: Package pdftex.def Error: File `Figures/se_sig.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.527 ...[width=0.6\textwidth]{Figures/se_sig.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 534--535
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 546--547
+
+ []
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/02/21 1.10 listings language file
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/02/21 1.10 listings language file
+) [24] [25]
+Chapter 4.
+[26
+
+] [27]
+Chapter 5.
+/Users/methungeorge/Desktop/Thesis/main.tex:752: Misplaced alignment tab character &.
+l.752 46. Blischak, J. D., Davenport, E. R., &
+                                               Wilson, G. (2016). A quick in...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (115.43443pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 Bioin-for-mat-ics, Vol-ume 38, Is-sue 4, Febru-ary 2022, Pages 1168{1170, https://doi.org/10.1093/bioinformatics/btab741. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (135.1694pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 for plant im-prove-ment: Sta-tus and prospects. Fron-tiers in Plant Sci-ence, 8, 1302. https://doi.org/10.3389/fpls.2017.01302. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (12.35725pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 Phar-ma-ceu-ti-cal and Biomed-i-cal Anal-y-sis, 107, 75{81. https://doi.org/10.1016/j.jpba.2014.10.010. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (108.23634pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 ge-net-ics in Alzheimer's dis-ease. Jour-nal of Clin-i-cal Neu-ro-science, 93, 1-9. https://doi.org/10.1016/j.jocn.2022.04.017. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (4.68927pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 and In-tel-li-gent Lab-o-ra-tory Sys-tems, 2(1-3), 37-52. https://doi.org/10.1016/0169-7439(87)80084-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (47.30096pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 large-scale bench-mark ex-per-i-ment. BMC Bioin-for-mat-ics 19, 270 (2018). https://doi.org/10.1186/s12859-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (67.36871pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 pollen con-cen-tra-tions in Tulsa, OK. En-vi-ron-men-tal Health In-sights. 2017;11. doi:10.1177/1178630217699399. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (12.05261pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 and ap-pli-ca-tion in ra-di-ol-ogy. In-sights Imag-ing 9, 611{629 (2018). https://doi.org/10.1007/s13244-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (82.6506pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 chi-tec-tures, chal-lenges, ap-pli-ca-tions, fu-ture di-rec-tions. J Big Data 8, 53 (2021). https://doi.org/10.1186/s40537-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (133.36388pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 Botswana. In-ter-na-tional Jour-nal of Database Man-age-ment Sys-tems, 15(1), 16. https://doi.org/10.5121/ijdms.2023.15101. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (106.77019pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 44. Breiman, L. (2001). Ran-dom Forests. Ma-chine Learn-ing, 45(1), 5{32. https://doi.org/10.1023/A:1010933404324 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Overfull \hbox (65.26099pt too wide) in paragraph at lines 662--754
+\OT1/cmr/m/n/12 trol with Git and GitHub. PLoS com-pu-ta-tional bi-ol-ogy, 12(1), https://doi.org/10.1371/journal.pcbi.1004668 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--754
+
+ []
+
+[28
+
+] [29] [30] [31] (./main.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+ ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  57C9A7D5EF68BD7226FD03FCB491E067;5993.
+ ) 
+Here is how much of TeX's memory you used:
+ 12619 strings out of 474116
+ 190570 string characters out of 5743682
+ 2049187 words of memory out of 5000000
+ 34725 multiletter control sequences out of 15000+600000
+ 565198 words of font info for 60 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 75i,9n,79p,756b,1901s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on main.pdf (32 pages, 2316349 bytes).
+PDF statistics:
+ 339 PDF objects out of 1000 (max. 8388607)
+ 272 compressed objects within 3 object streams
+ 129 named destinations out of 1000 (max. 500000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+
