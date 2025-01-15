@@ -282,14 +282,7 @@ Package: listings 2024/02/21 1.10 (Carsten Heinz)
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
 \l__pdf_internal_box=\box54
-) (./main.aux
-
-LaTeX Warning: Label `Figure 2' multiply defined.
-
-
-LaTeX Warning: Label `Figure 2' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
@@ -364,22 +357,21 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 42.
-(./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 \c@lstlisting=\count300
-<images/thd.png, id=140, 381.425pt x 381.425pt>
+<images/thd.png, id=4, 381.425pt x 381.425pt>
 File: images/thd.png Graphic file (type png)
 <use images/thd.png>
 Package pdftex.def Info: images/thd.png  used on input line 47.
 (pdftex.def)             Requested size: 56.9055pt x 56.90282pt.
-<images/ipb.jpg, id=141, 401.5pt x 401.5pt>
+<images/ipb.jpg, id=5, 401.5pt x 401.5pt>
 File: images/ipb.jpg Graphic file (type jpg)
 <use images/ipb.jpg>
 Package pdftex.def Info: images/ipb.jpg  used on input line 49.
 (pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
- [1
+[1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./images/thd.png> <./images/ipb.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 70--71
@@ -421,18 +413,19 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.85 \newpage
-              [1] [2] (./main.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 1.
-)
+              [1] [2]
+No file main.toc.
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
- [3] [4]
+[3]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 111.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 111.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 111.
+ [4]
 Chapter 1.
 
 Underfull \hbox (badness 10000) in paragraph at lines 132--139
@@ -493,7 +486,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 194--198
 
  []
 
-<images/NIRS_spectra.png, id=223, 1532.72626pt x 947.54pt>
+<images/NIRS_spectra.png, id=53, 1532.72626pt x 947.54pt>
 File: images/NIRS_spectra.png Graphic file (type png)
 <use images/NIRS_spectra.png>
 Package pdftex.def Info: images/NIRS_spectra.png  used on input line 201.
@@ -638,7 +631,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 318--325
  []
 
 [15]
-<images/rf.png, id=263, 722.7pt x 505.89pt>
+<images/rf.png, id=100, 722.7pt x 505.89pt>
 File: images/rf.png Graphic file (type png)
 <use images/rf.png>
 Package pdftex.def Info: images/rf.png  used on input line 328.
@@ -727,5 +720,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 370--377
  []
 
 [17 <./images/rf.png>]
-<images/cnn.png, id=278, 722.7pt x 505.89pt>
-File: im
+<images/cnn.png, id=116, 722.7pt x 505.89pt>
+File: images/cnn.png Graphic file (type png)
+<use images/cnn.png>
+Package pdftex.def Info: images/cnn.png  used on input line 380.
+(pdf
