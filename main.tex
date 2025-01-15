@@ -15,6 +15,8 @@
 \setcounter{tocdepth}{3} % Includes up to subsubsections in the TOC
 \usepackage{xcolor}
 \definecolor{darkblue}{RGB}{0,0,139} % Dark blue color
+\usepackage{booktabs}
+\usepackage{wrapfig}
 
 
 % For the R codes
@@ -37,20 +39,14 @@
     breaklines=true                  % automatically break lines
 }
 
-
-
-
-
 \begin{document}
-
-% Title Page
 \begin{titlepage}
     \centering
     \begin{flushright}
         \centering
-        \includegraphics[width=2cm]{images/thd.png} % Adjust width as needed
+        \includegraphics[width=2cm]{Figures/thd.png} % Adjust width as needed
         \hspace{0cm} % Space between images
-        \includegraphics[width=2cm]{images/ipb.jpg} % Adjust width as needed
+        \includegraphics[width=2cm]{Figures/ipb.jpg} % Adjust width as needed
     \end{flushright}
     {\huge\bfseries Development of an R Toolbox for Near-Infrared Spectroscopy Data Processing \\
     and Analysis of Plant Metabolic Phenotypes\par}
@@ -68,42 +64,38 @@
     {\large \today\par}
 \end{titlepage}
 
-% Acknowledgement section
+% --------------Acknowledgement section---------------------
 \newpage
 \section*{Acknowledgements}
-This Master Thesis has been an incredibly enjoyable experience. In pursuit of my passion for bioinformatics and molecular biology, this master’s thesis project has been a profoundly enriching journey. It offered me an incredible platform to implement the knowledge I gained in various programming languages and bioinformatics tools during my master’s studies along with the knowledge on botany I gained from my bachelor degree. This thesis not only deepened my technical expertise but also provided an invaluable opportunity to explore the practical applications of these skills in real-world research. \\
+This Master Thesis has been an incredibly enjoyable experience. In pursuit of my passion for bioinformatics and molecular biology, this master’s thesis project has been a profoundly enriching journey. It offered me an incredible platform to implement the knowledge I gained in various programming languages and bioinformatics tools during my master’s studies along with the knowledge of botany I gained from my bachelor degree. This thesis not only deepened my technical expertise but also provided an invaluable opportunity to explore the practical applications of these skills in real-world research. \\
 
-I am deeply indebted to my supervisor, Dr. Steffen Neumann, at the Leibniz Institute of Plant Biochemistry (IPB Halle), for his unwavering support, insightful guidance, and expert advice. Dr. Neumann’s mentorship played a pivotal role in navigating the complexities of this project and sharpening my understanding of computational approaches in plant biology. Thank you for making this possible and the always open door. \\
+I am deeply indebted to my supervisor, Dr. Steffen Neumann, at the Leibniz Institute of Plant Biochemistry (IPB Halle), for his unwavering support, insightful guidance, and expert advice. The mentorship of Dr. Neumann played a great role in navigating the complexities of this project and sharpening my understanding of computational approaches in plant biology. Thank you for making this possible and for the always open door. \\
 
-I extend my heartfelt gratitude to my professor, Dr. Melanie Kappelmann-Fenzl, at the Technische Hochschule Deggendorf (THD), for her academic guidance and constant encouragement throughout my master’s degree. Her feedback and insights were instrumental in shaping the direction and quality of my research. \\
+I express my heartfelt gratitude to my professor, Dr. Melanie Kappelmann-Fenzl, at the Technische Hochschule Deggendorf (THD), for her academic guidance and constant encouragement throughout my master’s degree. Her feedback and insights were instrumental in shaping the direction and quality of my research. \\
 
-I am profoundly thankful to the Computational Plant Biochemistry (CPB) and  MetaCom team at IPB Halle especially, Dr. Henriette Uthe, Dr. Rene Meier, Dr. Michael Wenk, Oliver Duchrow, Dr. Khabat Vahabi, Norman Storz, whose expertise and assistance greatly enriched my learning experience. Their collaborative spirit and support made this research endeavor not only productive but also highly inspiring. \\
+I am profoundly grateful to the Computational Plant Biochemistry (CPB) and MetaCom team at IPB Halle, especially Dr. Henriette Uthe, Dr. Rene Meier, Dr. Michael Wenk, Oliver Duchrow, Dr. Khabat Vahabi, and Norman Storz, whose expertise and assistance greatly enriched my learning experience. Their collaborative spirit and support made this research endeavor not only productive but also highly inspiring. \\
 
-My deepest gratitude goes to my family, whose unending love, unwavering support, and endless encouragement have been my foundation throughout this journey. Their belief in me has been the source of my strength and motivation. \\
+My deepest gratitude goes to my family and friends, whose unending love, unwavering support, and endless encouragement have been my foundation throughout this journey. Their belief in me has been the source of my strength and motivation. \\
 
-Lastly, I would like to express my sincere appreciation to all the faculty members of the Life Science Informatics program at the Technische Hochschule Deggendorf and all the members in Leibniz-Institute for Plant Biochemistry. Their guidance, and encouragement at various stages of my degree have been invaluable. \\
+Lastly, I would like to express my sincere appreciation to all the faculty members of the Life Science Informatics program at the Technische Hochschule Deggendorf and all the members in Leibniz-Institute for Plant Biochemistry. Their guidance and encouragement at various stages of my degree have been invaluable. \\
 
-This thesis is a culmination of the collective support and encouragement I have received from all these individuals and institutions, and I remain ever grateful for their contributions to my academic and professional growth. \\
+This thesis is a culmination of the collective support and encouragement that I have received from all these individuals and institutions, and I am ever grateful for their contributions to my academic and professional growth. \\
 
-
-% Abstract Page
+%----------------Abstract page------------------------------------
 \newpage
-\section{Abstract}
-\noindent
-The abstract of this is...............................
+\section*{Abstract}
+The abstract of this thesis is..................................
 
-% Table of Contents
+% ----------------Table of contents---------------------------------
 \newpage
 \tableofcontents
 
-
-% Abbreviations Page
+% ---------------Abbreviations-------------------------------------
 \newpage
 \section*{Abbreviations}
 \begin{tabbing}
-    \textbf{Abbreviation} \hspace{2cm} \= \textbf{Full Form} \\ 
-  \\
-
+    \textbf{Abbreviation} \hspace{2cm} \= \textbf{Full Form} \\
+    \\
     NIRS \> Near Infrared Spectroscopy \\
     LC-MS \> Liquid Chromatography Mass Spectroscopy \\
     CNN \> Convolutional Neural Network \\
@@ -132,24 +124,22 @@ The abstract of this is...............................
     CRAN \> Comprehensive R Archive Network \\
     LC \> Liquid Chromatography \\
     RT \> Retention Time \\
-
+    
 \end{tabbing}
 
-% Chapters and Sections
-
+%---------------Chapters and Sections----------------------------------------------------
 \chapter{Introduction}
-
 The understanding of interplay between plant physiology and its hidden biochemical process is crucial for the improvement of basic plant science and addressing global challenges such as food security, crop resilience and combating climate change [1]. 
 In recent years, advanced High-throughput analytical techniques such as Near-Infrared Spectroscopy (NIRS) and Liquid Chromatography-Mass Spectrometry (LC-MS) has instigated a paradigm shift in plant biology [2,3].
-These High-throughput techniques are mostly used in areas like genomics, imaging and spectroscopy and is known for their ability to collect and analyse the data faster than traditional techniques[3].
+These High-throughput techniques are mostly used in areas like genomics, imaging and spectroscopy and are known for their ability to collect and analyse the data faster than traditional techniques[3].
 High-throughput techniques are widely used since they enable the efficient collection of vast amount of data at various scales, from molecular to field level over significant time periods[4].
-The big data generated by these high throughput procedures present both opportunities and challenges at the same time. It requires efficient processing to extract maximum useful results and this is where Machine Learning (ML) or Deep Learning (DL) becomes indispensable [4,5].
-ML as a part of Artificial Intelligence (AI) refers to the ability of computers to find patterns and learn from the existing data which can be employed in processing high dimensional data [6,4]. The ML algorithms are powerful enough to analyse complex, high dimensional datasets, 
-enabling accurate predictions of plant traits or other features based on the input data. Additionally, integrating these big data with ML could help the researchers to optimize data processing pipelines, enhance predictive accuracy and thereby enter into a new era of data-driven decision-making [4,5]. This project employs linear models, non-linear models and neural networks to predict various plant features and compare their performances. \\
+The big data generated by these high throughput procedures present both opportunities and challenges at the same time. It requires efficient processing to extract the maximum useful results and this is where Machine Learning (ML) or Deep Learning (DL) becomes indispensable [4,5].
+ML as part of Artificial Intelligence (AI) refers to the ability of computers to find patterns and learn from existing data, which can be employed in processing high-dimensional data [6,4]. The ML algorithms are powerful enough to analyse complex, high dimensional datasets, 
+enabling accurate predictions of plant traits or other features based on the input data. Additionally, integrating these big data with ML could help the researchers to optimize data processing pipelines, enhance predictive accuracy and thereby enter into a new era of data-driven decision-making [4,5]. This project employs linear model, non-linear model and neural networks to predict various plant features and compare their predictive accuracy, error rate and training time. \\
 
 
 A significant  shift in the realm of the biomedical community has brought new guidelines to ensure readability, modularity, transparency and extensibility of computational toolboxes. A toolbox, which stores multiple functions, parameters and results in a central location should be maintainable and uncomplicated for the developers and members of the open-source community [7].
-R is a powerful and widely used programming language in the analysis and processing of high throughput data. Additionally, R contains a multitude of statistical and high quality visualization packages such as ggplot2 which are capable of processing and integrating big data to different ML methods [8]. Bioconductor is an open source R software for bioinformatics, which contains more than 3000 packages for statistical computing. 
+R is a powerful and widely used programming language in the analysis and processing of high throughput data. Additionally, R contains a multitude of statistical and high quality visualization packages such as ggplot2 which are capable of processing and integrating big data to different ML methods [8]. Bioconductor is an open source software for bioinformatics, which contains more than 3691 packages (according to the last update in 2024) for statistical computing. 
 This offers an object oriented framework for the high dimensional data, cutting edge visualization capabilities and interoperability [9]. Existing tools in Near-Infrared Spectroscopy (NIRS) data processing lack functionalities that could simplify and standardize data workflows when integrated with the SummarizedExperiment framework from the Bioconductor package. To address these gaps, the R toolbox, “nearspectRa” was developed for processing NIRS data.
 This package has a modular structure which creates a SummarizedExperiment object from NIRS data. \\
 
@@ -162,20 +152,20 @@ Mass spectrometry based metabolomics generate data of high sensitivity and throu
 
 
 Near-Infrared Spectroscopy (NIRS) is an advanced high throughput and non-destructive analytical technique that uses light in the near-infrared region (700-2500 nm) to assess the chemical composition of samples [13]. The light is either absorbed or reflected by the sample at different wavelengths and thereby creating a spectrum[13]. The NIRS is widely used in plant research due to its ability in predicting sample structure and traits by analysing the spectral patterns.
-NIRS can also be used in the quantitative analysis of key plant features such as protein and carbohydrate content, secondary metabolites and physiological traits such as Specific Leaf Area (SLA) by developing calibration models between spectra and reflectance trait data [14,13]. The NIRS is not only used in plant biology but also in various fields such as food science, agriculture and pharmaceuticals. When compared to other analytical techniques, NIRS is rapid, 
+NIRS can also be used in the quantitative analysis of key plant features such as protein and carbohydrate content, secondary metabolites and physiological traits such as Specific Leaf Area (SLA) by developing calibration models between spectra and reflectance trait data [14,13]. NIRS is not only used in plant biology but also in various fields such as food science, agriculture and pharmaceuticals. When compared to other analytical techniques, NIRS is rapid, 
 requires minimal sample preparation and less expensive, which makes it more attractive and interesting to the scientific communities [13]. However, on the flip side it requires complex statistical methods to extract different complex features due to the highly-correlated nature of NIRS data [13]. To tackle this problem, the conventional methods such as Partial Least Square Regression (PLSR) and Principal Component Analysis (PCA) imply dimension reduction which 
 result in loss of information and often struggles to extract important features from the spectral data [13]. To address the challenge of data complexity and generalizability, different ML methods can be used to predict the traits from the NIRS data [13,15]. In this project different ML and Deep Learning (DL) has been employed to predict different plant leaf traits with use of NIRS data. \\
 
 
 In recent years, studies using NIRS data coupled with PLSR have been used as an alternative for traditional methods such as high-performance liquid chromatography (HPLC) and mass spectrometry which are both labor-intensive and expensive to predict different plant traits. A notable example is the prediction of glucobrassicin (GBS) concentrations from NIRS data. This has shown that GBS 
-concentrations could be reliably predicted from NIRS data [16]. Another prominent example is the tree and mycorrhizal fungal diversity experiment and  trait variation in temperate forests  conducted by Pablo Castro Sanchez-Bermejo, where he combined Deep Learning (DL) approaches with leaf-level spectral data to predict 5 different leaf traits [15]. Another good  example would be a 
+concentrations could be reliably predicted from NIRS data [16]. Another prominent example is the tree and mycorrhizal fungal diversity experiment and  trait variation in temperate forests  conducted by Pablo Castro Sanchez-Bermejo, where he combined Deep Learning (DL) approaches with leaf-level spectral data to predict 5 different leaf traits [15]. Another good  example is a 
 project involving the development of white-box  workflow for regression tasks [17]. The project marks the potential of Regression (Sensitive) Neural Gas (RSNG) for generating interpretable results while maintaining high accuracy [17]. From the above studies, it is evident that NIRS data has a wide range of applications in plant research. This can also be expanded further to predict 
 complex metabolites which are usually assessed via techniques like LC-MS. Moreover, integrating NIRS with advanced ML could further enhance the prediction accuracy and unlock new possibilities in plant science. \\
 
 
 The past decade has witnessed the increasing popularity of  Artificial Intelligence (AI) in different fields. However, this idea of AI has been under development since 1956, starting from the concept of “programming computers to think and reason” [18]. In other words, AI can be described as “automating intellectual tasks normally done by humans” [18]. Machine learning (ML) and Deep learning (DL) are the methods that fall under the realm of AI [18,19]. 
-Nowadays, there are different ML algorithms in use, in which the most popular ones include Partial Least Square Regression (PLSR), Random Forest (RF) and Convolutional Neural Network (CNN) [20,18]. PLSR is a linear and most simple ML approach. It uses a straight line to solve the regression problem in the high dimensional data [18]. On the other hand,  Random forest is a non-linear approach in ML that is primarily used for classification. It can also 
-be used for regression tasks and can be represented as a decision tree with a series of nodes starting from a root node. The terminal node will predict the class of data [18]. The Convolutional neural networks are a specialized type of neural network which are mainly used in the field of image processing [21]. A recent study of mycorrhizal fungal diversity experiment and  trait variation in temperate forests  conducted by Pablo Castro Sanchez-Bermejo, 
+Nowadays, there are different ML algorithms in use, in which the most popular ones include Partial Least Square Regression (PLSR), Random Forest (RF) and Convolutional Neural Network (CNN) [20,18]. PLSR is a linear and one of the most simple ML approach. It uses the advantages of PCA and linear regression to solve the regression problem in the high dimensional data [18]. On the other hand,  Random forest is a non-linear approach in ML that is primarily used for classification. It can also 
+be used for regression tasks and can be represented as a decision tree with a series of nodes starting from a root node. The terminal node will predict the class of data in classification tasks [18]. For regression tasks, the random forest works differently compared to classification but the core principles remains the same. The terminal node of RF in regression takes the avarage of predictions from the individual trees [44]. The Convolutional neural networks are a specialized type of neural network which are mainly used in the field of image processing [21]. A recent study of mycorrhizal fungal diversity experiment and  trait variation in temperate forests  conducted by Pablo Castro Sanchez-Bermejo, 
 demonstrated the application of CNN in predicting the leaf trait values from NIRS data, achieving superior results [15]. This outcome strongly suggests the potential of CNN not only for classification tasks such as image processing but also for regression tasks. In another project, CNN was used to predict gene expression status on the basis of sequence of gene transcription start regions. The CNN model had achieved roughly 80\% accuracy [22]. 
 These studies highlight the growing versatility of CNN models. \\
 
@@ -196,6 +186,7 @@ Apart from developing a Good Scientific Practice (GSP) compliant package, this p
 extrapolation studies were conducted on PLSR and RF to assess the robustness and performance of those beyond training data. This project not only exemplifies good scientific practice in developing an R toolbox but also provides a comprehensive comparison of linear, non-linear and neural network based NL approaches in predicting plant traits and LC-MS features from NIRS data. By achieving this, the project makes a significant milestone, paving the way for a new era of cost-effective, rapid biochemical analysis in metabolomics. \\
 
 
+%--------------------------------Background--------------------------------------------------
 
 \chapter{Background}
 
@@ -207,7 +198,7 @@ C-H, O-H and N-H while other groups like C=C and C=O absorbs light in weaker int
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/NIRS_spectra.png} 
+    \includegraphics[width=0.6\textwidth]{Figures/NIRS_spectra.png} 
     \caption{Example near-infrared spectra illustrating reflectance across wavelengths. Each line represents a unique sample, showing how NIRS captures molecular absorption/reflectance patterns.}
     \label{Figure 5}
 \end{figure}
@@ -225,9 +216,9 @@ The NIRS has diverse biological applications, particularly in agricultural and s
 in agriculture [36]. Even Though, much of the NIRS applications focused on agriculture and food quality, its applications in food safety are also growing. For instance,NIRS can effectively evaluate the lamb meat tenderness, pH, fat and water content. The portable NIRS devices allow real time industrial monitoring making it suitable for large scale monitoring of meat, fruits, vegetables and beverages for quality and safety [36]. Genetically modified organisms (GMO) pose a risk of 
 gene transfer, which could threaten environmental biodiversity. NIRS has shown potential for rapid and cost effective GMO detection in labs and fields, making it a favored tool among researchers for monitoring GMOs [36]. \\
 
-\paragraph{\textbf{\textcolor{darkblue}{NIRS Instruments}}}\\
-The ASD FieldSpec4 and SpectraVista Corporation (SVC) HR-1024i are two widely used NIRS instruments that are highly relevant to this project. \\
-\\
+\paragraph{\textbf{\textcolor{darkblue}{NIRS Instruments}}}
+The ASD FieldSpec4 and SpectraVista Corporation (SVC) HR-1024i are two widely used NIRS instruments that are highly relevant to this project.\\
+
 \textcolor{darkblue}{ASD FieldSpec4}\\
 ASD FieldSpec4 is a portable NIRS instrument produced by  Malvern panalytical and comes in different variants. It has a wide range of applications including, plant physiology, remote sensing and geology, atmospheric remote sensing research and biomass analysis among others. It provides data across the wavelength of 350 to 2500 nm. There are multiple optional accessories, contact probe (contact measurements like solid raw materials, grains, other granular materials), reflectance panels, pistol grips and leaf clip version 2 are few out of many [40]. \\
 \\
@@ -291,7 +282,7 @@ For instance, clustering data points into separate groups based on the shared fe
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/ml.png} 
+    \includegraphics[width=0.6\textwidth]{Figures/ml.png} 
     \caption{Different machine learning models illustrating the four primary learning methods: supervised, unsupervised, semi-supervised, and reinforcement learning.}
     \label{Figure 1}
 \end{figure}
@@ -314,7 +305,7 @@ summarizes the covariance between predictor and response variables. This latent 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/PLSR.png}} 
+    \includegraphics[width=0.6\textwidth]{Figures/PLSR.png}
     \caption{A comparison of PCA (A) and PLS (B). In the PCA plot, the x-axis represents a combination of variables (e.g., three metabolites) that captures the greatest variation in the dataset, independent of group classification. In contrast, PLS focuses on explaining the relationship with an explanatory variable, such as "Treatment" in this example}
     \label{Figure 2}
 \end{figure}
@@ -334,14 +325,42 @@ predict ragweed pollen concentrations, with RF delivering the most accurate pred
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/rf.png}} 
-    \caption{Schematic representation of a Random Forest model.}
+    \includegraphics[width=0.6\textwidth]{Figures/rf.png}
+    \caption{Schematic representation of a Random Forest model (classification).}
     \label{Figure 3}
 \end{figure}
 
 Random Forest often outperforms linear regression models since, linear regression assumes a linear relationship between the variables. Even though this makes linear regression easier to interpret, it limits their flexibility in capturing complex patterns in the dataset. 
 On the flip side, RF can easily adapt to non linear relationships, making them better flexible and suited for such tasks [30]. The RF algorithm estimates the error rate by out-of-bag (OOB) during training time. Each tree in the model is built using a subset of data, called a 
-bootstrap sample and about one third of the data is left out during this process. These excluded data points are the OOB. Hence, minimizing the OOB is crucial for better model performance and robustness [30]. 
+bootstrap sample and about one third of the data is left out during this process. These excluded data points are the OOB. Hence, minimizing the OOB is crucial for better model performance and robustness [30]. \\
+
+\subsubsection{Mathematical Explanation of Random Forest Regression}
+For regression tasks, the random forest works differently compared to classification but the core principles remain the same. The terminal node of RF in regression takes the average of predictions from the individual trees [44]
+
+\begin{itemize}
+    \item \textbf{Bootstrapping and Tree Construction} \\
+    Each tree in a RF model is trained using a bootstrap sample, which is a subset of the sample from the training data of the original dataset. Approximately one third of the samples (data points) are left out during bootstrap sampling for each tree and these left out samples are referred to as Out-Of-Bag (OOB) samples.
+    Given a dataset \( D = \{ (x_1, y_1), (x_2, y_2), \dots, (x_n, y_n) \} \), where:
+    \begin{itemize}
+        \item \( x_i \) represents the feature (e.g., spectral data),
+        \item \( y_i \) represents the response variable (e.g., SLA, LDMC, or other traits),
+    \end{itemize}
+    For each tree (\( t \)), a bootstrap sample \( D_t \) is taken out of dataset \( D \), and the OOB for that tree is calculated as:
+    \[D_t^{\text{OOB}} = D \setminus D_t\]
+    
+    \item \textbf{Model training and Prediction} \\
+    Each tree in a RF model is trained with a separate bootstrap sample (\( D_t \)) and later exposed to test data for predictions to be made.
+    For the test data \( X_{\text{test}} \), the prediction from each tree (\( t \)) is denoted as \( \hat{y}_t(x_{\text{test}}) \). The final prediction from the RF is obtained by taking the average value of predictions from all the individual trees:
+    \[\hat{y}_{\text{RF}}(x_{\text{test}}) = \frac{1}{T} \sum_{t=1}^{T} \hat{y}_t(x_{\text{test}})
+    \]
+    where:
+    \begin{itemize}
+        \item \( \hat{y}_t(x_{\text{test}}) \) is the prediction from the \( t \)-th tree,
+        \item \( T \) is the total number of trees in the Random Forest.
+    \end{itemize}
+\end{itemize}
+
+
 In this project, we will be using RF models to do regression tasks on NIRS data and compare the coefficient of determination R2, RMSE and training time with that of linear model and neural network, we will also discuss developing the RF model and associated functionalities. \\
 
 
@@ -358,8 +377,8 @@ The output from the last pooling layer is flattened to 1 dimensional array and p
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/neuron.png}
-    \caption{Comparison of artificial neurons and real neurons}
+    \includegraphics[width=0.6\textwidth]{Figures/cnn.png}
+    \caption{Schematic representation of Convolutional Neural Network }
     \label{Figure 4}
 \end{figure}
 
@@ -367,6 +386,12 @@ A loss function evaluates how well the predicted values match the actual ones.  
 It is categorized into supervised learning, for classification and regression tasks, and unsupervised learning, for clustering with input data only. Several methods are employed for training deep neural networks, including Backpropagation, Gradient Descent, Stochastic Gradient Descent (SGD), and others. Among these, SGD stands out as one of the simplest and most widely used optimization algorithms in machine learning [34]. Adaptive Moment Estimation (ADAM) is an advanced 
 optimization algorithm which combines the benefits of two SGD variants: Adaptive Gradient Algorithm (AdaGrad) and Root Mean Square Propagation (RMSProp) [34]. It requires minimal memory and dynamically adjusts the learning rate for each parameter, making it more computationally efficient [34]. In this project CNN is employed to predict the output values from NIRS data. \\
 
+
+
+
+
+
+%-----------------------------Implementation-----------------------------------------------------
 
 \chapter{Implementation}
 \section{R Toolbox Development}
@@ -377,8 +402,13 @@ Recognizing the potential applications of the SummarizedExperiment framework in 
 such as Malvern Panalytical offer software for processing data from instruments such as the ASD FieldSpec 4, while the SVC HR-1024i from Spectra Vista Corporation requires additional computational effort to structure the data for analysis.
 In addition, the ASD FieldSpec 4 generates binary output files. To process these files, functions from the FieldSpectra package were utilized as a foundation, with additional custom functions developed to convert the data into SummarizedExperiment objects. The entire workflow, including data reading, processing, and conversion, is detailed in this chapter.\\
 
-
 \subsection{Toolbox: nearspectRa}
+%\begin{wrapfigure}{r}{0.4\textwidth}
+    %\centering
+    %\includegraphics[width=\linewidth]{Figures/nearspectra.PNG} 
+    %\caption{The official logo of the \texttt{nearspectRa} package.}
+    %\label{logo }
+%\end{wrapfigure}
 The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Near-Infrared Spectroscopy (NIRS) data. This name was chosen to align with its functionality and field of usage, focusing on plant metabolic phenotype analysis. The toolbox is publicly available on GitHub and can be accessed at the following link: \href{https://github.com/georgejr45/nearspectRa}{GitHub Repository} \\
 
 
@@ -434,6 +464,13 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
     print(se)
     \end{lstlisting}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Figures/se_asd_1.png}
+    \caption{Example output of the \texttt{read\_summarizedexperiment\_asd function}}
+    \label{Figure 2}
+\end{figure}
+
 \textbf{Function 2: \texttt{read\_summarizedexperiment\_sig}} \\
 
 \textbf{Key Features:}
@@ -485,16 +522,61 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
     print(se)
 \end{lstlisting}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Figures/se_sig.png}
+    \caption{Example output of the \texttt{read\_summarizedexperiment\_sig function}}
+    \label{Figure 2}
+\end{figure}
+
+\subsection{Package Development Overview}
+\subsubsection{Purpose and Objectives}
+This package is aim to ease the NIRS data processing by reading the raw data and outputs a \texttt{SummarizEdexperiment} object. The programming language and tools used for this development process is mentioned below. \\
+
+\subsubsection{Language}
+\textbf{R}: is the core programming language used for the development. It is choosen because of its powerful data analytical capabilities and wide usage in bioinformatics. The R version 4.4.0 ( eleased on April 24, 2024 ) has been used for this project.
+
+\subsubsection{Libraries and Dependencies}
+Base R Functions: These functions come pre-installed and do not require additional libraries or packages. For instance, readLines, list.files, files.info \\
+\texttt{\href{https://github.com/serbinsh/R-FieldSpectra}{FieldSpectra}}: is Used for reading the ".asd" files and to extract the metadata. The version used is FieldSpectra $0.9.7$\\
+\texttt{\href{https://github.com/Bioconductor/SummarizedExperiment}{SummarizedExperiment}}: is central to this package and it enable structured storage of spectral data and integrate to the bioconductor world. The version used is $1.34.0$ \\
+\texttt{\href{https://github.com/r-lib/roxygen2}{roxygen2}}: is used for generating documentation directly from inline comments. The version used is $7.3.2$ 
+
+\subsubsection{Version Control} 
+One of the main challenges during software development is tracking and documenting the code during the development process. These challenges include, managing multiple script versions or integrating collaborator edits. Manuel merging and making multiple copies of each version is time consuming and error-prone [46].To overcome this challenge, Git is used for version control and collaborative development. A git version of $2.32.0$ is used.\\
+
+\textbf{Examples of few git commands used in this project are given below:}
+\begin{lstlisting}[language=bash, style=mystyle]
+# Navigate to the project directory
+cd/path/to/the/project
+
+# Initialize a Git repository
+git init
+
+# Add a remote repository
+git remote add origin https://github.com/username/project.git
+
+# Check the status of the repository
+git status
+
+# Stage all files for commit
+git add .
+
+# Commit the changes with a message
+git commit -m "First commit"
+
+# Push the changes to the remote repository
+git branch -M main  # Rename branch to main
+git push -u origin main
+\end{lstlisting}
 
 
+\subsubsection{Testing and Validation} 
+Unit tests are implemented under \textit{test} directory to ensure a robust function performance across different datasets. \texttt{testthat} package is used for the unit test development.
 
+\subsubsection{Documentation} 
+Documentation is a fundamental aspect of software development, regardless of the programming language or platform. It serves as a vital tool for communication between developers and end users, providing the necessary information for effectively utilizing the software to its full potential [45]. In developing \texttt{nearspectRa}, we prioritized clear and comprehensive documentation to ensure the package is user-friendly, while adhering to FAIR principles—Findable, Accessible, Interoperable, and Reusable. This documentation was created with the help of the \texttt{roxygen2} package version $7.3.2$.
 
-
-
-
-
-
-\subsection{Development process}
 \subsection{Usage and Integration}
 \subsection{Challenges and Future Work}
 
@@ -505,6 +587,61 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
 
 
 \chapter{Results and Discussion}
+
+
+
+\begin{table}[h!]
+\centering
+\caption{\textcolor{darkblue}{Comparison of 3 ML models across data}}
+\label{tab:main-sub-table}
+\begin{tabular}{lccc}
+\toprule
+\multicolumn{4}{c}{\textbf{\textcolor{darkblue}{Partial Least Square Regression (PLSR)}}} \\ 
+\midrule
+\textbf{Trait} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{Training time} \\
+\midrule
+SLA  & 0.89 & 0.40 & 13.76 sec \\
+LDMC & 0.85 & 0.41 & 11.40 sec \\
+C:N  & 0.72 & 0.50 & 15.71 sec \\
+C    & 0.68 & 0.55 & 13.63 sec \\
+P    & 0.66 & 0.64 & 15.19 sec \\
+\midrule
+\multicolumn{4}{c}{\textbf{{PLSR Extrapolation}}} \\ 
+\midrule
+SLA (H 30\%) & 0.14 & 1.06 &  21.07 sec \\
+SLA  (L 30\%)& 0.70 & 0.93 &  52.38 sec \\
+\midrule
+\multicolumn{4}{c}{\textbf{\textcolor{darkblue}{Random Forest (RF)}}} \\ 
+\midrule
+\textbf{Trait} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{Training time} \\
+\midrule
+SLA  & 0.87 & 0.42 & 12.85 min \\
+LDMC & 0.54 & 0.72 & 12.11 min \\
+C:N  & 0.57 & 0.63 & 12.60 min \\
+C    & 0.37 & 0.82 & 13.17 min \\
+P    & 0.50 & 0.66 & 15.25 min \\
+\midrule
+\multicolumn{4}{c}{\textbf{{RF Extrapolation}}} \\ 
+\midrule
+SLA (H 30\%) & 0.035 & 1.29 &  11.64 min \\
+SLA  (L 30\%)& 0.17 & 1.53 & 3.44 min \\
+\midrule
+\multicolumn{4}{c}{\textbf{\textcolor{darkblue}{Convolutional Neural Network (CNN)}}} \\
+\midrule
+\textbf{Trait} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{Training time} \\
+\midrule
+SLA  & 0.89 & 0 & 28.11 min \\
+LDMC & 0.88 & 0 & 30.20 min \\
+C:N  & 0.74 & 0 & 4.11 min \\
+C    & 0.36 & 0 & 4.83 min \\
+P    & 0.20 & 0 & 31.30 sec \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
 
 \section{Data charecterestics}
 histogram, spectra
@@ -607,5 +744,13 @@ PLS, RF, CNN
 42. Lantz, B. (2019). Machine learning with R: expert techniques for predictive modeling. Packt publishing ltd. \\
 \\
 43. Allwood, J. W., \& Goodacre, R. (2010). An introduction to liquid chromatography–mass spectrometry instrumentation applied in plant metabolomic analyses. Phytochemical Analysis: An International Journal of Plant Chemical and Biochemical Techniques, 21(1), 33-47. https://doi.org/10.1002/pca.1187. \\
+\\
+44. Breiman, L. (2001). Random Forests. Machine Learning, 45(1), 5–32. https://doi.org/10.1023/A:1010933404324 \\
+\\
+45. Chomal, V. S., \& Saini, J. R. (2015). Software project documentation-an essence of software development. International Journal of Advanced Networking and Applications, 6(6), 2563.\\
+\\
+46. Blischak, J. D., Davenport, E. R., & Wilson, G. (2016). A quick introduction to version control with Git and GitHub. PLoS computational biology, 12(1), https://doi.org/10.1371/journal.pcbi.1004668\\
+\\
+
 
 \end{document}
