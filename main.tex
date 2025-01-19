@@ -19,6 +19,7 @@
 \usepackage{wrapfig}
 
 
+
 % For the R codes
 \usepackage{listings}
 \usepackage{xcolor}
@@ -44,9 +45,9 @@
     \centering
     \begin{flushright}
         \centering
-        \includegraphics[width=2cm]{images/thd.png} % Adjust width as needed
+        \includegraphics[width=2cm]{Figures/thd.png} % Adjust width as needed
         \hspace{0cm} % Space between images
-        \includegraphics[width=2cm]{images/ipb.jpg} % Adjust width as needed
+        \includegraphics[width=2cm]{Figures/ipb.jpg} % Adjust width as needed
     \end{flushright}
     {\huge\bfseries Development of an R Toolbox for Near-Infrared Spectroscopy Data Processing \\
     and Analysis of Plant Metabolic Phenotypes\par}
@@ -151,7 +152,7 @@ The coupling of liquid or gas chromatography with mass spectrometry or nuclear m
 Mass spectrometry based metabolomics generate data of high sensitivity and throughput requiring advanced computational methods. Machine learning not only offers a powerful solution to analyse such data, but also helps in resolving the challenges like noise, batch effects and missing values [12]. Integrating ML with Liquid Chromatography-Mass Spectroscopy (LC-MS) data helps us to analyse this complex heterogeneous data rapidly, enabling deeper insights. \\
 
 
-Near-Infrared Spectroscopy (NIRS) is an advanced high throughput and non-destructive analytical technique that uses light in the near-infrared region (700-2500 nm) to assess the chemical composition of samples [13]. The light is either absorbed or reflected by the sample at different wavelengths and thereby creating a spectrum[13]. The NIRS is widely used in plant research due to its ability in predicting sample structure and traits by analysing the spectral patterns.
+Near-Infrared Spectroscopy (NIRS) is an advanced high throughput and non-destructive analytical technique that uses light in the near-infrared region (780-2500 nm) to assess the chemical composition of samples [13]. The light is either absorbed or reflected by the sample at different wavelengths and thereby creating a spectrum[13]. The NIRS is widely used in plant research due to its ability in predicting sample structure and traits by analysing the spectral patterns.
 NIRS can also be used in the quantitative analysis of key plant features such as protein and carbohydrate content, secondary metabolites and physiological traits such as Specific Leaf Area (SLA) by developing calibration models between spectra and reflectance trait data [14,13]. NIRS is not only used in plant biology but also in various fields such as food science, agriculture and pharmaceuticals. When compared to other analytical techniques, NIRS is rapid, 
 requires minimal sample preparation and less expensive, which makes it more attractive and interesting to the scientific communities [13]. However, on the flip side it requires complex statistical methods to extract different complex features due to the highly-correlated nature of NIRS data [13]. To tackle this problem, the conventional methods such as Partial Least Square Regression (PLSR) and Principal Component Analysis (PCA) imply dimension reduction which 
 result in loss of information and often struggles to extract important features from the spectral data [13]. To address the challenge of data complexity and generalizability, different ML methods can be used to predict the traits from the NIRS data [13,15]. In this project different ML and Deep Learning (DL) has been employed to predict different plant leaf traits with use of NIRS data. \\
@@ -191,22 +192,39 @@ extrapolation studies were conducted on PLSR and RF to assess the robustness and
 \chapter{Background}
 
 \section{Near Infrared Spectroscopy (NIRS)}
-Near infrared spectroscopy (NIRS) is a non-invasive measurement technique that uses light in the near infrared region to analyse a sample [35,13]. Infrared (IR) is a form of electromagnetic radiation that interacts with samples through absorption or reflection. The NIRS is widely used in plant research due to its ability in predicting sample structure and traits by analysing the spectral patterns. The analysis relies on how the sample absorbs or reflects light at various wavelengths. 
-Infrared radiation is classified into three categories based on wavelength: (1) Near Infrared (NIR), ranging from 780 to 2500 nanometers (nm), (2) Mid Infrared (MIR), ranging from 2500 to 25,000 nm, and (3) Far Infrared (FIR), ranging from 25,000 to 1,000,000 nm [35]. When a substance such as plant leaf is exposed to NIR light, the molecular bonds in the infrared range will interact with the light thereby causing absorption or reflection of light by the sample. The light transmitted 
-or reflected is then measured to generate the NIR spectrum. This spectrum provides a detailed representation of the molecular composition of the substance and the peaks in the spectrum corresponding to different vibrational modes of different chemical bonds. This occurs due to the change in the vibrational or rotational state of molecules or transition between their energy levels [35,13]. The group which is the most dominant in absorbing the NIR are hydrogen-containing groups such as 
-C-H, O-H and N-H while other groups like C=C and C=O absorbs light in weaker intensities. These groups are key components in organic substances and their absorption wavelengths and intensities differ depending on the chemical composition of the substance [35]. \\ 
+Near infrared spectroscopy (NIRS) is a non-invasive measurement technique that uses light in
+the near infrared region to analyse a sample [35,13]. Infrared (IR) is a form of electromagnetic
+radiation and it interacts with samples through absorption or reflection. The NIRS is widely
+used in plant research due to its ability in predicting sample structure and traits by analysing
+the spectral patterns. Based on how the sample absorbs or reflects light at different wavelengths, Infrared radiation is classified into three categories:(1) Near Infrared (NIR), ranging from 780 to 2500 nanometers (nm), (2) Mid Infrared (MIR),ranging from 2500 to 25,000 nm, and (3) Far Infrared (FIR), ranging from 25,000 to 1,000,000nm [35]. When a substance such as plant leaf is subjected to NIR light, the molecular bonds in the infrared range will interact with the light thereby causing absorption or reflection of light by the sample. The light transmitted or reflected is then measured to produce the NIR spectrum. This spectrum provides a detailed picture of molecular composition of the substance and the peaks in the spectrum corresponding to different vibrational modes of different chemical bonds. This occurs due to the change in the vibrational or rotational state of molecules or transition between their energy levels [35,13]. The group which is the most dominant in absorbing the NIR are hydrogen-containing groups such as C-H, O-H and N-H while other groups like C=C and C=O absorbs light in weaker intensities. These groups are key components in organic substances and their absorption wavelengths and intensities differ depending on the chemical composition of the substance [35].
+  \\ 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/NIRS_spectra.png} 
+    \includegraphics[width=0.8\textwidth]{Figures/NIRS_spectra.png} 
     \caption{Example near-infrared spectra illustrating reflectance across wavelengths. Each line represents a unique sample, showing how NIRS captures molecular absorption/reflectance patterns.}
-    \label{Figure 5}
+    \label{fig:nirs_spectra}
 \end{figure}
 
-This figure (Figure 2.1)  illustrates the relationship between reflectance and wavelength for near-infrared (NIR) spectra where the variations in reflectance provide valuable information about the chemical and physical properties of the sample. Compared to other analytical methods, NIRS is faster, requires little sample preparation, and is more cost-effective, making it a highly appealing choice for researchers and scientists [13]. NIR spectrometers typically consist of a light source, 
-a beam splitter, optical detectors and optionally a processing system or a  monitor. The components vary depending on the purpose of the instrument to ensure accuracy and consistency. These systems can operate in different modes such as transmission, reflection, diffuse reflectance or transfectance depending on the type of analysis [36]. The collected spectra will be later subjected to chemometric analysis to develop a calibration model using key NIR bands. However, NIRS require reference data from traditional chemical analysis for accurate quantitative analysis [36].
-The spectra is usually subjected to preprocessing to remove irrelevant information to enhance the analysis accuracy. The most common preprocessing techniques include, baseline correction, scatter correction, noise removal and wavelength selection. The scatter correction method and spectral derivatives are the most used preprocessing approaches in NIRS. The scatter correction method includes, Multiplicative scatter correction (MSC) and Standard normal variate (SNV). Additionally a wide 
-range of normalization methods such as mean centering, auto scaling, vector normalization and area normalization are also used in preprocessing of NIRS data. The preprocessing methods are aimed to highlight important spectral features but must be carefully selected to avoid losing critical information [36]. \\
+The figure \ref{fig:nirs_spectra} cite an example of the relationship between reflectance and wavelength for
+near-infrared (NIR) spectra where the variations in reflectance give valuable information
+about the chemical and physical properties of the sample. Compared to other analytical meth-
+ods, NIRS is faster, requires little sample preparation, and is more cost-effective, making it a
+highly inviting choice for researchers and scientists [13]. NIR spectrometers typically consist
+of a light source, a beam splitter, optical detectors and optionally a processing system or a
+monitor. The components differ depending on the purpose of the instrument to make sure accuracy
+and consistency. These systems can operate in different modes such as transmission, reflection,
+diffuse reflectance or transfectance depending on the type of analysis [36]. The collected spectra
+will be later put through chemometric analysis to develop a calibration model using key NIR
+bands. Nevertheless, NIRS require reference data from traditional chemical analysis for accurate
+quantitative analysis [36]. The spectra are usually exposed to preprocessing to remove irrelevant information to improve the accuracy of the analysis. The most common preprocessing techniques
+include, baseline correction, scatter correction, noise removal and wavelength selection. The
+scatter correction method and spectral derivatives are the most used preprocessing approaches
+in NIRS. The scatter correction method includes, Multiplicative scatter correction (MSC) and
+Standard normal variate (SNV). Additionally a wide range of normalization methods such as
+mean centering, auto scaling, vector normalization and area normalization are also used in pre-
+processing of NIRS data. The preprocessing methods are aimed to highlight important spectral
+features but must be carefully selected to avoid losing critical information [36]. \\
 
 NIRS consist of overlapping weak bands that require multivariate calibration for quantitative analysis. These methods analyze the data in a way that can identify patterns or make predictions [36]. Techniques like Principal component analysis (PCA), Partial least squares discriminant analysis (PLSDA), Hierarchical cluster analysis (HCA) and Linear discriminant analysis (LDA) are used for classification, while others like Artificial neural networks (ANNs) handle more complex relationships. 
 Deep learning (DL) is a subset of ML that has a wide range of applications including image and audio recognition [36]. ML can also be used in the handling of “Big Data” emerging from the growing spectral libraries. DL models, unlike the traditional neural networks, consist of multiple layers to extract different features from the data resulting in better predictions [36]. In recent years techniques like Convolutional neural network (CNN), recurrent neural network (RNN) and DeepSpectra 
@@ -217,7 +235,7 @@ in agriculture [36]. Even Though, much of the NIRS applications focused on agric
 gene transfer, which could threaten environmental biodiversity. NIRS has shown potential for rapid and cost effective GMO detection in labs and fields, making it a favored tool among researchers for monitoring GMOs [36]. \\
 
 \paragraph{\textbf{\textcolor{darkblue}{NIRS Instruments}}}
-The ASD FieldSpec4 and SpectraVista Corporation (SVC) HR-1024i are two widely used NIRS instruments that are highly relevant to this project.\\
+The ASD FieldSpec4 and SpectraVista Corporation (SVC) HR-1024i are two widely used NIRS instruments in plant biology are highly relevant to this project. \\
 
 \textcolor{darkblue}{ASD FieldSpec4}\\
 ASD FieldSpec4 is a portable NIRS instrument produced by  Malvern panalytical and comes in different variants. It has a wide range of applications including, plant physiology, remote sensing and geology, atmospheric remote sensing research and biomass analysis among others. It provides data across the wavelength of 350 to 2500 nm. There are multiple optional accessories, contact probe (contact measurements like solid raw materials, grains, other granular materials), reflectance panels, pistol grips and leaf clip version 2 are few out of many [40]. \\
@@ -227,10 +245,17 @@ This is a high resolution portable spectroradiometer which provides data across 
 
 
 \section{Liquid Chromatography Mass Spectrometry}
-Liquid Chromatography-Mass Spectrometry is the combination of two powerful analytical techniques for the separation, identification and quantification of biological compounds from complex mixtures. This technique has a wide range of applications in Metabolomics, Pharmaceuticals, environmental science and food chemistry [43]. Liquid Chromatography (LC) 
+Liquid Chromatography-Mass Spectrometry(LCMS) is the combination of two powerful analytical techniques for the separation, identification and quantification of biological compounds from complex mixtures. This technique has a wide range of applications in Metabolomics, Pharmaceuticals, environmental science and food chemistry [43]. Liquid Chromatography (LC) 
 is a technique used to separate components in a mixture based on the rates at which they move through a stationary phase under the influence of mobile phase gradient. The varying affinities of the components to the stationary and mobile phases leads to their separation, with some attached to the mobile phase and eluting faster, while others attach to 
 the stationary phase and thereby elute more slowly, leading to different retention times (RT) [43]. Mass spectrometry (MS) is one of the several detectors which can be coupled with LC to identify compounds. MS detects the mass to charge ratio (m/z) and the abundance of ions generated during ionization of the sample extracts [43]. Ions are charged molecules 
 and are easier to analyze than neutral molecules therefore ionization is a crucial step in MS [43]. The MS is made of an ionization source, a mass analyzer and a detector, all these should be kept under vacuum to optimize the ion transmission. A mass spectrum is then generated with the help of a computer [43]. \\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/lcms_raw.png} 
+    \caption{LCMS dataset after initial processing using the \texttt{metabolighteR} package, revealing the selected columns relevant for downstream analysis.}
+    \label{fig:lcms_raw}
+\end{figure}
 
 The diversity of the metabolic profile analyzed in Liquid Chromatography-Mass Spectrometry (LC-MS) makes it one of the essential tools in plant metabolomics. LC-MS has a great number of uses within the field of plant biology for plant metabolite identification and analysis. Unlike other techniques such as gas chromatography coupled to mass spectrometry, 
 the steps involving derivatization are avoided in LC-MS [43]. This makes LC-MS particularly fit for the detection of varied classes, including semi-polar compounds and secondary metabolites common in plants [43]. The flexibility of LC-MS in gradient elution further allows effective separation of complex mixtures. Using different polarities of solvents 
@@ -250,13 +275,13 @@ R is an expression-based programming language with a straightforward syntax. It 
 Expressions are evaluated, displayed and then discarded. Assignments, on the other hand, evaluate expressions and assign their results to variables without displaying it, allowing more flexible programming [39]. \\
 
 Initially, R gained popularity for its syntax, closely resembling the S programming language, which made it easy for the S-PLUS users to transition to R. The versatility of R made it popular since it could run on various platforms, such as tablets and smartphones due to its open-source nature [8]. 
-The frequent updates, including annual major release and timely bug fixes, highlight active development in R. Its advanced graphical capabilities is another excellent quality among many, supporting detailed and publication-quality visuals with help of packages such as “ggplot2” surpass many competitors [8].
-These visualization packages enable high-dimensional visualizations and are more user friendly [8]. R remains true to its original philosophy, offering an interactive and programmable environment for creating tools. Its strong community contributes a wide range of packages, share knowledge and support on the 
+The frequent updates, including annual major release and timely bug fixes, underline the active development in R. Its advanced graphical capabilities is another very good quality among many, supporting detailed and publication-quality visuals with help of packages such as “ggplot2” surpass many competitors [8].
+These visualization packages allows high-dimensional visualizations and are more user friendly [8]. R remains true to its original philosophy, offering an interactive and programmable environment for creating tools. Its strong community contributes a wide range of packages, share knowledge and support on the 
 forums like Stack Overflow, allowing innovation and collaboration among users worldwide [8]. The main R system can be downloaded from the Comprehensive R Archive Network (CRAN), which also hosts many additional packages that extend R’s capabilities [8]. The R system is divided into two parts \\
 
 \begin{itemize}
     \item The core R system, which can be downloaded from CRAN for different platforms like Linux, Windows and MacOS.
-    \item Additional functionality through various packages.
+    \item Additional functionality through different packages.
 \end{itemize}
 
 R is a powerful tool for statistical computing, this along with high quality visualization capabilities provides a robust environment for machine learning (ML) and deep learning (DL) [42,8]. The availability of a wide range of supporting packages and libraries makes R a powerful tool for both traditional ML methods and modern DL techniques [42]. There are various packages available to perform ML and DL in R, some of them include caret, randomForest, keras and tensorflow. These packages contain the algorithm for different  ML and DL models. This project involves the implementation of various ML and DL models using the R programming language. \\
@@ -278,19 +303,17 @@ Regression focuses on predicting continues numerical values such as LC-MS values
 
 \paragraph{\textcolor{darkblue}{Unsupervised Learning}} 
 Unsupervised learning is considered to be more challenging compared to supervised learning since the former focuses on discovering patterns or groupings within data without predefined targets [18]. Common unsupervised learning tasks include clustering, association and anomaly detection, where the algorithm independently identifies underlying structures in the data [23,18].
-For instance, clustering data points into separate groups based on the shared features ( Figure 2.2). This approach has already proven successful in genomics, where identifying an eosinophilic subtype of asthma led to a novel therapy targeting interleukin-13, a cytokine secreted by eosinophils. Unlike supervised learning, there were no predicted outcomes, in fact there was a greater interest in identifying the patterns within the data [24]. \\
+For instance, clustering data points into separate groups based on the shared features (\ref{fig:ml}). 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/ml.png} 
+    \includegraphics[width=0.6\textwidth]{Figures/ml.png} 
     \caption{Different machine learning models illustrating the four primary learning methods: supervised, unsupervised, semi-supervised, and reinforcement learning.}
-    \label{Figure 1}
+    \label{fig:ml}
 \end{figure}
 
 \paragraph{\textcolor{darkblue}{Semi-supervised and Reinforcement Learning}}
-Semi-supervised learning bridges the gap between supervised and unsupervised learning by utilizing datasets that have both labelled and unlabelled data. For instance, 
-the labelling of medical images is time-consuming and expensive. A physician might label a few medical images and this is then used to train a preliminary model which 
-then aids in classification of the unlabelled images. This newly created labelled dataset will then be used to train a more robust final model[24]. On the other hand, reinforcement learning mimics the human learning process, where it relies on trial and error then solely on data [24]. \\
+Semi-supervised learning bridges the gap between supervised and unsupervised learning by utilizing datasets that have both labelled and unlabelled data. On the other hand, reinforcement learning mimics the human learning process, where it relies on trial and error then solely on data [24]. \\
 
 In the era of modern molecular plant breeding, integration of ML with the large, noisy and heterogeneous data is important to uncover complex patterns and enable accurate predictions of plant features [23]. The “big data” resulting from high throughput techniques in plant sciences can be leveraged 
 to drive discoveries, enhanced precision and accelerate advancement in plant research [23]. A plant genetic makeup (genotype) has a significant influence in its growth, development and biochemical composition. This results in the expression of plant traits such as yield, stress tolerance and pest resistance. 
@@ -305,13 +328,13 @@ summarizes the covariance between predictor and response variables. This latent 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/PLSR.png}
+    \includegraphics[width=0.6\textwidth]{Figures/PLSR.png}
     \caption{A comparison of PCA (A) and PLS (B). In the PCA plot, the x-axis represents a combination of variables (e.g., three metabolites) that captures the greatest variation in the dataset, independent of group classification. In contrast, PLS focuses on explaining the relationship with an explanatory variable, such as "Treatment" in this example}
-    \label{Figure 2}
+    \label{fig:plsr}
 \end{figure}
 
 Principal Component Analysis (PCA) uses the principal components as explanatory variables to capture most of the variance in predictor variables (X), ensuring dimensionality reduction while retaining most of the data’s variability. 
-Partial Least Squares (PLS) prioritize relevance to both X (predictor) and y (response) variables, rather than maximising the variance in X alone (Figure 2.3) [27]. By combining the PCA with linear regression, PLSR constructs 
+Partial Least Squares (PLS) prioritize relevance to both X (predictor) and y (response) variables, rather than maximising the variance in X alone (\ref{fig:plsr}) [27]. By combining the PCA with linear regression, PLSR constructs 
 the latent variable that summarizes predictor variables and maximises their relevance to the response variables. This makes PLSR particularly suitable for high dimensional datasets such as spectral data from NIRS instruments. \\
 
 \subsection{Random Forest (RF)}
@@ -321,20 +344,20 @@ Recursive partition in which the data is separated into two binary part begins w
 In the classic tree based model, the dataset is divided into two groups based on the certain criteria until it encounters a predetermined stopping condition. The endpoints of a decision tree, known as leaf nodes, 
 represents the final data division. A random forest model consisting of an ensemble of decision trees, can be utilized for both regression and classification tasks, depending on the partitioning strategy and stopping criteria [30]. 
 RF has proven its importance in many scientific domains and one of which was in environmental science, in a study employed learning algorithms such as Least Absolute Shrinkage and Selection Operator (LASSO) Regression, RF and neural network to 
-predict ragweed pollen concentrations, with RF delivering the most accurate predictions [30,31]. A graphical representation of the RF model with decision trees can be found in the figure (Figure 2.4) . \\
+predict ragweed pollen concentrations, with RF delivering the most accurate predictions [30,31]. A graphical representation of the RF model with decision trees can be found in the figure (\ref{fig:rf}) . \\
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/rf.png}
+    \includegraphics[width=0.6\textwidth]{Figures/rf.png}
     \caption{Schematic representation of a Random Forest model (classification).}
-    \label{Figure 3}
+    \label{fig:rf}
 \end{figure}
 
 Random Forest often outperforms linear regression models since, linear regression assumes a linear relationship between the variables. Even though this makes linear regression easier to interpret, it limits their flexibility in capturing complex patterns in the dataset. 
 On the flip side, RF can easily adapt to non linear relationships, making them better flexible and suited for such tasks [30]. The RF algorithm estimates the error rate by out-of-bag (OOB) during training time. Each tree in the model is built using a subset of data, called a 
 bootstrap sample and about one third of the data is left out during this process. These excluded data points are the OOB. Hence, minimizing the OOB is crucial for better model performance and robustness [30]. \\
 
-\subsubsection{Mathematical Explanation of Random Forest Regression}
+\textbf{Mathematical Explanation of Random Forest Regression} \\
 For regression tasks, the random forest works differently compared to classification but the core principles remain the same. The terminal node of RF in regression takes the average of predictions from the individual trees [44]
 
 \begin{itemize}
@@ -346,7 +369,9 @@ For regression tasks, the random forest works differently compared to classifica
         \item \( y_i \) represents the response variable (e.g., SLA, LDMC, or other traits),
     \end{itemize}
     For each tree (\( t \)), a bootstrap sample \( D_t \) is taken out of dataset \( D \), and the OOB for that tree is calculated as:
-    \[D_t^{\text{OOB}} = D \setminus D_t\]
+    
+    \[D_t^{\text{OOB}} = D \mathbin{-} D_t
+
     
     \item \textbf{Model training and Prediction} \\
     Each tree in a RF model is trained with a separate bootstrap sample (\( D_t \)) and later exposed to test data for predictions to be made.
@@ -377,9 +402,9 @@ The output from the last pooling layer is flattened to 1 dimensional array and p
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/cnn.png}
+    \includegraphics[width=0.6\textwidth]{Figures/cnn.png}
     \caption{Schematic representation of Convolutional Neural Network }
-    \label{Figure 4}
+    \label{fig:cnn}
 \end{figure}
 
 A loss function evaluates how well the predicted values match the actual ones.  For classification cross-entropy loss is commonly used whereas mean squared error (MSE) is preferred for regression tasks. Choosing the right loss function is essential and is determined according to the given task [32]. In deep neural network training, the weights of each neuron is estimated to establish an accurate relationship between inputs and outputs with a desired level of precision [34].
@@ -395,12 +420,12 @@ optimization algorithm which combines the benefits of two SGD variants: Adaptive
 
 \chapter{Implementation}
 \section{R Toolbox Development}
-The development of a new toolbox was prompted by the realization that existing R packages lacked functions to compartmentalize spectral data in a manner that could be seamlessly integrated into the Bioconductor ecosystem. Bioconductor offers significant advantages in terms of integration and interoperability, which are highly valuable for advanced data analysis. 
+The idea of developing of a new toolbox arise from the realization that existing R packages were lacking functions to compartmentalize spectral data in a way that could be easily integrated into the Bioconductor ecosystem. Bioconductor offers remarkable advantages in terms of integration and interoperability. These are highly valuable for advanced data analysis. 
 Existing packages commonly used in ecological studies, such as \textbf{FieldSpectra}, \textbf{plantspec}, and \textbf{spectacles}, were reviewed. However, none provided functionality to convert high-dimensional spectral data into a SummarizedExperiment object, a data structure widely used in Bioconductor for organizing and analyzing complex datasets. \\
 
-Recognizing the potential applications of the SummarizedExperiment framework in plant biology, along with its ability to streamline workflows and facilitate future analyses, a decision was made to develop a toolbox to address this gap. The primary objective during development was to ensure vendor independence, making the toolbox broadly applicable. Vendors 
+After recognizing the potential applications of the SummarizedExperiment framework in plant biology, along with its ability to simplify workflows and facilitate future analyses, a decision was made to develop a toolbox to address this gap. The primary objective during development was to make sure vendor independence, making the toolbox broadly applicable. Vendors 
 such as Malvern Panalytical offer software for processing data from instruments such as the ASD FieldSpec 4, while the SVC HR-1024i from Spectra Vista Corporation requires additional computational effort to structure the data for analysis.
-In addition, the ASD FieldSpec 4 generates binary output files. To process these files, functions from the FieldSpectra package were utilized as a foundation, with additional custom functions developed to convert the data into SummarizedExperiment objects. The entire workflow, including data reading, processing, and conversion, is detailed in this chapter.\\
+In addition, the ASD FieldSpec 4 generates binary output files. To process these files, functions from the \texttt{FieldSpectra} package were utilized as a foundation, with additional custom functions developed to convert the data into SummarizedExperiment objects. The entire workflow, including data reading, processing, and conversion, is detailed in this chapter.\\
 
 \subsection{Toolbox: nearspectRa}
 %\begin{wrapfigure}{r}{0.4\textwidth}
@@ -466,7 +491,7 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/se_asd_1.png}
+    \includegraphics[width=0.6\textwidth]{Figures/se_asd_1.png}
     \caption{Example output of the \texttt{read\_summarizedexperiment\_asd function}}
     \label{Figure 2}
 \end{figure}
@@ -530,19 +555,19 @@ The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Nea
 \end{figure}
 
 \subsection{Package Development Overview}
-\subsubsection{Purpose and Objectives}
+\subsubsection*{Purpose and Objectives}
 This package is aim to ease the NIRS data processing by reading the raw data and outputs a \texttt{SummarizEdexperiment} object. The programming language and tools used for this development process is mentioned below. \\
 
-\subsubsection{Language}
+\subsubsection*{Language}
 \textbf{R}: is the core programming language used for the development. It is choosen because of its powerful data analytical capabilities and wide usage in bioinformatics. The R version 4.4.0 ( eleased on April 24, 2024 ) has been used for this project.
 
-\subsubsection{Libraries and Dependencies}
+\subsubsection*{Libraries and Dependencies}
 Base R Functions: These functions come pre-installed and do not require additional libraries or packages. For instance, readLines, list.files, files.info \\
 \texttt{\href{https://github.com/serbinsh/R-FieldSpectra}{FieldSpectra}}: is Used for reading the ".asd" files and to extract the metadata. The version used is FieldSpectra $0.9.7$\\
 \texttt{\href{https://github.com/Bioconductor/SummarizedExperiment}{SummarizedExperiment}}: is central to this package and it enable structured storage of spectral data and integrate to the bioconductor world. The version used is $1.34.0$ \\
 \texttt{\href{https://github.com/r-lib/roxygen2}{roxygen2}}: is used for generating documentation directly from inline comments. The version used is $7.3.2$ 
 
-\subsubsection{Version Control} 
+\subsubsection*{Version Control} 
 One of the main challenges during software development is tracking and documenting the code during the development process. These challenges include, managing multiple script versions or integrating collaborator edits. Manuel merging and making multiple copies of each version is time consuming and error-prone [46].To overcome this challenge, Git is used for version control and collaborative development. A git version of $2.32.0$ is used.\\
 
 \textbf{Examples of few git commands used in this project are given below:}
@@ -571,18 +596,54 @@ git push -u origin main
 \end{lstlisting}
 
 
-\subsubsection{Testing and Validation} 
+\subsubsection*{Testing and Validation} 
 Unit tests are implemented under \textit{test} directory to ensure a robust function performance across different datasets. \texttt{testthat} package is used for the unit test development.
 
-\subsubsection{Documentation} 
+\subsubsection*{Documentation} 
 Documentation is a fundamental aspect of software development, regardless of the programming language or platform. It serves as a vital tool for communication between developers and end users, providing the necessary information for effectively utilizing the software to its full potential [45]. In developing \texttt{nearspectRa}, we prioritized clear and comprehensive documentation to ensure the package is user-friendly, while adhering to FAIR principles—Findable, Accessible, Interoperable, and Reusable. This documentation was created with the help of the \texttt{roxygen2} package version $7.3.2$.
 
 \subsection{Usage and Integration}
-\subsection{Challenges and Future Work}
+ 
+........................................................
 
+\subsection{Challenges and Future Work}
+This package can be further developed to accommodate more functions and fine tune to make it suit for other analytical data as well. Future work can also include the integration of Artificial Intelligence to address the growing challenges in data analysis. 
 
 
 \section{Contributions elsewhere}
+\subsection{GitHub Actions to R-FieldSpectra}
+
+During the development of nearspectRa for processing NIRS data, we identified an opportunity to enhance the widely used R-FieldSpectra package, a prominent tool in the field of NIRS data analysis. While this package provides valuable functionalities, it lacked GitHub Actions for continuous integration. To address this, we submitted a pull request introducing GitHub Actions to the repository. This addition enables automated testing and verification for every code change, ensuring greater consistency, reliability, and robustness for its users. Our contribution aims to enhance the package's maintainability and build confidence in its performance within the community.
+........................
+
+\section{Data Analysis and Prediction Using ML and DL models}
+This section of the thesis explains the analysis conducted  using data collected from two different research projects. It also give insights to the dataset used, workflow and the methadologies adopted to achieve the research objectives. 
+\subsection{Leaf Traits Prediction From NIRS Data}
+\subsubsection*{Background of the study}
+The data for the first analysis is collected (with all permissions) from the study conducted by Pablo Castro Sanchez-Bermejo in the experiment named \textit{Tree and mycorrhizal fungal diversity drive intraspecific and intraindividual trait variation in temperate forests: Evidence from a tree diversity experiment} which aimed to study the role of tree species richness and mycorrhizal fungal diversity in driving intraspecific and intraindividual trait variation in temperate forests [15]. The study is conducted at Bad Lauchstädt Experimental Research Station in Saxony-Anhalt, Germany. The experimental setup included 80 plots , planted with 10 native deciduous tree species, each associated with arbuscular mycorrhizal (AM) or ectomycorrhizal (EM) fungi. The dataset contains measurements from 3200 leaves, sampled from 640 trees spanning across 10 tree species. Leaf spectral data were collected using a FieldSpec4 Wide-Res Spectroradiometer, covering the 350–2500 nm range.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Figures/nirs.png}
+    \caption{A simplified workflow displying the process of trait prediction from NIRS data}
+    \label{fig:nirs_workflow}
+\end{figure}
+Morphological and chemical traits were determined, including:
+\begin{itemize}
+    \item Specific Leaf Area (SLA)  $\text{mm}^2/\text{mg}$
+    \item Leaf Dry Matter Content (LDMC)  $\text{mg}/\text{g}$
+    \item Carbon-to-Nitrogen ratio (C:N)  $\text{g}/\text{g}$
+    \item Carbon content (C)  $%$ 
+    \item Phosphorus content (P) $\mu\text{mol}/\text{g}$
+\end{itemize}
+    
+
+\subsubsection*{Trait Prediction Using Machine Learning}
+
+
+\subsection{LCMS Feature Prediction From NIRS Data}
+\subsubsection*{Background of the study}
+\subsubsection*{LCMS feature prediction using Machine Learning}
 \section{HPC runs}
 
 
@@ -630,11 +691,11 @@ SLA  (L 30\%)& 0.17 & 1.53 & 3.44 min \\
 \midrule
 \textbf{Trait} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{Training time} \\
 \midrule
-SLA  & 0.89 & 0 & 28.11 min \\
-LDMC & 0.88 & 0 & 30.20 min \\
-C:N  & 0.74 & 0 & 4.11 min \\
-C    & 0.36 & 0 & 4.83 min \\
-P    & 0.20 & 0 & 31.30 sec \\
+SLA  & 0.89 & 3.69 & 28.11 min \\
+LDMC & 0.88 & 0.11 & 30.20 min \\
+C:N  & 0.74 & 6.26 & 4.11 min \\
+C    & 0.36 & 4.31 & 4.83 min \\
+P    & 0.20 & 43.42 & 31.30 sec \\
 \bottomrule
 \end{tabular}
 \end{table}
