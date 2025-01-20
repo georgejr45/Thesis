@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  20 JAN 2025 18:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.19)  20 JAN 2025 18:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -282,7 +282,11 @@ Package: listings 2024/02/21 1.10 (Carsten Heinz)
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
 \l__pdf_internal_box=\box54
-) (./main.aux)
+) (./main.aux
+
+LaTeX Warning: Label `Figure 2' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
@@ -357,21 +361,22 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 43.
+(./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 \c@lstlisting=\count300
-<images/thd.png, id=4, 381.425pt x 381.425pt>
+<images/thd.png, id=128, 381.425pt x 381.425pt>
 File: images/thd.png Graphic file (type png)
 <use images/thd.png>
 Package pdftex.def Info: images/thd.png  used on input line 48.
 (pdftex.def)             Requested size: 56.9055pt x 56.90282pt.
-<images/ipb.jpg, id=5, 401.5pt x 401.5pt>
+<images/ipb.jpg, id=129, 401.5pt x 401.5pt>
 File: images/ipb.jpg Graphic file (type jpg)
 <use images/ipb.jpg>
 Package pdftex.def Info: images/ipb.jpg  used on input line 50.
 (pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
-[1
+ [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./images/thd.png> <./images/ipb.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 71--72
@@ -413,19 +418,18 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.86 \newpage
-              [1] [2]
-No file main.toc.
+              [1] [2] (./main.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1.
+)
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
-[3]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 112.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 112.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 112.
- [4]
+ [3] [4]
 Chapter 1.
 
 Underfull \hbox (badness 10000) in paragraph at lines 133--140
@@ -486,16 +490,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 195--201
 
  []
 
-<images/NIRS_spectra.png, id=53, 1532.72626pt x 947.54pt>
+<images/NIRS_spectra.png, id=208, 1532.72626pt x 947.54pt>
 File: images/NIRS_spectra.png Graphic file (type png)
 <use images/NIRS_spectra.png>
 Package pdftex.def Info: images/NIRS_spectra.png  used on input line 204.
 (pdftex.def)             Requested size: 386.95897pt x 239.21219pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Reference `fig:nirs_spectra' on page 9 undefined on input line 209.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 209--228
@@ -534,7 +535,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 248--252
 
  []
 
-<images/lcms_raw.png, id=67, 1122.1925pt x 353.32pt>
+<images/lcms_raw.png, id=221, 1122.1925pt x 353.32pt>
 File: images/lcms_raw.png Graphic file (type png)
 <use images/lcms_raw.png>
 Package pdftex.def Info: images/lcms_raw.png  used on input line 255.
@@ -578,10 +579,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 297--303
  []
 
 [13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-LaTeX Warning: Reference `fig:ml' on page 14 undefined on input line 306.
-
-<images/ml.png, id=89, 722.7pt x 505.89pt>
+<images/ml.png, id=241, 722.7pt x 505.89pt>
 File: images/ml.png Graphic file (type png)
 <use images/ml.png>
 Package pdftex.def Info: images/ml.png  used on input line 310.
@@ -601,784 +599,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 324--328
 
  []
 
-
-LaTeX Warning: File `Figures/PLSR.png' not found on input line 331.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:331: Package pdftex.def Error: File `Figures/PLSR.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.331 ...cs[width=0.6\textwidth]{Figures/PLSR.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: Reference `fig:plsr' on page 15 undefined on input line 337.
-
+<images/PLSR.png, id=251, 722.7pt x 505.89pt>
+File: images/PLSR.png Graphic file (type png)
+<use images/PLSR.png>
+Package pdftex.def Info: images/PLSR.png  used on input line 331.
+(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 336--339
 
  []
 
-
-LaTeX Warning: Reference `fig:rf' on page 15 undefined on input line 347.
-
-
+[15 <./images/PLSR.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 341--348
 
  []
 
-[15]
-
-LaTeX Warning: File `Figures/rf.png' not found on input line 351.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:351: Package pdftex.def Error: File `Figures/rf.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.351 ...hics[width=0.6\textwidth]{Figures/rf.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 356--359
-
- []
-
-[16]
-/Users/methungeorge/Desktop/Thesis/main.tex:373: Undefined control sequence.
-l.373     \[D_t^{\text
-                      {OOB}} = D \mathbin{-} D_t
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:374: Missing $ inserted.
-<inserted text> 
-                $
-l.374 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:374: Missing } inserted.
-<inserted text> 
-                }
-l.374 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:374: Display math should end with $$.
-<to be read again> 
-                   \tex_par:D 
-l.374 
-      
-The `$' that I just saw supposedly matches a previous `$$'.
-So I shall assume that you typed `$$' both times.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:374: Extra }, or forgotten \endgroup.
-\@par ... \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.374 
-      
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:378: Undefined control sequence.
-l.378     For the test data \( X_{\text
-                                       {test}} \), the prediction from each ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:378: Undefined control sequence.
-l.378 ...t \)) is denoted as \( \hat{y}_t(x_{\text
-                                                  {test}}) \). The final pre...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:379: Undefined control sequence.
-l.379     \[\hat{y}_{\text
-                          {RF}}(x_{\text{test}}) = \frac{1}{T} \sum_{t=1}^{T...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:379: Undefined control sequence.
-l.379     \[\hat{y}_{\text{RF}}(x_{\text
-                                        {test}}) = \frac{1}{T} \sum_{t=1}^{T...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:379: Undefined control sequence.
-l.379 ...c{1}{T} \sum_{t=1}^{T} \hat{y}_t(x_{\text
-                                                  {test}})
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:383: Undefined control sequence.
-l.383         \item \( \hat{y}_t(x_{\text
-                                         {test}}) \) is the prediction from ...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 389--390
-
- []
-
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 395--402
-
- []
-
-
-LaTeX Warning: File `Figures/cnn.png' not found on input line 405.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:405: Package pdftex.def Error: File `Figures/cnn.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.405 ...ics[width=0.6\textwidth]{Figures/cnn.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 410--413
-
- []
-
-[18] [19]
-Chapter 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 423--425
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 426--429
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 437--438
-
- []
-
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 441.
-
-Underfull \hbox (badness 10000) in paragraph at lines 441--442
-
- []
-
-[20
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 457--458
-
- []
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/02/21 1.10 listings language file
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2024/02/21 1.10 listings language file
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2024/02/21 1.10 listings language file
-)
-
-LaTeX Warning: File `Figures/se_asd_1.png' not found on input line 494.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:494: Package pdftex.def Error: File `Figures/se_asd_1.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.494 ...idth=0.6\textwidth]{Figures/se_asd_1.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 499--500
-
- []
-
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
-
- []
-
-[22]
-
-LaTeX Warning: File `Figures/se_sig.png' not found on input line 552.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:552: Package pdftex.def Error: File `Figures/se_sig.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.552 ...[width=0.6\textwidth]{Figures/se_sig.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 559--560
-
- []
-
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 571--572
-
- []
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/02/21 1.10 listings language file
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/02/21 1.10 listings language file
-) [24]
-
-LaTeX Warning: File `Figures/nirs.png' not found on input line 627.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:627: Package pdftex.def Error: File `Figures/nirs.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.627 ...cs[width=0.6\textwidth]{Figures/nirs.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[25]
-/Users/methungeorge/Desktop/Thesis/main.tex:633: Undefined control sequence.
-<recently read> \text 
-                      
-l.633     \item Specific Leaf Area (SLA)  $\text
-                                                {mm}^2/\text{mg}$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:633: Undefined control sequence.
-l.633 ...cific Leaf Area (SLA)  $\text{mm}^2/\text
-                                                  {mg}$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:634: Undefined control sequence.
-<recently read> \text 
-                      
-l.634 ...em Leaf Dry Matter Content (LDMC)  $\text
-                                                  {mg}/\text{g}$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:634: Undefined control sequence.
-l.634 ...y Matter Content (LDMC)  $\text{mg}/\text
-                                                  {g}$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:635: Undefined control sequence.
-<recently read> \text 
-                      
-l.635 ...em Carbon-to-Nitrogen ratio (C:N)  $\text
-                                                  {g}/\text{g}$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:635: Undefined control sequence.
-l.635 ...-to-Nitrogen ratio (C:N)  $\text{g}/\text
-                                                  {g}$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:637: LaTeX Error: Command \item invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.637     \item
-                Phosphorus content (P) $\mu\text{mol}/\text{g}$
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:637: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.637     \item P
-                 hosphorus content (P) $\mu\text{mol}/\text{g}$
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-/Users/methungeorge/Desktop/Thesis/main.tex:637: LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.637     \item P
-                 hosphorus content (P) $\mu\text{mol}/\text{g}$
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:637: Missing $ inserted.
-<inserted text> 
-                $
-l.637     \item Phosphorus content (P) $\mu
-                                           \text{mol}/\text{g}$
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:637: Undefined control sequence.
-l.637     \item Phosphorus content (P) $\mu\text
-                                                {mol}/\text{g}$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/methungeorge/Desktop/Thesis/main.tex:637: Undefined control sequence.
-l.637 ...osphorus content (P) $\mu\text{mol}/\text
-                                                  {g}$
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[26]
-Chapter 4.
-[27
-
-] [28]
-Chapter 5.
-/Users/methungeorge/Desktop/Thesis/main.tex:813: Misplaced alignment tab character &.
-l.813 46. Blischak, J. D., Davenport, E. R., &
-                                               Wilson, G. (2016). A quick in...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (115.43443pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 Bioin-for-mat-ics, Vol-ume 38, Is-sue 4, Febru-ary 2022, Pages 1168{1170, https://doi.org/10.1093/bioinformatics/btab741. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (135.1694pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 for plant im-prove-ment: Sta-tus and prospects. Fron-tiers in Plant Sci-ence, 8, 1302. https://doi.org/10.3389/fpls.2017.01302. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (12.35725pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 Phar-ma-ceu-ti-cal and Biomed-i-cal Anal-y-sis, 107, 75{81. https://doi.org/10.1016/j.jpba.2014.10.010. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (108.23634pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 ge-net-ics in Alzheimer's dis-ease. Jour-nal of Clin-i-cal Neu-ro-science, 93, 1-9. https://doi.org/10.1016/j.jocn.2022.04.017. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (4.68927pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 and In-tel-li-gent Lab-o-ra-tory Sys-tems, 2(1-3), 37-52. https://doi.org/10.1016/0169-7439(87)80084-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (47.30096pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 large-scale bench-mark ex-per-i-ment. BMC Bioin-for-mat-ics 19, 270 (2018). https://doi.org/10.1186/s12859-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (67.36871pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 pollen con-cen-tra-tions in Tulsa, OK. En-vi-ron-men-tal Health In-sights. 2017;11. doi:10.1177/1178630217699399. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (12.05261pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 and ap-pli-ca-tion in ra-di-ol-ogy. In-sights Imag-ing 9, 611{629 (2018). https://doi.org/10.1007/s13244-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (82.6506pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 chi-tec-tures, chal-lenges, ap-pli-ca-tions, fu-ture di-rec-tions. J Big Data 8, 53 (2021). https://doi.org/10.1186/s40537-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (133.36388pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 Botswana. In-ter-na-tional Jour-nal of Database Man-age-ment Sys-tems, 15(1), 16. https://doi.org/10.5121/ijdms.2023.15101. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (106.77019pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 44. Breiman, L. (2001). Ran-dom Forests. Ma-chine Learn-ing, 45(1), 5{32. https://doi.org/10.1023/A:1010933404324 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Overfull \hbox (65.26099pt too wide) in paragraph at lines 723--815
-\OT1/cmr/m/n/12 trol with Git and GitHub. PLoS com-pu-ta-tional bi-ol-ogy, 12(1), https://doi.org/10.1371/journal.pcbi.1004668 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 723--815
-
- []
-
-[29
-
-] [30] [31] [32] (./main.aux)
- ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-02-20>
- ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  5994CDC28BF9345C4209A147CC69875F;5757.
- ) 
-Here is how much of TeX's memory you used:
- 12647 strings out of 474116
- 190818 string characters out of 5743682
- 2050187 words of memory out of 5000000
- 34743 multiletter control sequences out of 15000+600000
- 565198 words of font info for 60 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,9n,79p,1349b,1901s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (33 pages, 1164406 bytes).
-PDF statistics:
- 356 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
- 139 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+<images/rf.png, id=260, 722.7pt x 505.89pt>
+File: images/rf.png Graphic file (type png)
+<use im
