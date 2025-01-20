@@ -282,11 +282,7 @@ Package: listings 2024/02/21 1.10 (Carsten Heinz)
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
 \l__pdf_internal_box=\box54
-) (./main.aux
-
-LaTeX Warning: Label `Figure 2' multiply defined.
-
-)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
@@ -361,22 +357,21 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 43.
-(./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
 \c@lstlisting=\count300
-<images/thd.png, id=128, 381.425pt x 381.425pt>
+<images/thd.png, id=4, 381.425pt x 381.425pt>
 File: images/thd.png Graphic file (type png)
 <use images/thd.png>
 Package pdftex.def Info: images/thd.png  used on input line 48.
 (pdftex.def)             Requested size: 56.9055pt x 56.90282pt.
-<images/ipb.jpg, id=129, 401.5pt x 401.5pt>
+<images/ipb.jpg, id=5, 401.5pt x 401.5pt>
 File: images/ipb.jpg Graphic file (type jpg)
 <use images/ipb.jpg>
 Package pdftex.def Info: images/ipb.jpg  used on input line 50.
 (pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
- [1
+[1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./images/thd.png> <./images/ipb.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 71--72
@@ -415,205 +410,4 @@ Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.86 \newpage
-              [1] [2] (./main.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 1.
-)
-\tf@toc=\write4
-\openout4 = `main.toc'.
-
- [3] [4]
-Chapter 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--140
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--146
-
- []
-
-[5
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 148--153
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--159
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--165
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 167--172
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 174--177
-
- []
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 179--180
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--188
-
- []
-
-[8]
-Chapter 2.
-
-Underfull \hbox (badness 10000) in paragraph at lines 195--201
-
- []
-
-<images/NIRS_spectra.png, id=208, 1532.72626pt x 947.54pt>
-File: images/NIRS_spectra.png Graphic file (type png)
-<use images/NIRS_spectra.png>
-Package pdftex.def Info: images/NIRS_spectra.png  used on input line 204.
-(pdftex.def)             Requested size: 386.95897pt x 239.21219pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--228
-
- []
-
-[9
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 229--232
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--236
-
- []
-
-[10 <./images/NIRS_spectra.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 238--239
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 240--245
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 240--245
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 248--252
-
- []
-
-<images/lcms_raw.png, id=221, 1122.1925pt x 353.32pt>
-File: images/lcms_raw.png Graphic file (type png)
-<use images/lcms_raw.png>
-Package pdftex.def Info: images/lcms_raw.png  used on input line 255.
-(pdftex.def)             Requested size: 435.32422pt x 137.06104pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 260--263
-
- []
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 266--271
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 272--276
-
- []
-
-[12 <./images/lcms_raw.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 277--281
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 291--295
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--303
-
- []
-
-[13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<images/ml.png, id=241, 722.7pt x 505.89pt>
-File: images/ml.png Graphic file (type png)
-<use images/ml.png>
-Package pdftex.def Info: images/ml.png  used on input line 310.
-(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--317
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--322
-
- []
-
-[14 <./images/ml.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 324--328
-
- []
-
-<images/PLSR.png, id=251, 722.7pt x 505.89pt>
-File: images/PLSR.png Graphic file (type png)
-<use images/PLSR.png>
-Package pdftex.def Info: images/PLSR.png  used on input line 331.
-(pdftex.def)             Requested size: 290.22107pt x 203.15521pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 336--339
-
- []
-
-[15 <./images/PLSR.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 341--348
-
- []
-
-<images/rf.png, id=260, 722.7pt x 505.89pt>
-File: images/rf.png Graphic file (type png)
-<use im
+<to be read aga
