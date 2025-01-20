@@ -4,12 +4,12 @@
 \contentsline {paragraph}{\textbf {\textcolor {darkblue}{NIRS Instruments}}}{11}{section*.4}%
 \contentsline {section}{\numberline {2.2}Liquid Chromatography Mass Spectrometry}{11}{section.2.2}%
 \contentsline {section}{\numberline {2.3}R Programming}{12}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Machine Learning}{14}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Machine Learning}{13}{section.2.4}%
 \contentsline {paragraph}{\textcolor {darkblue}{Supervised Learning}}{14}{section*.5}%
 \contentsline {paragraph}{\textcolor {darkblue}{Unsupervised Learning}}{14}{section*.6}%
 \contentsline {paragraph}{\textcolor {darkblue}{Semi-supervised and Reinforcement Learning}}{14}{section*.7}%
 \contentsline {subsection}{\numberline {2.4.1}Partial Least Square Regression (PLSR)}{15}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{16}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{15}{subsection.2.4.2}%
 \contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{18}{subsection.2.4.3}%
 \contentsline {chapter}{\numberline {3}Implementation}{20}{chapter.3}%
 \contentsline {section}{\numberline {3.1}R Toolbox Development}{20}{section.3.1}%

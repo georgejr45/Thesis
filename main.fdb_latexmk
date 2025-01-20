@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1737301024.19744 "/Users/methungeorge/Desktop/Thesis/main.tex" "main.pdf" "main" 1737301025.87087 2
-  "/Users/methungeorge/Desktop/Thesis/main.tex" 1737301021.84061 78334 a2ecc64e329692a15c01b854dd535b3d ""
+["pdflatex"] 1737395042.26744 "/Users/methungeorge/Desktop/Thesis/main.tex" "main.pdf" "main" 1737395044.38698 2
+  "/Users/methungeorge/Desktop/Thesis/main.tex" 1737395037.25728 78334 a2ecc64e329692a15c01b854dd535b3d ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -101,12 +101,12 @@
   "Figures/se_sig.png" 0 -1 0 ""
   "images/NIRS_spectra.png" 1736690191.17022 335519 5cb14c1b376c31562cd07591f224fa68 ""
   "images/ipb.jpg" 1736690191.19798 11138 b493eadbbe6e94b60650b6c0223e0d43 ""
-  "images/lcms_raw.png" 0 -1 0 ""
+  "images/lcms_raw.png" 1737104843.56664 150333 26dee579d1eb1c70dadc74eb3c0b4852 ""
   "images/thd.png" 1736690191.26959 28444 5863d2541a0a6b326dc2d6ce4619364f ""
-  "main.aux" 1737301025.6357 9221 532db9bbde0ad03a73c1faae918f8785 "pdflatex"
-  "main.out" 1737301025.6377 5757 5994cdc28bf9345c4209a147cc69875f "pdflatex"
-  "main.tex" 1737301021.84061 78334 a2ecc64e329692a15c01b854dd535b3d ""
-  "main.toc" 1737301025.63876 3143 8687f169d47c487ea955ebdd6d3cf62d "pdflatex"
+  "main.aux" 1737395044.15728 9221 a4aa346c77ee3d8c60e4573bebbdd69a "pdflatex"
+  "main.out" 1737395044.15888 5757 5994cdc28bf9345c4209a147cc69875f "pdflatex"
+  "main.tex" 1737395037.25728 78334 a2ecc64e329692a15c01b854dd535b3d ""
+  "main.toc" 1737395044.15939 3143 d4e63f94db220bd18ff21102de3a8c10 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
