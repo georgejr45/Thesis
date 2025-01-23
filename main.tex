@@ -17,6 +17,7 @@
 \definecolor{darkblue}{RGB}{0,0,139} % Dark blue color
 \usepackage{booktabs}
 \usepackage{wrapfig}
+\usepackage{amsmath}
 
 
 
@@ -45,9 +46,9 @@
     \centering
     \begin{flushright}
         \centering
-        \includegraphics[width=2cm]{images/thd.png} % Adjust width as needed
+        \includegraphics[width=2cm]{Figures/thd.png} % Adjust width as needed
         \hspace{0cm} % Space between images
-        \includegraphics[width=2cm]{images/ipb.jpg} % Adjust width as needed
+        \includegraphics[width=2cm]{Figures/ipb.jpg} % Adjust width as needed
     \end{flushright}
     {\huge\bfseries Development of an R Toolbox for Near-Infrared Spectroscopy Data Processing \\
     and Analysis of Plant Metabolic Phenotypes\par}
@@ -196,25 +197,23 @@ Near infrared spectroscopy (NIRS) is a non-invasive measurement technique that u
 the near infrared region to analyse a sample [35,13]. Infrared (IR) is a form of electromagnetic
 radiation and it interacts with samples through absorption or reflection. The NIRS is widely
 used in plant research due to its ability in predicting sample structure and traits by analysing
-the spectral patterns. Based on how the sample absorbs or reflects light at different wavelengths, Infrared radiation is classified into three categories:(1) Near Infrared (NIR), ranging from 780 to 2500 nanometers (nm), (2) Mid Infrared (MIR),ranging from 2500 to 25,000 nm, and (3) Far Infrared (FIR), ranging from 25,000 to 1,000,000nm [35]. When a substance such as plant leaf is subjected to NIR light, the molecular bonds in the infrared range will interact with the light thereby causing absorption or reflection of light by the sample. The light transmitted or reflected is then measured to produce the NIR spectrum. This spectrum provides a detailed picture of molecular composition of the substance and the peaks in the spectrum corresponding to different vibrational modes of different chemical bonds. This occurs due to the change in the vibrational or rotational state of molecules or transition between their energy levels [35,13]. The group which is the most dominant in absorbing the NIR are hydrogen-containing groups such as C-H, O-H and N-H while other groups like C=C and C=O absorbs light in weaker intensities. These groups are key components in organic substances and their absorption wavelengths and intensities differ depending on the chemical composition of the substance [35].
-  \\ 
+the spectral patterns. Based on how the sample absorbs or reflects light at different wavelengths, Infrared radiation is classified into three categories:(1) Near Infrared (NIR), ranging from 780 to 2500 nanometers (nm), (2) Mid Infrared (MIR),ranging from 2500 to 25,000 nm, and (3) Far Infrared (FIR), ranging from 25,000 to 1,000,000nm [35]. When a substance such as plant leaf is subjected to NIR light, the molecular bonds in the infrared range will interact with the light thereby causing absorption or reflection of light by the sample. The light transmitted or reflected is then measured to produce the NIR spectrum. This spectrum provides a detailed picture of molecular composition of the substance and the peaks in the spectrum corresponding to different vibrational modes of different chemical bonds. This occurs due to the change in the vibrational or rotational state of molecules or transition between their energy levels [35,13]. The group which is the most dominant in absorbing the NIR are hydrogen-containing groups such as C-H, O-H and N-H while other groups like C=C and C=O absorbs light in weaker intensities. These groups are key components in organic substances and their absorption wavelengths and intensities differ depending on the chemical composition of the substance [35].\\ 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/NIRS_spectra.png} 
-    \caption{Example near-infrared spectra illustrating reflectance across wavelengths. Each line represents a unique sample, showing how NIRS captures molecular absorption/reflectance patterns.}
+    \includegraphics[width=0.8\textwidth]{Figures/pablo_data.png} 
+    \caption{Example near-infrared spectra illustrating reflectance across wavelengths. Each line represents a unique sample, showing how NIRS captures molecular absorption/reflectance patterns. The data is from the project [15]}
     \label{fig:nirs_spectra}
 \end{figure}
 
-The figure \ref{fig:nirs_spectra} cite an example of the relationship between reflectance and wavelength for
+The \ref{fig:nirs_spectra} shows an example of the relationship between reflectance and wavelength for
 near-infrared (NIR) spectra where the variations in reflectance give valuable information
-about the chemical and physical properties of the sample. Compared to other analytical meth-
-ods, NIRS is faster, requires little sample preparation, and is more cost-effective, making it a
+about the chemical and physical properties of the sample. Compared to other analytical methods, NIRS is faster, requires little sample preparation, and is more cost-effective, making it a
 highly inviting choice for researchers and scientists [13]. NIR spectrometers typically consist
 of a light source, a beam splitter, optical detectors and optionally a processing system or a
 monitor. The components differ depending on the purpose of the instrument to make sure accuracy
 and consistency. These systems can operate in different modes such as transmission, reflection,
-diffuse reflectance or transfectance depending on the type of analysis [36]. The collected spectra
+diffuse reflectance or transmittance depending on the type of analysis [36]. The collected spectra
 will be later put through chemometric analysis to develop a calibration model using key NIR
 bands. Nevertheless, NIRS require reference data from traditional chemical analysis for accurate
 quantitative analysis [36]. The spectra are usually exposed to preprocessing to remove irrelevant information to improve the accuracy of the analysis. The most common preprocessing techniques
@@ -222,37 +221,51 @@ include, baseline correction, scatter correction, noise removal and wavelength s
 scatter correction method and spectral derivatives are the most used preprocessing approaches
 in NIRS. The scatter correction method includes, Multiplicative scatter correction (MSC) and
 Standard normal variate (SNV). Additionally a wide range of normalization methods such as
-mean centering, auto scaling, vector normalization and area normalization are also used in pre-
-processing of NIRS data. The preprocessing methods are aimed to highlight important spectral
+mean centering, auto scaling, vector normalization and area normalization are also used in preprocessing of NIRS data. The preprocessing methods are aimed to highlight important spectral
 features but must be carefully selected to avoid losing critical information [36]. \\
 
 NIRS consist of overlapping weak bands that require multivariate calibration for quantitative analysis. These methods analyze the data in a way that can identify patterns or make predictions [36]. Techniques like Principal component analysis (PCA), Partial least squares discriminant analysis (PLSDA), Hierarchical cluster analysis (HCA) and Linear discriminant analysis (LDA) are used for classification, while others like Artificial neural networks (ANNs) handle more complex relationships. 
 Deep learning (DL) is a subset of ML that has a wide range of applications including image and audio recognition [36]. ML can also be used in the handling of “Big Data” emerging from the growing spectral libraries. DL models, unlike the traditional neural networks, consist of multiple layers to extract different features from the data resulting in better predictions [36]. In recent years techniques like Convolutional neural network (CNN), recurrent neural network (RNN) and DeepSpectra 
 model have gained popularity. Combining DL with spectroscopy shows a great promise in applications like food quality assessment and genetically modified organisms (GMO) detection [36].\\
 
-The NIRS has diverse biological applications, particularly in agricultural and soil sciences. In recent years, it has been employed to analyse the crops, food properties and plant traits, including water content, pH, oil, protein, and fatty acids. Another example would be the use of NIRS to predict anthocyanin levels in grapes and black rice seeds. Researchers have also used NIRS to identify pest attacks and pesticide residues in crops making it invaluable for quality assessment 
-in agriculture [36]. Even Though, much of the NIRS applications focused on agriculture and food quality, its applications in food safety are also growing. For instance,NIRS can effectively evaluate the lamb meat tenderness, pH, fat and water content. The portable NIRS devices allow real time industrial monitoring making it suitable for large scale monitoring of meat, fruits, vegetables and beverages for quality and safety [36]. Genetically modified organisms (GMO) pose a risk of 
+NIRS has diverse biological applications, particularly in agricultural and soil sciences. In recent years, it has been employed to analyse crops, food properties and plant traits, including water content, pH, oil, protein, and fatty acids. Another example would be the use of NIRS to predict anthocyanin levels in grapes and black rice seeds. Researchers have also used NIRS to identify pest attacks and pesticide residues in crops making it invaluable for quality assessment 
+in agriculture [36]. Even though much of the NIRS applications focused on agriculture and food quality, its applications in food safety are also growing. For instance,NIRS can effectively evaluate the lamb meat tenderness, pH, fat and water content. The portable NIRS devices allow real time industrial monitoring making it suitable for large scale monitoring of meat, fruits, vegetables and beverages for quality and safety [36]. Genetically modified organisms (GMO) pose a risk of 
 gene transfer, which could threaten environmental biodiversity. NIRS has shown potential for rapid and cost effective GMO detection in labs and fields, making it a favored tool among researchers for monitoring GMOs [36]. \\
 
 \paragraph{\textbf{\textcolor{darkblue}{NIRS Instruments}}}
-The ASD FieldSpec4 and SpectraVista Corporation (SVC) HR-1024i are two widely used NIRS instruments in plant biology are highly relevant to this project. \\
+The ASD FieldSpec4 and SpectraVista Corporation (SVC) HR-1024i are two widely used NIRS instruments in plant biology are highly relevant to this project. \\ 
 
-\textcolor{darkblue}{ASD FieldSpec4}\\
-ASD FieldSpec4 is a portable NIRS instrument produced by  Malvern panalytical and comes in different variants. It has a wide range of applications including, plant physiology, remote sensing and geology, atmospheric remote sensing research and biomass analysis among others. It provides data across the wavelength of 350 to 2500 nm. There are multiple optional accessories, contact probe (contact measurements like solid raw materials, grains, other granular materials), reflectance panels, pistol grips and leaf clip version 2 are few out of many [40]. \\
 \\
-\textcolor{darkblue}{SVC HR-1024i}\\
-This is a high resolution portable spectroradiometer which provides data across a full spectral region from 350 to 2500 nm. Compared to ASD FieldSpec4, SVC HR-1024i comes with a built-in touch screen to set parameters and review data in real time, which makes it more advanced. It is also light weight and has an internal GPS and a camera which adds critical information to the spectral signature. The output from this instrument is human readable and easy to interpret without the use of any package [41]. \\
+\textcolor{darkblue}{ASD FieldSpec4} \\
+ASD FieldSpec4 is a portable NIRS instrument produced by  Malvern Panalytical and comes in different variants. It has a wide range of applications including, plant physiology, remote sensing and geology, atmospheric remote sensing research and biomass analysis among others. It provides data across the wavelength of 350 to 2500 nm. There are multiple optional accessories, contact probe (contact measurements like solid raw materials, grains, other granular materials), reflectance panels, pistol grips and leaf clip version 2 are few out of many [40]. \\
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=5cm]{Figures/asd.jpg} 
+    \caption{ASD FieldSpec 4 instrument for measuring NIRS data.\\ \url{https://www.malvernpanalytical.com}}
+    \label{fig:fieldspec4}
+\end{figure}
+
+\textcolor{darkblue}{SVC HR-1024i}\\
+This is a high resolution portable spectroradiometer which provides data across a full spectral region from 350 to 2500 nm. Compared to ASD FieldSpec4, SVC HR-1024i comes with a built-in touch screen to set parameters and review data in real time, which makes it more advanced. It is also light weight and has an internal GPS and a camera which adds critical information to the spectral signature. The output from this instrument is human readable and easy to interpret without the use of any package [41].
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=6cm]{Figures/svc.png} 
+    \caption{SVC HR-1024i instrument for measuring NIRS data.\\
+    \url{https://spectravista.com}}
+    \label{fig:svc}
+\end{figure}
 
 \section{Liquid Chromatography Mass Spectrometry}
-Liquid Chromatography-Mass Spectrometry(LCMS) is the combination of two powerful analytical techniques for the separation, identification and quantification of biological compounds from complex mixtures. This technique has a wide range of applications in Metabolomics, Pharmaceuticals, environmental science and food chemistry [43]. Liquid Chromatography (LC) 
+Liquid Chromatography-Mass Spectrometry(LCMS) is the combination of two powerful analytical techniques for the separation, identification and quantification of biological compounds from complex mixtures. This technique has a wide range of applications in Metabolomics, Pharmaceuticals, Environmental science and Food chemistry [43]. Liquid Chromatography (LC) 
 is a technique used to separate components in a mixture based on the rates at which they move through a stationary phase under the influence of mobile phase gradient. The varying affinities of the components to the stationary and mobile phases leads to their separation, with some attached to the mobile phase and eluting faster, while others attach to 
 the stationary phase and thereby elute more slowly, leading to different retention times (RT) [43]. Mass spectrometry (MS) is one of the several detectors which can be coupled with LC to identify compounds. MS detects the mass to charge ratio (m/z) and the abundance of ions generated during ionization of the sample extracts [43]. Ions are charged molecules 
 and are easier to analyze than neutral molecules therefore ionization is a crucial step in MS [43]. The MS is made of an ionization source, a mass analyzer and a detector, all these should be kept under vacuum to optimize the ion transmission. A mass spectrum is then generated with the help of a computer [43]. \\
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/lcms_raw.png} 
+    \includegraphics[width=0.9\textwidth]{Figures/lcms_raw.png} 
     \caption{LCMS dataset after initial processing using the \texttt{metabolighteR} package, revealing the selected columns relevant for downstream analysis.}
     \label{fig:lcms_raw}
 \end{figure}
@@ -307,7 +320,7 @@ For instance, clustering data points into separate groups based on the shared fe
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/ml.png} 
+    \includegraphics[width=0.8\textwidth]{Figures/ml.png} 
     \caption{Different machine learning models illustrating the four primary learning methods: supervised, unsupervised, semi-supervised, and reinforcement learning.}
     \label{fig:ml}
 \end{figure}
@@ -328,7 +341,7 @@ summarizes the covariance between predictor and response variables. This latent 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/PLSR.png}
+    \includegraphics[width=0.8\textwidth]{Figures/PLSR.png}
     \caption{A comparison of PCA (A) and PLS (B). In the PCA plot, the x-axis represents a combination of variables (e.g., three metabolites) that captures the greatest variation in the dataset, independent of group classification. In contrast, PLS focuses on explaining the relationship with an explanatory variable, such as "Treatment" in this example}
     \label{fig:plsr}
 \end{figure}
@@ -348,7 +361,7 @@ predict ragweed pollen concentrations, with RF delivering the most accurate pred
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/rf.png}
+    \includegraphics[width=0.8\textwidth]{Figures/rf.png}
     \caption{Schematic representation of a Random Forest model (classification).}
     \label{fig:rf}
 \end{figure}
@@ -402,7 +415,7 @@ The output from the last pooling layer is flattened to 1 dimensional array and p
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/cnn.png}
+    \includegraphics[width=0.8\textwidth]{Figures/cnn.png}
     \caption{Schematic representation of Convolutional Neural Network }
     \label{fig:cnn}
 \end{figure}
@@ -613,12 +626,71 @@ This package can be further developed to accommodate more functions and fine tun
 \section{Contributions elsewhere}
 \subsection{GitHub Actions to R-FieldSpectra}
 
-During the development of nearspectRa for processing NIRS data, we identified an opportunity to enhance the widely used R-FieldSpectra package, a prominent tool in the field of NIRS data analysis. While this package provides valuable functionalities, it lacked GitHub Actions for continuous integration. To address this, we submitted a pull request introducing GitHub Actions to the repository. This addition enables automated testing and verification for every code change, ensuring greater consistency, reliability, and robustness for its users. Our contribution aims to enhance the package's maintainability and build confidence in its performance within the community.
-........................
+GitHub Actions is a platform offering continuous integration and continuous delivery (CI/CD) which helps to automate the software workflows and directly integrated into \texttt{GitHub}. It not only allows developers to automate workflows including building, testing and deploying but also other processes within their repositories [47]. During the development of \texttt{nearspectRa} package for NIRS data analysis, we identified an opportunity to improve and contribute to \texttt{R-FieldSpectra} package, which is widely used in plant biology. Even though this package packed with multiple higher level functions, the lack of GitHub Actions caught our eyes. To address this, we submitted a pull request introducing GitHub Actions to the \texttt{R-FieldSpectra} package. \\
 
-\section{Data Analysis and Prediction Using ML and DL models}
-This section of the thesis explains the analysis conducted  using data collected from two different research projects. It also give insights to the dataset used, workflow and the methadologies adopted to achieve the research objectives. 
-\subsection{Leaf Traits Prediction From NIRS Data}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Figures/github_actions.png}
+    \caption{Contribution of GitHub Actions to the R-FieldSpectra package. \\ \url{https://github.com/serbinsh/R-FieldSpectra/pull/24/commits}}
+    \label{fig:github_actions}
+\end{figure}
+
+The GitHub actions work flow is derived from \url{https://github.com/r-lib/actions/tree/v2/examples} and is configured to run the automated checks whenever changes are pushed to the main or master brach of \texttt{R-FieldSpectra} package. The current script runs tests on Ubuntu using the latest R version and additional configurations (currently disabled) can test macOS, Windows, R devel or older R versions. The significance of the contribution includes:
+\begin{itemize}
+    \item Automated Testing: Verifies the package is functional and error-free after each update
+    \item Cross-Platform Development: Allows easy way to test on different operating systems and R versions
+    \item Easy Collaboration: Automated quality checks helps contributors  by saving time and manuel efforts
+\end{itemize}
+
+\subsection{Contribution of the read.sig Function to R-FieldSpectra}
+Spectra Vista Corporation offers advanced analytical instruments such as SVC HR-1024i for precise measurement of NIRS data. Discussions with researchers in this field revealed that SVC instruments are gaining popularity due to their advanced technical and analytical features. This led us to a closer look into the available functionalities in \texttt{R-FieldSpectra} to read the \texttt{.sig} files generated by these instruments. The lack of such function to read \texttt{.sig} files directly from the instrument and structure it better for downstream analysis was lacking and there We identified an opportunity to contribute to the scientific community by creating such one. We created \texttt{read.sig} function and opened a pull request to \texttt{R-FieldSpectra} (\url{https://github.com/serbinsh/R-FieldSpectra/pull/25/commits}) The \texttt{read.sig} is a simple function which read the spectral data, extract wavelengths and reflectance values and make it into a data frame along with file names and a couple of optional columns.\\
+
+\textbf{Functionality}
+
+\textbf{Inputs}:
+\begin{itemize}
+    \item Path: Specifies the location of \texttt{.sig} files (directory or single files)
+    \item Default: A boolean parameter determining all columns or only selected columns are retained in the output.
+\end{itemize}
+
+\textbf{Outputs}: A data frame containing,
+\begin{itemize}
+    \item Wavelengths (nm): Wavelengths extracted from the data
+    \item Reflectance: Percentage of reflectance
+    \item File name: Source file information
+    \item Optional columns: Reference and target values
+\end{itemize}
+
+\textbf{Workflow}
+\begin{enumerate}
+    \item Validate the file or directory path.
+    \item Read \texttt{.sig} files.
+    \item Extract the data for the columns, also considering the optional parameters.
+    \item Merge all the processed data into a consolidated data frame.
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/read_sig.png}
+    \caption{Example output of read.sig function}
+    \label{fig:read_sig}
+\end{figure}
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Specify the path to the directory containing .sig files
+path_to_sig_files <- "/path/to/sig/files/"
+
+# Use the read.sig function to read and extract spectral data
+# Retain all columns by setting `default = TRUE`
+spectral_data <- read.sig(path_to_sig_files, default = TRUE)
+
+# Display the first few rows of the combined data
+print(head(spectral_data))
+\end{lstlisting}
+
+This function also provides detailed documentation created using \texttt{roxygen2} and unit tests created using \texttt{testthat} functions. The documentation make sure that all users can easily understand the  usage, purpose and arguments of the function. The unit tests verify the accuracy and reliability of the function across various scenarios, ensuring robust performance and minimizing the likelihood of errors during the usage.
+
+\section{Prediction of Leaf Traits From NIRS Data} 
 \subsubsection*{Background of the study}
 The data for the first analysis is collected (with all permissions) from the study conducted by Pablo Castro Sanchez-Bermejo in the experiment named \textit{Tree and mycorrhizal fungal diversity drive intraspecific and intraindividual trait variation in temperate forests: Evidence from a tree diversity experiment} which aimed to study the role of tree species richness and mycorrhizal fungal diversity in driving intraspecific and intraindividual trait variation in temperate forests [15]. The study is conducted at Bad Lauchstädt Experimental Research Station in Saxony-Anhalt, Germany. The experimental setup included 80 plots , planted with 10 native deciduous tree species, each associated with arbuscular mycorrhizal (AM) or ectomycorrhizal (EM) fungi. The dataset contains measurements from 3200 leaves, sampled from 640 trees spanning across 10 tree species. Leaf spectral data were collected using a FieldSpec4 Wide-Res Spectroradiometer, covering the 350–2500 nm range.
 
@@ -630,18 +702,76 @@ The data for the first analysis is collected (with all permissions) from the stu
 \end{figure}
 Morphological and chemical traits were determined, including:
 \begin{itemize}
-    \item Specific Leaf Area (SLA)  $\text{mm}^2/\text{mg}$
-    \item Leaf Dry Matter Content (LDMC)  $\text{mg}/\text{g}$
-    \item Carbon-to-Nitrogen ratio (C:N)  $\text{g}/\text{g}$
-    \item Carbon content (C)  $%$ 
-    \item Phosphorus content (P) $\mu\text{mol}/\text{g}$
+    \item Specific Leaf Area (SLA)  [$\text{mm}^2/\text{mg}$]
+    \item Leaf Dry Matter Content (LDMC)  [$\text{mg}/\text{g}$]
+    \item Carbon-to-Nitrogen ratio (C:N)  [$\text{g}/\text{g}$]
+    \item Carbon content (C)  [\%]
+    \item Phosphorus content (P) [$\mu\text{mol}/\text{g}$]
 \end{itemize}
-    
 
-\subsubsection*{Trait Prediction Using Machine Learning}
+Apart from these five traits, nitrogen content(N), calcium(Ca), magnesium(Mg) and potassium(k) were also measured in this study [15]. However, the analysis focused on these five traits due to time constraints and their relatively lower proportion of missing values compared to other measured traits. The figure \ref{fig:traits} illustrate the ecological relevance of these traits.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/traits.jpg}
+    \caption{Leaf traits and their ecological function along with list of literature describing them. The traits are colored differently according to the leaf economics spectrum (LES) [15]}
+    \label{fig:traits}
+\end{figure}
+
+\subsection{Trait Prediction Using PLSR}
+\subsubsection*{Libraries}
+The following libraries were imported for the successful execution of Partial Least Square Regression (PLSR): \\
+\begin{itemize}
+    \item readxl: For importing the spectral and trait data from excel sheet.
+    \item dplyr and tidyr: For data preparation
+    \item caret: For model training and validation
+    \item plantspec: For managing the spectral data
+    \item ggplot2 and plotly: For graphical representation of the data
+\end{itemize}
+
+\subsubsection*{Data Loading and Preprocessing of SLA}
+The spectral data and trait data, which was stored in Excel sheets were imported using the \texttt{read$_$excel} function from the \texttt{readxl} package. Each dataset was read from its respective sheet in the excel file and then preprocessed to ensure the compatibility with PLSR analysis.
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Reading the excel sheet
+plantspec.spectra <- read_excel("/path/to/dataset.xlsx", sheet = "Calibration set spectra")
+plantspec.data <- read_excel("/path/to/dataset.xlsx", sheet = "Calibration set traits")
+plantspec.data$SLA <- as.numeric(plantspec.data$SLA)
+
+# Removing the outliers
+plantspec.data <- plantspec.data[!is.na(plantspec.data$SLA), ]
+plantspec.data <- subset(plantspec.data, Tree != "70_Ti3")
+\end{lstlisting}
+
+\subsubsection*{Data Splitting}
+The \texttt{subdivideDataset} function from \texttt{plantspec} package is used for splitting the spectral and trait data. The spectral data is passed on to the function as a matrix and the trait data is passed to the function as a vector. The dimensions of the data were checked after the preprocessing step to avoid any errors during data splitting. The spectral data was a matrix of $196$ data points and $2151$ features and the response variable SLA had $196$ data points. The seed is set to $0$ for reproducibility.
+
+\begin{lstlisting}[language=R, style=mystyle]
+training_set <- !(subdivideDataset(
+  spectra = input,
+  component = component_SLA,
+  method = "PCAKS", 
+  p = 0.3, 
+  type = "validation" ))
+\end{lstlisting}
 
 
-\subsection{LCMS Feature Prediction From NIRS Data}
+\begin{itemize}
+    \item spectra: The predictor data of class list or matrix and in this case the spectral data matrix.
+    \item component: Response variable for the analysis. In this study a vector variable of 196 data points is used.
+    \item method: Specifies the desired method. In this project "PCAKS" is used. It is a hybrid method combining Principal Component Analysis and Kennard-Stone Algorithm to split the data.
+    \item p: The propotion of the dataset to select the "calibration" or "validation" group
+    \item type: Depending on the type of subset, "calibration" or " validation" is selected.
+\end{itemize}
+
+This function returns a logical index in which \texttt{TRUE} meaning the sample is part of training set and \texttt{FALSE} meaning sample is part of validation set. The negation (!) operator negates the logical result generated from this function reversing the rows belongs to the validation test to training set. Since the parameter \texttt{p} is set to $0.3$, that is $70\%$ is allocated to the training set. The "PCAKS" is selected to improve model performance and its better representation of data especially when handling the high dimensional spectral data. Principal Component Analysis (PCA) simplifies the data by reducing its dimensionality while preserving its essential structure. Kennard-Stone Algorithm (KS) uses the Euclidean distance and selects representative samples from a dataset based on their spatial distribution in the feature space.
+
+
+\subsubsection*{Data Scaling}
+
+
+
+\section{LCMS Feature Prediction From NIRS Data}
 \subsubsection*{Background of the study}
 \subsubsection*{LCMS feature prediction using Machine Learning}
 \section{HPC runs}
@@ -812,6 +942,7 @@ PLS, RF, CNN
 \\
 46. Blischak, J. D., Davenport, E. R., & Wilson, G. (2016). A quick introduction to version control with Git and GitHub. PLoS computational biology, 12(1), https://doi.org/10.1371/journal.pcbi.1004668\\
 \\
-
+47. https://github.com/features/actions \\
+\\
 
 \end{document}
