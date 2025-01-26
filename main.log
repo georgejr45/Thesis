@@ -384,4 +384,199 @@ LaTeX Font Info:    ... okay on input line 44.
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cf
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 44.
+\@outlinefile=\write3
+\openout3 = `main.out'.
+
+\c@lstlisting=\count312
+<Figures/thd.png, id=4, 381.425pt x 381.425pt>
+File: Figures/thd.png Graphic file (type png)
+<use Figures/thd.png>
+Package pdftex.def Info: Figures/thd.png  used on input line 49.
+(pdftex.def)             Requested size: 56.9055pt x 56.90282pt.
+<Figures/ipb.jpg, id=5, 401.5pt x 401.5pt>
+File: Figures/ipb.jpg Graphic file (type jpg)
+<use Figures/ipb.jpg>
+Package pdftex.def Info: Figures/ipb.jpg  used on input line 51.
+(pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
+[1
+
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Figures/thd.png> <./Figures/ipb.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.87 \newpage
+              [1] [2]
+No file main.toc.
+\tf@toc=\write4
+\openout4 = `main.toc'.
+
+[3] [4]
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--141
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 143--147
+
+ []
+
+[5
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 149--154
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--166
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 168--173
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--178
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--189
+
+ []
+
+[8]
+Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--201
+
+ []
+
+<Figures/pablo_data.png, id=53, 1651.16875pt x 1019.81pt>
+File: Figures/pablo_data.png Graphic file (type png)
+<use Figures/pablo_data.png>
+Package pdftex.def Info: Figures/pablo_data.png  used on input line 204.
+(pdftex.def)             Requested size: 386.95897pt x 238.98625pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `fig:nirs_spectra' on page 9 undefined on input line 209.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--226
+
+ []
+
+[9
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 227--230
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--234
+
+ []
+
+[10 <./Figures/pablo_data.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
+
+ []
+
+
+/Users/methungeorge/Desktop/Thesis/main.tex:239: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explana
