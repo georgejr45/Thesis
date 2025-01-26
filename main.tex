@@ -447,7 +447,7 @@ In addition, the ASD FieldSpec 4 generates binary output files. To process these
     %\caption{The official logo of the \texttt{nearspectRa} package.}
     %\label{logo }
 %\end{wrapfigure}
-The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Near-Infrared Spectroscopy (NIRS) data. This name was chosen to align with its functionality and field of usage, focusing on plant metabolic phenotype analysis. The toolbox is publicly available on GitHub and can be accessed at the following link: \href{https://github.com/georgejr45/nearspectRa}{GitHub Repository} \\
+The toolbox, named \textbf{nearspectRa}, is specifically designed to handle  Near-Infrared Spectroscopy (NIRS) data. This name was chosen to align with its functionality and field of usage, focusing on plant metabolic phenotype analysis. The toolbox is publicly available on GitHub and can be accessed at the following link: \url{https://github.com/georgejr45/nearspectRa}\\
 
 
 \subsection{Functions of nearspectRa}
@@ -730,7 +730,7 @@ The following libraries were imported for the successful execution of Partial Le
 \end{itemize}
 
 \subsubsection*{Data Loading and Preprocessing of SLA}
-The spectral data and trait data, which was stored in Excel sheets were imported using the \texttt{read$_$excel} function from the \texttt{readxl} package. Each dataset was read from its respective sheet in the excel file and then preprocessed to ensure the compatibility with PLSR analysis.
+The spectral data and trait data, which was stored in Excel sheets were imported using the \texttt{read$_$excel} function from the \texttt{readxl} package. Each dataset was read from its respective sheet in the excel file and then preprocessed to ensure the compatibility with PLSR analysis. \\
 
 \begin{lstlisting}[language=R, style=mystyle]
 # Reading the excel sheet
@@ -744,7 +744,7 @@ plantspec.data <- subset(plantspec.data, Tree != "70_Ti3")
 \end{lstlisting}
 
 \subsubsection*{Data Splitting}
-The \texttt{subdivideDataset} function from \texttt{plantspec} package is used for splitting the spectral and trait data. The spectral data is passed on to the function as a matrix and the trait data is passed to the function as a vector. The dimensions of the data were checked after the preprocessing step to avoid any errors during data splitting. The spectral data was a matrix of $196$ data points and $2151$ features and the response variable SLA had $196$ data points. The seed is set to $0$ for reproducibility.
+The \texttt{subdivideDataset} function from \texttt{plantspec} package is used for splitting the spectral and trait data. The spectral data is passed on to the function as a matrix and the trait data is passed to the function as a vector. The dimensions of the data were checked after the preprocessing step to avoid any errors during data splitting. The spectral data was a matrix of $196$ data points and $2151$ features and the response variable SLA had $196$ data points. The seed is set to $0$ for reproducibility. \\
 
 \begin{lstlisting}[language=R, style=mystyle]
 training_set <- !(subdivideDataset(
@@ -768,6 +768,85 @@ This function returns a logical index in which \texttt{TRUE} meaning the sample 
 
 
 \subsubsection*{Data Scaling}
+The data scaling is performed using the SNV function, which stands for Standard Normal Variate. It is a normalization technique to remove the scatter effects and baseline shifts by taking each spectrum and doing the centering and scaling individually. SNV ensures that subsequent analysis will remain unbiased from variations in sample properties [48]. The SNV transformation was implemented using a custom R function. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Define SNV function
+SNV <- function(spectra) {
+  spectra <- as.matrix(spectra)
+  spectrat <- t(spectra)
+  spectrat_snv <- scale(spectrat, center = TRUE, scale = TRUE)
+  spectra_snv <- t(spectrat_snv)
+  return(spectra_snv)
+}
+
+# Apply SNV function to the spectral data
+input <- data.frame(SNV(input))
+\end{lstlisting}
+
+The above script first convert the spectral data into a matrix format to enable matrix operations then transpose matrix to ensure scaling along each row (spectrum). Centering and scaling is then implemented in each spectrum with the use of \texttt{scale} function. Finally the transformed matrix is transposed back to its original orientation. \\
+
+The trait values were also scaled to make sure they have a mean of zero and a standard deviation of one. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+component_SLA_scaled <- scale(component_SLA)
+\end{lstlisting}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[height=5cm]{Figures/snv1.png} 
+        \caption{Component SLA before scaling}
+        \label{fig:snv1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[height=5cm]{Figures/snv2.png} 
+        \caption{Component SLA after scaling}
+        \label{fig:snv2}
+    \end{minipage}
+\end{figure}
+
+Figure\ref{fig:snv1} shows the first trait in the analysis in its original values. This vector values are then transformed into a matrix which is shown in figure\ref{fig:snv2}. The loss of column name is due to the \texttt{scale} function used for here and this function does not carry column names by default. \\
+
+\subsubsection*{Split data into train and test}
+The data is then split into training and test sets based on the \texttt{training\_set} index. Both the predictors and response data sets are split into train and test. The train data will be used for creating the PLSR model and then the test data will be used to predict how well does the model performs on unseen data. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+X_train <- input[training_set, ]
+Y_train <- component_SLA_scaled[training_set]
+X_test <- input[!training_set, ]
+Y_test <- component_SLA_scaled[!training_set]
+\end{lstlisting}
+
+Following the data split, a data frame is created using the SLA values comes under train (\texttt{Y\_train}) and the spectral values for train (\texttt{X\_train}). The first column will have the SLA values and spectral data in the following columns. Training control object is also created to use with \texttt{train} function from \texttt{caret} package in R. The \texttt{trainControl} function defines parameters for resampling for model training. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Create a data frame for the train function
+train_data <- data.frame(SLA = Y_train, X_train)
+
+# Create train_control object
+train_control <- trainControl(method = "cv", number = 20)
+\end{lstlisting}
+
+\begin{itemize}
+    \item method: specifies the preferred resampling method during model training. "cv" stands for cross-validation, which is a technique used to test the model performance by splitting the data into multiple subsets. The model will be trained on some subsets and validated on the rest. This process is then repeated multiple times to evaluate the generalizability of the model.
+    \item number: this specifies the number of subsets to be used for cross-validation. In this project 20 subsets were used. The data is split into 20 subsets and the model will be trained for 20 times, each time using 19 subsets for training and remaining one for testing. 
+\end{itemize}
+
+\subsubsection*{Model Training}
+In this step a PLSR model is trained to predict the SLA values using the data stored in \texttt{train\_data} data frame. The training time was also recorded to compare with the rest of the models. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+start_time_pls <- Sys.time()
+
+pls_model <- train(SLA ~ ., data = train_data, method = "pls", tuneLength = 20, trControl = train_control, importance = TRUE)
+
+end_time_pls <- Sys.time()
+\end{lstlisting}
+
 
 
 
@@ -943,6 +1022,8 @@ PLS, RF, CNN
 46. Blischak, J. D., Davenport, E. R., & Wilson, G. (2016). A quick introduction to version control with Git and GitHub. PLoS computational biology, 12(1), https://doi.org/10.1371/journal.pcbi.1004668\\
 \\
 47. https://github.com/features/actions \\
+\\
+48. Chi, K., Lin, J., Chen, M., Chen, J., Chen, Y., & Pan, T. (2023). Changeable moving window-standard normal variable transformation for visible-NIR spectroscopic analyses. Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy, 123726. https://doi.org/10.1016/j.saa.2023.123726 \\
 \\
 
 \end{document}
