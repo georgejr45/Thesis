@@ -126,6 +126,7 @@ The abstract of this thesis is..................................
     CRAN \> Comprehensive R Archive Network \\
     LC \> Liquid Chromatography \\
     RT \> Retention Time \\
+    MAE \> Mean Absolute Error \\
     
 \end{tabbing}
 
@@ -730,7 +731,7 @@ The following libraries were imported for the successful execution of Partial Le
 \end{itemize}
 
 \subsubsection*{Data Loading and Preprocessing of SLA}
-The spectral data and trait data, which was stored in Excel sheets were imported using the \texttt{read$_$excel} function from the \texttt{readxl} package. Each dataset was read from its respective sheet in the excel file and then preprocessed to ensure the compatibility with PLSR analysis. \\
+The spectral data and trait data, which was stored in Excel sheets were imported using the \texttt{read\_excel} function from the \texttt{readxl} package. Each dataset was read from its respective sheet in the excel file and then preprocessed to ensure the compatibility with PLSR analysis. \\
 
 \begin{lstlisting}[language=R, style=mystyle]
 # Reading the excel sheet
@@ -847,6 +848,105 @@ pls_model <- train(SLA ~ ., data = train_data, method = "pls", tuneLength = 20, 
 end_time_pls <- Sys.time()
 \end{lstlisting}
 
+The PLSR model was trained using the \texttt{train} function from \texttt{caret} package. The parameters used here are:
+\begin{itemize}
+    \item $SLA \sim .$: This specifies to take the column with name SLA as response variable from the dataset and the rest of the columns as predictors for creating the PLSR model.
+    \item data: this state, which dataset to be used for creating the model. In this model, a data frame named train\_data is passed to the model with both the predictor and the response variable that contains the training data.
+    \item method: this specifies which method to be used for training.
+    \item tuneLength: It is an integer evaluating specified number of values for an optimal number of components to use in PLSR model. In this model \texttt{tuneLength} is set to 20 and it evaluate 20 different values and gets the best value in which the model performs well. 
+    \item trControl: this specifies the number of subsets for cross-validation 
+    \item importance : this argument calculates the feature importance of each predictor variable, which helps to identify the most influencial features in predicting SLA values.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/plsr_model.png}
+    \caption{Summary of PLSR model for SLA trait, explaining the data dimension used for creating the model and the number of components considered}
+    \label{fig:plsr_model}
+\end{figure}
+
+Figure \ref{fig:plsr_model} illustrate the summanry of the PLSR model created for predicting the SLA values. This summary give information on the dimension of the data as well as the number of components considered while creating the model. The values under each components shows the percentage of variance explained by the model with increasing number of components. the \texttt{X} represents the predictor variable and \texttt{.outcome} points to response variables. For instance, when considering only one component or one latent variable, $83.22$\%  of variance in \texttt{X} is explained and for response (\texttt{Y}) variable it was limited to $75.86$\%. The fit method used for creating this model is \texttt{oscorespls}. It is an algorithm for fitting PLSR models. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/plsr_sla_model.png}
+    \caption{Plot of PLSR model for SLA trait prediction illustrating how the number of components were selected}
+    \label{fig:plsr_sla_model}
+\end{figure}
+
+Figure \ref{fig:plsr_sla_model} illustrate the relationship between RMSE values and number of components. Out of $20$ components considered, $11$ was chosen due to reduced RMSE, which will facilitate the predictive accuracy of the model. Apart from this, the PLSR model also give additional performance metrics, including $R^2$ and Mean Absolute Error(MAE) for each number of components. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Find the index of the minimum RMSE
+rmse_values <- pls_model$results$RMSE
+
+optimal_components <- pls_model$results$ncomp[which.min(rmse_values)]
+\end{lstlisting}
+The optimal number of components were selected by extracting the RMSE values from the model and choosing the one which has minimum value. In this case, 11 was chosen and passed as parameter for predicting in unseen data.
+
+\subsubsection*{Model Evaluation}
+The final model's performance was evaluated using the test dataset. For predicting \texttt{predict} function and \texttt{postResample} function is used to evaluate the performance of PLSR model on test data, both are from the package called \texttt{caret}. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Predictions
+predictions_pls <- predict(pls_model, ncomp = optimal_components,  newdata = X_test)
+
+# Evaluation
+results_pls <- postResample(predictions_pls, Y_test)
+\end{lstlisting}
+
+In R, the \texttt{predict} function is a generic function and it automatically allocate the appropriate method based on the object class passed to it. This is the reason why the \texttt{predict.train} is not explicitly given here. To predict the SLA values, the trained model (\texttt{pls\_model}) is passed as the first parameter followed by  the optimal number of components (\texttt{optimal\_components}) and the test predictor data (\texttt{X\_test}). \\
+
+The performance of the model is evaluated using the \texttt{postResample} function from \texttt{caret} package. It takes two parameters, one is the predictions the previous function and the next is the test values of the response variable (\texttt{Y\_test}). This function outputs the values for RMSE, $R^2$ and MAE, which is then used to compare with the rest of the models in this project.
+
+\subsubsection*{Visualization}
+For the easy understanding and comparison, it was necessary to visualize the result. The plots were created with the help of \texttt{ggplot2} and \texttt{plotly} packages. The \texttt{ggplot2} in this case creates a scatter plot with actual SLA values on $X$ and predicted SLA values on $Y$ axis. The \texttt{ggplotly} function is then applied on to the resulting plot to make it interactive and suited well for the vignette.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/sla_plsr.png}
+    \caption{The scatter plot created using ggplot2 package, illustrating the predicted and actual SLA values }
+    \label{fig:sla_plsr}
+\end{figure}
+
+\subsubsection*{Helper functions}
+Two custom helper functions were developed to ease the subsequent analysis and improve code readability by reducing the complexity. First function is called \texttt{perform\_PLSR}, which accepts the preprocessed spectral data along with the trait data and outputs the trained model along with training time and test data set for model evaluation. It is highly useful since the analysis follows a standard workflow in which the functions and packages used are the same across all the five traits. The only change is in the preprocessing of spectral data, which is done separately for each trait.\\
+
+The second function is \texttt{plot\_gg}, which accepts multiple arguments including, predicted values, actual values, title of choice, x and Y labels and color of choice for the plot. This function creates a ggplot object from the data provided. Both of this functions have been used in the analysis of the next four traits. The R scripts of both functions are provided as additional files. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Source the perform_PLSR function
+source("/path/to/the/function/perform_plsr.R")
+
+# Source plot_gg function
+source("/path/to/the/function/plot.R")
+\end{lstlisting}
+
+\subsubsection*{Prediction of LDMC using PLSR}
+The prediction of LDMC using PLSR follows similar steps as of SLA prediction except the preprocessing. In LDMC, data corresponding to this specific trait is first extracted from the excel sheet and outlayers were removed.
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Removing the outlayers
+plantspec.data[which(is.na(plantspec.data$LDMC)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$LDMC)),]
+plantspec.data.ldmc <- plantspec.data[!is.na(plantspec.data$LDMC),]
+input <- input[-which(plantspec.data$Tree == "70_Ti3"),]
+plantspec.data.ldmc <- subset(plantspec.data.ldmc, Tree != "70_Ti3")
+
+# Extract the LDMC values
+component_LDMC <- plantspec.data.ldmc$LDMC
+\end{lstlisting}
+
+After the necessary preprocessing steps, the custom helper function is applied to create the PLSR model for LDMC.
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Train the PLSR-LDMC model
+model_ldmc <- perform_PLSR(input = input, trait = component_LDMC)
+
+# Extracting the model from the output
+results_ldmc <- model_ldmc$plsr_model
+\end{lstlisting}
 
 
 
