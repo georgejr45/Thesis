@@ -1,0 +1,36 @@
+\contentsline {chapter}{\numberline {1}Introduction}{5}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Background}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Near Infrared Spectroscopy (NIRS)}{9}{section.2.1}%
+\contentsline {paragraph}{\textbf {\textcolor {darkblue}{NIRS Instruments}}}{11}{section*.4}%
+\contentsline {section}{\numberline {2.2}Liquid Chromatography Mass Spectrometry}{11}{section.2.2}%
+\contentsline {section}{\numberline {2.3}R Programming}{13}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Machine Learning}{14}{section.2.4}%
+\contentsline {paragraph}{\textcolor {darkblue}{Supervised Learning}}{14}{section*.5}%
+\contentsline {paragraph}{\textcolor {darkblue}{Unsupervised Learning}}{14}{section*.6}%
+\contentsline {paragraph}{\textcolor {darkblue}{Semi-supervised and Reinforcement Learning}}{15}{section*.7}%
+\contentsline {subsection}{\numberline {2.4.1}Partial Least Square Regression (PLSR)}{15}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Random Forest (RF)}{17}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Convolutional Neural Network (CNN)}{18}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {3}Implementation}{21}{chapter.3}%
+\contentsline {section}{\numberline {3.1}R Toolbox Development}{21}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Toolbox: nearspectRa}{21}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Functions of nearspectRa}{22}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Package Development Overview}{24}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Usage and Integration}{25}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Challenges and Future Work}{26}{subsection.3.1.5}%
+\contentsline {section}{\numberline {3.2}Contributions elsewhere}{26}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}GitHub Actions to R-FieldSpectra}{26}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Contribution of the read.sig Function to R-FieldSpectra}{27}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Prediction of Leaf Traits From NIRS Data}{28}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Trait Prediction Using PLSR}{29}{subsection.3.3.1}%
+\contentsline {section}{\numberline {3.4}LCMS Feature Prediction From NIRS Data}{38}{section.3.4}%
+\contentsline {section}{\numberline {3.5}HPC runs}{38}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{39}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Data charecterestics}{40}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Baseline Machine Learning Models Pablo}{40}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Variable importance}{40}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3} Variations in Baseline systems}{40}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1} modifying the Test and Training split}{40}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2} input data length}{40}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Sues}{40}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Reference}{41}{chapter.5}%
