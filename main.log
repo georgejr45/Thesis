@@ -580,4 +580,153 @@ Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
 /Users/methungeorge/Desktop/Thesis/main.tex:240: LaTeX Error: There's no line here to end.
 
-See the LaTeX manual or LaTeX Companion for explanation
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.240 \textcolor
+                {darkblue}{ASD FieldSpec4} \\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--242
+
+ []
+
+<Figures/asd.jpg, id=231, 331.2375pt x 236.38312pt>
+File: Figures/asd.jpg Graphic file (type jpg)
+<use Figures/asd.jpg>
+Package pdftex.def Info: Figures/asd.jpg  used on input line 245.
+(pdftex.def)             Requested size: 241.84685pt x 142.2674pt.
+<Figures/svc.png, id=234, 260.975pt x 301.125pt>
+File: Figures/svc.png Graphic file (type png)
+<use Figures/svc.png>
+Package pdftex.def Info: Figures/svc.png  used on input line 255.
+(pdftex.def)             Requested size: 241.85207pt x 170.72406pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--266
+
+ []
+
+[11 <./Figures/asd.jpg>]
+<Figures/lcms_raw.png, id=243, 1122.1925pt x 353.32pt>
+File: Figures/lcms_raw.png Graphic file (type png)
+<use Figures/lcms_raw.png>
+Package pdftex.def Info: Figures/lcms_raw.png  used on input line 269.
+(pdftex.def)             Requested size: 435.32422pt x 137.06104pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--277
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--285
+
+ []
+
+[12 <./Figures/svc.png> <./Figures/lcms_raw.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 286--290
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--295
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
+
+ []
+
+[13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 305--309
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 311--317
+
+ []
+
+<Figures/ml.png, id=259, 722.7pt x 505.89pt>
+File: Figures/ml.png Graphic file (type png)
+<use Figures/ml.png>
+Package pdftex.def Info: Figures/ml.png  used on input line 324.
+(pdftex.def)             Requested size: 386.95897pt x 270.86847pt.
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 332--336
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--342
+
+ []
+
+[15 <./Figures/ml.png>]
+<Figures/PLSR.png, id=273, 722.7pt x 505.89pt>
+File: Figures/PLSR.png Graphic file (type png)
+<use Figures/PLSR.png>
+Package pdftex.def Info: Figures/PLSR.png  used on input line 345.
+(pdftex.def)             Requested size: 386.95897pt x 270.86847pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--353
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--362
+
+ []
+
+[16 <./Figures/PLSR.png>]
+<Figures/rf.png, id=282, 722.7pt x 505.89pt>
+File: Figures/rf.png Graphic file (type png)
+<use Figures/rf.png>
+Package pdftex.def Info: Figures/rf.png  used on input line 365.
+(pdftex.def)             Requested size: 386.95897pt x 270.86847pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--373
+
+ []
+
+[17 <./Figures/rf.png>]
+/Users/methungeorge/Desktop/Thesis/main.tex:388: Missing $ inserted.
+<inserted text> 
+                $
+l.388 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/methungeorge/Desktop/Thesis/main.tex:388: Missing } inserted.
+<inserted text> 
+                }
+l.388 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+/Users/methungeorge/Desktop/Thesis/main.tex:388: Display math should end with $$.
+<to be read again> 
+                   \tex_par:D 
+l.388 
+      
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+/Users/methungeorge/Desktop/Thesis/main.tex:388: Extra }, 
