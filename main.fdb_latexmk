@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1738050584.1995 "/Users/methungeorge/Desktop/Thesis/main.tex" "main.pdf" "main" 1738050596.04293 2
-  "/Users/methungeorge/Desktop/Thesis/main.tex" 1738050569.21981 99713 5afc5d9ed6b3bf8ae3ea49bfe7e76ab5 ""
+["pdflatex"] 1738076939.23071 "/Users/methungeorge/Desktop/Thesis/main.tex" "main.pdf" "main" 1738076953.09882 2
+  "/Users/methungeorge/Desktop/Thesis/main.tex" 1738076924.05771 105126 e030c69bd0543a904b5d4871883ecaca ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -111,6 +111,7 @@
   "Figures/ipb.jpg" 1736690191.19798 11138 b493eadbbe6e94b60650b6c0223e0d43 ""
   "Figures/lcms_raw.png" 1737104843.56664 150333 26dee579d1eb1c70dadc74eb3c0b4852 ""
   "Figures/ml.png" 1736690191.20579 1066991 e537f694f78f4f7d9983ed1b54fd6b65 ""
+  "Figures/model_ldmc.png" 0 -1 0 ""
   "Figures/nirs.png" 1736690191.25624 2666724 1ded100dac806bbc36e3fc0f41292f59 ""
   "Figures/pablo_data.png" 1737551545.44577 775975 99e20e1e4d35b6de2f0043b9574cad9d ""
   "Figures/plsr_model.png" 0 -1 0 ""
@@ -125,10 +126,10 @@
   "Figures/svc.png" 1737622722.18498 24294 0851972d41e6845c6d82add6b388a420 ""
   "Figures/thd.png" 1736690191.26959 28444 5863d2541a0a6b326dc2d6ce4619364f ""
   "Figures/traits.jpg" 1737623031.68186 481063 463580ebd91e360d4f7f18b818ae4c1d ""
-  "main.aux" 1738050595.64065 12911 9ef07a3971a03c4b475dcc223c0a025b "pdflatex"
-  "main.out" 1738050595.64324 5988 b04a739178ae3c5e5b2b8a83c57f8702 "pdflatex"
-  "main.tex" 1738050569.21981 99713 5afc5d9ed6b3bf8ae3ea49bfe7e76ab5 ""
-  "main.toc" 1738050595.64387 3238 5b2e0572df68c68c1d1246568716e7b9 "pdflatex"
+  "main.aux" 1738076952.43821 13338 3d2b60d21ec49b99a3cbfb41a2553d49 "pdflatex"
+  "main.out" 1738076952.44198 6194 89d2358491e378492afe7d05967c6239 "pdflatex"
+  "main.tex" 1738076924.05771 105126 e030c69bd0543a904b5d4871883ecaca ""
+  "main.toc" 1738076952.44263 3336 94da5e0e908c87dcfa3ad00ddc21760f "pdflatex"
   (generated)
   "main.aux"
   "main.log"
