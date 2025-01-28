@@ -948,7 +948,94 @@ model_ldmc <- perform_PLSR(input = input, trait = component_LDMC)
 results_ldmc <- model_ldmc$plsr_model
 \end{lstlisting}
 
+The \texttt{perform\_PLSR} function takes both predictor and response variables as inputs and do the splitting, scaling and training of the model for the specific trait. The output of the function is shown in the figure \ref{fig:model_ldmc}. From this, the model is filtered out for passing on to predict function for the downstream analysis.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/model_ldmc.png}
+    \caption{Illustrate output of the \texttt{perform\_PLSR} function}
+    \label{fig:model_ldmc}
+\end{figure}
+
+The \texttt{predict} function from caret package is used to make predictions on the model using the test data. It is similar to the prediction of SLA.  \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Scaled X and Y values
+Y_test_ldmc <- model_ldmc$Y_test
+X_test_ldmc <- model_ldmc$X_test
+
+# Find the index of the minimum RMSE
+rmse_values_ldmc <- results_ldmc$results$RMSE
+optimal_components_ldmc <- results_ldmc$results$ncomp[which.min(rmse_values_ldmc)]
+
+# Predictions
+predictions_pls_ldmc <- predict(results_ldmc, ncomp = optimal_components_ldmc,  newdata = X_test_ldmc)
+
+# R2 Value for LDMC
+results_pls_ldmc <- postResample(predictions_pls_ldmc, Y_test_ldmc)
+\end{lstlisting}
+
+\subsubsection*{Visualization using the \texttt{plot\_gg} function}
+The visualization is implemented with the help of custom \texttt{plot\_gg} function. It takes seven parameters such as prediction data, test data for response variable, title, labels for x and y axis , point color and line color. Close attention was paid to each trait, with a particular focus on visualizing the results to make sure clarity and improve meaningful comparisons. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+plot_ldmc <- plot_gg(predictions_pls_ldmc, Y_test_ldmc,
+                     title = "Predicted Vs Actual LDMC (PLSR)",
+                     x_label = "Actual LDMC",
+                     y_label = "Predicted LDMC",
+                     point_color = "#31a354",
+                     line_color = "#e34a33")
+
+# For interactive plots
+ggplotly(plot_ldmc)
+\end{lstlisting}
+
+\subsubsection*{Prediction of C content and C to N ratio (C:N)}
+The prediction of Carbon content and Carbon to Nitrogen ratio follows similar steps as the LDMC prediction. The only difference is in the preprocessing steps, in which each trait filter out columns relevant to that specific analysis. It uses the advantage of the helper function to execute the long scripts. The results from each of these analysis were carefully studied and saved. The plots were created and is available in the supplementary vignette as interactive plots. The results are provided in the final chapter of this thesis.
+
+\subsubsection*{Prediction of Phosphorus content using PLSR}
+The analysis of phosphorus content involved additional steps compared to the analysis of other traits. It used additional data from Kreinitz experiment [49] along with data from leaf trait study [15]. This is due to the loss of data from a technical error occurred during the laboratory analysis of Phosphorus content. The data is chosen considering the comparability of the samples, instruments and method used [15]. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Removing the outlayers
+
+plantspec.spectra2 <- read_excel("/path/to/the/data/dataset_20231010.xlsx", sheet = "Kreinitz set spectra") # Spectral Kreinitz set
+plantspec.data2 <- read_excel("/path/to/the/data/dataset_20231010.xlsx", sheet = "Kreinitz set traits") # Traits Kreinitz set
+
+cbind(plantspec.spectra2$Spectral.file.name, plantspec.data2$Level_ID) # Checking correlation between both sets
+\end{lstlisting}
+
+The preprocessing is done to both data sets. The dimension of the data from Kreinitz experiment[49] was $101$ samples and $2152$ features. The dimension of the leaf trait data was $198$ samples and $2152$ features. Both this data set is subjected to preprocessing and the dimension of the combined data for the prediction of Phosphorus content had $225$ samples and $2151$ features.  \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Removing outlayer from the samples
+plantspec.data[which(is.na(plantspec.data$P)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$P)),]
+plantspec.data.p <- plantspec.data[!is.na(plantspec.data$P),]
+input <- input[-which(plantspec.data.p$Tree == "75_So2"),]
+plantspec.data.p <- subset(plantspec.data.p, Tree != "75_So2")
+input <- input[-which(plantspec.data.p$Tree == "16_Be3"),]
+plantspec.data.p <- subset(plantspec.data.p, Tree != "16_Be3")
+input <- input[-which(plantspec.data.p$Tree == "71_Fa3"),]
+plantspec.data.p <- subset(plantspec.data.p, Tree != "71_Fa3")
+
+plantspec.data[which(is.na(plantspec.data2$P)),]
+
+# Preprocessing of second dataset
+input2 <- as.matrix(plantspec.spectra2[, -1])
+input2 <- input2[-which(plantspec.data2$Level_ID == "B16_Li17_3"),]
+plantspec.data2 <- subset(plantspec.data2, Level_ID != "B16_Li17_3")
+input2 <- input2[-which(plantspec.data2$Level_ID == "B41_Es11_3"),]
+plantspec.data2 <- subset(plantspec.data2, Level_ID != "B41_Es11_3")
+
+# Studying the distribution of the values for P
+component_P <- c(plantspec.data.p$P, plantspec.data2$P)
+\end{lstlisting}
+
+After preprocessing, the analysis followed steps similar to the LDMC, C and C:N. It used the helper functions to create the model and visualize the data. 
+
+\subsection{Extrapolation study of PLSR}
 
 \section{LCMS Feature Prediction From NIRS Data}
 \subsubsection*{Background of the study}
