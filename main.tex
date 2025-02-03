@@ -18,6 +18,7 @@
 \usepackage{booktabs}
 \usepackage{wrapfig}
 \usepackage{amsmath}
+\usepackage{amssymb}  % For extra symbols (like \mathbb)
 
 
 
@@ -198,7 +199,7 @@ Near infrared spectroscopy (NIRS) is a non-invasive measurement technique that u
 the near infrared region to analyse a sample [35,13]. Infrared (IR) is a form of electromagnetic
 radiation and it interacts with samples through absorption or reflection. The NIRS is widely
 used in plant research due to its ability in predicting sample structure and traits by analysing
-the spectral patterns. Based on how the sample absorbs or reflects light at different wavelengths, Infrared radiation is classified into three categories:(1) Near Infrared (NIR), ranging from 780 to 2500 nanometers (nm), (2) Mid Infrared (MIR),ranging from 2500 to 25,000 nm, and (3) Far Infrared (FIR), ranging from 25,000 to 1,000,000nm [35]. When a substance such as plant leaf is subjected to NIR light, the molecular bonds in the infrared range will interact with the light thereby causing absorption or reflection of light by the sample. The light transmitted or reflected is then measured to produce the NIR spectrum. This spectrum provides a detailed picture of molecular composition of the substance and the peaks in the spectrum corresponding to different vibrational modes of different chemical bonds. This occurs due to the change in the vibrational or rotational state of molecules or transition between their energy levels [35,13]. The group which is the most dominant in absorbing the NIR are hydrogen-containing groups such as C-H, O-H and N-H while other groups like C=C and C=O absorbs light in weaker intensities. These groups are key components in organic substances and their absorption wavelengths and intensities differ depending on the chemical composition of the substance [35].\\ 
+the spectral patterns. Based on the absorbance or reflectance of light at different wavelengths, Infrared radiation is classified into three categories:(1) Near Infrared (NIR), ranging from 780 to 2500 nanometers (nm), (2) Mid Infrared (MIR),ranging from 2500 to 25,000 nm, and (3) Far Infrared (FIR), ranging from 25,000 to 1,000,000nm [35]. When a substance such as plant leaf is subjected to NIR light, the molecular bonds in the infrared range will interact with the light thereby causing absorption or reflection of light by the sample. The light transmitted or reflected is then measured to produce the NIR spectrum. This spectrum provides a detailed picture of molecular composition of the substance and the peaks in the spectrum corresponding to different vibrational modes of different chemical bonds. This occurs due to the change in the vibrational or rotational state of molecules or transition between their energy levels [35,13]. The group which is the most dominant in absorbing the NIR are hydrogen-containing groups such as C-H, O-H and N-H while other groups like C=C and C=O absorbs light in weaker intensities. These groups are key components in organic substances and their absorption wavelengths and intensities differ depending on the chemical composition of the substance [35].\\ 
 
 \begin{figure}[h]
     \centering
@@ -207,7 +208,7 @@ the spectral patterns. Based on how the sample absorbs or reflects light at diff
     \label{fig:nirs_spectra}
 \end{figure}
 
-The \ref{fig:nirs_spectra} shows an example of the relationship between reflectance and wavelength for
+Figure \ref{fig:nirs_spectra} shows an example of the relationship between reflectance and wavelength for
 near-infrared (NIR) spectra where the variations in reflectance give valuable information
 about the chemical and physical properties of the sample. Compared to other analytical methods, NIRS is faster, requires little sample preparation, and is more cost-effective, making it a
 highly inviting choice for researchers and scientists [13]. NIR spectrometers typically consist
@@ -260,35 +261,34 @@ This is a high resolution portable spectroradiometer which provides data across 
 
 \section{Liquid Chromatography Mass Spectrometry}
 Liquid Chromatography-Mass Spectrometry(LCMS) is the combination of two powerful analytical techniques for the separation, identification and quantification of biological compounds from complex mixtures. This technique has a wide range of applications in Metabolomics, Pharmaceuticals, Environmental science and Food chemistry [43]. Liquid Chromatography (LC) 
-is a technique used to separate components in a mixture based on the rates at which they move through a stationary phase under the influence of mobile phase gradient. The varying affinities of the components to the stationary and mobile phases leads to their separation, with some attached to the mobile phase and eluting faster, while others attach to 
-the stationary phase and thereby elute more slowly, leading to different retention times (RT) [43]. Mass spectrometry (MS) is one of the several detectors which can be coupled with LC to identify compounds. MS detects the mass to charge ratio (m/z) and the abundance of ions generated during ionization of the sample extracts [43]. Ions are charged molecules 
-and are easier to analyze than neutral molecules therefore ionization is a crucial step in MS [43]. The MS is made of an ionization source, a mass analyzer and a detector, all these should be kept under vacuum to optimize the ion transmission. A mass spectrum is then generated with the help of a computer [43]. \\
+is a technique used to separate compounds in a mixture based on the rates at which they move through a stationary phase under the influence of mobile phase gradient. The varying affinities of the compound to the stationary and mobile phases leads to their separation. Some compounds attached to the mobile phase and eluting faster, while others attach to 
+the stationary phase and thereby elute more slowly, leading to different retention times (RT) [43]. Mass spectrometry (MS) is one of the several detectors which can be coupled with LC to identify compounds. MS detects the mass to charge ratio (m/z) and the abundance of ions generated during ionization of the sample extracts [43]. The MS is made of an ionization source, a mass analyzer and a detector, all these should be kept under vacuum to optimize the ion transmission. A mass spectrum is then generated with the help of a computer [43]. \\
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/lcms_raw.png} 
-    \caption{LCMS dataset after initial processing using the \texttt{metabolighteR} package, revealing the selected columns relevant for downstream analysis.}
+    \caption{LCMS dataset after initial processing using the \texttt{metabolighteR} package, revealing the selected columns relevant for downstream analysis [14].}
     \label{fig:lcms_raw}
 \end{figure}
 
 The diversity of the metabolic profile analyzed in Liquid Chromatography-Mass Spectrometry (LC-MS) makes it one of the essential tools in plant metabolomics. LC-MS has a great number of uses within the field of plant biology for plant metabolite identification and analysis. Unlike other techniques such as gas chromatography coupled to mass spectrometry, 
-the steps involving derivatization are avoided in LC-MS [43]. This makes LC-MS particularly fit for the detection of varied classes, including semi-polar compounds and secondary metabolites common in plants [43]. The flexibility of LC-MS in gradient elution further allows effective separation of complex mixtures. Using different polarities of solvents 
+the steps involving derivatization are avoided in LC-MS [43]. This makes LC-MS particularly fit for the detection of different metabolites, including semi-polar compounds and secondary metabolites common in plants [43]. The flexibility of LC-MS in gradient elution further allows effective separation of complex mixtures. Using different polarities of solvents 
 during the elution process allows for the separation of polar and nonpolar compounds. Reverse-phase LC-MS, a widely used approach, often employs a gradient starting with an aqueous solvent and progressively increasing the proportion of an organic solvent, ensuring the efficient separation of a broad spectrum of metabolites [43]. \\
 
 
 \section{R Programming}
-R is an open-source and free software developed by professors Robert Gentleman from the University of Waterloo and Ross Ihaka from University of Auckland as a programming language to teach statistics [37]. This free programming language 
+R is an open-source and free software developed by professors Robert Gentleman from the University of Waterloo and Ross Ihaka from University of Auckland as a programming language to teach statistics [37]. This programming language 
 is widely used for statistical analysis, data visualization and graphical output [38]. Quoting the words of Ross Ihaka, “R is a computer language and run-time environment which can be used to carry out statistical (or other quantitative) computations” [37]. 
-The name “R” itself comes from the shared first letters of both authors and being the successor of “S” language [37]. The strength of R is its extensive add-on packages which helps to analyse and visualize complex data. Even though R primarily has a command 
-line interface, multiple third party graphical user interfaces such as Rstudio, Jupyter are available for better user friendly experience [37,38]. R is a versatile software suited for data manipulation, computational and graphical representation [39]. The GNU General 
+The name “R” itself comes from the shared first letters of both authors and being the successor of “S” language [37]. The strength of R is its extensive add-on packages which help to analyse and visualize complex data. Even though R primarily has a command 
+line interface, multiple third party graphical user interfaces such as Rstudio, Jupyter, Shiny are available for user friendly experience [37,38]. R is a versatile software suited for data manipulation, computational and graphical representation [39]. The GNU General 
 Public License of R offers users significant freedom, including the ability to use, modify and distribute the software making it a favourite programming language for researchers across all the fields [37,39]. \\
 
 R is often associated with statistics creating a versatile environment that incorporates many traditional and modern statistical techniques [39]. Some of these techniques are part of base R setup while others are available through additional packages. R offers a greater flexibility and control over analytical 
 processes by step-by-step analysis with intermediate results saved as objects. This allows users to interact with and refine results using additional R functions [39].
-R is an expression-based programming language with a straightforward syntax. It is also case-sensitive, meaning variables like “A” and “a” are distinct and names must start with a letter or a period not followed by a digit [39]. The commands in R can either be expressions or assignments. 
+R is also case-sensitive, meaning variables like “A” and “a” are distinct and names must start with a letter or a period not followed by a digit [39]. The commands in R can either be expressions or assignments. 
 Expressions are evaluated, displayed and then discarded. Assignments, on the other hand, evaluate expressions and assign their results to variables without displaying it, allowing more flexible programming [39]. \\
 
-Initially, R gained popularity for its syntax, closely resembling the S programming language, which made it easy for the S-PLUS users to transition to R. The versatility of R made it popular since it could run on various platforms, such as tablets and smartphones due to its open-source nature [8]. 
+Initially, R gained popularity for its syntax, closely resembling the S programming language, which made it easy for the S-PLUS users to transition to R. The versatility of R made it popular since it could run on various platforms, such as Linux, Unix, tablets and smartphones due to its open-source nature [8]. 
 The frequent updates, including annual major release and timely bug fixes, underline the active development in R. Its advanced graphical capabilities is another very good quality among many, supporting detailed and publication-quality visuals with help of packages such as “ggplot2” surpass many competitors [8].
 These visualization packages allows high-dimensional visualizations and are more user friendly [8]. R remains true to its original philosophy, offering an interactive and programmable environment for creating tools. Its strong community contributes a wide range of packages, share knowledge and support on the 
 forums like Stack Overflow, allowing innovation and collaboration among users worldwide [8]. The main R system can be downloaded from the Comprehensive R Archive Network (CRAN), which also hosts many additional packages that extend R’s capabilities [8]. The R system is divided into two parts \\
@@ -302,21 +302,21 @@ R is a powerful tool for statistical computing, this along with high quality vis
 
 \section{Machine Learning}
 
-Machine learning (ML) as the name indicates is the field of computer science which applies mathematical models and algorithms to enable the system to learn and make predictions without being programmed explicitly [18,19]. In contrast to classical programming where someone explicitly programmes an algorithm to execute predefined tasks,
-ML uses a subset of (training) data to learn patterns and relationships within the data to create an algorithm which can generalize to unseen data[18]. This versatility and flexibility enables ML methods to improve performance over time, leading to advanced data driven decision making [23,18]. As a subgroup of Artificial intelligence (AI)
+Machine learning (ML) as the name indicates is the field of computer science which applies mathematical models and algorithms to enable the system to learn and make predictions without being programmed explicitly [18,19]. In contrast to classical programming where someone explicitly program an algorithm to execute predefined tasks,
+ML uses a subset of (training) data to learn patterns and relationships within the data to create a function which can generalize to unseen data[18]. This versatility and flexibility enables ML methods to improve performance over time, leading to advanced data driven decision making [23,18]. As a subgroup of Artificial intelligence (AI)
 is often simply represented as a 3 layer model which includes an inputlayer that receives the data, a hidden second layer which processes the data according to the mathematical backend of the model and finally the third output layer that outputs the prediction [21]. The hidden layer which does the linear regression or classification differs 
 according to the ML model in use and these are often compared to a single human neuron, where dendrite represents input layer, cell body corresponds to hidden layer, and axon functions as output layer [21]. ML employs four primary learning methods namely, supervised, unsupervised, semi-supervised and reinforcement learning [18]. \\
 
 \paragraph{\textcolor{darkblue}{Supervised Learning}} 
-Supervised learning is a ML approach that aims to predict a known output  based on the input data. It excels in tasks where the patterns in data can augment human decision making [18]. 
+Supervised learning is a ML approach in which model is learned from labeled data. It excels in tasks where the patterns in data can augment human decision making [18]. 
 For instance, handwriting recognition or object classification (example, distinguishing an elephant and tiger). These tasks are easily done by humans and supervised learning strives to replicate 
 or enhance this performance [18]. Another example would be in medicine where supervised ML identifies patterns in the electrocardiogram (ECG) which is an easy job for a trained cardiologist. 
 These classification tasks from supervised learning are achieved through training an algorithm on labeled datasets containing ECG features (heart rate, rhythm and waveform shape) and their corresponding diagnosis. 
-By mapping these features (X) to diagnostic outcomes (Y), the algorithm learns the function f(X) to accurately predict for new unseen ECG data [18,24]. Another common application of supervised learning is in regression and classification tasks [18]. 
+By mapping these features ($X$) to diagnostic outcomes ($Y$), the algorithm learns the function $f(X)$ to accurately predict for new unseen ECG data [18,24]. Another common application of supervised learning is in regression and classification tasks [18]. 
 Regression focuses on predicting continues numerical values such as LC-MS values from NIRS data and test scores. In contrast, classification predicts which category does the given instance belong such as elephant or tiger as seen in the previous example [23,24]. \\
 
 \paragraph{\textcolor{darkblue}{Unsupervised Learning}} 
-Unsupervised learning is considered to be more challenging compared to supervised learning since the former focuses on discovering patterns or groupings within data without predefined targets [18]. Common unsupervised learning tasks include clustering, association and anomaly detection, where the algorithm independently identifies underlying structures in the data [23,18].
+Unsupervised learning focuses on discovering patterns or groupings within data without predefined targets[18]. Common unsupervised learning tasks include clustering, association and anomaly detection, where the algorithm independently identifies underlying structures in the data [23,18].
 For instance, clustering data points into separate groups based on the shared features (\ref{fig:ml}). 
 
 \begin{figure}[h]
@@ -332,24 +332,65 @@ Semi-supervised learning bridges the gap between supervised and unsupervised lea
 In the era of modern molecular plant breeding, integration of ML with the large, noisy and heterogeneous data is important to uncover complex patterns and enable accurate predictions of plant features [23]. The “big data” resulting from high throughput techniques in plant sciences can be leveraged 
 to drive discoveries, enhanced precision and accelerate advancement in plant research [23]. A plant genetic makeup (genotype) has a significant influence in its growth, development and biochemical composition. This results in the expression of plant traits such as yield, stress tolerance and pest resistance. 
 Understanding how genotype and environment influences on phenotypes is crucial for insights into regulatory mechanisms, and development of plants [23]. This knowledge enables the  prediction of yield and other plant traits based on the genotypes under different environmental conditions, which in turn paves the 
-way for modern molecular plant breeding [23]. Different ML approaches such as Partial Least Square Regression (PLSR), Random Forest (RF) and Convolutional Neural Networks (CNN)  can be employed to make predictions by leveraging patterns in the data. \\
+way for modern molecular plant breeding [23]. Different ML approaches such as Partial Least Square Regression (PLSR), Random Forest (RF) and Convolutional Neural Networks (CNN)  can be employed to make predictions by leveraging patterns in the data which are explained in the following sections. \\
 
 \subsection{Partial Least Square Regression (PLSR)}
-In machine learning, Partial Least Square Regression (PLSR) is a statistical method which combines the benefits of Principal Component Analysis (PCA) and linear regression to predict the outcomes [26]. It is a linear regression model which is arguably the simplest machine learning algorithm that uses a straight line to solve a regression problem [18]. PLSR uses the advantage of PCA for dimensionality reduction and the regression for prediction [27].
-This fitting of linear regression between two data matrices has a wide range of application in plant biology, especially in crop breeding, ecosystem monitoring and predicting plant traits from its spectral data [25]. In PLSR, the predictor variable (often denoted as X) refers to a set of independent 
-variables or features that are used to predict response variable (y). The predictor variables are typically high dimensional and often include multiple correlated features. The response variable (y) represents the outcome or dependent variable. PLSR works by identifying the latent variables, which 
-summarizes the covariance between predictor and response variables. This latent variable captures the most relevant information from the predictors (X) in relation to response (y) variables, allowing the model to predict y more effectively [25,27,28]. \\
+In machine learning, Partial Least Square Regression (PLSR) is a statistical method which combines the benefits of Principal Component Analysis (PCA) and linear regression to predict the outcomes [26]. It is a linear regression model which is arguably one of the simplest machine learning algorithm that uses a line to solve a regression problem [18]. PLSR uses the advantage of PCA for dimensionality reduction and the regression for prediction [27].
+This fitting of linear regression between two data matrices has a wide range of application in plant biology, especially in crop breeding, ecosystem monitoring and predicting plant traits from its spectral data [25]. In PLSR, the predictor variable (often denoted as $X$) refers to a set of independent 
+variables or features that are used to predict response variable ($y$). The predictor variables are typically high dimensional and often include multiple correlated features. The response variable ($y$) represents the outcome or dependent variable. PLSR works by identifying the latent variables, which 
+summarizes the covariance between predictor and response variables. This latent variable captures the most relevant information from the predictors ($X$) in relation to response ($y$) variables, allowing the model to predict $y$ more effectively [25,27,28]. \\
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/PLSR.png}
-    \caption{A comparison of PCA (A) and PLS (B). In the PCA plot, the x-axis represents a combination of variables (e.g., three metabolites) that captures the greatest variation in the dataset, independent of group classification. In contrast, PLS focuses on explaining the relationship with an explanatory variable, such as "Treatment" in this example}
+    \caption{A comparison of PCA (A) and PLS (B). In the PCA plot, the PC1(x-axis) represents a combination of variables (e.g., three metabolites) that captures the greatest variation in the dataset, independent of group classification. In contrast, PLS focuses on explaining the relationship with an explanatory variable, such as "Treatment" in this example}
     \label{fig:plsr}
 \end{figure}
 
-Principal Component Analysis (PCA) uses the principal components as explanatory variables to capture most of the variance in predictor variables (X), ensuring dimensionality reduction while retaining most of the data’s variability. 
-Partial Least Squares (PLS) prioritize relevance to both X (predictor) and y (response) variables, rather than maximising the variance in X alone (\ref{fig:plsr}) [27]. By combining the PCA with linear regression, PLSR constructs 
-the latent variable that summarizes predictor variables and maximises their relevance to the response variables. This makes PLSR particularly suitable for high dimensional datasets such as spectral data from NIRS instruments. \\
+Principal Component Analysis (PCA) uses the principal components as explanatory variables to capture most of the variance in predictor variables ($X$), ensuring dimensionality reduction while retaining most of the data’s variability. 
+Partial Least Squares (PLS) prioritize relevance to both $X$ (predictor) and $y$ (response) variables, rather than maximising the variance in $X$ alone (\ref{fig:plsr}) [27]. By combining the PCA with linear regression, PLSR constructs 
+the latent variable that summarizes predictor variables and maximizes their relevance to the response variables. This makes PLSR particularly suitable for high dimensional datasets such as spectral data from NIRS instruments. \\
+
+PLSR is employed when the predictor variables are highly collinear and it works by creating latent components that maximizes covariance between predictors and response. \\
+
+The predictor matrix \( X \) and response matrix \( Y \) can be represented as:
+\[
+X \in \mathbb{R}^{n \times p}
+\]
+
+\[
+Y \in \mathbb{R}^{n \times q}
+\]
+where:
+\begin{itemize}
+    \item \( n \) is the number of samples
+    \item \( p \) is the number of predictors (spectral data)
+    \item \( q \) is the number of response variables
+    \item $\mathbb{R}$ refers to the real numbers
+\end{itemize}
+
+PLSR decomposes predictor($X$) and response($Y$) matrix into $l$ number of latent components\\
+
+\[
+X = T P^T + E
+\]
+
+\[
+Y = U Q^T + F
+\]
+
+Here;
+\begin{itemize}
+    \item $T$ is an $n*l$ matrix which contains the projections of $X$ onto the latent components
+    \item $U$ is an $n*l$ matrix which contains the projections of $Y$ onto the latent components
+    \item $P^T$ shows how much of the original features in $X$ contribute to each latent component
+    \item $Q^T$ shows how much of the original response variables in $Y$ contribute to each latent component
+    \item $E$ and $F$ are the left over after the decomposition
+\end{itemize}
+
+
+
+
 
 \subsection{Random Forest (RF)}
 Random Forest (RF) is a non-linear ensemble technique used in machine learning which is also depicted as a forest of decision trees [18][29]. Random forest is commonly used for classification tasks, though it can also be 
@@ -371,7 +412,7 @@ Random Forest often outperforms linear regression models since, linear regressio
 On the flip side, RF can easily adapt to non linear relationships, making them better flexible and suited for such tasks [30]. The RF algorithm estimates the error rate by out-of-bag (OOB) during training time. Each tree in the model is built using a subset of data, called a 
 bootstrap sample and about one third of the data is left out during this process. These excluded data points are the OOB. Hence, minimizing the OOB is crucial for better model performance and robustness [30]. \\
 
-\textbf{Mathematical Explanation of Random Forest Regression} \\
+
 For regression tasks, the random forest works differently compared to classification but the core principles remain the same. The terminal node of RF in regression takes the average of predictions from the individual trees [44]
 
 \begin{itemize}
@@ -695,7 +736,7 @@ This function also provides detailed documentation created using \texttt{roxygen
 \subsubsection*{Background of the study}
 The data for the first analysis is collected (with all permissions) from the study conducted by Pablo Castro Sanchez-Bermejo in the experiment named \textit{Tree and mycorrhizal fungal diversity drive intraspecific and intraindividual trait variation in temperate forests: Evidence from a tree diversity experiment} which aimed to study the role of tree species richness and mycorrhizal fungal diversity in driving intraspecific and intraindividual trait variation in temperate forests [15]. The study is conducted at Bad Lauchstädt Experimental Research Station in Saxony-Anhalt, Germany. The experimental setup included 80 plots , planted with 10 native deciduous tree species, each associated with arbuscular mycorrhizal (AM) or ectomycorrhizal (EM) fungi. The dataset contains measurements from 3200 leaves, sampled from 640 trees spanning across 10 tree species. Leaf spectral data were collected using a FieldSpec4 Wide-Res Spectroradiometer, covering the 350–2500 nm range. \\
 
-In addition to this, the data excel sheet also contains spectral and trait data from a different study. It is from a study named Kreinitz experiment in which they studied \textit{Leaf trait variation within individuals mediates the relationship between tree species richness and productivity} [49,15]. The data from this experiment is used in combination with the data from leaf trait study [15] only in analysis of phosphorus content. The laboratory analysis of leaf phosphorus content faced technical problems during laboratory analysis in the first experiment [15]. Therefore, to compensate the data loss, additional but comparable samples from the Kreinitz experiment were used. \\
+In addition to this, the data excel sheet also contains spectral and trait data from a different study. It is from a study named Kreinitz experiment in which they studied \textit{Leaf trait variation within individuals mediates the relationship between tree species richness and productivity} [49,15]. The data from this experiment is used in combination with the data from leaf trait study [15] only in analysis of phosphorus content. The laboratory analysis of leaf phosphorus content faced technical problems during laboratory analysis in the first experiment [15]. Therefore, to compensate the data loss, additional but comparable samples from the Kreinitz experiment were used.
 
 \begin{figure}[h]
     \centering
@@ -925,7 +966,7 @@ source("/path/to/the/function/plot.R")
 \end{lstlisting}
 
 \subsubsection*{Prediction of LDMC using PLSR}
-The prediction of LDMC using PLSR follows similar steps as of SLA prediction except the preprocessing. In LDMC, data corresponding to this specific trait is first extracted from the excel sheet and outlayers were removed.
+The prediction of LDMC using PLSR follows similar steps as of SLA prediction except the preprocessing. In LDMC, data corresponding to this specific trait is first extracted from the excel sheet and outlayers were removed. \\
 
 \begin{lstlisting}[language=R, style=mystyle]
 # Removing the outlayers
@@ -940,7 +981,7 @@ plantspec.data.ldmc <- subset(plantspec.data.ldmc, Tree != "70_Ti3")
 component_LDMC <- plantspec.data.ldmc$LDMC
 \end{lstlisting}
 
-After the necessary preprocessing steps, the custom helper function is applied to create the PLSR model for LDMC.
+After the necessary preprocessing steps, the custom helper function is applied to create the PLSR model for LDMC. \\
 
 \begin{lstlisting}[language=R, style=mystyle]
 # Train the PLSR-LDMC model
@@ -1037,7 +1078,286 @@ component_P <- c(plantspec.data.p$P, plantspec.data2$P)
 
 After preprocessing, the analysis followed steps similar to the LDMC, C and C:N. It used the helper functions to create the model and visualize the data. 
 
-\subsection{Extrapolation study of PLSR}
+\subsubsection{Extrapolation study of PLSR}
+The extrapolation study is considered to evaluate the performance of the Partial Least Squares Regression (PLSR) under extreme conditions. This extrapolation studies are applied to both high and low data ranges by a specific data splitting strategy. In the highest range extrapolation study, the top $30\%$ of values reserved for testing while the rest $70\%$ of the data is used for training. This means, The model will be trained using the values of less variance and then subjected to test and predict on the unseen data of high variance.\\
+
+A similar approach was applied to the lowest data range as well, where the lowest or the bottom $30\%$ of values were selected for testing while the rest of the data is used for training the model. This methodology allows for assessing the model's ability to predict beyond the range of trained or observed values and provide insights into its extrapolation capabilities.\\
+
+The extrapolation study is limited to a single trait, with SLA chosen as the response variable. PLSR produced excellent results in predicting SLA values, which is why SLA was selected for the extrapolation study.
+
+\subsubsection*{Extrapolation at upper data range}
+Extrapolation at upper data range include, the upper $30\%$ for testing and the rest for training. This follows similar steps compared to the previous PLSR analysis, except the data splitting strategy.\\ 
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Removing outlayer from the samples
+plantspec.data[which(is.na(plantspec.data$SLA)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$SLA)),]
+plantspec.data.sla <- plantspec.data[!is.na(plantspec.data$SLA),]
+input <- input[-which(plantspec.data$Tree == "70_Ti3"),]
+plantspec.data.sla <- subset(plantspec.data.sla, Tree != "70_Ti3")
+
+# Studying the distribution of the values for SLA
+component_SLA <- plantspec.data.sla$SLA
+
+#we manually select the extreme values from both sides
+X <- input  
+Y <- plantspec.data.sla$SLA  
+
+# Scale the input (spectral data) and SLA values for better model
+X_scaled <- scale(X)            
+Y_scaled <- scale(Y)
+\end{lstlisting}
+
+The preprocessing is done by removing the outlayers and extracting the values necessary for the analysis. Both $X$ and $Y$ variables are then scaled and prepared for splitting the data. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Highest 30% of Values
+cutoff <- quantile(component_SLA, 0.7, na.rm = TRUE)
+
+# Index for test set
+test_set_index_h <- which(component_SLA >= cutoff)
+
+# Index for trainig set
+training_set_index_h <- which(component_SLA < cutoff)
+
+# Split the scaled data accordingly
+X_train_e_h <- X_scaled[training_set_index_h, ]
+Y_train_e_h <- Y_scaled[training_set_index_h]
+X_test_e_h <- X_scaled[test_set_index_h, ]
+Y_test_e_h <- Y_scaled[test_set_index_h]
+
+train_control <- trainControl(method = "cv", number = 20)
+
+# Create data frame 
+train_data_e_h <- data.frame(SLA = Y_train_e_h, X_train_e_h)
+\end{lstlisting}
+
+ Here instead of using the \texttt{subdivideDataset} from \texttt{plantspec} package, the data is split using the \texttt{quantile} function from base R. This function calculates specific percentiles of a numeric vector thereby allowing the data selection based on a predefined threshold. In this case, the cutoff value is determined using the $70$th percentile of component\_SLA. The parameter "na.rm", upon setting to TRUE ensures that the NA values are ignored in the calculation.\\
+
+ The \texttt{quantile} function has given the output of $70\%$ of the values in component\_SLA are below $20.266$, meaning the highest $30\%$ fo the values are above this threshold. The following code snippet select the index values of the data which have values above or equal to this specific threshold and then set them to the respective categories. The ones which are above and equal to this threshold is set to test dataset and the ones which are below is set to training set. \\
+
+Using the index for test and train the spectral data(X) and the trait data(Y) are split. Which is then used to create the train data frame to pass on to the \texttt{train} function. The rest of the process follows similar steps compared to the previous PLSR analysis. The \texttt{train} function is employed to train and create the model and \texttt{predict} function is used to evaluate the model followed by \texttt{postResample} function to get the $R^2$ and $RMSE$ values which is then saved to the results table along with training time of the model. The plots are created using \texttt{ggplot2} for better visualization.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/extra_h_plsr_sla.png}
+    \caption{The scatter plot illustrates the predicted versus actual SLA values for the extrapolation of the PLSR model on the upper data range.}
+    \label{fig:extra_h_plsr}
+\end{figure}
+
+
+\subsubsection*{Extrapolation at lower data range}
+Similar to extrapolation using the highest values, it was also to evaluate the PLSR model performance at the lowest values. In this case lower $30\%$ is used for testing and the rest for training the model. This uses similar functionalities and trait data compared to the former and only differs in how the parameters are used in \texttt{quantile} function. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Lower 30% of values
+cutoff_low <- quantile(component_SLA, 0.3, na.rm = TRUE)
+
+# Index for test set
+test_set_index_l <- which(component_SLA <= cutoff_low)
+
+# Index for trainig set
+training_set_index_l <- which(component_SLA > cutoff_low)
+\end{lstlisting}
+
+This function outputs, $30\%$ of the values in component\_SLA are below $13.60$, meaning the lowest $30\%$ of the values are below this threshold. The test and training set indices are created by selecting the indices of component\_SLA such that the values less than or equal to the threshold (cutoff\_low) are assigned to the test set, and the remaining values are assigned to the training set. This is then used to split the data accordingly and then proceed to the downstream analysis in the similar was to extrapolation study on upper data range.
+
+\subsubsection{Variable importance in PLSR}
+Variable importance is a technique used to identify the most influential features for the model's predictions. In this analysis, variable importance is found out using the \texttt{varImp} function from \texttt{caret} package. This function measures the variable importance for PLSR based on the weighed sums of the absolute regression coefficients. The weights are determined by how much they reduce the sum of squared errors across the PLS components. They are calculated individually for each outcome [50].\\
+
+For this analysis, the variable importance of SLA and carbon content was evaluated using the \texttt{varImp} function from \texttt{caret} package. This function calculates the importance of each features based on the level of its contribution to the overall prediction of the traits. \\ 
+
+\subsubsection*{Variable importance of SLA}
+The following R script is used to analyze the important variable during SLA prediction of PLSR model. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Variable importance of SLA in PLSR
+vi_sla <- varImp(pls_model, scale = F)
+
+# Extract the importance scores and make it into a data frame
+vi_sla_df <- as.data.frame(vi_sla$importance)
+
+# Define wavelength range
+wavelengths <- seq(350, 2500)
+
+# Create a data frame for plotting
+vi_sla_df <- data.frame(Wavelength = wavelengths, Overall = vi_sla_df)
+\end{lstlisting}
+
+The \texttt{varImp} function is used and the PLSR model for SLA from the previous analysis is passed on to the function as the first parameter. It also accepts optional parameters and can be given according to the data type and the research goal. This function will output data with feature name and its importance score. The scores are given to all the features in the study in this case the wavelength from $350$nm to $2500$nm. The output of this function is an object of class \texttt{varImp.train}. To visualize the output, the importance scores are extracted from the object and converted into a data frame. This data frame is then used in the ggplot2 function to create a graph of variable importance. Figure \ref{fig:vi_sla_plsr} shows the variable importance scores on the Y axis and features(wavelengths) in the X axis.  \\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/vi_sla_plsr.png}
+    \caption{The variable importance plot of PLSR model, illustrating the contribution deapth of different features during SLA trait prediction. The importance scores are given in the Y axis and higher the score more significant the corresponding wavelength is in predicting SLA trait of a plant. }
+    \label{fig:vi_sla_plsr}
+\end{figure}
+
+\subsubsection*{Variable importance of Carbon content}
+The variable importance in carbon content prediction using PLSR is also measured with the help of \texttt{varImp} function. The model corresponds to the carbon content is passed on to the function and it created a train object, from which the importance scores are extracted. This is followed by the visualization by \texttt{ggplot2}.\\
+
+
+\subsection{Trait Prediction Using Random Forest}
+Random Forest(RF), a nonlinear approach, was also chosen to evaluate predictive ability and model performance. Instead of classification, regression was performed using Random Forest. The data used is the same for the previous PLSR analysis. The aim is to evaluate and compare the results of RF with PLSR and CNN. The analysis does not require any additional libraries, since it follows a uniform approach and only differs in the method used for training. It uses the \texttt{plantspec} package for data splitting and \texttt{caret} package for training model and predicting the results. The visualization is done with the use of \texttt{ggplot2} and \texttt{plotly} packages. All five traits were predicted and the results were recorded for comparison.\\
+
+\subsubsection*{Data Loading and Preprocessing of SLA}
+The data is received in an excel sheet from the leaf trait study [15] and is read using \texttt{read\_excel} function from \texttt{readxl} package. The preprocessing is done by removing the outlayers and noise from the data.\\
+
+\begin{lstlisting}[language=R, style=mystyle]
+plantspec.data[which(is.na(plantspec.data$SLA)),]
+input <- as.matrix(plantspec.spectra[, -1])
+input <- input[-which(is.na(plantspec.data$SLA)),]
+plantspec.data.sla <- plantspec.data[!is.na(plantspec.data$SLA),]
+input <- input[-which(plantspec.data$Tree == "70_Ti3"),]
+plantspec.data.sla <- subset(plantspec.data.sla, Tree != "70_Ti3")
+\end{lstlisting}
+
+\subsubsection*{Data Scaling}
+A custom function is created named SNV to scale the predictor data matrix. The Standard Normal Variate (SNV) remove the scatter effects and baseline shifts by taking each spectrum and performing the centering and scaling individually. It is similar to the SNV function in PLSR. The trait data is also scaled using the \texttt{scale} function.\\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Standard Normal Variate (SNV) Transformation
+SNV <- function(spectra){
+  spectra <- as.matrix(spectra)
+  spectrat <- t(spectra)
+  spectrat_snv <- scale(spectrat, center = TRUE, scale = TRUE)
+  spectra_snv <- t(spectrat_snv)
+  return(spectra_snv)
+}
+input <- as.matrix(SNV(input))
+
+# Scale the trait
+component_SLA <- plantspec.data.sla$SLA
+component_SLA_scaled <- scale(component_SLA)
+\end{lstlisting}
+
+\subsubsection*{Data Splitting}
+Data splitting is performed with the help of \texttt{subdivideDataset} function from \texttt{plantspec} package. The spectral data and the trait data is passed on to the function and it returns a logical index which is then used to split the data into text and train data set. A detailed explanation is given in the \texttt{Data Splitting} part of \texttt{PLSR}. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+set.seed(0)
+training_set <- !(subdivideDataset(spectra = input,
+                                   component = component_SLA,
+                                   method = "PCAKS", p = 0.3,
+                                   type = "validation"))
+
+# Split data into test and train
+X_train <- input[training_set, ]
+Y_train <- component_SLA_scaled[training_set]
+X_test <- input[!training_set, ]
+Y_test <- component_SLA_scaled[!training_set]
+
+# Prepare training data
+train_data <- data.frame(SLA = Y_train, X_train)
+\end{lstlisting}
+
+The \texttt{X\_train} is a matrix of predictor data and \texttt{Y\_train} is a vector of the response data which is will be used to train the random forest model for predicting SLA. Since the \texttt{train} function is used to create the RF model, a data frame containing both predictor and response variable data is created by combining the training data before passing them to the function. \\
+
+\subsubsection*{Model Training}
+The \texttt{train} function from \texttt{caret} package is employed to create the RF model for predicting SLA trait. Compared to the PLSR model, the method used here is "rf" (Random Forest) instead of "pls" (Partial Least Squares Regression). Additionally, the RF model excludes certain parameters that were present in the PLSR model. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Training the model
+start_time_rf <- Sys.time()
+rf_model_sla <- train(SLA ~ ., data = train_data, method = "rf", ntree = 500)
+end_time_rf <- Sys.time()
+\end{lstlisting}
+
+\begin{itemize}
+    \item method: "rf" specifies the model being trained here is Random Forest
+    \item ntree: It is set to $500$ to improve accuracy and is set constant for every trait being analyzed by RF model.
+\end{itemize}
+
+The time for training the model was recorded for comparing the training time of each model from different ML approaches. In this analysis the \texttt{ntree} is set to $500$, it is the number of decision trees which will be used to built the RF model. The number of trees can be tuned for each data but we have used $500$ since, It is considered as a default value in many analysis. \\
+
+\subsubsection*{Model Evaluation}
+The performance of the model was evaluated using the test dataset. For predicting the SLA values, \texttt{predict} function from the \texttt{caret} package was used. In addition to that, \texttt{postResample} function from \texttt{caret} package is used to get the $R^2$ and RMSE values for comparison.\\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Predictions
+predictions_rf <- predict(rf_model_sla, newdata = X_test)
+
+# Evaluation metrics
+results_rf <- postResample(predictions_rf, Y_test)
+R_squared_rf <- results_rf[["Rsquared"]]
+rmse_values_rf <- results_rf[["RMSE"]]
+\end{lstlisting}
+
+\subsubsection*{Visualization}
+The \texttt{ggplot2} and \texttt{plotly} packages are employed for better visualization of the data. A dataframe with the test trait data (X\_test) and predicted trait values were created and passed on to the \texttt{ggplot} function to create the graph (Figure \ref{fig:sla_rf}).\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/sla_rf.png}
+    \caption{The scatter plot created using ggplot2 package, illustrating the predicted and actual SLA values of random forest model}
+    \label{fig:sla_rf}
+\end{figure}
+
+\subsubsection*{Prediction of LDMC, C:N ratio, C and P content}
+The analysis of the rest of the traits follows the same preprocessing steps of the same in PLSR. The scaling and data partition uses the similar approaches to that of SLA prediction using RF. The only difference is that instead of using the trait name "SLA", the respective trait name for the analysis is used. The preprocessing steps vary across different traits but remain consistent with those of the PLSR model, as the same data is used. A uniform approach is followed to ensure comparability between models. The analysis of phosphorus content involved additional steps compared to the analysis of other traits. It used additional data from Kreinitz experiment [49] along with data from leaf trait study [15]. A detailed analysis is provided as a vignette, including the complete script and interactive plots. \\
+
+\subsubsection*{Extrapolation at upper data rage}
+Extrapolation at upper data range in random forest include, the upper $30\%$ for testing and the rest for training. This follows similar steps compared to the previous RF analysis, except the data splitting strategy. Trait SLA has been chosen for the extrapolation study. The data is split using the \texttt{quantile} function from base R. The rest of the analysis is similar to the prediction of SLA using RF.\\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Highest 30%
+cutoff <- quantile(component_SLA, 0.7, na.rm = TRUE)
+
+#index for test set
+test_set_index_h <- which(component_SLA >= cutoff)
+
+#index for trainig set
+training_set_index_h <- which(component_SLA < cutoff)
+\end{lstlisting}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/extra_h_rf.png}
+    \caption{The scatter plot illustrates the predicted versus actual SLA values for the extrapolation of the random forest model on the upper data range}
+    \label{fig:extra_h_rf}
+\end{figure}
+
+\subsubsection*{Extrapolation at lower data rage}
+Extrapolation at lower data range is similar to that of upper data range, it is to evaluate the RF model performance at the lowest values. In this case, lower $30\%$ is used for testing and the rest for training the model. This uses similar functionalities and trait data compared to the former and only differs in how the parameters are used in \texttt{quantile} function. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Lowest 30%
+cutoff_low <- quantile(component_SLA, 0.3, na.rm = TRUE)
+
+# Index for test set
+test_set_index_l <- which(component_SLA <= cutoff_low)
+
+# Index for trainig set
+training_set_index_l <- which(component_SLA > cutoff_low)
+\end{lstlisting}
+
+\subsubsection{Variable importance in RF}
+Similar to the PLSR, variable importance of SLA and Carbon content was assessed using the \texttt{varImp} function from \texttt{caret} package. This function calculates the importance of each feature based on the level of its contribution to the overall prediction of the traits. \\ 
+
+\subsubsection*{Variable importance of SLA}
+The following R script is used to analyze the important variable during SLA prediction of RF model. Figure \ref{fig:vi_sla_rf} illustrates the variable importance of the SLA trait in random forest model. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+#Variable importance of SLA in RF
+vi_sla_rf <- varImp(rf_model_sla, scale = F)
+
+vi_sla_rf_df <- as.data.frame(vi_sla_rf$importance)
+\end{lstlisting}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/vi_sla_rf.png}
+    \caption{Variable importance graph of SLA trait in random forest model}
+    \label{fig:vi_sla_rf}
+\end{figure}
+
+\subsubsection*{Variable importance of Carbon content}
+The variable importance in carbon content prediction using random forest is also measured with the help of \texttt{varImp} function. The model corresponds to the carbon content is passed on to the function and it created a train object, from which the importance scores are extracted. This is followed by the visualization by \texttt{ggplot2}.\\
+
+\subsection{Trait Prediction Using Convolutional Neural Network}
+
+
 
 \section{LCMS Feature Prediction From NIRS Data}
 \subsubsection*{Background of the study}
@@ -1067,8 +1387,8 @@ P    & 0.66 & 0.64 & 15.19 sec \\
 \midrule
 \multicolumn{4}{c}{\textbf{{PLSR Extrapolation}}} \\ 
 \midrule
-SLA (H 30\%) & 0.14 & 1.06 &  21.07 sec \\
-SLA  (L 30\%)& 0.70 & 0.93 &  52.38 sec \\
+SLA (H 30\%) & 0.42 & 0.95 &  3.94 min \\
+SLA  (L 30\%)& 0.14 & 0.44 &  18.23 sec \\
 \midrule
 \multicolumn{4}{c}{\textbf{\textcolor{darkblue}{Random Forest (RF)}}} \\ 
 \midrule
@@ -1082,8 +1402,8 @@ P    & 0.50 & 0.66 & 15.25 min \\
 \midrule
 \multicolumn{4}{c}{\textbf{{RF Extrapolation}}} \\ 
 \midrule
-SLA (H 30\%) & 0.035 & 1.29 &  11.64 min \\
-SLA  (L 30\%)& 0.17 & 1.53 & 3.44 min \\
+SLA (H 30\%) & 0.05 & 1.29 &  11.64 min \\
+SLA  (L 30\%)& 0.06 & 0.76 & 11.78 min \\
 \midrule
 \multicolumn{4}{c}{\textbf{\textcolor{darkblue}{Convolutional Neural Network (CNN)}}} \\
 \midrule
@@ -1215,6 +1535,8 @@ PLS, RF, CNN
 48. Chi, K., Lin, J., Chen, M., Chen, J., Chen, Y., & Pan, T. (2023). Changeable moving window-standard normal variable transformation for visible-NIR spectroscopic analyses. Spectrochimica Acta Part A: Molecular and Biomolecular Spectroscopy, 123726. https://doi.org/10.1016/j.saa.2023.123726 \\
 \\
 49. Proß, T., Haider, S., Auge, H., & Bruelheide, H. (2023). Leaf trait variation within individuals mediates the relationship between tree species richness and productivity. Oikos, 2024, e10255. https://doi.org/10.1111/oik.10255. \\
+\\
+50. Kuhn Max (2019). The caret package. https://topepo.github.io/caret/  \\
 \\
 
 \end{document}
