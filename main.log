@@ -382,4 +382,180 @@ LaTeX Font Info:    ... okay on input line 45.
 \scratchdimen=\dimen183
 \scratchbox=\box57
 \nofMPsegments=\count307
-\nofMParguments
+\nofMParguments=\count308
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count309
+\MPscratchDim=\dimen184
+\MPnumerator=\count310
+\makeMPintoPDFobject=\count311
+\everyMPtoPDFconversion=\toks27
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 45.
+\@outlinefile=\write3
+\openout3 = `main.out'.
+
+\c@lstlisting=\count312
+<Figures/thd.png, id=4, 381.425pt x 381.425pt>
+File: Figures/thd.png Graphic file (type png)
+<use Figures/thd.png>
+Package pdftex.def Info: Figures/thd.png  used on input line 50.
+(pdftex.def)             Requested size: 56.9055pt x 56.90282pt.
+<Figures/ipb.jpg, id=5, 401.5pt x 401.5pt>
+File: Figures/ipb.jpg Graphic file (type jpg)
+<use Figures/ipb.jpg>
+Package pdftex.def Info: Figures/ipb.jpg  used on input line 52.
+(pdftex.def)             Requested size: 56.9055pt x 56.90189pt.
+[1
+
+{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Figures/thd.png> <./Figures/ipb.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.88 \newpage
+              [1] [2]
+No file main.toc.
+\tf@toc=\write4
+\openout4 = `main.toc'.
+
+[3]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 114.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 114.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [4]
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 137--144
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--150
+
+ []
+
+[5
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 152--157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--169
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 171--176
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--181
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--188
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--192
+
+ []
+
+[8]
+Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--204
+
+ 
