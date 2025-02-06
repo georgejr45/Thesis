@@ -128,6 +128,7 @@ The abstract of this thesis is..................................
     LC \> Liquid Chromatography \\
     RT \> Retention Time \\
     MAE \> Mean Absolute Error \\
+    API \> Application Programming Interface \\
     
 \end{tabbing}
 
@@ -354,13 +355,15 @@ the latent variable that summarizes predictor variables and maximizes their rele
 PLSR is employed when the predictor variables are highly collinear and it works by creating latent components that maximizes covariance between predictors and response. \\
 
 The predictor matrix \( X \) and response matrix \( Y \) can be represented as:
-\[
-X \in \mathbb{R}^{n \times p}
-\]
 
-\[
-Y \in \mathbb{R}^{n \times q}
-\]
+\begin{equation}
+    X \in \mathbb{R}^{n \times p}
+\end{equation}
+
+\begin{equation}
+    Y \in \mathbb{R}^{n \times q}
+\end{equation}
+
 where:
 \begin{itemize}
     \item \( n \) is the number of samples
@@ -371,13 +374,14 @@ where:
 
 PLSR decomposes predictor($X$) and response($Y$) matrix into $l$ number of latent components\\
 
-\[
-X = T P^T + E
-\]
+\begin{equation}
+    X = T P^T + E
+\end{equation}
 
-\[
-Y = U Q^T + F
-\]
+\begin{equation}
+    Y = U Q^T + F
+\end{equation}
+
 
 Here;
 \begin{itemize}
@@ -393,8 +397,7 @@ Here;
 
 
 \subsection{Random Forest (RF)}
-Random Forest (RF) is a non-linear ensemble technique used in machine learning which is also depicted as a forest of decision trees [18][29]. Random forest is commonly used for classification tasks, though it can also be 
-applied to regression such as predicting the leaf trait values from the NIRS data [18]. It is a supervised learning method consisting of decision trees and the root node serves as the initial point for dividing the dataset. 
+Random Forest (RF) is a non-linear ensemble technique used in machine learning which is also depicted as a forest of decision trees [18,29]. Random forest is not only used for classification tasks but also for regression such as predicting the leaf trait values from the NIRS data [18]. It is a supervised learning method consisting of decision trees and the root node serves as the initial point for dividing the dataset. 
 Recursive partition in which the data is separated into two binary part begins with the root node [18]. RF combines multiple trees to improve accuracy, robustness and reduce overfitting [18,29].
 In the classic tree based model, the dataset is divided into two groups based on the certain criteria until it encounters a predetermined stopping condition. The endpoints of a decision tree, known as leaf nodes, 
 represents the final data division. A random forest model consisting of an ensemble of decision trees, can be utilized for both regression and classification tasks, depending on the partitioning strategy and stopping criteria [30]. 
@@ -409,7 +412,7 @@ predict ragweed pollen concentrations, with RF delivering the most accurate pred
 \end{figure}
 
 Random Forest often outperforms linear regression models since, linear regression assumes a linear relationship between the variables. Even though this makes linear regression easier to interpret, it limits their flexibility in capturing complex patterns in the dataset. 
-On the flip side, RF can easily adapt to non linear relationships, making them better flexible and suited for such tasks [30]. The RF algorithm estimates the error rate by out-of-bag (OOB) during training time. Each tree in the model is built using a subset of data, called a 
+On the flip side, RF can easily adapt to non linear relationships, making them more flexible and suited for such tasks [30]. The RF algorithm estimates the error rate by out-of-bag (OOB) during training time. Each tree in the model is built using a subset of data, called a 
 bootstrap sample and about one third of the data is left out during this process. These excluded data points are the OOB. Hence, minimizing the OOB is crucial for better model performance and robustness [30]. \\
 
 
@@ -424,15 +427,21 @@ For regression tasks, the random forest works differently compared to classifica
         \item \( y_i \) represents the response variable (e.g., SLA, LDMC, or other traits),
     \end{itemize}
     For each tree (\( t \)), a bootstrap sample \( D_t \) is taken out of dataset \( D \), and the OOB for that tree is calculated as:
+
+    \begin{equation}
+        D_t^{\text{OOB}} = D \mathbin{-} D_t 
+    \end{equation}
     
-    \[D_t^{\text{OOB}} = D \mathbin{-} D_t
 
     
     \item \textbf{Model training and Prediction} \\
     Each tree in a RF model is trained with a separate bootstrap sample (\( D_t \)) and later exposed to test data for predictions to be made.
-    For the test data \( X_{\text{test}} \), the prediction from each tree (\( t \)) is denoted as \( \hat{y}_t(x_{\text{test}}) \). The final prediction from the RF is obtained by taking the average value of predictions from all the individual trees:
-    \[\hat{y}_{\text{RF}}(x_{\text{test}}) = \frac{1}{T} \sum_{t=1}^{T} \hat{y}_t(x_{\text{test}})
-    \]
+    For the test data \( X_{\text{test}} \), the prediction from each tree (\( t \)) is denoted as \( \hat{y}_t(x_{\text{test}}) \). The final prediction from the RF is obtained by taking the average value of predictions from all the individual trees: \\
+
+    \begin{equation}
+        \hat{y}_{\text{RF}}(x_{\text{test}}) = \frac{1}{T} \sum_{t=1}^{T} \hat{y}_t(x_{\text{test}})
+    \end{equation}
+    
     where:
     \begin{itemize}
         \item \( \hat{y}_t(x_{\text{test}}) \) is the prediction from the \( t \)-th tree,
@@ -466,8 +475,105 @@ A loss function evaluates how well the predicted values match the actual ones.  
 It is categorized into supervised learning, for classification and regression tasks, and unsupervised learning, for clustering with input data only. Several methods are employed for training deep neural networks, including Backpropagation, Gradient Descent, Stochastic Gradient Descent (SGD), and others. Among these, SGD stands out as one of the simplest and most widely used optimization algorithms in machine learning [34]. Adaptive Moment Estimation (ADAM) is an advanced 
 optimization algorithm which combines the benefits of two SGD variants: Adaptive Gradient Algorithm (AdaGrad) and Root Mean Square Propagation (RMSProp) [34]. It requires minimal memory and dynamically adjusts the learning rate for each parameter, making it more computationally efficient [34]. In this project CNN is employed to predict the output values from NIRS data. \\
 
+\subsection*{Coefficient of Determination ($R^2$)}
+It is a statistical measure to indicate a regression model's good fit. The $R^2$ provides information on how well the observed outcomes are replicated by the statistical model. $R^2$ value ranges from $0$ to $1$, in which $1$ indicates a perfect fit. In machine learning, the $R^2$ value of $1$ indicates that the predicted value by the ML model and the actual or measured value are the same [52,53]. It is calculated by: \\
+
+The calculation of $R^2$ in the context of this study can be explained as follows: \\
+
+Let \( y_1, y_2, \dots, y_n \) be the observed SLA values for \( n \) plant samples. These can be represented as a vector:
+
+\[
+\mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix}
+\]
+
+The response variables can be represented as:
+
+\[
+\mathbf{f} = \begin{bmatrix} f_1 \\ f_2 \\ \vdots \\ f_n \end{bmatrix}
+\]
+
+where \( f_i \) represents the estimated SLA for the \( i \)-th plant sample based on its spectral features.
 
 
+The difference between the observed and predicted SLA values is referred to as the \textbf{residual}:
+
+\begin{equation}
+   e_i = y_i - f_i 
+\end{equation}
+
+
+
+These residuals measure the prediction error for each sample. The overall model performance is calculated using the residual sum of squares (\( SS_{\text{res}} \)) and the total sum of squares (\( SS_{\text{tot}} \)):
+
+\begin{equation}
+   SS_{\text{res}} = \sum_{i=1}^{n} (y_i - f_i)^2 
+\end{equation}
+
+
+\begin{equation}
+    SS_{\text{tot}} = \sum_{i=1}^{n} (y_i - \bar{y})^2
+\end{equation}
+
+
+where \( \bar{y} \) is the mean observed SLA:
+
+\begin{equation}
+    \bar{y} = \frac{1}{n} \sum_{i=1}^{n} y_i
+\end{equation}
+
+
+The coefficient of determination (\( R^2 \)) is then calculated as:
+
+\begin{equation}
+   R^2 = 1 - \frac{SS_{\text{res}}}{SS_{\text{tot}}} 
+\end{equation}
+
+
+In this project, the $R^2$ is calculated for each machine learning and deep learning model and later used for comparison to understand model performance.
+
+\subsection*{Root mean square error (RMSE)}
+Root mean square error (RMSE) is a used as a metrics for evaluating the performance of regression models in machine learning. The RMSE measures the average magnitude of prediction error [53]. Two important error metrics used in ML are: \\
+
+\begin{itemize}
+    \item {Mean Squared Error (MSE)}
+    \item {Root Mean Squared Error (RMSE)}
+\end{itemize}
+
+These metrics measure how well the model performs by calculating the error rate,
+
+\subsubsection*{Mean Squared Error (MSE)}
+The Mean Squared Error (MSE) quantifies the average squared difference between observed and predicted SLA values.
+
+\begin{equation}
+    MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - f_i)^2
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $n$ is the number of samples,
+    \item $y_i$ is the observed value ,
+    \item $f_i$ is the predicted  value ,
+    \item $(y_i - f_i)$ is the residual (error) for each sample.
+\end{itemize}
+
+\textbf{Best case}: $MSE = 0$ (perfect predictions). \\
+\textbf{Worst case}: $MSE \to +\infty$ (large errors in predictions). 
+
+Since MSE uses squared differences, it magnifies the impact of large errors and makes it to detect the outliers.
+
+\subsubsection*{Root Mean Squared Error (RMSE)}
+The Root Mean Squared Error (RMSE) is the square root of MSE:
+
+\begin{equation}
+    RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - f_i)^2}
+\end{equation}
+
+Similar to MSE, a lower RMSE indicates better model performance. \\
+
+\textbf{Best case}: $RMSE = 0$. \\
+\textbf{Worst case}: $RMSE \to +\infty$. 
+
+The RMSE is also used as a metric to evaluate the model's performance in this project.
 
 
 
@@ -733,8 +839,8 @@ print(head(spectral_data))
 This function also provides detailed documentation created using \texttt{roxygen2} and unit tests created using \texttt{testthat} functions. The documentation make sure that all users can easily understand the  usage, purpose and arguments of the function. The unit tests verify the accuracy and reliability of the function across various scenarios, ensuring robust performance and minimizing the likelihood of errors during the usage.
 
 \section{Prediction of Leaf Traits From NIRS Data} 
-\subsubsection*{Background of the study}
-The data for the first analysis is collected (with all permissions) from the study conducted by Pablo Castro Sanchez-Bermejo in the experiment named \textit{Tree and mycorrhizal fungal diversity drive intraspecific and intraindividual trait variation in temperate forests: Evidence from a tree diversity experiment} which aimed to study the role of tree species richness and mycorrhizal fungal diversity in driving intraspecific and intraindividual trait variation in temperate forests [15]. The study is conducted at Bad Lauchstädt Experimental Research Station in Saxony-Anhalt, Germany. The experimental setup included 80 plots , planted with 10 native deciduous tree species, each associated with arbuscular mycorrhizal (AM) or ectomycorrhizal (EM) fungi. The dataset contains measurements from 3200 leaves, sampled from 640 trees spanning across 10 tree species. Leaf spectral data were collected using a FieldSpec4 Wide-Res Spectroradiometer, covering the 350–2500 nm range. \\
+\subsection*{Background of the study}
+The data for the first analysis is collected from the study conducted by Pablo Castro Sanchez-Bermejo in the experiment named \textit{Tree and mycorrhizal fungal diversity drive intraspecific and intraindividual trait variation in temperate forests: Evidence from a tree diversity experiment} which aimed to study the role of tree species richness and mycorrhizal fungal diversity in driving intraspecific and intraindividual trait variation in temperate forests [15]. The study is conducted at Bad Lauchstädt Experimental Research Station in Saxony-Anhalt, Germany. The experimental setup included 80 plots , planted with 10 native deciduous tree species, each associated with arbuscular mycorrhizal (AM) or ectomycorrhizal (EM) fungi. The dataset contains measurements from 3200 leaves, sampled from 640 trees spanning across 10 tree species. Leaf spectral data were collected using a FieldSpec4 Wide-Res Spectroradiometer, covering the 350–2500 nm range. \\
 
 In addition to this, the data excel sheet also contains spectral and trait data from a different study. It is from a study named Kreinitz experiment in which they studied \textit{Leaf trait variation within individuals mediates the relationship between tree species richness and productivity} [49,15]. The data from this experiment is used in combination with the data from leaf trait study [15] only in analysis of phosphorus content. The laboratory analysis of leaf phosphorus content faced technical problems during laboratory analysis in the first experiment [15]. Therefore, to compensate the data loss, additional but comparable samples from the Kreinitz experiment were used.
 
@@ -1356,12 +1462,177 @@ vi_sla_rf_df <- as.data.frame(vi_sla_rf$importance)
 The variable importance in carbon content prediction using random forest is also measured with the help of \texttt{varImp} function. The model corresponds to the carbon content is passed on to the function and it created a train object, from which the importance scores are extracted. This is followed by the visualization by \texttt{ggplot2}.\\
 
 \subsection{Trait Prediction Using Convolutional Neural Network}
+Unlike the previous ML models such as PLSR and RF,  CNN is automatically learns features from the spectral data. It is a deep learning approach to predict the five leaf traits and the goal is to evaluate whether CNN can outperform the conventional models by comparing the $R^2$, RMSE and training time across all these models. This analysis follows similar preprocessing steps as the previous two ML approaches, as we are dealing with the same data and following a uniform protocol for better comparison. The data is from the leaf trait study [15] and all five traits were predicted using CNN. \\
 
+\subsubsection*{Prediction of SLA using CNN}
+The SLA is the first trait in this analysis. The data is read from the excel sheet and the necessary preprocessing is done as same as in the previous analysis of SLA. The spectral data is saved into variable named "input" and the SLA values were extracted and saved into the the variable named "component\_SLA". The SLA trait data is then normalized using the \texttt{scale} function from R base package. A histogram and a QQ plot is created to study the distribution of SLA values. This part of the analysis includes recreating the results from leaf trait study[15] and hyper parameter tuning for better comparison with other ML models. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Studying the distribution of the values for SLA
+component_SLA <- plantspec.data.sla$SLA
+
+component_SLA <- scale(component_SLA)
+
+par(mfcol = c(1, 2))
+qqnorm((component_SLA), pch = 1, frame = FALSE) # Checking normality of the variable
+qqline((component_SLA), col = "red", lwd = 2)
+
+hist((component_SLA)) # Checking distribution of the variable
+\end{lstlisting}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/hist_CNN.png}
+    \caption{Q-Q plot (left) illustrating normality of SLA and histogram (right) showing the distribution of SLA [15]}
+    \label{fig:hist_CNN}
+\end{figure}
+
+Similar to the previous SLA analysis, \texttt{subdivideDataset} function from \texttt{plantspec} package has been employed for defining the index for test and train split. It is followed by a custom function to scale the input (spectral) data. This function performs centering and scaling of the spectral data to remove the scattering and baseline shift. The data is then split into test and training set to train the CNN model and predict the response variables. About $70\%$ of the data is used for training the model while the rest is saved for testing. A detailed script along with plots are provided in the vignette.\\
+
+\subsubsection*{CNN Architecture}
+The CNN model was implemented with the use of \texttt{Keras3} (version $1.1.0$) library which works on the \texttt{TensorFlow} background, which is an open source ML frame work developed by google. \texttt{TensorFlow} provides an ecosystem to develop, train and deploy the ML and DL models and \texttt{Keras} is a high level DL application programming interface (API) which is built in top of \texttt{TensorFlow}. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+#### Convolutional neural network (CNN) Architecture
+
+model.sla <- keras_model_sequential(input_shape = c(NULL, 2151, 1)) %>%
+
+  layer_conv_1d(filter = 2, kernel_size = 50, padding="same", kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  
+  layer_batch_normalization() %>%
+  
+  layer_max_pooling_1d(pool_size = 2) %>%
+  
+  layer_flatten() %>%
+  
+  layer_dense(128, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(32, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(8, kernel_initializer=initializer_glorot_uniform(seed=0)) %>%
+  layer_dense(1, kernel_initializer=initializer_glorot_uniform(seed=0))
+\end{lstlisting}
+
+This CNN architecture consists of many layers for feature extraction and regression. The model is initialized with the help of \texttt{keras\_model\_sequential} function from \texttt{keras} and input shape is passed on to it as the argument. The input shape include, batch size, number of features(change with dimension of dataset) and number of channels. The output of this function is then passed as the first argument to the next layers through pipe operator($\%>\%$). The first layer following the model initialization is the convolutional layer. This layer extracts spectral patters and in this project with the help of $2$ filters of size $50$ (each filter spans 50 consecutive wavelengths). The \texttt{kernel\_initializer} argument specifies how the initial weights of the layer should be and is set to \texttt{initializer\_glorot\_uniform}, which helps to maintain gradient stability during model training. The \texttt{seed} is set to $0$ for reproducibility. Padding is set to "same" to escape the default "valid" padding from \texttt{keras}. In default settings, no padding is added at the edge of input data and this results in reduction of the input length.\\
+
+Followed by the first convolutional layer is the batch normalization layer. This layer is responsible for improving the model stability and training speed by computing the mean and variance and rescaling them to get consistent distribution.\\
+
+Normalized data from this layer is then passed on to a max-pooling layer for dimensionality reduction. The pool size is set to $2$, which reduces the spectral data ($2151$ features) to half ($1075$ features) of its original size. \\
+
+The next layer is called flatten layer, which is responsible for converting the outputs of previous layers into a one dimensional vector for passing to the dense layers of CNN model. This layer bridges convolutional layers to dense layers by applying the \texttt{layer\_flatten} function to the outputs of max-pooling layer. \\
+
+Fully connected layer or in other words dense layers is created using four layers with different numer of neurons in each layer. Each layer in the dense layer takes the number of neurons as the first argument followed by \texttt{kernel\_initializer}, specifying how the weights of the layer should be initialized. In this project we have used "Glorot Uniform initialization" with a fixed seed. Each layer has different purposes, the first dense layer with $128l$ neurons helps to learn the high level spectral patters and captures the abstract features. This is then passed on to the next layer with $32$ neurons and it reduce the complexity by retaining only the important features. Third layer with $8$ neurons will further refines the already extracted features. The final layer with $1$ neuron will outputs a single continuous value. In this case each spectrum will output one SLA value.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/cnn_model.png}
+    \caption{CNN model architecture and parameters summary. This table summarizes the structure of the Convolutional Neural Network (CNN) used for SLA prediction. It includes details on each layer, output shape, and the number of trainable parameters.}
+    \label{fig:cnn_model}
+\end{figure}
+
+Next the CNN model is passed to \texttt{compile} function from \texttt{keras}, specifying how the model should be optimized and what loss function to use. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+model.sla %>% compile(
+  optimizer = "adam",
+  loss = "mean_squared_error")
+\end{lstlisting}
+
+The "adam" optimizer is used to optimize the model. Adam stands for Adaptive Moment Estimation and is an advanced gradient decent optimization technique used in DL. The optimizer controls the magnitude and speed of each parameter update by adjusting the learning rate, which guides the weights of the network based on the loss function gradient [51]. In this model, the loss function is defined as the "mean squared error". \\
+
+\subsubsection*{Define Early Stopping Callback}
+This deep learning model is trained over multiple "epoches" to minimize the loss function. Training for a longer period of time can lead to overfitting, in which the model performs well during training and fails to the test data and a larger computational load. The \texttt{callback\_early\_stopping} function from \texttt{keras} is used to regulate the training process by stopping the training if no improvement in loss function is shown after a certain number of epoches. Each epoch is one complete pass of the entire dataset through the neural network. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# Define Early Stopping Callback
+
+early_stopping <- callback_early_stopping(
+  monitor = "val_loss",  # Monitor validation loss
+  patience = 500,        # Stop if no improvement for 500 epochs 
+  restore_best_weights = TRUE  # Restore weights from the best epoch
+    )
+\end{lstlisting}
+
+Here, the model stops the training if there is no improvement in loss function after $500$ epoches. This helps to reduce the training time to a huge extent and prevents overfitting. The training time for the CNN model predicting SLA was $28.11$ minutes before implementing the early stopping callback. After incorporating early stopping, the training time was reduced to $7.30$ minutes while maintaining the same $R^2$ value. This demonstrate the improved efficiency of the model without compromising in model performance. \\
+
+\subsubsection*{Training CNN model for SLA}
+The training of CNN for predicting SLA from NIRS data is implemented using the \texttt{fit} function from \texttt{keras} package. The time for training the model was recorded. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+start_time_sla_cnn <- Sys.time()
+
+history <- model.sla %>% fit(x=as.matrix(x.train), y=as.matrix(y.train),
+                         epochs = 5000,
+                         verbose = 1,
+                         validation_split = 0.2,
+                         shuffle = FALSE,
+                         callbacks = list(early_stopping)
+                         )
+                         
+end_time_sla_cnn <- Sys.time()
+\end{lstlisting}
+
+The first two arguments to the \texttt{fit} function is the spectral training data and the trait data. Both of them are converted to matrix while passing to the function to make it compatable with \texttt{TensorFlow}. It is then followed by defining the epoches number. Number of epoches varies depending on the trait, in the analysis of SLA trait, $5000$ epoches were given, meaning the dataset passes through the neural network $5000$ times if the early callback function not satisfied.  In each epoch the model update its weight to minimize the loss function. The verbose is set to $1$ to monitor real-time training progress. The validation split is set to $0.2$, which means $20\%$ of the training data will be allocated and used for validation of the model. During training, the model will be trained on $80\%$ of the training data and evalutes its performance on the remaining $20\%$ of data. The "shuffle" is set to "FALSE" to prevent the shuffling of data before training. Finally, the call back function is implemented to allow the model to stop training if validation loss does not improve for $500$ epoches (Figure \ref{fig:sla_traing_cnn}). \\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/sla_traing_cnn.png}
+    \caption{The CNN training model for SLA trait, illustrating the training and validation loss during training the model. The model's training was set to 5000 epoches and it stopped before reaching 1500 epoches.}
+    \label{fig:sla_traing_cnn}
+\end{figure}
+
+\subsubsection*{Model evaluation}
+The performance of the model was evaluated using the test dataset. For predicting the SLA values, \texttt{predict} function from the \texttt{caret} package was used. Once the model is trained it is then used to predict on unseen dataset (X.test). \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+prediction.test <- predict(model.sla, as.matrix(x.test))
+\end{lstlisting}
+
+The $R^2$ and RMSE values for the CNN model is calculated and is saved to the results for comparing with the other previous ML approaches. \\
+
+\begin{lstlisting}[language=R, style=mystyle]
+# R^2 Value
+R2_test.sla <- cor(prediction.test, as.matrix(y.test))^2; R2_test.sla
+
+# Calculating the RMSE
+prediction.test <- as.numeric(prediction.test)
+y.test <- as.numeric(y.test[[1]])
+rmse_sla <- sqrt(mean((prediction.test - y.test)^2))
+\end{lstlisting}
+
+\subsubsection*{Visualization}
+The visualization is done with the help of \texttt{ggplot2} and \texttt{plotly} packages. Figure \ref{fig:sla_cnn} illustrates scatter plot created using the predicted from the CNN model and actual SLA values from this analysis.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/sla_cnn.png}
+    \caption{This plot illustrates the predictive ability of CNN for SLA trait}
+    \label{fig:sla_cnn}
+\end{figure}
+
+\subsubsection*{Prediction of LDMC, C:N ratio, C and P content}
+Prediction of the rest of the leaf traits were also performed using the CNN model. The LDMC, Carbon content, Phosphorus content and Carbon to Nitrogen ratio is predicted using CNN. Each of these trait data were preprocessed similar to its analysis in the previous PLSR and RF model. It is then used to train the CNN model which uses the same CNN architecture for all traits. A couple of hyper parameters were tuned, which include number of epoches for each model, early stopping function, number of filter, kernel size and the number of neurons in each dense layers. Each hyper parameter tuning experiment is conducted within a limited time frame, testing different configurations while recording the $R^2$, RMSE, and training time of the model after each adjustment. The final model is selected by comparing the results and choosing the best-performing configuration. A detailed version of the analysis with interactive plots were presented as vignette. \\
 
 
 \section{LCMS Feature Prediction From NIRS Data}
-\subsubsection*{Background of the study}
-\subsubsection*{LCMS feature prediction using Machine Learning}
+
+\subsection*{Background of the study}
+The dataset utilized for the prediction of LCMS features from NIRS data originates from a large scale field experiment known as the Jena experiment. This biodiversity experiment named \textit{LC-MS based plant metabolic profiles of thirteen grassland species grown in diverse neighbourhoods} has conducted in the city of Jena, Germany [14]. This study focuses on the influence of different ecological settings on secondary metabolites in plants. \\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/LCMS.png}
+    \caption{Schematic representation of the Jena experiment}
+    \label{fig:lcms}
+\end{figure}
+
+Figure \ref{fig:lcms} illustrates the above ground plants from thirteen grassland species (seven grass and six herbs) which collected at four time points throughout the growing season, May, July, August and October in the year $2017$. These plants were grown in plots with different diversity levels, ranging from one species per plot to eight species per plot. The LCMS metabolic profiling was performed on shoot extracts using an Ultra-Performance Liquid Chromatography coupled with an Electrospray Ionization Quadrupole Time-of-Flight Mass Spectrometer (UPLC-ESI-Qq-TOF-MS). This acquired raw data is then preprocessed by applying missing data imputation, validity check on the features and batch correction. On the other hand, NIRS data for the same samples were collected separately using the ASD Fieldspec $4$ instrument. \\
+
+
+
+\subsection{LCMS feature prediction from NIRS data using PLSR}
+
+
+
+
 \section{HPC runs}
 
 
@@ -1409,11 +1680,11 @@ SLA  (L 30\%)& 0.06 & 0.76 & 11.78 min \\
 \midrule
 \textbf{Trait} & \textbf{$R^2$} & \textbf{RMSE} & \textbf{Training time} \\
 \midrule
-SLA  & 0.89 & 3.69 & 28.11 min \\
-LDMC & 0.88 & 0.11 & 30.20 min \\
-C:N  & 0.74 & 6.26 & 4.11 min \\
-C    & 0.36 & 4.31 & 4.83 min \\
-P    & 0.20 & 43.42 & 31.30 sec \\
+SLA  & 0.88 & 0.39 & 6.63 min \\
+LDMC & 0.89 & 0.30 & 10.30 min \\
+C:N  & 0.59 & 0.60 & 4.02 min \\
+C    & 0.46 & 0.70 & 5.07 min \\
+P    & 0.50 & 0.79 & 30.78 sec \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1538,5 +1809,12 @@ PLS, RF, CNN
 \\
 50. Kuhn Max (2019). The caret package. https://topepo.github.io/caret/  \\
 \\
+51. Wang, Y., Xiao, Z., & Cao, G. (2022). A convolutional neural network method based on Adam optimizer with power-exponential learning rate for bearing fault diagnosis. Journal of Vibroengineering, 24(4). https://doi.org/10.21595/jve.2022.22271 \\
+\\
+52. https://en.wikipedia.org/wiki/Coefficient\_of\_determination \\
+\\
+53. Chicco, D., Warrens, M. J., & Jurman, G. (2021). The coefficient of determination R-squared is more informative than SMAPE, MAE, MAPE, MSE and RMSE in regression analysis evaluation. Peerj computer science, 7, e623. \\
+\\
+
 
 \end{document}
