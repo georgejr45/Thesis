@@ -558,4 +558,171 @@ Chapter 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 199--204
 
- 
+ []
+
+<Figures/pablo_data.png, id=53, 1651.16875pt x 1019.81pt>
+File: Figures/pablo_data.png Graphic file (type png)
+<use Figures/pablo_data.png>
+Package pdftex.def Info: Figures/pablo_data.png  used on input line 207.
+(pdftex.def)             Requested size: 386.95897pt x 238.98625pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `fig:nirs_spectra' on page 9 undefined on input line 212.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--229
+
+ []
+
+[9
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 230--233
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--237
+
+ []
+
+[10 <./Figures/pablo_data.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
+
+ []
+
+
+/Users/methungeorge/Desktop/Thesis/main.tex:242: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.242 \textcolor
+                {darkblue}{ASD FieldSpec4} \\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--244
+
+ []
+
+<Figures/asd.jpg, id=67, 331.2375pt x 236.38312pt>
+File: Figures/asd.jpg Graphic file (type jpg)
+<use Figures/asd.jpg>
+Package pdftex.def Info: Figures/asd.jpg  used on input line 247.
+(pdftex.def)             Requested size: 241.84685pt x 142.2674pt.
+<Figures/svc.png, id=70, 260.975pt x 301.125pt>
+File: Figures/svc.png Graphic file (type png)
+<use Figures/svc.png>
+Package pdftex.def Info: Figures/svc.png  used on input line 257.
+(pdftex.def)             Requested size: 241.85207pt x 170.72406pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--267
+
+ []
+
+[11 <./Figures/asd.jpg>]
+<Figures/lcms_raw.png, id=80, 1122.1925pt x 353.32pt>
+File: Figures/lcms_raw.png Graphic file (type png)
+<use Figures/lcms_raw.png>
+Package pdftex.def Info: Figures/lcms_raw.png  used on input line 270.
+(pdftex.def)             Requested size: 435.32422pt x 137.06104pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 275--278
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 281--286
+
+ []
+
+[12 <./Figures/svc.png> <./Figures/lcms_raw.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 287--291
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 292--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--303
+
+ []
+
+[13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 306--310
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--318
+
+ []
+
+
+LaTeX Warning: Reference `fig:ml' on page 14 undefined on input line 321.
+
+<Figures/ml.png, id=96, 722.7pt x 505.89pt>
+File: Figures/ml.png Graphic file (type png)
+<use Figures/ml.png>
+Package pdftex.def Info: Figures/ml.png  used on input line 325.
+(pdftex.def)             Requested size: 386.95897pt x 270.86847pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 333--337
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 339--343
+
+ []
+
+[15 <./Figures/ml.png>]
+<Figures/PLSR.png, id=112, 722.7pt x 505.89pt>
+File: Figures/PLSR.png Graphic file (type png)
+<use Figures/PLSR.png>
+Package pdftex.def Info: Figures/PLSR.png  used on input line 346.
+(pdftex.def)             Requested size: 386.95897pt x 270.86847pt.
+
+
+LaTeX Warning: Reference `fig:plsr' on page 16 undefined on input line 352.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--354
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
+
+ []
+
+[16 <./Figures/PLSR.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 375--376
+
+ []
+
+
+LaTeX Warning: Reference `fig:rf' on page 17 undefined on input line 405.
+
+
+Underfu
